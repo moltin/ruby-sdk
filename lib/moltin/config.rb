@@ -1,8 +1,8 @@
 module Moltin
   class Config
 
-    @api_host = 'api.moltin.com'
-    @api_version = '1.0'
+    @api_host = 'api.molt.in'
+    @api_version = 'v1'
 
     class << self
       attr_accessor :api_host
