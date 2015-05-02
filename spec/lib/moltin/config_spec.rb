@@ -6,7 +6,7 @@ describe Moltin::Config do
 
     describe "#api_version" do
       it "has default value" do
-        expect(Moltin::Config.api_version).to eq '1.0'
+        expect(Moltin::Config.api_version).to eq 'v1'
       end
       it "can be updated" do
         Moltin::Config.api_version = '0.1'
@@ -16,7 +16,7 @@ describe Moltin::Config do
 
     describe "#api_host" do
       it "has default value" do
-        expect(Moltin::Config.api_host).to eq 'api.moltin.com'
+        expect(Moltin::Config.api_host).to eq 'api.molt.in'
       end
       it "can be updated" do
         Moltin::Config.api_host = 'api.moltin.dev'
