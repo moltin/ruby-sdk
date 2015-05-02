@@ -13,7 +13,15 @@ module Moltin
       end
 
       def body
-        response.body
+        response.to_s
+      end
+
+      def as_hash
+        JSON.parse(response.to_s)
+      end
+
+      def result
+        as_hash['result']
       end
 
       def success?
