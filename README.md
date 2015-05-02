@@ -22,7 +22,14 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Get A Product
+
+```
+product = Product.find(1)
+product.name # Name of Product
+product.price = 200
+product.save
+```
 
 ## Development
 
