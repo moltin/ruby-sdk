@@ -22,7 +22,7 @@ module Moltin
             headers: headers(custom_headers),
           }
         )
-        request.get do |response, request, result|
+        request.get do |response|
           Moltin::Api::Response.new response
         end
       end
@@ -40,7 +40,7 @@ module Moltin
             verify_ssl: OpenSSL::SSL::VERIFY_NONE,
           }
         )
-        response = request.post(data) do |response, request, result|
+        response = request.post(data) do |response|
           json = JSON.parse(response.to_s)
           self.access_token = json['access_token']
           self.authenticated_until = DateTime.strptime(json['expires'].to_s, '%s')

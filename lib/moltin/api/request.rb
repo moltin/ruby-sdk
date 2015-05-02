@@ -5,7 +5,7 @@ module Moltin
     class Request
 
       def self.get(path, custom_headers = {})
-        Moltin::Api::Client.get(path)
+        Moltin::Api::Client.get(path, custom_headers)
       end
 
     end
