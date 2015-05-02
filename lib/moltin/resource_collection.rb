@@ -8,6 +8,10 @@ module Moltin
       end
     end
 
+    def each(&block)
+      @resources.each { |resource| yield resource }
+    end
+
     def to_s
       @resources.map(&:to_s)
     end
