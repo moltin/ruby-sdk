@@ -1,8 +1,6 @@
 # Moltin
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/moltin`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+The Moltin ruby-sdk is a simple to use interface for the API to help you get off the ground quickly and efficiently within the Ruby Language.
 
 ## Installation
 
@@ -16,30 +14,43 @@ And then execute:
 
     $ bundle
 
-Or install it yourself as:
-
-    $ gem install moltin
-
 ## Usage
 
-### Get A Product
+### Configuration
 
 ```
-product = Product.find(1)
-product.name # Name of Product
+Moltin::Config.api_version = 'beta'
+Moltin::Config.api_host = 'api-test.moltin.dev'
+```
+
+### Authentication
+
+We will automatically detect `ENV['MOLTIN_CLIENT_ID']` and `ENV['MOLTIN_CLIENT_SECRET']` variables, or you can pass them through manually. There is no need to call the authenticate method if ENV variables are set.
+
+```
+Moltin::Client::Authenticate('client_credentials', client_id: 'XXXXX', client_secret: 'XXXXX')
+```
+
+### Get A CRUD Resource
+
+The majority of our API calls can be mapped to Model-esque instance and don't need any low-level API calls.
+
+```
+product = Moltin::Resource::Product.find(1)
+puts product.name # Name of Product
 product.price = 200
 product.save
 ```
+
+### Manual API Request
 
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/console` for an interactive prompt that will allow you to experiment.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release` to create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/moltin/fork )
+1. Fork it ( https://github.com/moltin/ruby-sdk/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
