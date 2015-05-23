@@ -6,6 +6,8 @@ module Moltin
   module Api
     class CrudResource
 
+      @@attributes = []
+
       def self.all
         search({})
       end
@@ -19,12 +21,18 @@ module Moltin
         Moltin::ResourceCollection.new name, results
       end
 
+      def self.attributes(*attrs)
+        attrs.each do |attr|
+          @@attributes.push(attr)
+        end
+      end
+
       def self.create(data)
       end
 
       attr_reader :data
 
-      def initialize(data)
+      def initialize(data = {})
         @data = data
       end
 
@@ -42,7 +50,8 @@ module Moltin
       end
 
       def method_missing(method, *args, &block)
-        if @data.has_key? method.to_s
+        if @@attributes.include? method
+          return nil unless @data[method.to_s]
           if @data[method.to_s].is_a? Hash
             return @data[method.to_s]['value']
           end
