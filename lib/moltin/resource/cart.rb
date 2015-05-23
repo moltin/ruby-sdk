@@ -19,7 +19,7 @@ module Moltin
       def retrieve
         response = Moltin::Api::Request.get("cart/#{identifier}")
         return unless response.success?
-        @items = Moltin::ResourceCollection.new 'Moltin::Resource::Product', response.result['contents'].map { |k, v| v }
+        @items = Moltin::ResourceCollection.new 'Moltin::Resource::Product', response.result['contents'].map { |k, v| v.merge('identifier' => k) }
         @item_count = response.result['total_items']
         @item_subtotal = response.result['totals']['formatted']['without_tax']
         @item_tax = response.result['totals']['formatted']['tax']
