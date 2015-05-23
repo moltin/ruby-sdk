@@ -12,6 +12,10 @@ module Moltin
         Moltin::Api::Client.post(path, data, custom_headers)
       end
 
+      def self.delete(path, custom_headers = {})
+        Moltin::Api::Client.delete(path, custom_headers)
+      end
+
     end
   end
 end

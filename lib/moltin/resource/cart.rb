@@ -30,6 +30,10 @@ module Moltin
         Moltin::Api::Request.post("cart/#{identifier}", options)
       end
 
+      def remove_item(product_id)
+        Moltin::Api::Request.delete("cart/#{identifier}/item/#{product_id}")
+      end
+
       def items
         @items || []
       end

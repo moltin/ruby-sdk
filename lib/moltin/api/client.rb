@@ -40,6 +40,19 @@ module Moltin
         end
       end
 
+      def self.delete(path, custom_headers = {})
+        request = RestClient::Resource.new(
+          build_endpoint(path),
+          {
+            verify_ssl: OpenSSL::SSL::VERIFY_NONE,
+            headers: headers(custom_headers),
+          }
+        )
+        request.delete do |response|
+          Moltin::Api::Response.new response
+        end
+      end
+
       def self.authenticate(grant_type = nil, options = {})
         grant_type ||= 'client_credentials'
         data ={
