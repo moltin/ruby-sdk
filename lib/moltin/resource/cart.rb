@@ -26,6 +26,10 @@ module Moltin
         @item_total = response.result['totals']['formatted']['with_tax']
       end
 
+      def destroy
+        Moltin::Api::Request.delete("cart/#{identifier}")
+      end
+
       def add_item(options)
         Moltin::Api::Request.post("cart/#{identifier}", options)
       end
