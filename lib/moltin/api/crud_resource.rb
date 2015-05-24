@@ -33,7 +33,15 @@ module Moltin
       attr_reader :data
 
       def initialize(data = {})
-        @data = data
+        puts "#{self.class.name}.new { #{data} }"
+        @data ||= {}
+        puts "- @@attributes #{@@attributes}"
+        @@attributes.each do |attr|
+          # @data[attr] ||= nil
+        end
+        data.each do |key, value|
+          @data[key.to_sym] = value
+        end
       end
 
       def attributes
@@ -50,12 +58,22 @@ module Moltin
       end
 
       def method_missing(method, *args, &block)
-        if @@attributes.include? method
-          return nil unless @data[method.to_s]
-          if @data[method.to_s].is_a? Hash
-            return @data[method.to_s]['value']
-          end
-          return @data[method.to_s]
+        puts "method_missing #{method}"
+        if method.to_s.index('=')
+          key = method.to_s.split('=').first.gsub('_attributes', '').to_sym
+          return set_attribute(key, args[0]) if @@attributes.include? key
+        elsif @@attributes.include? method
+          return get_attribute(method)
+        end
+        super
+      end
+
+      def respond_to?(method)
+        puts "respond_to? #{method}"
+        if method.to_s.index('_attributes=')
+          puts "#{@@attributes}.include? #{method.to_s.split('_attributes').first.to_sym}"
+          puts @@attributes.include?(method.to_s.split('_attributes').first.to_sym) ? "  true" : "  false"
+          return @@attributes.include?(method.to_s.split('_attributes').first.to_sym)
         end
         super
       end
@@ -68,6 +86,10 @@ module Moltin
         _data
       end
 
+      def to_hash
+        to_s
+      end
+
       private
 
       def self.resource_name
@@ -78,6 +100,19 @@ module Moltin
         Moltin::Support::Inflector.pluralize(resource_name)
       end
 
+      def set_attribute(key, value)
+        @data[key] = value
+      end
+
+      def get_attribute(key)
+        puts "{ data = #{@data} }"
+        return nil unless @data[key]
+        if @data[key].is_a? Hash
+          return @data[key]['value']
+        end
+        puts "  #{@data[key]}"
+        @data[key]
+      end
     end
   end
 end

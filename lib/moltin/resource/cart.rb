@@ -1,6 +1,7 @@
 require 'moltin/resource_collection'
 require 'moltin/api/request'
 require 'moltin/resource/product'
+require 'moltin/resource/checkout'
 
 module Moltin
   module Resource
@@ -28,6 +29,10 @@ module Moltin
         @item_subtotal = response.result['totals']['pre_discount']['formatted']['without_tax']
         @item_tax = response.result['totals']['pre_discount']['formatted']['tax']
         @item_total = response.result['totals']['pre_discount']['formatted']['with_tax']
+      end
+
+      def checkout
+        Moltin::Resource::Checkout.new(cart: self).retrieve
       end
 
       def destroy
