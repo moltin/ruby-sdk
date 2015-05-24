@@ -5,7 +5,7 @@ module Moltin
     class CrudResource
 
       def model_name
-        "address"
+        self.class.name.split('::').last.downcase
       end
 
       def to_key
@@ -21,7 +21,7 @@ module Moltin
       end
 
       def route_key
-        "address"
+        model_name
       end
 
     end

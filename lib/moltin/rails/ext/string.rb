@@ -1,15 +1,15 @@
 class String
 
   def param_key
-    "address"
+    self
   end
 
   def route_key
-    "address"
+    self
   end
 
   def human
-    "address"
+    self
   end
 
 end
