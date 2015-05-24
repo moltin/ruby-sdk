@@ -33,9 +33,7 @@ module Moltin
       attr_reader :data
 
       def initialize(data = {})
-        puts "#{self.class.name}.new { #{data} }"
         @data ||= {}
-        puts "- self.class.attributes #{self.class.attributes}"
         self.class.attributes.each do |attribute|
           @data[attribute] ||= nil
         end
@@ -54,7 +52,6 @@ module Moltin
       end
 
       def method_missing(method, *args, &block)
-        puts "method_missing #{method}"
         if method.to_s.index('=')
           key = method.to_s.split('=').first.gsub('_attributes', '').to_sym
           return set_attribute(key, args[0]) if self.class.attributes.include? key
@@ -65,10 +62,7 @@ module Moltin
       end
 
       def respond_to?(method)
-        puts "respond_to? #{method}"
         if method.to_s.index('_attributes=')
-          puts "#{self.class.attributes}.include? #{method.to_s.split('_attributes').first.to_sym}"
-          puts self.class.attributes.include?(method.to_s.split('_attributes').first.to_sym) ? "  true" : "  false"
           return self.class.attributes.include?(method.to_s.split('_attributes').first.to_sym)
         end
         super
@@ -101,12 +95,10 @@ module Moltin
       end
 
       def get_attribute(key)
-        puts "{ data = #{@data} }"
         return nil unless @data[key]
         if @data[key].is_a? Hash
           return @data[key]['value']
         end
-        puts "  #{@data[key]}"
         @data[key]
       end
     end

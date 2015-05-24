@@ -27,9 +27,6 @@ module Moltin
           bill_to: (@data[:billing_address].data if @data[:billing_address]),
           ship_to: (@data[:shipping_address].data if @data[:shipping_address]) || "bill_to",
         }
-        puts " "
-        puts " "
-        puts data.to_json
         Moltin::Api::Request.post("carts/#{cart.identifier}/checkout", data)
       end
 
