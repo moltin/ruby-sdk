@@ -6,8 +6,6 @@ module Moltin
   module Api
     class CrudResource
 
-      @@attributes = []
-
       def self.all
         search({})
       end
@@ -22,8 +20,10 @@ module Moltin
       end
 
       def self.attributes(*attrs)
+        return @attributes if attrs.count === 0
+        @attributes ||= []
         attrs.each do |attr|
-          @@attributes.push(attr)
+          @attributes.push(attr)
         end
       end
 
@@ -35,17 +35,13 @@ module Moltin
       def initialize(data = {})
         puts "#{self.class.name}.new { #{data} }"
         @data ||= {}
-        puts "- @@attributes #{@@attributes}"
-        @@attributes.each do |attr|
-          # @data[attr] ||= nil
+        puts "- self.class.attributes #{self.class.attributes}"
+        self.class.attributes.each do |attribute|
+          @data[attribute] ||= nil
         end
         data.each do |key, value|
           @data[key.to_sym] = value
         end
-      end
-
-      def attributes
-        @data.keys
       end
 
       def save
@@ -61,8 +57,8 @@ module Moltin
         puts "method_missing #{method}"
         if method.to_s.index('=')
           key = method.to_s.split('=').first.gsub('_attributes', '').to_sym
-          return set_attribute(key, args[0]) if @@attributes.include? key
-        elsif @@attributes.include? method
+          return set_attribute(key, args[0]) if self.class.attributes.include? key
+        elsif self.class.attributes.include? method
           return get_attribute(method)
         end
         super
@@ -71,9 +67,9 @@ module Moltin
       def respond_to?(method)
         puts "respond_to? #{method}"
         if method.to_s.index('_attributes=')
-          puts "#{@@attributes}.include? #{method.to_s.split('_attributes').first.to_sym}"
-          puts @@attributes.include?(method.to_s.split('_attributes').first.to_sym) ? "  true" : "  false"
-          return @@attributes.include?(method.to_s.split('_attributes').first.to_sym)
+          puts "#{self.class.attributes}.include? #{method.to_s.split('_attributes').first.to_sym}"
+          puts self.class.attributes.include?(method.to_s.split('_attributes').first.to_sym) ? "  true" : "  false"
+          return self.class.attributes.include?(method.to_s.split('_attributes').first.to_sym)
         end
         super
       end
