@@ -27,7 +27,25 @@ module Moltin
           bill_to: (@data[:billing_address].data.compact if @data[:billing_address]),
           ship_to: (@data[:shipping_address].data.compact if @data[:shipping_address]) || "bill_to",
         }
-        Moltin::Api::Request.post("carts/#{cart.identifier}/checkout", data)
+        response = Moltin::Api::Request.post("carts/#{cart.identifier}/checkout", data)
+        @order_id = response.json['result']['id']
+      end
+
+      def authorize!
+        raise "Requires order to be placed" unless @order_id.present?
+        data = {
+          ip: '127.0.0.1',
+          data: {
+            number: '',
+            expiry_month: '',
+            expiry_year: '',
+            start_year: '',
+            cvv: '',
+            issue_number: '',
+            type: '',
+          }
+        }
+        Moltin::Api::Request.post("checkout/payment/authorize/#{@order_id}", data)
       end
 
     end
