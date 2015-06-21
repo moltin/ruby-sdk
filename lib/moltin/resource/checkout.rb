@@ -24,8 +24,8 @@ module Moltin
       def save
         data = {
           gateway: @data[:gateway],
-          bill_to: (@data[:billing_address].data if @data[:billing_address]),
-          ship_to: (@data[:shipping_address].data if @data[:shipping_address]) || "bill_to",
+          bill_to: (@data[:billing_address].data.compact if @data[:billing_address]),
+          ship_to: (@data[:shipping_address].data.compact if @data[:shipping_address]) || "bill_to",
         }
         Moltin::Api::Request.post("carts/#{cart.identifier}/checkout", data)
       end
