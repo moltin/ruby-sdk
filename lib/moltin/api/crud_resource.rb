@@ -65,7 +65,7 @@ module Moltin
 
       def respond_to?(method)
         if method.to_s.index('_attributes=')
-          return self.class.attributes.include?(method.to_s.split('_attributes').first)
+          return self.class.attributes.include?(method.to_s.split('_attributes').first.to_sym)
         end
         return true if self.class.attributes.include? method.to_sym
         super

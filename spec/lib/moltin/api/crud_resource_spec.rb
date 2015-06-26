@@ -50,22 +50,38 @@ describe Moltin::Api::CrudResource do
   end
 
   describe "#respond_to?" do
-    context "with valid attribute" do
-      it do
-        resource = Moltin::Resource::Mocker.new 'id' => '123'
-        expect(resource.respond_to? 'id').to eq true
+    context "reading attribute" do
+      context "with valid attribute" do
+        it do
+          resource = Moltin::Resource::Mocker.new 'id' => '123'
+          expect(resource.respond_to? 'id').to eq true
+        end
+      end
+      context "with valid symbol attribute" do
+        it do
+          resource = Moltin::Resource::Mocker.new 'id' => '123'
+          expect(resource.respond_to? 'id').to eq true
+        end
+      end
+      context "with invalid attribute" do
+        it do
+          resource = Moltin::Resource::Mocker.new 'id' => '123'
+          expect(resource.respond_to? 'random_key').to eq false
+        end
       end
     end
-    context "with valid symbol attribute" do
-      it do
-        resource = Moltin::Resource::Mocker.new 'id' => '123'
-        expect(resource.respond_to? 'id').to eq true
+    context "setting attribute" do
+      context "with valid attribute" do
+        it do
+          resource = Moltin::Resource::Mocker.new 'id' => '123'
+          expect(resource.respond_to?(:name_attributes=)).to eq true
+        end
       end
-    end
-    context "with invalid attribute" do
-      it do
-        resource = Moltin::Resource::Mocker.new 'id' => '123'
-        expect(resource.respond_to? 'random_key').to eq false
+      context "with valid attribute" do
+        it do
+          resource = Moltin::Resource::Mocker.new 'id' => '123'
+          expect(resource.respond_to?(:random_attributes=)).to eq false
+        end
       end
     end
   end
