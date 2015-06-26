@@ -1,4 +1,5 @@
 require 'moltin/api/request'
+require 'moltin/api/rest_client_wrapper'
 
 class Moltin::Api::RestClientWrapper
   def initialize(path, custom_headers = {})
