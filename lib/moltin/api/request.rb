@@ -1,42 +1,25 @@
 require 'moltin/api/client'
+require 'moltin/api/rest_client_wrapper'
 
 module Moltin
   module Api
     class Request
       def self.get(path, custom_headers = {})
-        request = RestClient::Resource.new(
-          build_endpoint(path),
-          {
-            verify_ssl: OpenSSL::SSL::VERIFY_NONE,
-            headers: headers(custom_headers),
-          }
-        )
+        request = Moltin::Api::RestClientWrapper.new(path, custom_headers)
         request.get do |response|
           Moltin::Api::Response.new response
         end
       end
 
       def self.post(path, data, custom_headers = {})
-        request = RestClient::Resource.new(
-          build_endpoint(path),
-          {
-            verify_ssl: OpenSSL::SSL::VERIFY_NONE,
-            headers: headers(custom_headers),
-          }
-        )
+        request = Moltin::Api::RestClientWrapper.new(path, custom_headers)
         request.post data do |response|
           Moltin::Api::Response.new response
         end
       end
 
       def self.delete(path, custom_headers = {})
-        request = RestClient::Resource.new(
-          build_endpoint(path),
-          {
-            verify_ssl: OpenSSL::SSL::VERIFY_NONE,
-            headers: headers(custom_headers),
-          }
-        )
+        request = Moltin::Api::RestClientWrapper.new(path, custom_headers)
         request.delete do |response|
           Moltin::Api::Response.new response
         end

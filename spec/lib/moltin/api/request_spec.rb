@@ -1,15 +1,40 @@
 require 'moltin/api/request'
+require 'moltin/api/response'
+require 'moltin/api/rest_client_wrapper'
 
 describe Moltin::Api::Request do
 
   describe "#self.get" do
     it "calls the correct methods" do
-      expect(described_class).to receive(:build_endpoint).and_return "http://moltinapi.dev/v1.0/some-resource"
-      expect(described_class).to receive(:headers).and_return({"Authorization" => "Bearer XXXXX"})
-      rest_client_request = double('RestClient::Resource')
-      expect(rest_client_request).to receive(:get).and_return double('Moltin::Api::Response.new')
-      expect(RestClient::Resource).to receive(:new).with("http://moltinapi.dev/v1.0/some-resource", instance_of(Hash)).and_return rest_client_request
-      described_class.get('some-resource')
+      api_response = double('Moltin::Api::Response.new')
+      expect(Moltin::Api::Response).to receive(:new).with api_response
+      rest_client_wrapper = double('Moltin::Api::RestClientWrapper')
+      expect(rest_client_wrapper).to receive(:get).and_yield api_response
+      expect(Moltin::Api::RestClientWrapper).to receive(:new).with('some-endpoint', 'custom_header' => 'value').and_return rest_client_wrapper
+      Moltin::Api::Request.get('some-endpoint', 'custom_header' => 'value')
+    end
+  end
+
+  describe "#self.post" do
+    it "calls the correct methods" do
+      data = { 'key' => 'value' }
+      api_response = double('Moltin::Api::Response.new')
+      expect(Moltin::Api::Response).to receive(:new).with api_response
+      rest_client_wrapper = double('Moltin::Api::RestClientWrapper')
+      expect(rest_client_wrapper).to receive(:post).with(data).and_yield api_response
+      expect(Moltin::Api::RestClientWrapper).to receive(:new).with('some-endpoint', 'custom_header' => 'value').and_return rest_client_wrapper
+      Moltin::Api::Request.post('some-endpoint', data, 'custom_header' => 'value')
+    end
+  end
+
+  describe "#self.delete" do
+    it "calls the correct methods" do
+      api_response = double('Moltin::Api::Response.new')
+      expect(Moltin::Api::Response).to receive(:new).with api_response
+      rest_client_wrapper = double('Moltin::Api::RestClientWrapper')
+      expect(rest_client_wrapper).to receive(:delete).and_yield api_response
+      expect(Moltin::Api::RestClientWrapper).to receive(:new).with('some-endpoint', 'custom_header' => 'value').and_return rest_client_wrapper
+      Moltin::Api::Request.delete('some-endpoint', 'custom_header' => 'value')
     end
   end
 
