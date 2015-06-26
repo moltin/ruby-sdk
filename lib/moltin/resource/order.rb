@@ -29,7 +29,8 @@ module Moltin
       end
 
       def to_pay
-        @data[:totals]['formatted']['shipping_price']
+        price = (@data[:totals]['raw']['shipping_price'] + @data[:totals]['raw']['total']).round(2)
+        @data[:currency]['data']['format'].gsub('{price}', sprintf('%5.2f', price))
       end
     end
   end
