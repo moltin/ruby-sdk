@@ -25,7 +25,7 @@ module Moltin
       end
 
       def success?
-        code.to_s.match(/(2|3)[0-9]{2}/)
+        code.to_s.match(/(2|3)[0-9]{2}/) ? true : false
       end
     end
   end
