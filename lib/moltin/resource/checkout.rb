@@ -41,21 +41,8 @@ module Moltin
         response
       end
 
-      def authorize!
-        raise "Requires order to be placed" unless @order_id.present?
-        data = {
-          ip: '127.0.0.1',
-          data: {
-            number: '',
-            expiry_month: '',
-            expiry_year: '',
-            start_year: '',
-            cvv: '',
-            issue_number: '',
-            type: '',
-          }
-        }
-        Moltin::Api::Request.post("checkout/payment/authorize/#{@order_id}", data)
+      def self.process!(order_id, method, options)
+        Moltin::Api::Request.post("checkout/payment/#{method}/#{order_id}", options)
       end
 
     end
