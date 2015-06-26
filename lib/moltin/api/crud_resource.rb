@@ -11,6 +11,8 @@ module Moltin
       end
 
       def self.find(id)
+        response = Moltin::Api::Request.get("#{resource_namespace}/#{id}")
+        self.new response.result
       end
 
       def self.search(options)
