@@ -40,7 +40,7 @@ module Moltin
           @data[attribute] ||= nil
         end
         data.each do |key, value|
-          @data[key.to_sym] = value
+          @data[key.to_s] = value
         end
       end
 
@@ -55,7 +55,7 @@ module Moltin
 
       def method_missing(method, *args, &block)
         if method.to_s.index('=')
-          key = method.to_s.split('=').first.gsub('_attributes', '').to_sym
+          key = method.to_s.split('=').first.gsub('_attributes', '')
           return set_attribute(key, args[0]) if self.class.attributes.include? key
         elsif self.class.attributes.include? method
           return get_attribute(method)
@@ -65,8 +65,9 @@ module Moltin
 
       def respond_to?(method)
         if method.to_s.index('_attributes=')
-          return self.class.attributes.include?(method.to_s.split('_attributes').first.to_sym)
+          return self.class.attributes.include?(method.to_s.split('_attributes').first)
         end
+        return true if self.class.attributes.include? method.to_sym
         super
       end
 
@@ -93,10 +94,11 @@ module Moltin
       end
 
       def set_attribute(key, value)
-        @data[key] = value
+        @data[key.to_s] = value
       end
 
       def get_attribute(key)
+        key = key.to_s
         return nil unless @data[key]
         if @data[key].is_a? Hash
           return @data[key]['value']

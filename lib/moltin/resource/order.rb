@@ -13,24 +13,24 @@ module Moltin
         :shipping
 
       def ship_to
-        Moltin::Resource::Address.new @data[:ship_to]['data']
+        Moltin::Resource::Address.new @data['ship_to']['data']
       end
 
       def bill_to
-        Moltin::Resource::Address.new @data[:ship_to]['data']
+        Moltin::Resource::Address.new @data['ship_to']['data']
       end
 
       def shipping
-        Moltin::Resource::ShippingMethod.new @data[:shipping]['data']
+        Moltin::Resource::ShippingMethod.new @data['shipping']['data']
       end
 
       def gateway
-        Moltin::Resource::Gateway.new @data[:gateway]['data']
+        Moltin::Resource::Gateway.new @data['gateway']['data']
       end
 
       def to_pay
-        price = (@data[:totals]['raw']['shipping_price'] + @data[:totals]['raw']['total']).round(2)
-        @data[:currency]['data']['format'].gsub('{price}', sprintf('%5.2f', price))
+        price = (@data['totals']['raw']['shipping_price'] + @data['totals']['raw']['total']).round(2)
+        @data['currency']['data']['format'].gsub('{price}', sprintf('%5.2f', price))
       end
     end
   end
