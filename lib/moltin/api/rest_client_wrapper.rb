@@ -1,7 +1,6 @@
 require 'moltin/api/request'
 
 class Moltin::Api::RestClientWrapper
-
   def initialize(path, custom_headers = {})
     @instance = RestClient::Resource.new(
       Moltin::Api::Request.build_endpoint(path),
@@ -18,4 +17,15 @@ class Moltin::Api::RestClientWrapper
     end
   end
 
+  def post data
+    @instance.post data do |response|
+      yield response
+    end
+  end
+
+  def delete
+    @instance.delete do |response|
+      yield response
+    end
+  end
 end
