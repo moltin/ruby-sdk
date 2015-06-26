@@ -2,7 +2,7 @@ require 'moltin/api/crud_resource'
 
 module Moltin
   module Resource
-    class Shipping < Moltin::Api::CrudResource
+    class ShippingMethod < Moltin::Api::CrudResource
 
       attributes :id,
         :identifier,
