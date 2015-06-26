@@ -56,7 +56,7 @@ module Moltin
       def method_missing(method, *args, &block)
         if method.to_s.index('=')
           key = method.to_s.split('=').first.gsub('_attributes', '')
-          return set_attribute(key, args[0]) if self.class.attributes.include? key
+          return set_attribute(key, args[0]) if self.class.attributes.include? key.to_sym
         elsif self.class.attributes.include? method
           return get_attribute(method)
         end

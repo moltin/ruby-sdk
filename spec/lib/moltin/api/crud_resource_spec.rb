@@ -8,24 +8,43 @@ end
 describe Moltin::Api::CrudResource do
 
   describe "#method_missing" do
-    context "with valid string attribute" do
-      it do
-        resource = Moltin::Resource::Mocker.new 'id' => '123'
-        expect(resource.id).to eq '123'
+    context "reading attribute" do
+      context "with valid string attribute" do
+        it do
+          resource = Moltin::Resource::Mocker.new 'id' => '123'
+          expect(resource.id).to eq '123'
+        end
+      end
+      context "with valid symbol attribute" do
+        it do
+          resource = Moltin::Resource::Mocker.new id: '123'
+          expect(resource.id).to eq '123'
+        end
+      end
+      context "with invalid attribute" do
+        it do
+          resource = Moltin::Resource::Mocker.new 'id' => '123'
+          expect {
+            resource.random_key
+          }.to raise_error
+        end
       end
     end
-    context "with valid symbol attribute" do
-      it do
-        resource = Moltin::Resource::Mocker.new id: '123'
-        expect(resource.id).to eq '123'
+    context "setting attribute" do
+      context "attribute exists" do
+        it do
+          resource = Moltin::Resource::Mocker.new 'id' => '123'
+          resource.id = '456'
+          expect(resource.id).to eq '456'
+        end
       end
-    end
-    context "with invalid attribute" do
-      it do
-        resource = Moltin::Resource::Mocker.new 'id' => '123'
-        expect {
-          resource.random_key
-        }.to raise_error
+      context "attribute does not exist" do
+        it do
+          resource = Moltin::Resource::Mocker.new 'id' => '123'
+          expect {
+            resource.random_key = '456'
+          }.to raise_error
+        end
       end
     end
   end
