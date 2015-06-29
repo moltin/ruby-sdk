@@ -15,6 +15,11 @@ module Moltin
         self.new response.result
       end
 
+      def self.find_by(options)
+        collection = search(options)
+        collection.first
+      end
+
       def self.search(options)
         query_string = options.map { |k, v| "#{k}=#{v}" }.join('&')
         results = Request.get("#{resource_namespace}/search#{query_string ? "?#{query_string}" : ''}").result
