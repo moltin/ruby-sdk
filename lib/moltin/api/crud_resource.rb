@@ -35,6 +35,8 @@ module Moltin
       end
 
       def self.create(data)
+        result = Request.post(resource_namespace, data).result
+        self.new(result)
       end
 
       attr_reader :data
