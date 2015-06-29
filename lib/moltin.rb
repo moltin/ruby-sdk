@@ -16,9 +16,5 @@ require 'moltin/resource_collection'
 require 'moltin/support/inflector'
 require "moltin/version"
 
-if defined? Rails
-  require 'moltin/rails'
-end
-
 module Moltin
 end
