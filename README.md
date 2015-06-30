@@ -5,6 +5,8 @@
 
 The Moltin ruby-sdk is a simple to use interface for the API to help you get off the ground quickly and efficiently within the Ruby Language.
 
+
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -15,7 +17,9 @@ gem 'moltin'
 
 And then execute:
 
-    $ bundle
+    $ bundle install
+
+
 
 ## Usage
 
@@ -26,6 +30,7 @@ Moltin::Config.api_version = 'beta'
 Moltin::Config.api_host = 'api-test.moltin.dev'
 ```
 
+
 ### Authentication
 
 We will automatically detect `ENV['MOLTIN_CLIENT_ID']` and `ENV['MOLTIN_CLIENT_SECRET']` variables, or you can pass them through manually. There is no need to call the authenticate method if ENV variables are set.
@@ -34,22 +39,58 @@ We will automatically detect `ENV['MOLTIN_CLIENT_ID']` and `ENV['MOLTIN_CLIENT_S
 Moltin::Client::Authenticate('client_credentials', client_id: 'XXXXX', client_secret: 'XXXXX')
 ```
 
-### Get A CRUD Resource
+
+### CRUD Resources
 
 The majority of our API calls can be mapped to Model-esque instance and don't need any low-level API calls.
 
 ```
-product = Moltin::Resource::Product.find(1)
-puts product.name # Name of Product
-product.price = 200
+// Create a product
+product = Moltin::Resource::Producy.create title: 'Example Product'
+
+// Get a product
+product = Moltin::Resource::Product.find 1
+
+// Update a product
+product.title = 'New Product Name'
 product.save
+
+// Delete a product
+product.delete
 ```
 
+
 ### Manual API Request
+
+For any API calls that aren't resources you can do the following
+
+```
+// Create a product
+product = Moltin::Api::Request.post('product', title: 'Example Product').result
+
+// Get a product
+product = Moltin::Api::Request.get('product/123')
+
+// Update a product
+product = Moltin::Api::Request.put('product/123', title: 'New Product Name')
+
+// Delete a product
+product = Moltin::Api::Request.delete('product/123')
+```
+
+
 
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/console` for an interactive prompt that will allow you to experiment.
+
+
+## Testing
+
+```
+$ bundle exec rspec
+```
+
 
 ## Contributing
 
