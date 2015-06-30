@@ -1,5 +1,8 @@
 # Moltin
 
+[![Travis Build Status](https://img.shields.io/travis/moltin/ruby-sdk.svg)](https://travis-ci.org/moltin/ruby-sdk)
+[![Codecov Coverage](https://img.shields.io/codecov/c/github/codecov/moltin/ruby-sdk.svg)](https://codecov.io/github/moltin/ruby-sdk)
+
 The Moltin ruby-sdk is a simple to use interface for the API to help you get off the ground quickly and efficiently within the Ruby Language.
 
 ## Installation
