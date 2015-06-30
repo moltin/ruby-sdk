@@ -18,6 +18,13 @@ module Moltin
         end
       end
 
+      def self.put(path, data, custom_headers = {})
+        request = Moltin::Api::RestClientWrapper.new(path, custom_headers)
+        request.put data do |response|
+          Moltin::Api::Response.new response
+        end
+      end
+
       def self.delete(path, custom_headers = {})
         request = Moltin::Api::RestClientWrapper.new(path, custom_headers)
         request.delete do |response|

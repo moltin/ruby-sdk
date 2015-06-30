@@ -24,6 +24,12 @@ class Moltin::Api::RestClientWrapper
     end
   end
 
+  def put data
+    @instance.put data do |response|
+      yield response
+    end
+  end
+
   def delete
     @instance.delete do |response|
       yield response
