@@ -46,7 +46,7 @@ The majority of our API calls can be mapped to Model-esque instance and don't ne
 
 ```
 // Create a product
-product = Moltin::Resource::Producy.create title: 'Example Product'
+product = Moltin::Resource::Product.create title: 'Example Product'
 
 // Get a product
 product = Moltin::Resource::Product.find 1
