@@ -4,3 +4,4 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'simplecov', group: :test, require: false
+gem 'codecov', group: :test, require: false
