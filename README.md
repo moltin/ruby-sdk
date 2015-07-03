@@ -79,6 +79,32 @@ product = Moltin::Api::Request.put('product/123', title: 'New Product Name')
 product = Moltin::Api::Request.delete('product/123')
 ```
 
+## Rails Integration
+
+Create an initializer with the following code to load in all rails helpers.
+
+```
+require 'moltin/rails'
+```
+
+All resources work out of the box with rails `form_for` methods.
+
+```
+// app/controllers/customer_controller.rb
+def edit
+  @customer = Customer.retreive params[:id]
+end
+
+// app/views/customers/edit.html.haml
+= form_for @customer do |f|
+  = f.input :email
+  
+// app/controllers/customers_controller.rb
+def update
+  @customer = Customer.retreive params[:id]
+  @customer.update params.require(:customer).permit(:email)
+end
+```
 
 
 ## Development
