@@ -27,8 +27,8 @@ And then execute:
 ### Configuration
 
 ```
-Moltin::Config.api_version = 'beta'
-Moltin::Config.api_host = 'api-test.moltin.dev'
+Moltin::Config.api_version = 'v1'
+Moltin::Config.api_host = 'https://api.molt.in'
 ```
 
 
