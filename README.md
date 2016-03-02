@@ -28,7 +28,7 @@ And then execute:
 
 ```
 Moltin::Config.api_version = 'v1'
-Moltin::Config.api_host = 'https://api.molt.in'
+Moltin::Config.api_host = 'api.molt.in'
 ```
 
 
