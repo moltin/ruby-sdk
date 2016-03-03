@@ -67,16 +67,16 @@ For any API calls that aren't resources you can do the following
 
 ```
 // Create a product
-product = Moltin::Api::Request.post('product', title: 'Example Product').result
+product = Moltin::Api::Request.post('products', title: 'Example Product').result
 
 // Get a product
-product = Moltin::Api::Request.get('product/123')
+product = Moltin::Api::Request.get('products/123')
 
 // Update a product
-product = Moltin::Api::Request.put('product/123', title: 'New Product Name')
+product = Moltin::Api::Request.put('products/123', title: 'New Product Name')
 
 // Delete a product
-product = Moltin::Api::Request.delete('product/123')
+product = Moltin::Api::Request.delete('products/123')
 ```
 
 ## Rails Integration
