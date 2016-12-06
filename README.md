@@ -34,10 +34,10 @@ Moltin::Config.api_host = 'api.molt.in'
 
 ### Authentication
 
-We will automatically detect `ENV['MOLTIN_CLIENT_ID']` and `ENV['MOLTIN_CLIENT_SECRET']` variables, or you can pass them through manually. There is no need to call the authenticate method if ENV variables are set.
+We will automatically detect `ENV['MOLTIN_CLIENT_ID']` and `ENV['MOLTIN_CLIENT_SECRET']` variables, or you can pass them through manually.
 
 ```
-Moltin::Client::Authenticate('client_credentials', client_id: 'XXXXX', client_secret: 'XXXXX')
+Moltin::Api::Client.authenticate('client_credentials', client_id: 'XXXXX', client_secret: 'XXXXX')
 ```
 
 
