@@ -81,7 +81,11 @@ module Moltin
       def to_s
         _data = {}
         @data.keys.each do |attribute|
-          _data[attribute] = send(attribute) if respond_to?(attribute)
+          if respond_to?(attribute)
+            _data[attribute] = send(attribute)
+          else
+            _data[attribute] = @data[attribute].to_s
+          end
         end
         _data
       end
