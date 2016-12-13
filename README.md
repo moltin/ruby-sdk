@@ -40,7 +40,6 @@ We will automatically detect `ENV['MOLTIN_CLIENT_ID']` and `ENV['MOLTIN_CLIENT_S
 Moltin::Api::Client.authenticate('client_credentials', client_id: 'XXXXX', client_secret: 'XXXXX')
 ```
 
-
 ### CRUD Resources
 
 The majority of our API calls can be mapped to Model-esque instance and don't need any low-level API calls.
