@@ -24,7 +24,7 @@ And then execute:
 
 ### Authentication
 
-We will automatically detect `ENV['MOLTIN_CLIENT_ID']` and `ENV['MOLTIN_CLIENT_SECRET']` variables, or you can pass them through manually. There is no need to call the authenticate method if ENV variables are set.
+We will automatically detect `ENV['MOLTIN_CLIENT_ID']` and `ENV['MOLTIN_CLIENT_SECRET']` variables, or you can pass them through manually.
 
 ```
 Moltin::Api::Client.authenticate
