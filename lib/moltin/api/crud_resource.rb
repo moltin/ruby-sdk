@@ -22,7 +22,7 @@ module Moltin
 
       def self.search(options)
         query_string = options.map { |k, v| "#{k}=#{v}" }.join('&')
-        results = Request.get("#{resource_namespace}/search#{query_string ? "?#{query_string}" : ''}").result
+        results = Request.get("#{resource_namespace}/#{query_string ? "?#{query_string}" : ''}").result
         Moltin::ResourceCollection.new name, results
       end
 
