@@ -5,9 +5,8 @@ require 'rest-client'
 module Moltin
   module Api
     class Client
-
-      @@authenticated_until = nil
-      @@access_token = nil
+      @authenticated_until = nil
+      @access_token = nil
 
       class << self
         attr_accessor :authenticated_until
@@ -16,17 +15,16 @@ module Moltin
 
       def self.authenticate(grant_type = nil, options = {})
         grant_type ||= 'client_credentials'
-        data ={
+        data = {
           grant_type: grant_type,
           client_id: options[:client_id] || ENV['MOLTIN_CLIENT_ID'],
-          client_secret: options[:client_secret] || ENV['MOLTIN_CLIENT_SECRET'],
+          client_secret: options[:client_secret] || ENV['MOLTIN_CLIENT_SECRET']
         }
-        request = RestClient::Resource.new(
-          "https://#{Moltin::Config.api_host}/oauth/access_token",
-          {
-            verify_ssl: OpenSSL::SSL::VERIFY_NONE,
-          }
-        )
+
+        headers = { verify_ssl: OpenSSL::SSL::VERIFY_NONE }
+        path    = "https://#{Moltin::Config.api_host}/oauth/access_token"
+        request = RestClient::Resource.new(path, headers)
+
         request.post(data) do |response|
           json = JSON.parse(response.to_s)
           self.access_token = json['access_token']
@@ -35,7 +33,7 @@ module Moltin
       end
 
       def self.authenticated?
-        @@access_token && @@authenticated_until > DateTime.now
+        access_token && authenticated_until > DateTime.now
       end
     end
   end
