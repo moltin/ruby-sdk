@@ -1,6 +1,6 @@
 require 'moltin/api/client'
 require 'moltin/api/rest_client_wrapper'
-require 'moltin/support/not_authenticate_error'
+require 'moltin/support/authentication_error'
 
 module Moltin
   module Api
