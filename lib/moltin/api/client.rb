@@ -36,9 +36,7 @@ module Moltin
         access_token && authenticated_until > DateTime.now
       end
 
-      private
-
-      def expires_date(date_string)
+      def self.expires_date(date_string)
         return DateTime.strptime(date_string, '%s')
       rescue ArgumentError
         return DateTime.now
