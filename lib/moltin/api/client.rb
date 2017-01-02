@@ -28,12 +28,20 @@ module Moltin
         request.post(data) do |response|
           json = JSON.parse(response.to_s)
           self.access_token = json['access_token']
-          self.authenticated_until = DateTime.strptime(json['expires'].to_s, '%s')
+          self.authenticated_until = expires_date(json['expires'].to_s)
         end
       end
 
       def self.authenticated?
         access_token && authenticated_until > DateTime.now
+      end
+
+      private
+
+      def expires_date(date_string)
+        return DateTime.strptime(date_string, '%s')
+      rescue ArgumentError
+        return DateTime.now
       end
     end
   end
