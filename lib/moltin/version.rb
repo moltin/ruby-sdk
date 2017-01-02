@@ -1,3 +1,3 @@
 module Moltin
-  VERSION = "0.1.1.2"
+  VERSION = "0.1.1.3"
 end
