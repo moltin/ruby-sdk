@@ -39,6 +39,11 @@ module Moltin
         self.new(result)
       end
 
+      def self.update(data)
+        result = Request.put(resource_namespace, data).result
+        self.new(result)
+      end
+
       attr_reader :data
 
       def initialize(data = {})
