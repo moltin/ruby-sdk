@@ -11,7 +11,7 @@ module Moltin
 
       def self.find(id)
         response = Moltin::Api::Request.get("#{resource_namespace}/#{id}")
-        self.new response.result
+        new(response.result) if response.success?
       end
 
       def self.find_by(options)
@@ -34,13 +34,18 @@ module Moltin
       end
 
       def self.create(data)
-        result = Request.post(resource_namespace, data).result
-        self.new(result)
+        response = Request.post(resource_namespace, data)
+        new(response.result) if response.success?
       end
 
       def self.update(id, data)
-        result = Request.put(resource_namespace + "/#{id}", data).result
-        self.new(result)
+        response = Request.put(resource_namespace + "/#{id}", data)
+        new(response.result) if response.success?
+      end
+
+      def self.destroy(id)
+        response = Request.delete(resource_namespace + "/#{id}")
+        new(response.result) if response.success?
       end
 
       attr_reader :data

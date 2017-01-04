@@ -35,10 +35,6 @@ module Moltin
         Moltin::Resource::Checkout.new(cart: self).retrieve
       end
 
-      def destroy
-        Moltin::Api::Request.delete("carts/#{identifier}")
-      end
-
       def add_item(options)
         Moltin::Api::Request.post("carts/#{identifier}", options)
       end
