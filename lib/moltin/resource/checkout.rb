@@ -6,35 +6,22 @@ require 'moltin/resource/gateway'
 module Moltin
   module Resource
     class Checkout < Moltin::Api::CrudResource
-
-      attributes :id,
-        :billing_address,
-        :cart,
-        :gateway,
-        :shipping,
-        :shipping_address
-
-      attr_reader :gateways
-      attr_reader :shipping_methods
+      attr_reader :data,
+                  :gateways,
+                  :shipping_methods
 
       def retrieve
-        @response = Moltin::Api::Request.get("carts/#{cart.identifier}/checkout")
-        @gateways = Moltin::ResourceCollection.new 'Moltin::Resource::Gateway', @response.result['gateways'].map { |k, v| v }
-        # raise @response.result['shipping']['methods'].to_yaml
-        @shipping_methods = Moltin::ResourceCollection.new 'Moltin::Resource::ShippingMethod', @response.result['shipping']['methods']
-        self
+        @data = Moltin::Api::Request.get("carts/#{cart.identifier}/checkout").result
+        @gateways = Moltin::ResourceCollection.new('Moltin::Resource::Gateway', @data['gateways'].map { |_, v| v })
+        @shipping_methods = Moltin::ResourceCollection.new('Moltin::Resource::ShippingMethod', @data['shipping']['methods'])
       end
 
-      def requires_shipping?
-        @response.result['shipping']['required']
-      end
-
-      def save
+      def save(gateway, shipping, billing_address, shipping_address = 'bill_to')
         data = {
-          gateway: @data['gateway'],
-          shipping: @data['shipping'],
-          bill_to: (@data['billing_address'].data.compact if @data['billing_address']),
-          ship_to: (@data['shipping_address'].data.compact if @data['shipping_address']) || "bill_to",
+          gateway:  gateway,
+          shipping: shipping,
+          bill_to:  billing_address,
+          ship_to:  shipping_address
         }
         response = Moltin::Api::Request.post("carts/#{cart.identifier}/checkout", data)
         @order_id = response.result['id'] if response.success?
