@@ -44,7 +44,6 @@ module Moltin
       def self.process!(order_id, method, options)
         Moltin::Api::Request.post("checkout/payment/#{method}/#{order_id}", options)
       end
-
     end
   end
 end

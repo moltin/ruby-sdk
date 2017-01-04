@@ -5,7 +5,6 @@ require 'moltin/resource_collection'
 module Moltin
   module Api
     class CrudResource
-
       def self.all
         search({})
       end
@@ -27,7 +26,7 @@ module Moltin
       end
 
       def self.attributes(*attrs)
-        return @attributes if attrs.count === 0
+        return @attributes if attrs.count.zero?
         @attributes ||= []
         attrs.each do |attr|
           @attributes.push(attr)
@@ -56,14 +55,9 @@ module Moltin
         end
       end
 
-      def save
-      end
+      def save; end
 
-      def assign_attributes
-      end
-
-      def delete
-      end
+      def assign_attributes; end
 
       def method_missing(method, *args, &block)
         if method.to_s.index('=')
@@ -102,7 +96,7 @@ module Moltin
       private
 
       def self.resource_name
-        name.to_s.downcase.gsub("moltin::resource::", "")
+        name.to_s.downcase.gsub('moltin::resource::', '')
       end
 
       def self.resource_namespace
@@ -116,9 +110,7 @@ module Moltin
       def get_attribute(key)
         key = key.to_s
         return nil unless @data[key]
-        if @data[key].is_a? Hash
-          return @data[key]['value']
-        end
+        return @data[key]['value'] if @data[key].is_a? Hash
         @data[key]
       end
     end
