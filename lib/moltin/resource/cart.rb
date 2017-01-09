@@ -6,7 +6,6 @@ require 'moltin/resource/checkout'
 module Moltin
   module Resource
     class Cart
-
       attr_reader :identifier
       attr_reader :item_count
       attr_reader :item_tax
@@ -24,11 +23,12 @@ module Moltin
       def retrieve
         response = Moltin::Api::Request.get("carts/#{identifier}")
         return unless response.success?
-        @items = Moltin::ResourceCollection.new 'Moltin::Resource::Product', response.result['contents'].map { |k, v| v.merge('identifier' => k) }
-        @item_count = response.result['total_items']
+        content        = response.result['contents'].map { |k, v| v.merge('identifier' => k) }
+        @items         = Moltin::ResourceCollection.new('Moltin::Resource::Product', content)
+        @item_count    = response.result['total_items']
         @item_subtotal = response.result['totals']['pre_discount']['formatted']['without_tax']
-        @item_tax = response.result['totals']['pre_discount']['formatted']['tax']
-        @item_total = response.result['totals']['pre_discount']['formatted']['with_tax']
+        @item_tax      = response.result['totals']['pre_discount']['formatted']['tax']
+        @item_total    = response.result['totals']['pre_discount']['formatted']['with_tax']
       end
 
       def checkout
@@ -45,6 +45,11 @@ module Moltin
 
       def items
         @items || []
+      end
+
+      def destroy
+        response = Request.delete("carts/#{identifier}")
+        new(response.result) if response.success?
       end
     end
   end
