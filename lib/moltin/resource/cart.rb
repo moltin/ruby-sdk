@@ -29,6 +29,7 @@ module Moltin
         @item_subtotal = response.result['totals']['pre_discount']['formatted']['without_tax']
         @item_tax      = response.result['totals']['pre_discount']['formatted']['tax']
         @item_total    = response.result['totals']['pre_discount']['formatted']['with_tax']
+        self
       end
 
       def checkout
