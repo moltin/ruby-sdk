@@ -1,5 +1,6 @@
 module Moltin
   class ResourceCollection
+    include Enumerable
     @resources = []
 
     def initialize(resource_class, data)
@@ -10,15 +11,7 @@ module Moltin
     end
 
     def each(&block)
-      @resources.each { |resource| yield resource }
-    end
-
-    def first
-      @resources.first
-    end
-
-    def to_s
-      @resources.map(&:to_s)
+      @resources.each(&block)
     end
   end
 end
