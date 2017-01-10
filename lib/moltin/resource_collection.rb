@@ -13,5 +13,9 @@ module Moltin
     def each(&block)
       @resources.each(&block)
     end
+
+    def filter_draft
+      @resources.select { |r| r.data['status']['value'] != 'Draft' }
+    end
   end
 end
