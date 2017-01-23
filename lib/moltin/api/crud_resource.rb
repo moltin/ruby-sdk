@@ -22,7 +22,7 @@ module Moltin
 
       def self.search(options)
         query_string = options.map { |k, v| "#{k}=#{v}" }.join('&')
-        results = Request.get("#{resource_namespace}/search#{query_string ? "?#{query_string}" : ''}").result
+        results = Request.get("#{resource_namespace}/#{query_string ? "?#{query_string}" : ''}").result
         Moltin::ResourceCollection.new name, results
       end
 
@@ -81,7 +81,11 @@ module Moltin
       def to_s
         _data = {}
         @data.keys.each do |attribute|
-          _data[attribute] = send(attribute)
+          if respond_to?(attribute)
+            _data[attribute] = send(attribute)
+          else
+            _data[attribute] = @data[attribute].to_s
+          end
         end
         _data
       end
