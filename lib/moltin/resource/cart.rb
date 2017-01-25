@@ -48,6 +48,10 @@ module Moltin
         @items || []
       end
 
+      def weigth
+        items.inject(0) { |sum, i| sum + i.data['weight'] * i.data['quantity'] }
+      end
+
       def destroy
         response = Request.delete("carts/#{identifier}")
         new(response.result) if response.success?
