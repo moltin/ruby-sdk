@@ -28,9 +28,19 @@ module Moltin
         Moltin::Resource::Gateway.new @data['gateway']['data']
       end
 
+      def add_shipping_price(price)
+        Moltin::Resource::Order.update(id, { shipping_price: price })
+        Moltin::Resource::Order.find(id)
+      end
+
+      def add_shipping_address(shipping_address_id)
+        Moltin::Resource::Order.update(id, { shipping_address: shipping_address_id })
+        Moltin::Resource::Order.find(id)
+      end
+
       def to_pay
-        price = (@data['totals']['raw']['shipping_price'] + @data['totals']['raw']['total']).round(2)
-        @data['currency']['data']['format'].gsub('{price}', sprintf('%5.2f', price))
+        price = @data['totals']['raw']['shipping_price'] + @data['totals']['raw']['total']
+        price.round(2)
       end
     end
   end

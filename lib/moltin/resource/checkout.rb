@@ -40,8 +40,6 @@ module Moltin
         }
         response = Moltin::Api::Request.post("carts/#{cart.identifier}/checkout", data)
         @order_id = response.result['id'] if response.success?
-        data_order = JSON.parse(response.response)
-        Moltin::Resource::Order.new(data_order['result'])
       end
 
       def self.process!(order_id, method, options)
