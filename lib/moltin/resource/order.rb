@@ -12,6 +12,13 @@ module Moltin
         :bill_to,
         :shipping
 
+      def items
+        response = Moltin::Api::Request.get("orders/#{id}/items")
+        return unless response.success?
+        content = response.result
+        Moltin::ResourceCollection.new('Moltin::Resource::Product', content)
+      end
+
       def ship_to
         Moltin::Resource::Address.new @data['ship_to']['data']
       end
