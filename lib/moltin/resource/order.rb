@@ -49,6 +49,10 @@ module Moltin
         price = @data['totals']['raw']['shipping_price'] + @data['totals']['raw']['total']
         price.round(2)
       end
+
+      def process(token)
+        Moltin::Resource::Checkout.process!(id, "purchase", { source: token })
+      end
     end
   end
 end
