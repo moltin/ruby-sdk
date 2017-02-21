@@ -53,8 +53,7 @@ module Moltin
       end
 
       def destroy
-        response = Request.delete("carts/#{identifier}")
-        new(response.result) if response.success?
+        Moltin::Api::Request.delete("carts/#{identifier}")
       end
     end
   end
