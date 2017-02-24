@@ -5,6 +5,7 @@ module Moltin
     class RestClientWrapper
       def initialize(path, custom_headers = {})
         endpoint  = Moltin::Api::Request.build_endpoint(path)
+        custom_headers["X-Language"] = locale if locale.present?
         headers   = Moltin::Api::Request.headers(custom_headers)
         params    = { verify_ssl: OpenSSL::SSL::VERIFY_NONE, headers: headers }
         @instance = RestClient::Resource.new(endpoint, params)
@@ -31,6 +32,15 @@ module Moltin
       def delete
         @instance.delete do |response|
           yield response
+        end
+      end
+
+      private
+      def locale
+        begin
+          I18n.locale.to_s.upcase
+        rescue
+          nil
         end
       end
     end
