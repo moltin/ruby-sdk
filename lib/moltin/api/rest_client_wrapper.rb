@@ -5,7 +5,7 @@ module Moltin
     class RestClientWrapper
       def initialize(path, custom_headers = {})
         endpoint  = Moltin::Api::Request.build_endpoint(path)
-        custom_headers["X-Language"] = locale if locale.present?
+        custom_headers["X-Language"] = locale if locale
         headers   = Moltin::Api::Request.headers(custom_headers)
         params    = { verify_ssl: OpenSSL::SSL::VERIFY_NONE, headers: headers }
         @instance = RestClient::Resource.new(endpoint, params)
