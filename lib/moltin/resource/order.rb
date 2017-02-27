@@ -41,7 +41,7 @@ module Moltin
       end
 
       def add_shipping_address(shipping_address_id)
-        Moltin::Resource::Order.update(id, { shipping_address: shipping_address_id })
+        Moltin::Resource::Order.update(id, { ship_to: shipping_address_id })
         Moltin::Resource::Order.find(id)
       end
 
