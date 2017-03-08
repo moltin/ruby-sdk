@@ -35,8 +35,8 @@ module Moltin
         Moltin::Resource::Gateway.new @data['gateway']['data']
       end
 
-      def add_shipping_price(price)
-        Moltin::Resource::Order.update(id, { shipping_price: price })
+      def add_shipping_price(shipping_price)
+        Moltin::Resource::Order.update(id, { shipping_price: shipping_price, total: to_pay + shipping_price })
         Moltin::Resource::Order.find(id)
       end
 
@@ -46,8 +46,7 @@ module Moltin
       end
 
       def to_pay
-        price = @data['totals']['raw']['shipping_price'] + @data['totals']['raw']['total']
-        price.round(2)
+        @data['totals']['rounded']['total']
       end
 
       def process(token)
