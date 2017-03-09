@@ -1,12 +1,10 @@
 # Moltin
 
-[![Travis Build Status](https://img.shields.io/travis/moltin/ruby-sdk.svg)](https://travis-ci.org/moltin/ruby-sdk)
-[![Codecov Coverage](https://img.shields.io/codecov/c/github/moltin/ruby-sdk.svg)](https://codecov.io/github/moltin/ruby-sdk)
-[![RubyGem Version](https://badge.fury.io/rb/moltin.svg)](https://rubygems.org/gems/moltin)
+[The smarter way to build eCommerce applications](https://www.moltin.com/)
 
-The Moltin ruby-sdk is a simple to use interface for the API to help you get off the ground quickly and efficiently within the Ruby Language.
+Unified APIs for inventory, carts, the checkout process, payments and more, so you can focus on creating seamless customer experiences at any scale.
 
-
+This Ruby SDK provides simple access to all the features offered by Moltin.
 
 ## Installation
 
@@ -18,111 +16,80 @@ gem 'moltin'
 
 And then execute:
 
-    $ bundle install
+    $ bundle
 
+Or install it yourself as:
 
+    $ gem install moltin
+
+## Configuration
+
+In order to use this gem, you need to define your Moltin credentials. This can either be done globally or on a per client basis.
+
+__Note: if you are unsure what your client_id or client_secret are, please select the [store in your account](https://accounts.moltin.com/) and copy them.__
+
+### Global Configuration
+
+By default, the gem will set your credentials using the environment variables below, if they are available.
+
+- `ENV['MOLTIN_CLIENT_ID']`
+- `ENV['MOLTIN_CLIENT_SECRET']`
+
+You can also set them yourself when your application is initialized (this can easily fit into an initializer if you are using Ruby on Rails).
+
+```
+Moltin.configure do |config|
+  config.client_id = 'YOUR_CLIENT_ID'
+  config.client_secret = 'YOUR_CLIENT_SECRET'
+end
+```
+
+### Per Client Configuration
+
+If you need to connect to multiple stores or would prefer to define the configuration for each client instead of globally, you can do it with the following code:
+
+```
+Moltin::Client.new({
+  client_id: 'YOUR_CLIENT_ID',
+  client_secret: 'YOUR_CLIENT_SECRET'
+})
+```
+
+### Enterprise Customers
+
+If you are an enterprise customer and have your own infrastructure with your own domain, you can configure the client to use your domain by setting the `base_url` option:
+
+```
+Moltin.configure do |config|
+  config.client_id = 'YOUR_CLIENT_ID'
+  config.client_secret = 'YOUR_CLIENT_SECRET'
+  config.base_url  = 'https://api.yourdomain.com'
+end
+```
+
+```
+Moltin::Client.new({
+  client_id: 'YOUR_CLIENT_ID',
+  client_secret: 'YOUR_CLIENT_SECRET',
+  base_url:  'https://api.yourdomain.com'
+})
+```
 
 ## Usage
 
-### Configuration
-
-```
-Moltin::Config.api_version = 'v1'
-Moltin::Config.api_host = 'api.molt.in'
-```
-
-
-### Authentication
-
-We will automatically detect `ENV['MOLTIN_CLIENT_ID']` and `ENV['MOLTIN_CLIENT_SECRET']` variables, or you can pass them through manually. There is no need to call the authenticate method if ENV variables are set.
-
-```
-Moltin::Client::Authenticate('client_credentials', client_id: 'XXXXX', client_secret: 'XXXXX')
-```
-
-
-### CRUD Resources
-
-The majority of our API calls can be mapped to Model-esque instance and don't need any low-level API calls.
-
-```
-// Create a product
-product = Moltin::Resource::Product.create title: 'Example Product'
-
-// Get a product
-product = Moltin::Resource::Product.find 1
-
-// Update a product
-product.title = 'New Product Name'
-product.save
-
-// Delete a product
-product.delete
-```
-
-
-### Manual API Request
-
-For any API calls that aren't resources you can do the following
-
-```
-// Create a product
-product = Moltin::Api::Request.post('products', title: 'Example Product').result
-
-// Get a product
-product = Moltin::Api::Request.get('products/123')
-
-// Update a product
-product = Moltin::Api::Request.put('products/123', title: 'New Product Name')
-
-// Delete a product
-product = Moltin::Api::Request.delete('products/123')
-```
-
-## Rails Integration
-
-Create an initializer with the following code to load in all rails helpers.
-
-```
-require 'moltin/rails'
-```
-
-All resources work out of the box with rails `form_for` methods.
-
-```
-// app/controllers/customer_controller.rb
-def edit
-  @customer = Customer.retreive params[:id]
-end
-
-// app/views/customers/edit.html.haml
-= form_for @customer do |f|
-  = f.input :email
-  
-// app/controllers/customers_controller.rb
-def update
-  @customer = Customer.retreive params[:id]
-  @customer.update params.require(:customer).permit(:email)
-end
-```
-
+Coming Soon.
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/console` for an interactive prompt that will allow you to experiment.
+After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
-
-## Testing
-
-```
-$ bundle exec rspec
-```
-
+To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
 ## Contributing
 
-1. Fork it ( https://github.com/moltin/ruby-sdk/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/moltin. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+
+
+## License
+
+The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
