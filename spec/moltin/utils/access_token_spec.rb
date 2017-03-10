@@ -47,15 +47,17 @@ module Moltin
           end
 
           context 'with expired token' do
+            let(:storage) do
+              {
+                'authentication' => {
+                  'access_token' => '123',
+                  'expires' => (Time.now - 24 * 60 * 60).to_i
+                }
+              }
+            end
+
             it 'returns the token' do
               VCR.use_cassette('utils/access_tokens/expired') do
-                storage = {
-                  'authentication' => {
-                    'access_token' => '123',
-                    'expires' => (Time.now - 24 * 60 * 60).to_i
-                  }
-                }
-
                 expect(access_token.get).not_to be_nil
                 expect(access_token.get).not_to eq('123')
               end
