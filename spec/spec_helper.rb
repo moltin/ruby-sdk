@@ -1,6 +1,10 @@
 require 'bundler/setup'
+require 'webmock/rspec'
 require 'vcr'
 require 'moltin'
+
+ENV['FAKE_CLIENT_ID'] = 'FTtrUHsKHstAOtAhN2VjKbpvK08ZXOKZ0GAQaiIAcc'
+ENV['FAKE_CLIENT_SECRET'] = 'iFUwmVrwIOWwJrSR70gUtNQ5vIKRwc2RJVyXdid4tc'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

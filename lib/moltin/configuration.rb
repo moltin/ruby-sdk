@@ -40,9 +40,8 @@ module Moltin
     # Public
     # Returns a hash of all configurable options
     def to_hash
-      OPTIONS.keys.inject({}) do |hash, option|
+      OPTIONS.keys.each_with_object({}) do |option, hash|
         hash[option.to_sym] = send(option)
-        hash
       end
     end
 

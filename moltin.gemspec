@@ -33,7 +33,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.rdoc_options = ['--charset=UTF-8']
-  spec.extra_rdoc_files = %w[README.md]
+  spec.extra_rdoc_files = %w(README.md)
 
   spec.add_dependency 'faraday', '~> 0.11'
 

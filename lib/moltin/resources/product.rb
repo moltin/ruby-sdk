@@ -1,6 +1,11 @@
 module Moltin
   module Resources
-    class Product < Resource
+    class Product < Resources::Base
+      private
+
+      def uri
+        "#{@config.version}/products"
+      end
     end
   end
 end
