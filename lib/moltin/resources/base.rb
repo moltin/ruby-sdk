@@ -39,7 +39,7 @@ module Moltin
         options[:token] = access_token.get if authentication_required?
         options[:data] = data if data
 
-        @request.call(method, options)
+        Moltin::Utils::Response.new(@request.call(method, options))
       end
 
       def request

@@ -1,6 +1,7 @@
 require 'simplecov'
 SimpleCov.start
 
+require 'pry-byebug'
 require 'bundler/setup'
 require 'webmock/rspec'
 require 'vcr'

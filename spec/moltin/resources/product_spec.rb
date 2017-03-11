@@ -2,7 +2,7 @@ require 'spec_helper'
 
 module Moltin
   module Resources
-    describe Product do
+    describe Products do
       let(:config) { Configuration.new }
 
       before do
@@ -17,7 +17,7 @@ module Moltin
 
       describe '#uri' do
         it 'returns the expected uri' do
-          product = Moltin::Resources::Product.new(config, {})
+          product = Moltin::Resources::Products.new(config, {})
           expect(product.send(:uri)).to eq 'v2/products'
         end
       end
@@ -25,16 +25,15 @@ module Moltin
       describe '#all' do
         it 'receives the list of products' do
           VCR.use_cassette('resources/products/all') do
-            resource = Moltin::Resources::Product.new(config, {})
+            resource = Moltin::Resources::Products.new(config, {})
+            response = resource.all
 
-            expect(resource.all).to eq(
-              'data' => [],
-              'meta' => {
-                'counts' => {
-                  'matching_resource_count' => 0
-                }
-              }
-            )
+            expect(response.data).not_to be_nil
+            expect(response.links).not_to be_nil
+            expect(response.included).to be_nil
+            expect(response.meta).not_to be_nil
+
+            expect(response.data.length).to eq 68
           end
         end
       end

@@ -6,10 +6,11 @@ require 'moltin/configuration'
 require 'moltin/errors/authentication_error'
 
 require 'moltin/utils/request'
+require 'moltin/utils/response'
 require 'moltin/utils/access_token'
 
 require 'moltin/resources/base'
-require 'moltin/resources/product'
+require 'moltin/resources/products'
 
 require 'moltin/client'
 

@@ -27,8 +27,8 @@ module Moltin
     end
 
     describe '#products' do
-      it 'returns an instance of Moltin::Resources::Product' do
-        expect(Moltin::Client.new.products).to be_kind_of(Moltin::Resources::Product)
+      it 'returns an instance of Moltin::Resources::Products' do
+        expect(Moltin::Client.new.products).to be_kind_of(Moltin::Resources::Products)
       end
     end
   end

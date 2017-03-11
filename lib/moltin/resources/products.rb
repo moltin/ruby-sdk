@@ -1,6 +1,6 @@
 module Moltin
   module Resources
-    class Product < Resources::Base
+    class Products < Resources::Base
       private
 
       def uri
