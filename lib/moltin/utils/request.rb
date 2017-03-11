@@ -15,7 +15,7 @@ module Moltin
                       grant_type: 'client_credentials',
                       client_id: id,
                       client_secret: secret
-                    })
+                    }, json: false)
         raise Errors::AuthenticationError unless body['access_token']
 
         body
@@ -33,12 +33,22 @@ module Moltin
         JSON.parse(conn.get(uri).body)
       end
 
-      def post(uri:, body:, conn: new_conn)
-        JSON.parse(conn.post(uri, body).body)
+      def post(uri:, body:, conn: new_conn, json: true)
+        response = conn.post do |req|
+          req.url uri
+          req.headers['Content-Type'] = 'application/json' if json
+          req.body = json ? body.to_json : body
+        end
+        JSON.parse(response.body)
       end
 
-      def patch(uri:, body:, conn: new_conn)
-        JSON.parse(conn.patch(uri, body).body)
+      def put(uri:, body:, conn: new_conn, json: true)
+        response = conn.put do |req|
+          req.url uri
+          req.headers['Content-Type'] = 'application/json' if json
+          req.body = json ? body.to_json : body
+        end
+        JSON.parse(response.body)
       end
 
       def delete(uri:, conn: new_conn)

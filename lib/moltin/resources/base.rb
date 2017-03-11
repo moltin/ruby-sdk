@@ -9,23 +9,30 @@ module Moltin
       end
 
       def all
-        call(:get, uri)
+        response(call(:get, uri))
+      end
+
+      def attributes
+        response(call(:get, "#{uri}/attributes"), model: Moltin::Models::Attribute)
       end
 
       def find(id)
-        call(:get, "#{uri}/#{id}")
+        response(call(:get, "#{uri}/#{id}"))
       end
 
       def create(data)
-        call(:post, uri, data)
+        data[:type] = type
+        response(call(:post, uri, { data: data }))
       end
 
       def update(id, data)
-        call(:patch, "#{uri}/#{id}", data)
+        data[:type] = type
+        data[:id] = id
+        response(call(:put, "#{uri}/#{id}", { data: data }))
       end
 
       def delete(id)
-        call(:delete, "#{uri}/#{id}")
+        response(call(:delete, "#{uri}/#{id}"))
       end
 
       private
@@ -34,12 +41,16 @@ module Moltin
         raise 'Abstract Method.'
       end
 
+      def response(resp, model: model_name)
+        Moltin::Utils::Response.new(model, resp)
+      end
+
       def call(method, uri, data = nil)
         options = { uri: uri, auth: authentication_required? }
         options[:token] = access_token.get if authentication_required?
         options[:data] = data if data
 
-        Moltin::Utils::Response.new(@request.call(method, options))
+        @request.call(method, options)
       end
 
       def request
