@@ -24,7 +24,7 @@ module Moltin
       end
 
       def bill_to
-        Moltin::Resource::Address.new @data['ship_to']['data']
+        Moltin::Resource::Address.new @data['bill_to']['data']
       end
 
       def shipping
