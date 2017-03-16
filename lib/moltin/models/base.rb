@@ -13,7 +13,8 @@ module Moltin
 
       def initialize(attributes = {})
         self.class._attributes.each do |name|
-          instance_variable_set("@#{name}", attributes[name.to_s])
+          instance_variable_set("@#{name}", attributes[name.to_sym] ||
+                                            attributes[name.to_s])
         end
         self.original_payload = attributes
       end
