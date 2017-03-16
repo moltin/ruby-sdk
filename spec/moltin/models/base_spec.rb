@@ -16,19 +16,19 @@ module Moltin
       describe '#initialize' do
         context 'when symbols' do
           it 'sets the attributes' do
-            model = MyTestModel.new({ id: '1', name: 'Something' })
+            model = MyTestModel.new(id: '1', name: 'Something')
             expect(model.id).to eq '1'
             expect(model.name).to eq 'Something'
-            expect(model.original_payload).to eq({ id: '1', name: 'Something' })
+            expect(model.original_payload).to eq(id: '1', name: 'Something')
           end
         end
 
         context 'when strings' do
           it 'sets the attributes' do
-            model = MyTestModel.new({ 'id' => '1', 'name' => 'Something' })
+            model = MyTestModel.new('id' => '1', 'name' => 'Something')
             expect(model.id).to eq '1'
             expect(model.name).to eq 'Something'
-            expect(model.original_payload).to eq({ 'id' => '1', 'name' => 'Something' })
+            expect(model.original_payload).to eq('id' => '1', 'name' => 'Something')
           end
         end
       end

@@ -58,9 +58,14 @@ module Moltin
 
             it 'returns a new token' do
               stub_request(:post, 'https://api.moltin.com/oauth/access_token').
-                with(body: 'client_id=FTtrUHsKHstAOtAhN2VjKbpvK08ZXOKZ0GAQaiIAcc&client_secret=iFUwmVrwIOWwJrSR70gUtNQ5vIKRwc2RJVyXdid4tc&grant_type=client_credentials',
+                with(body: 'client_id=FTtrUHsKHstAOtAhN2VjKbpvK08ZXOKZ0GAQaiIAcc' \
+                           '&client_secret=iFUwmVrwIOWwJrSR70gUtNQ5vIKRwc2RJVyXdid4tc' \
+                           '&grant_type=client_credentials',
                      headers: { 'Content-Type' => 'application/x-www-form-urlencoded' }).
-                to_return(body: '{"expires":1489137539,"identifier":"client_credentials","expires_in":3600,"access_token":"99c3bf207a7d090e01c4809626b3fa7d737f51fc","token_type":"Bearer"}')
+                to_return(body: '{"expires":1489137539,"identifier":' \
+                                '"client_credentials","expires_in":3600,' \
+                                '"access_token":"99c3bf207a7d090e01c4809626b3fa7d737f51fc",' \
+                                '"token_type":"Bearer"}')
 
               expect(access_token.get).not_to eq('123')
               expect(access_token.get).to eq('99c3bf207a7d090e01c4809626b3fa7d737f51fc')

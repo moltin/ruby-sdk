@@ -10,9 +10,14 @@ module Moltin
         @body['errors']
       end
 
+      # Public: Extract the data part of the response body
+      # and instantiate each resource with the given model class
+      #
+      # Returns an array of Models object or one Model object
+      # Returns nil if the body contains errors
       def data
         return nil if errors
-        
+
         if @body['data'].is_a?(Array)
           @body['data'].map do |attributes|
             @model.new(attributes)

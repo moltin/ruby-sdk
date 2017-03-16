@@ -21,6 +21,16 @@ module Moltin
         body
       end
 
+      # Public: Call the Moltin API with the given parameters.
+      #
+      # method - the HTTP method (:get, :post, :put, :delete)
+      # uri: - the URI to call
+      # data: - data to send to the server
+      # token: - the Bearer token
+      # auth: - Boolean defining if auth is needed or not
+      # conn: - a Faraday connection
+      #
+      # Returns the HTTP response from the API
       def call(method, uri:, data: nil, token: nil, auth: true, conn: new_conn)
         conn.authorization :Bearer, token if auth && token
 
@@ -29,10 +39,24 @@ module Moltin
         send method, options
       end
 
+      # Public: Makes a GET request to the Moltin API
+      #
+      # uri: - the URI to call
+      # conn: - a Faraday connection
+      #
+      # Returns the body of the response as JSON
       def get(uri:, conn: new_conn)
         JSON.parse(conn.get(uri).body)
       end
 
+      # Public: Makes a POST request to the Moltin API
+      #
+      # uri: - the URI to call
+      # body: - The data to send
+      # conn: - a Faraday connection
+      # json: - If the request should be sent as application/json
+      #
+      # Returns the body of the response as JSON
       def post(uri:, body:, conn: new_conn, json: true)
         response = conn.post do |req|
           req.url uri
@@ -42,6 +66,14 @@ module Moltin
         JSON.parse(response.body)
       end
 
+      # Public: Makes a PUT request to the Moltin API
+      #
+      # uri: - the URI to call
+      # body: - The data to send
+      # conn: - a Faraday connection
+      # json: - If the request should be sent as application/json
+      #
+      # Returns the body of the response as JSON
       def put(uri:, body:, conn: new_conn, json: true)
         response = conn.put do |req|
           req.url uri
@@ -51,12 +83,21 @@ module Moltin
         JSON.parse(response.body)
       end
 
+      # Public: Makes a DELETE request to the Moltin API
+      #
+      # uri: - the URI to call
+      # conn: - a Faraday connection
+      #
+      # Returns the body of the response as JSON
       def delete(uri:, conn: new_conn)
         JSON.parse(conn.delete(uri).body)
       end
 
       private
 
+      # Private: Instantiate a new Faraday connection
+      #
+      # Returns a Faraday conn object
       def new_conn
         @conn = Faraday.new(url: @base_url)
       end

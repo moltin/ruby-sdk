@@ -10,7 +10,7 @@ module Moltin
         let(:params) { { 'errors' => { 'message' => 'Bad Request' } } }
 
         it 'returns the errors hash' do
-          expect(response.errors).to eq({ 'message' => 'Bad Request' })
+          expect(response.errors).to eq('message' => 'Bad Request')
         end
       end
 
@@ -40,7 +40,7 @@ module Moltin
         let(:params) { { 'links' => { 'some' => 'link' } } }
 
         it 'returns the link hash' do
-          expect(response.links).to eq({ 'some' => 'link' })
+          expect(response.links).to eq('some' => 'link')
         end
       end
 
@@ -48,7 +48,7 @@ module Moltin
         let(:params) { { 'included' => { 'some' => 'included' } } }
 
         it 'returns the included hash' do
-          expect(response.included).to eq({ 'some' => 'included' })
+          expect(response.included).to eq('some' => 'included')
         end
       end
 
@@ -56,7 +56,7 @@ module Moltin
         let(:params) { { 'meta' => { 'some' => 'meta' } } }
 
         it 'returns the meta hash' do
-          expect(response.meta).to eq({ 'some' => 'meta' })
+          expect(response.meta).to eq('some' => 'meta')
         end
       end
     end
