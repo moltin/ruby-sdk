@@ -54,7 +54,7 @@ module Moltin
       end
 
       describe '#find' do
-        it 'receives the list of products' do
+        it 'receives the given product', freeze_time: true do
           VCR.use_cassette('resources/products/find') do
             resource = Moltin::Resources::Products.new(config, {})
             product = resource.all.data.first
@@ -68,7 +68,7 @@ module Moltin
 
       describe '#create' do
         context 'valid product' do
-          it 'creates a new product' do
+          it 'creates a new product', freeze_time: true do
             VCR.use_cassette('resources/products/create/valid') do
               resource = Moltin::Resources::Products.new(config, {})
               response = resource.create({
@@ -114,7 +114,7 @@ module Moltin
 
       describe '#update' do
         context 'valid product' do
-          it 'updates a new product' do
+          it 'updates a new product', freeze_time: true do
             VCR.use_cassette('resources/products/update/valid') do
               resource = Moltin::Resources::Products.new(config, {})
               response = resource.create({
@@ -142,7 +142,7 @@ module Moltin
         end
 
         context 'invalid product' do
-          it 'receives the list of errors' do
+          it 'receives the list of errors', freeze_time: true do
             VCR.use_cassette('resources/products/update/invalid') do
               resource = Moltin::Resources::Products.new(config, {})
               response = resource.create({
@@ -172,7 +172,7 @@ module Moltin
       end
 
       describe '#delete' do
-        it 'deletes the product' do
+        it 'deletes the product', freeze_time: true do
           VCR.use_cassette('resources/products/delete') do
             resource = Moltin::Resources::Products.new(config, {})
             response = resource.create({
