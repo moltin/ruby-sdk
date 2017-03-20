@@ -13,7 +13,27 @@ module Moltin
       #
       # Returns a Moltin::Utils::Response
       def all
-        response(call(:get, uri))
+        criteria.all
+      end
+
+      def limit(args)
+        criteria.limit(args)
+      end
+
+      def offset(args)
+        criteria.offset(args)
+      end
+
+      def order(args)
+        criteria.order(args)
+      end
+
+      def where(args)
+        criteria.where(args)
+      end
+
+      def includes(args)
+        criteria.includes(args)
       end
 
       # Public: Load all the attributes for the given type
@@ -66,10 +86,18 @@ module Moltin
         response(call(:delete, "#{uri}/#{id}"))
       end
 
+      def load_collection(formatted_uri, query_params)
+        response(call(:get, formatted_uri, query_params: query_params))
+      end
+
       private
 
       def uri
         raise 'Abstract Method.'
+      end
+
+      def criteria
+        @critera ||= Moltin::Utils::Criteria.new(self, uri)
       end
 
       # Private: Instantiate a Moltin::Utils::Response based on the response
@@ -91,10 +119,11 @@ module Moltin
       # data: (optional) - data to send
       #
       # Returns the body of the response as JSON
-      def call(method, uri, data = nil)
+      def call(method, uri, data: nil, query_params: nil)
         options = { uri: uri, auth: authentication_required? }
         options[:token] = access_token.get if authentication_required?
-        options[:data] = data if data
+        options[:data] = { data: data } if data
+        options[:query_params] = query_params if query_params
 
         @request.call(method, options)
       end

@@ -37,6 +37,72 @@ module Moltin
             expect(response.data.length).to eq 68
           end
         end
+
+        context 'pagination' do
+          context 'limit & offset' do
+            it 'limits the number of results and set the offset' do
+              VCR.use_cassette('resources/products/all/limit-offset') do
+                resource = Moltin::Resources::Products.new(config, {})
+                response = resource.limit(10).offset(10)
+                expect(response.links['current']).to eq(
+                  'https://api.moltin.com/v2/products?page[limit]=10&page[offset]=10'
+                )
+                expect(response.data.length).to eq 10
+              end
+            end
+          end
+
+          context 'limit' do
+            it 'limits the number of results returned by the API' do
+              VCR.use_cassette('resources/products/all/limit') do
+                resource = Moltin::Resources::Products.new(config, {})
+                response = resource.limit(10)
+                expect(response.links['current']).to eq(
+                  'https://api.moltin.com/v2/products?page[limit]=10&page[offset]=0'
+                )
+                expect(response.data.length).to eq 10
+              end
+            end
+          end
+
+          context 'offset' do
+            it 'offsets the returned results' do
+              VCR.use_cassette('resources/products/all/offset') do
+                resource = Moltin::Resources::Products.new(config, {})
+                response = resource.offset(60)
+                expect(response.links['current']).to eq(
+                  'https://api.moltin.com/v2/products?page[limit]=100&page[offset]=60'
+                )
+                expect(response.data.length).to eq 17
+              end
+            end
+          end
+        end
+
+        context 'sorting' do
+          context 'ASC' do
+            it 'sorts the results based on the passed attribute in ascending order' do
+              VCR.use_cassette('resources/products/all/sort/asc') do
+                resource = Moltin::Resources::Products.new(config, {})
+                response = resource.order('name')
+                expect(response.links['current']).to eq(
+                  'https://api.moltin.com/v2/products?page[limit]=10&page[offset]=10&sort=name'
+                )
+              end
+            end
+          end
+
+          context 'DESC' do
+          end
+        end
+
+        context 'filter' do
+
+        end
+
+        context 'includes' do
+
+        end
       end
 
       describe '#attributes' do

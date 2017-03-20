@@ -75,6 +75,8 @@ Moltin::Client.new({
 })
 ```
 
+### Language
+
 ### Currency
 
 Coming Soon.

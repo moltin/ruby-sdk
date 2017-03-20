@@ -31,11 +31,12 @@ module Moltin
       # conn: - a Faraday connection
       #
       # Returns the HTTP response from the API
-      def call(method, uri:, data: nil, token: nil, auth: true, conn: new_conn)
+      def call(method, uri:, data: nil, query_params: nil, token: nil, auth: true, conn: new_conn)
         conn.authorization :Bearer, token if auth && token
 
         options = { uri: uri, conn: conn }
         options[:body] = data if data
+        options[:query_params] = query_params if query_params
         send method, options
       end
 
@@ -45,8 +46,13 @@ module Moltin
       # conn: - a Faraday connection
       #
       # Returns the body of the response as JSON
-      def get(uri:, conn: new_conn)
-        JSON.parse(conn.get(uri).body)
+      def get(uri:, query_params: nil, conn: new_conn)
+        p query_params
+        response = conn.get do |req|
+          req.url uri
+          req.params = query_params if query_params
+        end
+        JSON.parse(response.body)
       end
 
       # Public: Makes a POST request to the Moltin API
