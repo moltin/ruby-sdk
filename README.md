@@ -84,7 +84,7 @@ Coming Soon.
 The client used in the following code examples has been created like this:
 
 ```
-client = Moltin::Client.new({
+moltin = Moltin::Client.new({
   client_id: 'YOUR_CLIENT_ID',
   client_secret: 'YOUR_CLIENT_SECRET'
 })
@@ -97,7 +97,7 @@ client = Moltin::Client.new({
 ##### Products
 
 ```
-client.products.all
+moltin.products.all
 # => [Moltin::Models::Product, Moltin::Models::Product]
 ```
 
@@ -132,7 +132,7 @@ Coming Soon.
 ##### Products
 
 ```
-client.products.find(product_id)
+moltin.products.get(product_id)
 ```
 
 #### Create a resource (POST)
@@ -140,7 +140,7 @@ client.products.find(product_id)
 ##### Products
 
 ```
-client.products.create({
+moltin.products.create({
   name: 'My Product',
   slug: 'my-product',
   sku: '123',
@@ -156,7 +156,7 @@ client.products.create({
 ##### Products
 
 ```
-client.products.update(product_id, {
+moltin.products.update(product_id, {
   name: 'My Product',
   slug: 'my-product',
   sku: '123',
@@ -172,7 +172,7 @@ client.products.update(product_id, {
 ##### Products
 
 ```
-client.products.delete(product_id)
+moltin.products.delete(product_id)
 ```
 
 #### Create a relationship (POST)

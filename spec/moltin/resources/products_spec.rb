@@ -55,12 +55,12 @@ module Moltin
         end
       end
 
-      describe '#find' do
+      describe '#get' do
         it 'receives the given product', freeze_time: true do
-          VCR.use_cassette('resources/products/find') do
+          VCR.use_cassette('resources/products/get') do
             resource = Moltin::Resources::Products.new(config, {})
             product = resource.all.data.first
-            response = resource.find(product.id)
+            response = resource.get(product.id)
 
             expect(response.data.id).to eq product.id
             expect(response.data).to be_kind_of(Moltin::Models::Product)
@@ -177,7 +177,7 @@ module Moltin
             response = resource.delete(id)
             expect(response.data.id).to eq id
 
-            response = resource.find(id)
+            response = resource.get(id)
             expect(response.errors).to eq([{
                                             'status' => 404,
                                             'detail' => 'The requested product could not be found',

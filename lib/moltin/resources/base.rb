@@ -29,7 +29,7 @@ module Moltin
       # id - the id of the resource to retrieve
       #
       # Returns a Moltin::Utils::Response
-      def find(id)
+      def get(id)
         response(call(:get, "#{uri}/#{id}"))
       end
 
