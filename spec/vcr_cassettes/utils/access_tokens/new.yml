@@ -23,7 +23,7 @@ http_interactions:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Wed, 08 Mar 2017 07:24:37 GMT
+      - Fri, 10 Mar 2017 08:19:01 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -31,13 +31,13 @@ http_interactions:
       X-Auth-Served-By:
       - Moltin-Auth
       X-Moltin-Request-Id:
-      - 36afcf0fe26e152b9265022e48e9f3c4d0daec35
+      - cd224470bb08894ceeb6bdcdd0fc44a6015a995f
       Access-Control-Allow-Origin:
       - "*"
     body:
       encoding: ASCII-8BIT
       string: |
-        {"expires":1488961477,"identifier":"client_credentials","expires_in":3600,"access_token":"c91a308d6ca0104c1799aedba06411c721025a2b","token_type":"Bearer"}
+        {"expires":1489137541,"identifier":"client_credentials","expires_in":3600,"access_token":"ac1fb323f1d377a30ccbb89bb78ef528dfbeda3e","token_type":"Bearer"}
     http_version: 
-  recorded_at: Wed, 08 Mar 2017 07:24:37 GMT
+  recorded_at: Fri, 10 Mar 2017 08:19:01 GMT
 recorded_with: VCR 3.0.3

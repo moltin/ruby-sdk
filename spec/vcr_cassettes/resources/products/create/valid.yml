@@ -1,0 +1,126 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.moltin.com/oauth/access_token
+    body:
+      encoding: UTF-8
+      string: client_id=FTtrUHsKHstAOtAhN2VjKbpvK08ZXOKZ0GAQaiIAcc&client_secret=iFUwmVrwIOWwJrSR70gUtNQ5vIKRwc2RJVyXdid4tc&grant_type=client_credentials
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Sat, 11 Mar 2017 09:39:08 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Auth-Served-By:
+      - Moltin-Auth
+      X-Moltin-Request-Id:
+      - 07932c4782068760072650e37d5ae6ca8355eb21
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {"expires":1489228748,"identifier":"client_credentials","expires_in":3600,"access_token":"9d731af5904a0285d83b3553eb3201e408ca2a00","token_type":"Bearer"}
+    http_version: 
+  recorded_at: Sat, 11 Mar 2017 09:39:08 GMT
+- request:
+    method: post
+    uri: https://api.moltin.com/v2/products
+    body:
+      encoding: UTF-8
+      string: '{"data":{"name":"My Product","slug":"my-product1","sku":"123","manage_stock":false,"description":"Super
+        Product","status":"live","commodity_type":"digital","type":"product"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer 9d731af5904a0285d83b3553eb3201e408ca2a00
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Sat, 11 Mar 2017 09:39:09 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - 43e151cbf515b0bf9bc82253b4f6e7f475ac72df
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"type":"product","id":"00bfed72-3b84-42a2-b8d8-7ddb9bdb2fa6","name":"My
+        Product","slug":"my-product1","sku":"123","manage_stock":false,"description":"Super
+        Product","price":[],"status":"live","commodity_type":"digital","relationships":{},"meta":{"stock":{"level":0,"availability":"out-stock"}}}}'
+    http_version: 
+  recorded_at: Sat, 11 Mar 2017 09:39:09 GMT
+- request:
+    method: delete
+    uri: https://api.moltin.com/v2/products/00bfed72-3b84-42a2-b8d8-7ddb9bdb2fa6
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer 9d731af5904a0285d83b3553eb3201e408ca2a00
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Sat, 11 Mar 2017 09:39:11 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - 2dbcf08b02206ce433847c174a50e3ef47a14eb5
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"type":"product","id":"00bfed72-3b84-42a2-b8d8-7ddb9bdb2fa6"}}'
+    http_version: 
+  recorded_at: Sat, 11 Mar 2017 09:39:11 GMT
+recorded_with: VCR 3.0.3

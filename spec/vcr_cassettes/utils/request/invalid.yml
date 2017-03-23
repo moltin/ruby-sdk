@@ -1,0 +1,39 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.moltin.com/oauth/access_token
+    body:
+      encoding: UTF-8
+      string: client_id=123&client_secret=abc&grant_type=client_credentials
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 403
+      message: Forbidden
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Fri, 10 Mar 2017 08:19:03 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Moltin-Request-Id:
+      - c88873f1152dcd7c4729d826129998cd07f8ef24
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {"status":false,"errors":"Forbidden"}
+    http_version: 
+  recorded_at: Fri, 10 Mar 2017 08:19:03 GMT
+recorded_with: VCR 3.0.3

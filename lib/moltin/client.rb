@@ -1,7 +1,7 @@
 module Moltin
   class Client
     RESOURCES = {
-      products: Moltin::Resources::Product
+      products: Moltin::Resources::Products
     }.freeze
 
     # The Moltin configuration.

@@ -1,6 +1,15 @@
+require 'simplecov'
+SimpleCov.start
+
+require 'pry-byebug'
 require 'bundler/setup'
+require 'webmock/rspec'
 require 'vcr'
+require 'timecop'
 require 'moltin'
+
+ENV['FAKE_CLIENT_ID'] = 'FTtrUHsKHstAOtAhN2VjKbpvK08ZXOKZ0GAQaiIAcc'
+ENV['FAKE_CLIENT_SECRET'] = 'iFUwmVrwIOWwJrSR70gUtNQ5vIKRwc2RJVyXdid4tc'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
@@ -8,6 +17,12 @@ RSpec.configure do |config|
 
   config.expect_with :rspec do |c|
     c.syntax = :expect
+  end
+
+  config.around(:each, freeze_time: true) do |example|
+    Timecop.freeze(Date.today - 30 * 12 * 3 * 10) do
+      example.run
+    end
   end
 end
 

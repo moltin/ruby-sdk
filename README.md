@@ -75,7 +75,127 @@ Moltin::Client.new({
 })
 ```
 
+### Currency
+
+Coming Soon.
+
 ## Usage
+
+The client used in the following code examples has been created like this:
+
+```
+moltin = Moltin::Client.new({
+  client_id: 'YOUR_CLIENT_ID',
+  client_secret: 'YOUR_CLIENT_SECRET'
+})
+```
+
+### Resources (Products, more coming soon)
+
+#### Retrieve a list of resources (GET)
+
+##### Products
+
+```
+moltin.products.all
+# => [Moltin::Models::Product, Moltin::Models::Product]
+```
+
+##### Customizing the requests
+
+Coming Soon.
+
+###### Pagination
+
+Coming Soon.
+
+###### Sorting
+
+Coming Soon.
+
+###### Filtering
+
+Coming Soon.
+
+###### Including data
+
+Coming Soon.
+
+##### Specific cases
+
+###### Fetching the category/brand/collection tree
+
+Coming Soon.
+
+#### Retrieve a single resource (GET)
+
+##### Products
+
+```
+moltin.products.get(product_id)
+```
+
+#### Create a resource (POST)
+
+##### Products
+
+```
+moltin.products.create({
+  name: 'My Product',
+  slug: 'my-product',
+  sku: '123',
+  manage_stock: false,
+  description: 'Super Product',
+  status: 'live',
+  commodity_type: 'digital'
+})
+```
+
+#### Update a resource (POST)
+
+##### Products
+
+```
+moltin.products.update(product_id, {
+  name: 'My Product',
+  slug: 'my-product',
+  sku: '123',
+  manage_stock: false,
+  description: 'Super Product',
+  status: 'live',
+  commodity_type: 'digital'
+})
+```
+
+#### delete a resource (POST)
+
+##### Products
+
+```
+moltin.products.delete(product_id)
+```
+
+#### Create a relationship (POST)
+
+Coming Soon.
+
+### Files
+
+Coming Soon.
+
+### Carts, Orders and Payments
+
+Coming Soon.
+
+### Handling Exceptions
+
+Coming Soon.
+
+### Examples
+
+Coming Soon.
+
+### Example Application
 
 Coming Soon.
 

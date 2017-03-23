@@ -1,0 +1,49 @@
+inherit_from: .hound_defaults.yml
+require: rubocop-rspec
+
+# Ruby Style
+Metrics/LineLength:
+  Max: 100
+  Enabled: true
+Metrics/BlockLength:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
+  EnforcedStyle: when_needed
+  SupportedStyles:
+    - when_needed
+    - always
+Style/MultilineOperationIndentation:
+  Enabled: false
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+  SupportedStyles:
+    - single_quotes
+    - double_quotes
+
+RSpec/AnyInstance:
+  Enabled: false
+RSpec/DescribeClass:
+  Enabled: false
+RSpec/DescribedClass:
+  Enabled: false
+RSpec/FilePath:
+  Enabled: false
+RSpec/ExampleLength:
+  Description: Checks for long examples.
+  Enabled: true
+  Max: 30
+RSpec/MultipleExpectations:
+  Description: Checks if examples contain too many `expect` calls.
+  Enabled: true
+  Max: 8
+RSpec/NestedGroups:
+  Description: Checks for nested example groups.
+  Enabled: true
+  Max: 3
+RSpec/VerifiedDoubles:
+  Description: Prefer using verifying doubles over normal doubles.
+  Enabled: false
+  IgnoreSymbolicNames: false
+RSpec/MessageSpies:
+  Enabled: false
