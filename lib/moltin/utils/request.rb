@@ -47,7 +47,6 @@ module Moltin
       #
       # Returns the body of the response as JSON
       def get(uri:, query_params: nil, conn: new_conn)
-        p query_params
         response = conn.get do |req|
           req.url uri
           req.params = query_params if query_params

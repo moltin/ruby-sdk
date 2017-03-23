@@ -23,20 +23,20 @@ module Moltin
         self
       end
 
-      def order(order)
+      def sort(order)
         criteria['sort'] = order
         self
       end
 
-      def where(where)
+      def filter(filters)
         criteria['filter'] ||= {}
-        criteria['filter'].merge(where)
+        criteria['filter'].merge!(filters)
         self
       end
 
-      def includes(includes)
+      def with(includes)
         criteria['include'] ||= []
-        criteria['include'] = includes
+        includes.each { |i| criteria['include'] << i }
         self
       end
 
@@ -48,13 +48,6 @@ module Moltin
         collection[value]
       end
 
-      private
-
-      def collection
-        p criteria
-        @collection ||= @klass.load_collection(@uri, criteria.reject { |k, v| v.nil? })
-      end
-
       def criteria
         @criteria ||= {
           'sort' => nil,
@@ -63,6 +56,34 @@ module Moltin
           'page[offset]' => nil,
           'include' => nil
         }
+      end
+
+      private
+
+      def collection
+        @collection ||= @klass.load_collection(@uri, formatted_criteria)
+      end
+
+      def formatted_criteria
+        @formatted_criteria ||= -> do
+          criteria['filter'] = stringify_filter
+          criteria.reject { |k, v| v.nil? }
+        end.call
+      end
+
+      def stringify_filter
+        return nil unless criteria['filter']
+
+        str = ''
+        criteria['filter'].each_with_index do |(type, values), i1|
+          values.each_with_index do |(field, value), i2|
+            str << ':' if i1 > 0 || i2 > 0
+            value = "(#{value.join(',')})" if value.respond_to?(:each)
+            str += "#{type}(#{field},#{value})"
+          end
+        end
+
+        str
       end
     end
   end

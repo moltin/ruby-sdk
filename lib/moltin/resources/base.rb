@@ -24,16 +24,16 @@ module Moltin
         criteria.offset(args)
       end
 
-      def order(args)
-        criteria.order(args)
+      def sort(args)
+        criteria.sort(args)
       end
 
-      def where(args)
-        criteria.where(args)
+      def filter(args)
+        criteria.filter(args)
       end
 
-      def includes(args)
-        criteria.includes(args)
+      def with(args)
+        criteria.with(args)
       end
 
       # Public: Load all the attributes for the given type
