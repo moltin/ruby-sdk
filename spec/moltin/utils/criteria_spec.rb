@@ -53,6 +53,13 @@ module Moltin
         it 'sets the "filter" value' do
           expect(filter.criteria['filter']).to eq(eq: { name: 'something' })
         end
+
+        context 'when calling filter multiple times' do
+          it 'updates the "filter" value' do
+            expect(filter.filter(gt: { stock: 0 }).criteria['filter']).to eq(eq: { name: 'something' },
+                                                                             gt: { stock: 0 })
+          end
+        end
       end
 
       describe '#with' do

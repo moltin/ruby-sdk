@@ -166,9 +166,11 @@ moltin.products.sort('-name')
 
 ###### Filtering
 
-To [filter your results](https://moltin.api-docs.io/v2/using-the-api/filtering) when calling resources which support it (e.g. /v2/products).
+Results can be filtered according to the [specifications from the docs](https://moltin.api-docs.io/v2/using-the-api/filtering).
 
-A simple filter to get all products which are in stock may look like this:
+__Note that not all resources can be filtered. Refer to the docs for the up-to-date list of supported resources (e.g. `/v2/products`).__
+
+A simple filter to get all products currently in stock will look like this:
 
 ```
 moltin.products.filter({
@@ -176,7 +178,7 @@ moltin.products.filter({
 })
 ```
 
-A more advanced filter to find products which are digital, drafted and have a stock greater than 20 would look like this:
+A more advanced filter to find products which are `digital`, `drafted` and have a `stock` greater than `20` will look like this:
 
 ```
 moltin.products.filter({
@@ -186,9 +188,17 @@ moltin.products.filter({
 })
 ```
 
-The array passed to the filter method should contain all of the conditions required to be met by the filter on the API and allow you to use several filters of the same type (as demonstrated above).
+or
 
-For more information on the filter operations please read the [API reference](https://moltin.api-docs.io/v2/using-the-api/filtering).
+```
+moltin.products.filter(eq: { status: 'draft' }).
+                filter(eq: { commodity_type: 'digital' }).
+                filter(gt: { stock: 20 })
+```
+
+The hash passed to the `#filter` method should contain all of the conditions required to be met by the API. Multiple filters of the same type can be used (as demonstrated above with `eq`).
+
+[The complete list of predicates is available in the API documentation](https://moltin.api-docs.io/v2/using-the-api/filtering).
 
 ###### Including data
 
