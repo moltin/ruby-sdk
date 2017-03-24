@@ -51,18 +51,18 @@ module Moltin
         end
 
         it 'sets the "filter" value' do
-          expect(filter.criteria['filter']).to eq({eq: { name: 'something' }})
+          expect(filter.criteria['filter']).to eq(eq: { name: 'something' })
         end
       end
 
       describe '#with' do
-        let(:with) { criteria.with(['brands']) }
+        let(:with) { criteria.with(:brands, :categories) }
         it 'returns self' do
           expect(with).to eq(criteria)
         end
 
-        it 'sets the "with" value' do
-          expect(with.criteria['include']).to eq(['brands'])
+        it 'sets the "include" value' do
+          expect(with.criteria['include']).to eq([:brands, :categories])
         end
       end
 
@@ -70,25 +70,30 @@ module Moltin
         let(:with) { criteria.with(['brands']) }
 
         it 'returns the expected values' do
-          criteria.limit(50).offset(10).sort('name').with(['brands']).filter({
-            eq: { name: 'something', sku: '123' },
-            has: { description: ['succulent', 'houseplant'] }
-          })
+          criteria.
+            limit(50).
+            offset(10).
+            sort('name').
+            with(:brands, :categories).
+            filter(eq: { name: 'something', sku: '123' },
+                   has: { description: %w(succulent houseplant) })
+
           formatted = criteria.send(:formatted_criteria)
-          expect(formatted).to eq({
-            'page[limit]' => 50,
-            'page[offset]' => 10,
-            'sort' => 'name',
-            'filter' => 'eq(name,something):eq(sku,123):has(description,(succulent,houseplant))',
-            'include' => ['brands']
-          })
+          expect(formatted).to eq('page[limit]' => 50,
+                                  'page[offset]' => 10,
+                                  'sort' => 'name',
+                                  'filter' => 'eq(name,something):eq(sku,123):has(description,(succulent,houseplant))',
+                                  'include' => 'brands,categories')
         end
       end
 
       describe '#[]' do
-
+        it 'calls collection' do
+          allow(criteria).to receive(:collection).and_return('test' => 0)
+          criteria['test']
+          expect(criteria).to have_received(:collection)
+        end
       end
-
     end
   end
 end

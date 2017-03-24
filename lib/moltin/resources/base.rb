@@ -32,7 +32,7 @@ module Moltin
         criteria.filter(args)
       end
 
-      def with(args)
+      def with(*args)
         criteria.with(args)
       end
 

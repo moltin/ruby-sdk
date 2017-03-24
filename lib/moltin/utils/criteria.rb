@@ -34,7 +34,7 @@ module Moltin
         self
       end
 
-      def with(includes)
+      def with(*includes)
         criteria['include'] ||= []
         includes.each { |i| criteria['include'] << i }
         self
@@ -65,9 +65,10 @@ module Moltin
       end
 
       def formatted_criteria
-        @formatted_criteria ||= -> do
+        @formatted_criteria ||= lambda do
           criteria['filter'] = stringify_filter
-          criteria.reject { |k, v| v.nil? }
+          criteria['include'] = stringify_includes
+          criteria.reject { |_k, v| v.nil? }
         end.call
       end
 
@@ -84,6 +85,12 @@ module Moltin
         end
 
         str
+      end
+
+      def stringify_includes
+        return nil unless criteria['include']
+
+        criteria['include'].join(',')
       end
     end
   end
