@@ -8,30 +8,56 @@ module Moltin
         @storage = storage
       end
 
-      # Public: Load all the entities of the given type (specified in child class)
-      # and instantiate the appropriate model for each one of them.
+      # Public: Get a criteria and call the #all method on it
       #
-      # Returns a Moltin::Utils::Response
+      # Returns a Moltin::Utils::Criteria
       def all
         criteria.all
       end
 
+      # Public: Get a criteria and call the #limit method on it
+      #
+      # args - the number of records wanted (Example: 10)
+      #
+      # Returns a Moltin::Utils::Criteria
       def limit(args)
         criteria.limit(args)
       end
 
+      # Public: Get a criteria and call the #offset method on it
+      #
+      # args - the offset of records wanted (Example: 10)
+      #
+      # Returns a Moltin::Utils::Criteria
       def offset(args)
         criteria.offset(args)
       end
 
+      # Public: Get a criteria and call the #sort method on it
+      #
+      # args - the sort parameter (Example: 'name' or '-name')
+      #
+      # Returns a Moltin::Utils::Criteria
       def sort(args)
         criteria.sort(args)
       end
 
+      # Public: Get a criteria and call the #filter method on it
+      #
+      # args - a hash of filter options as specified in the API docs
+      # Example: { has: { name: 'value' } }
+      #
+      # Returns a Moltin::Utils::Criteria
       def filter(args)
         criteria.filter(args)
       end
 
+      # Public: Get a criteria and call the #with method on it
+      #
+      # args - A list of resource types to include
+      # Example: with(:brands, :categories)
+      #
+      # Returns a Moltin::Utils::Criteria
       def with(*args)
         criteria.with(args)
       end
@@ -86,6 +112,10 @@ module Moltin
         response(call(:delete, "#{uri}/#{id}"))
       end
 
+      # Public: Load all the entities of the given type (specified in child class)
+      # and instantiate the appropriate model for each one of them.
+      #
+      # Returns a Moltin::Utils::Response
       def load_collection(formatted_uri, query_params)
         response(call(:get, formatted_uri, query_params: query_params))
       end
@@ -96,6 +126,7 @@ module Moltin
         raise 'Abstract Method.'
       end
 
+      # Private: Instantiate and memoize a criteria
       def criteria
         @critera ||= Moltin::Utils::Criteria.new(self, uri)
       end
@@ -117,6 +148,7 @@ module Moltin
       # method - HTTP method (:get, :post, :put, :delete)
       # uri - the URI to call
       # data: (optional) - data to send
+      # query_params: (optional) - a hash of query params
       #
       # Returns the body of the response as JSON
       def call(method, uri, data: nil, query_params: nil)

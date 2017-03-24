@@ -26,6 +26,7 @@ module Moltin
       # method - the HTTP method (:get, :post, :put, :delete)
       # uri: - the URI to call
       # data: - data to send to the server
+      # query_params: - query params to send to the server
       # token: - the Bearer token
       # auth: - Boolean defining if auth is needed or not
       # conn: - a Faraday connection
@@ -43,6 +44,7 @@ module Moltin
       # Public: Makes a GET request to the Moltin API
       #
       # uri: - the URI to call
+      # query_params: - query params to send to the server
       # conn: - a Faraday connection
       #
       # Returns the body of the response as JSON

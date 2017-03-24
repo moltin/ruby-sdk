@@ -9,45 +9,88 @@ module Moltin
         @uri = uri
       end
 
+      # Public: Give an idiomatic way to load the records
+      #
+      # Returns the current instance of Criteria
       def all
         self
       end
 
-      def limit(limit)
-        criteria['page[limit]'] = limit
+      # Public: Set the limit parameter
+      #
+      # args - the number of records wanted (Example: 10)
+      #
+      # Returns the current instance of Criteria
+      def limit(args)
+        criteria['page[limit]'] = args
         self
       end
 
-      def offset(offset)
-        criteria['page[offset]'] = offset
+      # Public: Set the page[offset] parameter
+      #
+      # args - the offset of records wanted (Example: 10)
+      #
+      # Returns the current instance of Criteria
+      def offset(args)
+        criteria['page[offset]'] = args
         self
       end
 
-      def sort(order)
-        criteria['sort'] = order
+      # Public: Set the sort parameter
+      #
+      # args - the sort parameter (Example: 'name' or '-name')
+      #
+      # Returns the current instance of Criteria
+      def sort(args)
+        criteria['sort'] = args
         self
       end
 
-      def filter(filters)
+      # Public: Merge the given hash with the filter hash
+      #
+      # args - a hash of filtering options
+      #
+      # Returns the current instance of Criteria
+      def filter(args)
         criteria['filter'] ||= {}
-        criteria['filter'].merge!(filters)
+        criteria['filter'].merge!(args)
         self
       end
 
+      # Public: Add a list of included resources to the criteria hash
+      #
+      # includes - a list of resources (Example: with(:categories, :brands))
+      #
+      # Returns the current instance of Criteria
       def with(*includes)
         criteria['include'] ||= []
         includes.each { |i| criteria['include'] << i }
         self
       end
 
+      # Public: Lazy load the collection of record and loop
+      # through it
+      #
+      # block - the block to apply to each member of the collection
+      #
+      # Returns the current instance of Criteria
       def each(&block)
         collection.each(&block)
       end
 
-      def [](value)
-        collection[value]
+      # Public: Lazy load the collection of record and retrieve
+      # the specified key from it
+      #
+      # key - the key to load from the collection
+      #
+      # Returns the value of the key associated with the passed argument
+      def [](key)
+        collection[key]
       end
 
+      # Public: Create the basic set of query parameters
+      #
+      # Returns a hash of parameters
       def criteria
         @criteria ||= {
           'sort' => nil,
@@ -60,10 +103,16 @@ module Moltin
 
       private
 
+      # Private: Load the results from the server
+      #
+      # Returns a Moltin::Utils::Response instance
       def collection
         @collection ||= @klass.load_collection(@uri, formatted_criteria)
       end
 
+      # Private: Turn the criteria into query parameters
+      #
+      # Returns a formatted hash of query parameters
       def formatted_criteria
         @formatted_criteria ||= lambda do
           criteria['filter'] = stringify_filter
@@ -72,6 +121,9 @@ module Moltin
         end.call
       end
 
+      # Private: Convert the filter hash to a string
+      #
+      # Returns a string of filters
       def stringify_filter
         return nil unless criteria['filter']
 
@@ -87,6 +139,9 @@ module Moltin
         str
       end
 
+      # Private: Convert the include array to a string
+      #
+      # Returns a string of included resources
       def stringify_includes
         return nil unless criteria['include']
 
