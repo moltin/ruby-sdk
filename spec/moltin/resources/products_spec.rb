@@ -129,6 +129,7 @@ module Moltin
                 expect(response.links['current']).to eq(
                   'https://api.moltin.com/v2/products?page[limit]=100&page[offset]=0&filter=has(name,2017):out(slug,(abc,def))'
                 )
+                expect(response.included.keys).not_to eq(%w(brands categories))
               end
             end
           end

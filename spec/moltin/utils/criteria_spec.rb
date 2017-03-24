@@ -86,14 +86,6 @@ module Moltin
                                   'include' => 'brands,categories')
         end
       end
-
-      describe '#[]' do
-        it 'calls collection' do
-          allow(criteria).to receive(:collection).and_return('test' => 0)
-          criteria['test']
-          expect(criteria).to have_received(:collection)
-        end
-      end
     end
   end
 end

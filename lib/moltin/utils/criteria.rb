@@ -2,7 +2,7 @@ module Moltin
   module Utils
     class Criteria
       extend Forwardable
-      def_delegators :collection, :errors, :data, :links, :included, :meta
+      def_delegators :response, :errors, :data, :links, :included, :meta
 
       def initialize(klass, uri)
         @klass = klass
@@ -68,26 +68,6 @@ module Moltin
         self
       end
 
-      # Public: Lazy load the collection of record and loop
-      # through it
-      #
-      # block - the block to apply to each member of the collection
-      #
-      # Returns the current instance of Criteria
-      def each(&block)
-        collection.each(&block)
-      end
-
-      # Public: Lazy load the collection of record and retrieve
-      # the specified key from it
-      #
-      # key - the key to load from the collection
-      #
-      # Returns the value of the key associated with the passed argument
-      def [](key)
-        collection[key]
-      end
-
       # Public: Create the basic set of query parameters
       #
       # Returns a hash of parameters
@@ -101,14 +81,14 @@ module Moltin
         }
       end
 
-      private
-
-      # Private: Load the results from the server
+      # Public: Load the results from the server
       #
       # Returns a Moltin::Utils::Response instance
-      def collection
-        @collection ||= @klass.load_collection(@uri, formatted_criteria)
+      def response
+        @response ||= @klass.load_collection(@uri, formatted_criteria)
       end
+
+      private
 
       # Private: Turn the criteria into query parameters
       #

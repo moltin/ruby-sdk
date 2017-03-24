@@ -77,6 +77,8 @@ Moltin::Client.new({
 
 ### Language
 
+Coming Soon.
+
 ### Currency
 
 Coming Soon.
@@ -105,23 +107,104 @@ moltin.products.all
 
 ##### Customizing the requests
 
-Coming Soon.
+The requests to retrieve data from the API can be configured for pagination, sorting, filtering and including related resources.
 
-###### Pagination
+Check the [API docs](https://moltin.api-docs.io/v2/using-the-api) for the up-to-date options available for each type of resource.
 
-Coming Soon.
+###### Lazy Loading
+
+To allow method chaining, the results are lazy-loaded. Therefore, the request won't happen until you call one of the method triggering the execution like:
+
+ - `errors`
+ - `data`
+ - `links`
+ - `included`
+ - `meta`
+
+As in:
+
+```
+response = moltin.products.limit(10).offset(10) # or simply moltin.products.all
+
+response.links
+response.data
+```
+
+If you wish to force the retrieval of resources without using these methods and access the `Moltin::Utils::Response` instance, call `.response`.
+
+```
+moltin.products.all.response
+```
+
+###### Pagination (Limiting and Offsetting Results)
+
+Limit the number of resources returned:
+
+```
+moltin.products.limit(10)
+```
+
+Offset the results (page 2):
+
+```
+moltin.products.offset(10)
+```
 
 ###### Sorting
 
-Coming Soon.
+Order by `name`:
+
+```
+moltin.products.sort('name')
+```
+
+Reversed:
+
+```
+moltin.products.sort('-name')
+```
 
 ###### Filtering
 
-Coming Soon.
+To [filter your results](https://moltin.api-docs.io/v2/using-the-api/filtering) when calling resources which support it (e.g. /v2/products).
+
+A simple filter to get all products which are in stock may look like this:
+
+```
+moltin.products.filter({
+  gt: { stock: 0 }
+})
+```
+
+A more advanced filter to find products which are digital, drafted and have a stock greater than 20 would look like this:
+
+```
+moltin.products.filter({
+  eq: { status: 'draft' },
+  eq: { commodity_type: 'digital' },
+  gt: { stock: 20 }
+})
+```
+
+The array passed to the filter method should contain all of the conditions required to be met by the filter on the API and allow you to use several filters of the same type (as demonstrated above).
+
+For more information on the filter operations please read the [API reference](https://moltin.api-docs.io/v2/using-the-api/filtering).
 
 ###### Including data
 
-Coming Soon.
+To include other data in your request (such as `brands` when getting `products`) call the `with` method on the resource:
+
+```
+moltin.products.with(:brands)
+```
+
+###### Chaining Methods
+
+All the methods presented above can be chained:
+
+```
+moltin.limit(10).offset(10).sort('name').with(:brands).filter(eq: { status: 'draft' })
+```
 
 ##### Specific cases
 
