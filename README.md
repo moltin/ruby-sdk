@@ -98,20 +98,18 @@ moltin = Moltin::Client.new({
 
 #### Retrieve a list of resources (GET)
 
-##### Products
-
 ```
 moltin.products.all
 # => [Moltin::Models::Product, Moltin::Models::Product]
 ```
 
-##### Customizing the requests
+#### Customizing the requests
 
 The requests to retrieve data from the API can be configured for pagination, sorting, filtering and including related resources.
 
 Check the [API docs](https://moltin.api-docs.io/v2/using-the-api) for the up-to-date options available for each type of resource.
 
-###### Lazy Loading
+##### Lazy Loading
 
 To allow method chaining, the results are lazy-loaded. Therefore, the request won't happen until you call one of the method triggering the execution like:
 
@@ -136,7 +134,7 @@ If you wish to force the retrieval of resources without using these methods and 
 moltin.products.all.response
 ```
 
-###### Pagination (Limiting and Offsetting Results)
+##### Pagination (Limiting and Offsetting Results)
 
 Limit the number of resources returned:
 
@@ -150,7 +148,7 @@ Offset the results (page 2):
 moltin.products.offset(10)
 ```
 
-###### Sorting
+##### Sorting
 
 Order by `name`:
 
@@ -164,7 +162,7 @@ Reversed:
 moltin.products.sort('-name')
 ```
 
-###### Filtering
+##### Filtering
 
 Results can be filtered according to the [specifications from the docs](https://moltin.api-docs.io/v2/using-the-api/filtering).
 
@@ -200,7 +198,7 @@ The hash passed to the `#filter` method should contain all of the conditions req
 
 [The complete list of predicates is available in the API documentation](https://moltin.api-docs.io/v2/using-the-api/filtering).
 
-###### Including data
+##### Including data
 
 To include other data in your request (such as `brands` when getting `products`) call the `with` method on the resource:
 
@@ -208,7 +206,7 @@ To include other data in your request (such as `brands` when getting `products`)
 moltin.products.with(:brands)
 ```
 
-###### Chaining Methods
+##### Chaining Methods
 
 All the methods presented above can be chained:
 
@@ -216,9 +214,9 @@ All the methods presented above can be chained:
 moltin.limit(10).offset(10).sort('name').with(:brands).filter(eq: { status: 'draft' })
 ```
 
-##### Specific cases
+#### Specific cases
 
-###### Fetching the category/brand/collection tree
+##### Fetching the category/brand/collection tree
 
 Coming Soon.
 
