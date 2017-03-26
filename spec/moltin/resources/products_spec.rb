@@ -296,6 +296,35 @@ module Moltin
           end
         end
       end
+
+      describe '#create_relationships' do
+        context 'relationship not found' do
+          it 'raises an error' do
+
+          end
+        end
+
+        context 'relationship found' do
+          context 'with one id' do
+            it 'creates the relationship' do
+              VCR.use_cassette('resources/products/relationships/id_string') do
+                storage = {}
+                products = Moltin::Resources::Products.new(config, storage)
+                brands = Moltin::Resources::Brands.new(config, storage)
+
+                product = products.all.data.first
+                brand = brands.all.data.first
+
+                response = products.create_relationships(product.id, :brands, brand.id)
+              end
+            end
+          end
+
+          context 'with an array of ids' do
+
+          end
+        end
+      end
     end
   end
 end

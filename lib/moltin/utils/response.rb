@@ -1,6 +1,8 @@
 module Moltin
   module Utils
     class Response
+      attr_accessor :body
+      
       def initialize(model, body)
         @model = model
         @body = body

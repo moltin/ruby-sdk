@@ -12,9 +12,11 @@ require 'moltin/utils/criteria'
 
 require 'moltin/models/base'
 require 'moltin/models/attribute'
+require 'moltin/models/brand'
 require 'moltin/models/product'
 
 require 'moltin/resources/base'
+require 'moltin/resources/brands'
 require 'moltin/resources/products'
 
 require 'moltin/client'
