@@ -8,6 +8,7 @@ require 'moltin/errors/authentication_error'
 require 'moltin/utils/request'
 require 'moltin/utils/response'
 require 'moltin/utils/access_token'
+require 'moltin/utils/criteria'
 
 require 'moltin/models/base'
 require 'moltin/models/attribute'

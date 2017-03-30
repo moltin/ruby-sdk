@@ -28,15 +28,15 @@ module Moltin
       end
 
       def links
-        @body['links']
+        @body['links'] || {}
       end
 
       def included
-        @body['included']
+        @body['included'] || {}
       end
 
       def meta
-        @body['meta']
+        @body['meta'] || {}
       end
     end
   end

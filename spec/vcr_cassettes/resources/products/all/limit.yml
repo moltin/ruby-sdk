@@ -1,0 +1,104 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.moltin.com/oauth/access_token
+    body:
+      encoding: UTF-8
+      string: client_id=FTtrUHsKHstAOtAhN2VjKbpvK08ZXOKZ0GAQaiIAcc&client_secret=iFUwmVrwIOWwJrSR70gUtNQ5vIKRwc2RJVyXdid4tc&grant_type=client_credentials
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Thu, 16 Mar 2017 12:12:23 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Auth-Served-By:
+      - Moltin-Auth
+      X-Moltin-Request-Id:
+      - f2d732f7fe43837ccc2c443a67e351e07729435d
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {"expires":1489669943,"identifier":"client_credentials","expires_in":3600,"access_token":"6b4d25a089800446e1890f61d524e733a108e4e4","token_type":"Bearer"}
+    http_version: 
+  recorded_at: Thu, 16 Mar 2017 12:12:23 GMT
+- request:
+    method: get
+    uri: https://api.moltin.com/v2/products?page%5Blimit%5D=10
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer 6b4d25a089800446e1890f61d524e733a108e4e4
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Thu, 16 Mar 2017 12:12:24 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - ddbb7202139b361b6ccd5c0b2bf43400d0c71ba6
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"type":"product","id":"4d28b1fd-23d7-48a7-ae12-8b66ee27efd9","name":"My
+        Product","slug":"my-product-update-invalid","sku":"123","manage_stock":false,"description":"Super
+        Product","price":[],"status":"live","commodity_type":"digital","relationships":{},"meta":{"stock":{"level":0,"availability":"out-stock"}}},{"type":"product","id":"885b8844-e74e-4ed7-9901-f34b0033e00d","name":"My
+        Product","slug":"my-product-update-6","sku":"123","manage_stock":false,"description":"Super
+        Product","price":[],"status":"live","commodity_type":"digital","relationships":{},"meta":{"stock":{"level":0,"availability":"out-stock"}}},{"type":"product","id":"c5486cf1-b0e9-4ee7-af2e-dac9f0859952","name":"My
+        Product","slug":"my-product-update-5","sku":"123","manage_stock":false,"description":"Super
+        Product","price":[],"status":"live","commodity_type":"digital","relationships":{},"meta":{"stock":{"level":0,"availability":"out-stock"}}},{"type":"product","id":"43581948-0c71-4033-881a-1126d36d13c4","name":"My
+        Product","slug":"my-product-update-4","sku":"123","manage_stock":false,"description":"Super
+        Product","price":[],"status":"live","commodity_type":"digital","relationships":{},"meta":{"stock":{"level":0,"availability":"out-stock"}}},{"type":"product","id":"21e22388-1850-4481-981b-5d6f26a10904","name":"My
+        Product","slug":"my-product-update-3","sku":"123","manage_stock":false,"description":"Super
+        Product","price":[],"status":"live","commodity_type":"digital","relationships":{},"meta":{"stock":{"level":0,"availability":"out-stock"}}},{"type":"product","id":"6a23e682-24e9-4307-b733-16d8ca4adcf6","name":"My
+        Product","slug":"my-product-update-1","sku":"123","manage_stock":false,"description":"Super
+        Product","price":[],"status":"live","commodity_type":"digital","relationships":{},"meta":{"stock":{"level":0,"availability":"out-stock"}}},{"type":"product","id":"e6c5fe98-1653-4c2c-bef0-c6c02ba6144e","name":"My
+        Product","slug":"my-product-update","sku":"123","manage_stock":false,"description":"Super
+        Product","price":[],"status":"live","commodity_type":"digital","relationships":{},"meta":{"stock":{"level":0,"availability":"out-stock"}}},{"type":"product","id":"5c161b3a-7e4d-407f-99f4-6561f3b55218","name":"My
+        Product","slug":"my-product1","sku":"123","manage_stock":false,"description":"Super
+        Product","price":[],"status":"live","commodity_type":"digital","relationships":{},"meta":{"stock":{"level":0,"availability":"out-stock"}}},{"type":"product","id":"e0391845-01c0-487f-853c-83b9ee58204c","name":"My
+        Product","slug":"my-product","sku":"123","manage_stock":false,"description":"Super
+        Product","price":[],"status":"live","commodity_type":"digital","relationships":{},"meta":{"stock":{"level":0,"availability":"out-stock"}}},{"type":"product","id":"9279935a-ed2c-4a22-87d5-5f738c6ccc88","name":"Acer
+        R240HY bidx 23.8-Inch IPS HDMI DVI VGA (1920 x 1080) Widescreen Monitor","slug":"acer-r240hy-bidx-23-8-inch-widescreen","sku":"B0148NNKTC","manage_stock":true,"description":"<ul><li>23.8\"
+        IPS Widescreen with 1920 x 1080 resolution</li><li>Response Time: 4ms. Signal
+        Inputs: 1 x DVI (w/HDCP), 1 X HDMI & 1 x VGA</li><li>Pixel Pitch: 0.2745mm</li><li>No
+        Built-in Mount.</li></ul>","price":[{"amount":17999,"currency":"USD","includes_tax":true}],"status":"live","commodity_type":"physical","relationships":{"files":{"data":[{"type":"file","id":"3e2b8a7e-c867-4b61-be69-cf02ded06940"},{"type":"file","id":"07e4fe5d-240d-4c8b-9d8f-7c62a566cc76"},{"type":"file","id":"f642fb71-8e16-474b-9122-7d94caa5e157"},{"type":"file","id":"461e4668-3792-4ade-ba3d-971e9181c6a1"},{"type":"file","id":"d090bbb0-94d5-4f61-98da-1a07dbe92ec7"},{"type":"file","id":"1ebc92c8-3e46-4256-8b7f-623a3f3018cc"},{"type":"file","id":"2823c3c5-d3af-4cdb-a393-683147caaf4e"},{"type":"file","id":"980e27a1-6a36-4c84-b71a-e62e070d0561"},{"type":"file","id":"6fcbfc51-3930-4686-9822-8ce662a66c45"}]},"categories":{"data":[{"type":"category","id":"e3176e0b-8807-4423-9ca4-b73785f99e9e"}]},"brands":{"data":[{"type":"brand","id":"b4a9cd3f-818b-4055-aaf5-c4c7bb64f748"}]}},"meta":{"display_price":{"with_tax":{"amount":17999,"currency":"USD","formatted":"$179.99"},"without_tax":{"amount":17999,"currency":"USD","formatted":"$179.99"}},"stock":{"level":0,"availability":"out-stock"}}}],"links":{"current":"https://api.moltin.com/v2/products?page[limit]=10&page[offset]=0","first":"https://api.moltin.com/v2/products?page[limit]=10&page[offset]=0","last":"https://api.moltin.com/v2/products?page[limit]=10&page[offset]=70","previous":null,"next":"https://api.moltin.com/v2/products?page[limit]=10&page[offset]=10"},"meta":{"counts":{"matching_resource_count":77}}}'
+    http_version: 
+  recorded_at: Thu, 16 Mar 2017 12:12:24 GMT
+recorded_with: VCR 3.0.3

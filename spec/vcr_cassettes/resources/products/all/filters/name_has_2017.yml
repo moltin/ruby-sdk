@@ -1,0 +1,130 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.moltin.com/oauth/access_token
+    body:
+      encoding: UTF-8
+      string: client_id=FTtrUHsKHstAOtAhN2VjKbpvK08ZXOKZ0GAQaiIAcc&client_secret=iFUwmVrwIOWwJrSR70gUtNQ5vIKRwc2RJVyXdid4tc&grant_type=client_credentials
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Thu, 23 Mar 2017 17:31:35 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Auth-Served-By:
+      - Moltin-Auth
+      X-Moltin-Request-Id:
+      - c8de86876c979bcd4366451e8e09556722066436
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {"expires":1490293895,"identifier":"client_credentials","expires_in":3600,"access_token":"952766d511d2c96536b6e0817c338c6a49254831","token_type":"Bearer"}
+    http_version: 
+  recorded_at: Thu, 23 Mar 2017 17:31:35 GMT
+- request:
+    method: get
+    uri: https://api.moltin.com/v2/products?filter=has(name,2017)
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer 952766d511d2c96536b6e0817c338c6a49254831
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Thu, 23 Mar 2017 17:31:38 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - 200d490813fe873397ac0fd0808d0f4915d90b71
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJkYXRhIjpbeyJ0eXBlIjoicHJvZHVjdCIsImlkIjoiNTk5ZDgyMDktYzRh
+        Yi00ZDdlLTgwZjYtNjNkZDE1NjZhYTYzIiwibmFtZSI6IjIwMTcgTmV3ZXN0
+        IERlbGwgSW5zcGlyb24gMTUuNiZxdW90OyBGSEQgVG91Y2hzY3JlZW4gU2ln
+        bmF0dXJlIExhcHRvcCwgSW50ZWwgQ29yZSBpNS02MjAwVSwgOCBHQiBSQU0s
+        IDEgVEIgSERELCBEVkQsIEJhY2tsaXQga2V5Ym9hcmQsIEhETUksIEJsdWV0
+        b290aCwgODAyLjExYWMsIFJlYWxTZW5zZSAzRCBXZWJjYW0sIFdpbjEwLU1h
+        eHhBdWRpbyBQcm8iLCJzbHVnIjoiZGVsbC1pbnNwaXJvbi10b3VjaHNjcmVl
+        bi1zaWduYXR1cmUtd2luMTAtbWF4eGF1ZGlvIiwic2t1IjoiQjAxTjBLMzI0
+        NiIsIm1hbmFnZV9zdG9jayI6dHJ1ZSwiZGVzY3JpcHRpb24iOiI8dWw+PGxp
+        PjE1LjYgaW4gRnVsbCBIRCBMRUQtYmFja2xpdCB0b3VjaHNjcmVlbiB3aXRo
+        IFRydWVsaWZlICgxOTIwIHggMTA4MCksIDEwLWZpbmdlciBtdWx0aS10b3Vj
+        aCBzdXBwb3J0LCBJbnRlbCBIRCBHcmFwaGljcyA1MjAgd2l0aCBzaGFyZWQg
+        Z3JhcGhpY3MgbWVtb3J5PC9saT48bGk+NnRoIEdlbmVyYXRpb24gSW50ZWwg
+        Q29yZSBpNS02MjAwVSBEdWFsLUNvcmUgUHJvY2Vzc29yIDIuMyBHSHogKG1h
+        eCBib29zdCBzcGVlZCB1cCB0byAyLjhHSHopIDRNQiBMMyBDYWNoZSwgOEdC
+        IEREUjNMIDE2MDAgTUh6LCAxVEIgNTQwMCBSUE0gSEREPC9saT48bGk+RFZE
+        ICsvLSBSVywgU0QgY2FyZCByZWFkZXIsIFdhdmVzIE1heHhBdWRpbyBQcm8s
+        IEludGVsIFJlYWxTZW5zZSAzRCBjYW1lcmEsIEJhY2tsaXQga2V5Ym9hcmQ7
+        PC9saT48bGk+ODAyLjExYWMvYS9iL2cvbiAoTWlyYWNhc3QgZW5hYmxlZCkg
+        d2lyZWxlc3M7IEJsdWV0b290aCA0LjA7IDFYIFVTQiAzLjAgMlggVVNCIDIu
+        MDsgSERNSSAxLjQ7IEhlYWRwaG9uZSBvdXRwdXQvTWljcm9waG9uZSBpbnB1
+        dCBjb21ibyDDosKAwqIgTEFOICgxMC8xMDApPC9saT48bGk+V2luZG93cyAx
+        MCBIb21lLCA2NC1iaXQsIDQtY2VsbCBsaXRoaXVtLWlvbiBiYXR0ZXJ5LCA1
+        LjM2bGJzLCBTaWx2ZXI8L2xpPjwvdWw+IiwicHJpY2UiOlt7ImFtb3VudCI6
+        NDU4OTksImN1cnJlbmN5IjoiVVNEIiwiaW5jbHVkZXNfdGF4Ijp0cnVlfV0s
+        InN0YXR1cyI6ImxpdmUiLCJjb21tb2RpdHlfdHlwZSI6InBoeXNpY2FsIiwi
+        cmVsYXRpb25zaGlwcyI6eyJmaWxlcyI6eyJkYXRhIjpbeyJ0eXBlIjoiZmls
+        ZSIsImlkIjoiYzAyZjRmNjgtMDE2MS00NDdiLWI4NjctMmY4MzQwOGI0MWU2
+        In0seyJ0eXBlIjoiZmlsZSIsImlkIjoiYTk4YjdhMzktYTk5Zi00NDlmLWI4
+        NjctMjdmMzNjMzQwOGVmIn0seyJ0eXBlIjoiZmlsZSIsImlkIjoiM2NhMWQ0
+        NDEtYTk5Yi00ZGFiLWEzODktZTdhNzE4YTI3MmNjIn0seyJ0eXBlIjoiZmls
+        ZSIsImlkIjoiZjA2NDAwYjgtYmEyNy00OTIwLWFhYTAtYWNhZDI5NjM1MjEw
+        In0seyJ0eXBlIjoiZmlsZSIsImlkIjoiNWVmZmQ2MDctNDY5OC00ZWZkLTkz
+        YWEtMmUwNGRiMzYxNDIyIn0seyJ0eXBlIjoiZmlsZSIsImlkIjoiZWM1OTg3
+        YzItMGNiZC00OGEzLWIwNWQtMzA0ZjliMzIxMGJmIn1dfSwiYnJhbmRzIjp7
+        ImRhdGEiOlt7InR5cGUiOiJicmFuZCIsImlkIjoiMGVlYTI2MzItMTU5ZC00
+        NzJmLWEyMDAtZTViYzQzM2UwYTBlIn1dfX0sIm1ldGEiOnsiZGlzcGxheV9w
+        cmljZSI6eyJ3aXRoX3RheCI6eyJhbW91bnQiOjQ1ODk5LCJjdXJyZW5jeSI6
+        IlVTRCIsImZvcm1hdHRlZCI6IiQ0NTguOTkifSwid2l0aG91dF90YXgiOnsi
+        YW1vdW50Ijo0NTg5OSwiY3VycmVuY3kiOiJVU0QiLCJmb3JtYXR0ZWQiOiIk
+        NDU4Ljk5In19LCJzdG9jayI6eyJsZXZlbCI6MCwiYXZhaWxhYmlsaXR5Ijoi
+        b3V0LXN0b2NrIn19fV0sImxpbmtzIjp7ImN1cnJlbnQiOiJodHRwczovL2Fw
+        aS5tb2x0aW4uY29tL3YyL3Byb2R1Y3RzP3BhZ2VbbGltaXRdPTEwMCZwYWdl
+        W29mZnNldF09MCZmaWx0ZXI9aGFzKG5hbWUsMjAxNykiLCJmaXJzdCI6Imh0
+        dHBzOi8vYXBpLm1vbHRpbi5jb20vdjIvcHJvZHVjdHM/cGFnZVtsaW1pdF09
+        MTAwJnBhZ2Vbb2Zmc2V0XT0wJmZpbHRlcj1oYXMobmFtZSwyMDE3KSIsImxh
+        c3QiOm51bGx9LCJtZXRhIjp7ImNvdW50cyI6eyJtYXRjaGluZ19yZXNvdXJj
+        ZV9jb3VudCI6MX19fQ==
+    http_version: 
+  recorded_at: Thu, 23 Mar 2017 17:31:38 GMT
+recorded_with: VCR 3.0.3

@@ -3,7 +3,7 @@ require: rubocop-rspec
 
 # Ruby Style
 Metrics/LineLength:
-  Max: 100
+  Max: 120
   Enabled: true
 Metrics/BlockLength:
   Enabled: false
