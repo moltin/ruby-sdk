@@ -113,7 +113,7 @@ module Moltin
             response = resource.attributes
 
             expect(response.data.map(&:label)).to eq(
-              ['Type', 'Id', 'Name', 'Slug', 'Status', 'Description']
+              %w(Type Id Name Slug Status Description)
             )
             expect(response.data.first).to be_kind_of(Moltin::Models::Attribute)
           end
