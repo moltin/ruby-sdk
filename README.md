@@ -274,7 +274,7 @@ Relationships can be created between different entities as shown in the examples
 
 See the [docs](https://moltin.api-docs.io/v2) to learn more about which resources have relationships.
 
-##### Create
+##### Create Relationships
 
 ```
 # Create relationships between resources:
@@ -284,16 +284,16 @@ moltin.products.create_relationships(product_id, 'brands', brand_id);
 moltin.products.create_relationships(product_id, 'brands', [brand_id]);
 ```
 
-##### Update
+##### Update Relationships
 
 ```
 # Update the relationships (overrides all the current relationships)
 moltin.products.update_relationships(product_id, 'brands', [brand_1_id, brand_2_id]);
 ```
 
-##### Delete
+##### Delete Relationships
 
-````
+```
 # Delete a relationship between resources:
 moltin.products.delete_relationships(product_id, 'brands', [brand_id]);
 
