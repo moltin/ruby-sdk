@@ -297,31 +297,145 @@ module Moltin
         end
       end
 
-      describe '#create_relationships' do
-        context 'relationship not found' do
-          it 'raises an error' do
+      describe 'relationships' do
+        let(:storage) { {} }
+        let(:products) { Moltin::Resources::Products.new(config, storage) }
+        let(:brands) { Moltin::Resources::Brands.new(config, storage) }
+        let(:product) { products.all.data.first }
+        let(:brand) { brands.all.data.first }
+        let(:brand_2) { brands.all.data.last }
 
+        def clear_relationship(ids)
+          response = products.delete_relationships(product.id, :brands, ids)
+
+          if ids.respond_to?(:each)
+            expect(response.data.map(&:id)).to include(*ids)
+          else
+            expect(response.data.map(&:id)).to include(ids)
           end
         end
 
-        context 'relationship found' do
-          context 'with one id' do
-            it 'creates the relationship' do
-              VCR.use_cassette('resources/products/relationships/id_string') do
-                storage = {}
-                products = Moltin::Resources::Products.new(config, storage)
-                brands = Moltin::Resources::Brands.new(config, storage)
+        def check_relationships(ids)
+          updated_product = products.get(product.id).data
+          expect(updated_product.relationships['brands']['data']).to eq([*ids].map do |id|
+            {
+              'type' => 'brand',
+              'id' => id
+            }
+          end)
+        end
 
-                product = products.all.data.first
-                brand = brands.all.data.first
+        describe '#create_relationships' do
+          context 'relationship found' do
+            context 'with one id' do
+              it 'creates the relationship', freeze_time: true do
+                VCR.use_cassette('resources/products/relationships/create/id_string') do
+                  response = products.create_relationships(product.id, :brands, brand.id)
+                  expect(response.data.first.id).to eq brand.id
+                  check_relationships(brand.id)
+                  clear_relationship(brand.id)
+                end
+              end
+            end
 
-                response = products.create_relationships(product.id, :brands, brand.id)
+            context 'with an array of ids' do
+              it 'creates the relationships', freeze_time: true do
+                VCR.use_cassette('resources/products/relationships/create/id_array') do
+                  response = products.create_relationships(product.id, :brands, [brand.id, brand_2.id])
+                  expect(response.data.map(&:id)).to include(brand.id, brand_2.id)
+                  check_relationships([brand.id, brand_2.id])
+                  clear_relationship([brand.id, brand_2.id])
+                end
               end
             end
           end
 
-          context 'with an array of ids' do
+          context 'with invalid relationship' do
+            it 'raises an error' do
+              VCR.use_cassette('resources/products/relationships/create/invalid') do
+                expect do
+                  products.create_relationships(product.id, :fake, '123')
+                end.to raise_error(Moltin::Errors::InvalidRelationshipError)
+              end
+            end
+          end
+        end
 
+        describe '#update_relationships' do
+          context 'relationship found' do
+            context 'with one id' do
+              it 'updates the relationship', freeze_time: true do
+                VCR.use_cassette('resources/products/relationships/update/id_string') do
+                  response = products.create_relationships(product.id, :brands, brand.id)
+                  expect(response.data.first.id).to eq brand.id
+                  response = products.update_relationships(product.id, :brands, brand_2.id)
+                  expect(response.data.map(&:id)).to include(brand_2.id)
+                  check_relationships(brand_2.id)
+                  clear_relationship(brand_2.id)
+                end
+              end
+            end
+
+            context 'with an array of ids' do
+              it 'updates the relationships', freeze_time: true do
+                VCR.use_cassette('resources/products/relationships/update/id_array') do
+                  response = products.create_relationships(product.id, :brands, brand.id)
+                  expect(response.data.first.id).to eq brand.id
+                  response = products.update_relationships(product.id, :brands, [brand.id, brand_2.id])
+                  expect(response.data.map(&:id)).to eq [brand.id, brand_2.id]
+                  check_relationships([brand.id, brand_2.id])
+                  clear_relationship([brand.id, brand_2.id])
+                end
+              end
+            end
+          end
+
+          context 'with invalid relationship' do
+            it 'raises an error' do
+              VCR.use_cassette('resources/products/relationships/update/invalid') do
+                expect do
+                  products.update_relationships(product.id, :fake, '123')
+                end.to raise_error(Moltin::Errors::InvalidRelationshipError)
+              end
+            end
+          end
+        end
+
+        describe '#delete_relationships' do
+          context 'relationship found' do
+            context 'with one id' do
+              it 'deletes the relationship', freeze_time: true do
+                VCR.use_cassette('resources/products/relationships/delete/id_string') do
+                  response = products.create_relationships(product.id, :brands, brand.id)
+                  expect(response.data.first.id).to eq brand.id
+                  clear_relationship(brand.id)
+                  updated_product = products.get(product.id).data
+                  expect(updated_product.relationships).to eq({})
+                end
+              end
+            end
+
+            context 'with an array of ids' do
+              it 'deletes the relationships', freeze_time: true do
+                VCR.use_cassette('resources/products/relationships/delete/id_array') do
+                  products.create_relationships(product.id, :brands, [brand.id, brand_2.id])
+                  response = products.delete_relationships(product.id, :brands, [brand.id, brand_2.id])
+                  expect(response.data.map(&:id)).to eq [brand.id, brand_2.id]
+                  updated_product = products.get(product.id).data
+                  expect(updated_product.relationships).to eq({})
+                end
+              end
+            end
+          end
+
+          context 'with invalid relationship' do
+            it 'raises an error' do
+              VCR.use_cassette('resources/products/relationships/delete/invalid') do
+                expect do
+                  products.update_relationships(product.id, :fake, '123')
+                end.to raise_error(Moltin::Errors::InvalidRelationshipError)
+              end
+            end
           end
         end
       end

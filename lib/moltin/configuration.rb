@@ -11,7 +11,11 @@ module Moltin
 
     MOLTIN_OPTIONS = {
       version: 'v2',
-      auth_uri: 'oauth/access_token'
+      auth_uri: 'oauth/access_token',
+      resources: {
+        products: { name: 'product', model: Moltin::Models::Brand },
+        brands: { name: 'brand', model: Moltin::Models::Brand }
+      }
     }.freeze
 
     # Setting all the OPTIONS keys as attributes

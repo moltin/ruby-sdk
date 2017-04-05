@@ -2,10 +2,11 @@ module Moltin
   module Utils
     class Response
       attr_accessor :body
-      
-      def initialize(model, body)
+
+      def initialize(model, resp)
         @model = model
-        @body = body
+        @status = resp[:status]
+        @body = resp[:body]
       end
 
       def errors

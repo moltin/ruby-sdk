@@ -1,19 +1,20 @@
 require 'faraday'
 
+require 'moltin/models/base'
+require 'moltin/models/attribute'
+require 'moltin/models/brand'
+require 'moltin/models/product'
+
 require 'moltin/version'
 require 'moltin/configuration'
 
 require 'moltin/errors/authentication_error'
+require 'moltin/errors/invalid_relationship_error'
 
 require 'moltin/utils/request'
 require 'moltin/utils/response'
 require 'moltin/utils/access_token'
 require 'moltin/utils/criteria'
-
-require 'moltin/models/base'
-require 'moltin/models/attribute'
-require 'moltin/models/brand'
-require 'moltin/models/product'
 
 require 'moltin/resources/base'
 require 'moltin/resources/brands'
