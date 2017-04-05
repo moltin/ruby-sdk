@@ -34,7 +34,7 @@ module Moltin
             expect(response.included).to eq({})
             expect(response.meta).not_to be_nil
 
-            expect(response.data.length).to eq 68
+            expect(response.data.length).to eq 76
           end
         end
 

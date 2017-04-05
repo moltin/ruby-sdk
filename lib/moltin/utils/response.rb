@@ -26,7 +26,7 @@ module Moltin
             @model.new(attributes)
           end
         else
-          @model.new(@body['data'])
+          @model.new(@body['data'] || @body)
         end
       end
 
