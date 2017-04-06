@@ -38,7 +38,8 @@ module Moltin
       private
 
       def locale
-        I18n.locale.to_s.upcase
+        local = I18n.locale.to_s.upcase
+        return local if ['NL', 'FR'].include?(local) # TODO redo
       rescue
         nil
       end
