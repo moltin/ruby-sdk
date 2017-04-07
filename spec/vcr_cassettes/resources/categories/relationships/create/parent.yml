@@ -1,0 +1,192 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.moltin.com/oauth/access_token
+    body:
+      encoding: UTF-8
+      string: client_id=FTtrUHsKHstAOtAhN2VjKbpvK08ZXOKZ0GAQaiIAcc&client_secret=iFUwmVrwIOWwJrSR70gUtNQ5vIKRwc2RJVyXdid4tc&grant_type=client_credentials
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Fri, 07 Apr 2017 08:30:10 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Auth-Served-By:
+      - Moltin-Auth
+      X-Moltin-Request-Id:
+      - d3f2d31750987457b2839070422210e2439cd8c3
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {"expires":1491557410,"identifier":"client_credentials","expires_in":3600,"access_token":"e21424ba67052b9b4142029a46995d5a73bacc15","token_type":"Bearer"}
+    http_version: 
+  recorded_at: Fri, 11 Sep 1987 17:00:00 GMT
+- request:
+    method: get
+    uri: https://api.moltin.com/v2/categories
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer e21424ba67052b9b4142029a46995d5a73bacc15
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Fri, 07 Apr 2017 08:30:11 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - 7ed402e39f8dbd4dd2cc568b711717d3d39f90b7
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"id":"26fe6575-c482-41fd-9da0-be9291c54bfd","type":"category","status":"draft","name":"Desk
+        & Shelf Clocks","slug":"desk-shelf-clocks","description":"","relationships":{"parent":{"data":[{"type":"category","id":"c9a94042-2427-4ec7-b009-0730740d5ce6"}]}}},{"id":"c9a94042-2427-4ec7-b009-0730740d5ce6","type":"category","status":"draft","name":"Electrical
+        Cable Ties","slug":"electrical-cable-ties","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]},"children":{"data":[{"type":"category","id":"26fe6575-c482-41fd-9da0-be9291c54bfd"}]}}},{"id":"a2b3d7c3-e037-4a43-82ff-6c900909becf","type":"category","status":"draft","name":"Satellite
+        Television Receivers","slug":"satellite-television-receivers","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}},{"id":"39514ee3-2e03-4844-ac0f-ae649541c31d","type":"category","status":"draft","name":"Mechanical
+        & Wind-Up Alarm Clocks","slug":"mechanical-wind-up-alarm-clocks","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}},{"id":"8707edf0-ef48-408d-becf-3abe4f9bc47c","type":"category","status":"draft","name":"Analog-to-Digital
+        (DTV) Converters","slug":"analog-to-digital-dtv-converters","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}},{"id":"5b9187d6-f2ac-4a62-a68b-0bf6092a037a","type":"category","status":"draft","name":"Portable
+        Photo Printers","slug":"portable-photo-printers","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}},{"id":"00c5c346-feca-40a6-8893-1f8acbd7b4a0","type":"category","status":"draft","name":"Lab
+        Dropping Bottles","slug":"lab-dropping-bottles","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}},{"id":"28f31242-ca74-4d8a-8ebe-eb873b2603c7","type":"category","status":"draft","name":"Laptop
+        Cooling Pads & External Fans","slug":"laptop-cooling-pads-external-fans","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}},{"id":"99480126-6dc3-48f1-981d-8266039ae879","type":"category","status":"draft","name":"Boomboxes","slug":"boomboxes","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}},{"id":"ae900a17-5aaa-4129-a39d-06195e253ba7","type":"category","status":"draft","name":"Cell
+        Phone VR Headsets","slug":"cell-phone-vr-headsets","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}},{"id":"af79fa6e-64ed-4013-b3be-91beaabe7dbb","type":"category","status":"draft","name":"Home
+        Audio Sound Bars","slug":"home-audio-sound-bars","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}},{"id":"9e4b7803-b43c-4e87-9680-0fd2ead45490","type":"category","status":"draft","name":"Dome
+        Surveillance Cameras","slug":"dome-surveillance-cameras","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}},{"id":"e9e9b790-a1e1-4a44-a148-d34d9d8c59ac","type":"category","status":"draft","name":"Surveillance
+        & Security Cameras","slug":"surveillance-security-cameras","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}},{"id":"b4fa72b0-c38d-4a0f-ac63-8a7b01ac8c96","type":"category","status":"draft","name":"Sports
+        & Action Video Cameras","slug":"sports-action-video-cameras","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}},{"id":"22fead17-0993-4ea0-bd95-f2993ea4ae11","type":"category","status":"draft","name":"Underwater
+        Photography Cameras","slug":"underwater-photography-cameras","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}},{"id":"c0e280e8-be35-493e-9f8c-02251bb4763e","type":"category","status":"draft","name":"LED
+        & LCD TVs","slug":"led-lcd-tvs","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}},{"id":"bebd0298-b958-40c7-96d3-a2fb4bb8677d","type":"category","status":"draft","name":"Outdoor
+        Speakers","slug":"outdoor-speakers","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}},{"id":"257103fb-1ef4-47af-99a6-33b661ffb1e0","type":"category","status":"draft","name":"Laptop
+        Chargers & Adapters","slug":"laptop-chargers-adapters","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}},{"id":"f318ae97-5acb-4b07-9ef6-a16a52ff4def","type":"category","status":"draft","name":"Traditional
+        Laptop Computers","slug":"traditional-laptop-computers","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}},{"id":"2b1af908-89f8-4bd9-95f2-84439f70441a","type":"category","status":"draft","name":"Blu-Ray
+        Disc Players","slug":"blu-ray-disc-players","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}},{"id":"46ce5f9f-ab12-467c-b6bb-b276a1f27f1c","type":"category","status":"draft","name":"Computer
+        Routers","slug":"computer-routers","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}},{"id":"fd9e3d73-2139-403d-bb74-c9d1bc7b852a","type":"category","status":"draft","name":"Clock
+        Radios","slug":"clock-radios","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}},{"id":"ec42f511-51d8-46fc-a128-e03758771cb8","type":"category","status":"draft","name":"Computer
+        Monitors","slug":"computer-monitors","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}},{"id":"a23b5c05-a454-4299-8aff-7ecf9c0bf955","type":"category","status":"draft","name":"Computer
+        Networking Hubs","slug":"computer-networking-hubs","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}},{"id":"09c83109-7312-40ca-ab04-42d10f18472b","type":"category","status":"draft","name":"Computers
+        & Accessories","slug":"computers-accessories","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}},{"id":"66f0c57b-0bf7-4a1f-8af4-3870654a9196","type":"category","status":"draft","name":"Camera
+        & Photo","slug":"camera-photo","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}},{"id":"8239117f-e2d3-4093-9954-cba072e7ce39","type":"category","status":"draft","name":"Home
+        Automation Hubs & Controllers","slug":"home-automation-hubs-controllers","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}},{"id":"e3176e0b-8807-4423-9ca4-b73785f99e9e","type":"category","status":"draft","name":"Electronics","slug":"electronics","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]},"products":{"data":[{"type":"product","id":"dc315f80-1782-4cba-baab-25d8f4bf5bfb"},{"type":"product","id":"e8928a43-ba7f-4c18-8ca4-1a53774b0fc8"},{"type":"product","id":"8b1b3b3a-edc6-4755-b511-49520dcfc85b"},{"type":"product","id":"e9e9fce7-e938-40f7-bd82-0d498b6174fe"},{"type":"product","id":"522c32c5-3d91-4a60-b247-fa64a469e9e5"},{"type":"product","id":"87e243e4-9648-4b52-8a97-d37b76b40c98"},{"type":"product","id":"e5c9b318-766a-4c15-a452-d5f541e25a41"},{"type":"product","id":"b33b80cc-746e-4a68-85b5-f415fcc5c71b"},{"type":"product","id":"6e7bea49-708d-4406-96f0-aff291881da9"},{"type":"product","id":"f5e5ef11-a7aa-4066-a3ff-74b75775d0eb"},{"type":"product","id":"68bc501f-17dd-4e61-bd5a-d6f9d26cd087"},{"type":"product","id":"ddf158b1-e312-4eab-9ba9-ac59f3e31b13"},{"type":"product","id":"c7ac7377-3441-443f-97e0-c28e6e69d549"},{"type":"product","id":"68bc6703-23ed-46e0-91ea-06a9cae86afe"},{"type":"product","id":"cdf3d5fb-46cc-4ba3-8805-c27ea0d7226e"},{"type":"product","id":"7fb50572-7b09-46cd-a6db-1a81d436cd13"},{"type":"product","id":"e3657f96-ba96-45b8-8f7d-65e80c1f8aae"},{"type":"product","id":"fdbdac8e-514c-4262-bb6f-33dacf587649"},{"type":"product","id":"80a3267e-a934-42b0-9dc1-e611d8727f42"},{"type":"product","id":"e7056d59-aa54-4a39-9f9a-309d7f853db4"},{"type":"product","id":"b9a75182-fe88-409f-a042-1c938ca2f9bd"},{"type":"product","id":"ab16d884-15cd-48fd-a469-709a0c84465e"},{"type":"product","id":"cca18623-0eca-4303-bf80-e9c483223f21"},{"type":"product","id":"fdf635a4-a74b-44ef-8f12-665bb498731f"},{"type":"product","id":"c381f06a-ccb4-4d1d-842e-597feef0c8ef"},{"type":"product","id":"a2edd1d0-a89f-41bf-b608-c762a55dda62"},{"type":"product","id":"9d086e25-8b28-4d4d-b017-44153a468d74"},{"type":"product","id":"771b7fe2-5fa9-442e-81e6-9e1fab9d435e"},{"type":"product","id":"c61455c9-f25c-4ef8-a183-8ca009591c71"},{"type":"product","id":"0643481e-7570-463b-8d33-561cde1d37cd"},{"type":"product","id":"232bcced-061c-4a80-9bf4-c4a95ef456a7"},{"type":"product","id":"5bf039f5-ab13-461d-b02e-8047a73e8428"},{"type":"product","id":"d62cddd2-8dca-4bf0-8cf7-766ddcf78bb9"},{"type":"product","id":"3d274532-0612-403e-88f8-9565ec4c955a"},{"type":"product","id":"615f623a-26ba-44d2-af40-ba19a43f301b"},{"type":"product","id":"ed488184-b9a0-44e1-b13d-1faec2d3ad62"},{"type":"product","id":"55eb5d9c-8c50-4b49-a656-aa3d9cf7afb6"},{"type":"product","id":"e56eb569-604a-4538-b972-bae0cd8f35e8"},{"type":"product","id":"58043cd1-eb1b-4dc7-a6b4-863991f27d15"},{"type":"product","id":"52972867-ad1e-45f5-a563-efdc5c5364b2"},{"type":"product","id":"fcabf4fd-2bba-4db1-8591-45d7b58b86c6"},{"type":"product","id":"5baf983b-2a10-48f5-a9b3-e35271d384b9"},{"type":"product","id":"337d6a56-c057-403a-8f1b-37ac5cfc76f5"},{"type":"product","id":"ccb55acf-b039-4e55-954a-aa6555b1a340"},{"type":"product","id":"df30f3d4-5468-4035-b178-d692b23814f7"},{"type":"product","id":"9279935a-ed2c-4a22-87d5-5f738c6ccc88"}]}}}],"links":{"current":"https://api.moltin.com/v2/categories?page[limit]=100&page[offset]=0","first":"https://api.moltin.com/v2/categories?page[limit]=100&page[offset]=0","last":null},"meta":{"results":{"total":28,"all":28},"page":{"limit":100,"offset":0,"current":1,"total":1}}}'
+    http_version: 
+  recorded_at: Fri, 11 Sep 1987 17:00:00 GMT
+- request:
+    method: delete
+    uri: https://api.moltin.com/v2/categories/26fe6575-c482-41fd-9da0-be9291c54bfd/relationships/parent
+    body:
+      encoding: UTF-8
+      string: '{"data":{"type":"category","id":"c9a94042-2427-4ec7-b009-0730740d5ce6"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer e21424ba67052b9b4142029a46995d5a73bacc15
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Fri, 07 Apr 2017 08:30:12 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - 1215499f87bdb11626a466b4f4bc4aa07a608883
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"c9a94042-2427-4ec7-b009-0730740d5ce6","type":"category","status":"draft","name":"Electrical
+        Cable Ties","slug":"electrical-cable-ties","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]},"children":{"data":[{"type":"category","id":"26fe6575-c482-41fd-9da0-be9291c54bfd"}]}}}'
+    http_version: 
+  recorded_at: Fri, 11 Sep 1987 17:00:00 GMT
+- request:
+    method: post
+    uri: https://api.moltin.com/v2/categories/26fe6575-c482-41fd-9da0-be9291c54bfd/relationships/parent
+    body:
+      encoding: UTF-8
+      string: '{"data":{"type":"category","id":"c9a94042-2427-4ec7-b009-0730740d5ce6"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer e21424ba67052b9b4142029a46995d5a73bacc15
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Fri, 07 Apr 2017 08:30:13 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - 5aeee2b918103498a6b5db56fc21540360a1a694
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"c9a94042-2427-4ec7-b009-0730740d5ce6","type":"category","status":"draft","name":"Electrical
+        Cable Ties","slug":"electrical-cable-ties","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}}'
+    http_version: 
+  recorded_at: Fri, 11 Sep 1987 17:00:00 GMT
+recorded_with: VCR 3.0.3

@@ -3,6 +3,7 @@ require 'faraday'
 require 'moltin/models/base'
 require 'moltin/models/attribute'
 require 'moltin/models/brand'
+require 'moltin/models/category'
 require 'moltin/models/product'
 
 require 'moltin/version'
@@ -18,6 +19,7 @@ require 'moltin/utils/criteria'
 
 require 'moltin/resources/base'
 require 'moltin/resources/brands'
+require 'moltin/resources/categories'
 require 'moltin/resources/products'
 
 require 'moltin/client'

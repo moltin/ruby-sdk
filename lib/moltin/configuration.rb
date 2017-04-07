@@ -14,7 +14,9 @@ module Moltin
       auth_uri: 'oauth/access_token',
       resources: {
         products: { name: 'product', model: Moltin::Models::Brand },
-        brands: { name: 'brand', model: Moltin::Models::Brand }
+        brands: { name: 'brand', model: Moltin::Models::Brand },
+        categories: { name: 'category', model: Moltin::Models::Category },
+        parent: { name: 'category', model: Moltin::Models::Category }
       }
     }.freeze
 

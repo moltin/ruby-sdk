@@ -2,7 +2,7 @@ module Moltin
   module Models
     class Base
       class << self
-        attr_reader :attributes_list, :relationships_list
+        attr_reader :attributes_list, :has_many_list, :belongs_list
 
         # Public: defines the list of attributes for the current class
         # Inherit from this class and use
@@ -18,9 +18,16 @@ module Moltin
           @attributes_list = attrs.map(&:to_sym)
         end
 
-        def relationships(*attrs)
+        def has_many(*attrs)
           attr_accessor(*attrs)
-          @relationships_list = attrs.map(&:to_sym)
+          @has_many_list ||= []
+          @has_many_list = (@has_many_list + attrs.map(&:to_sym)).uniq
+        end
+
+        def belongs_to(*attrs)
+          attr_accessor(*attrs)
+          @belongs_list ||= []
+          @belongs_list += (@belongs_list + attrs.map(&:to_sym)).uniq
         end
       end
 

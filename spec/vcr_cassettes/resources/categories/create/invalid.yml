@@ -1,0 +1,83 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.moltin.com/oauth/access_token
+    body:
+      encoding: UTF-8
+      string: client_id=FTtrUHsKHstAOtAhN2VjKbpvK08ZXOKZ0GAQaiIAcc&client_secret=iFUwmVrwIOWwJrSR70gUtNQ5vIKRwc2RJVyXdid4tc&grant_type=client_credentials
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Fri, 07 Apr 2017 07:20:41 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Auth-Served-By:
+      - Moltin-Auth
+      X-Moltin-Request-Id:
+      - 834a7edc614cab1f65d2eab95460b7d117910e30
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {"expires":1491553241,"identifier":"client_credentials","expires_in":3600,"access_token":"e25f5cd47c24381219366174f2fdf9da46d8ca8c","token_type":"Bearer"}
+    http_version: 
+  recorded_at: Fri, 07 Apr 2017 07:20:41 GMT
+- request:
+    method: post
+    uri: https://api.moltin.com/v2/categories
+    body:
+      encoding: UTF-8
+      string: '{"data":{"slug":"my-category1","description":"Super Category","status":"live","type":"category"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer e25f5cd47c24381219366174f2fdf9da46d8ca8c
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 422
+      message: Unprocessable Entity
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Fri, 07 Apr 2017 07:20:42 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - f64d63ef2b078d9e51e171c777ba237b777fd69c
+    body:
+      encoding: ASCII-8BIT
+      string: '{"errors":[{"title":"Failed Validation","detail":"The data.name field
+        is required."}]}'
+    http_version: 
+  recorded_at: Fri, 07 Apr 2017 07:20:42 GMT
+recorded_with: VCR 3.0.3

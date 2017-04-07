@@ -20,7 +20,8 @@ Style/StringLiterals:
   SupportedStyles:
     - single_quotes
     - double_quotes
-
+Style/PredicateName:
+  Enabled: false
 RSpec/AnyInstance:
   Enabled: false
 RSpec/DescribeClass:

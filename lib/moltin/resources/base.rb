@@ -194,10 +194,10 @@ module Moltin
       end
 
       def handle_relationship_call(method, id, relationship_type, relationship_ids)
-        unless model_name.relationships_list.include?(relationship_type.to_sym)
+        unless [model_name.has_many_list, model_name.belongs_list].flatten.compact.include?(relationship_type.to_sym)
           raise Errors::InvalidRelationshipError.new(
             "The relationship #{relationship_type} was not defined on #{model_name}." \
-            "Available relationships: #{model_name.relationships_list.join(', ')}"
+            "Available relationships: #{[model_name.has_many_list, model_name.belongs_list].flatten.compact.join(', ')}"
           )
         end
 
@@ -209,8 +209,12 @@ module Moltin
       def format_relationships(relationship_type, relationship_ids)
         return nil unless relationship_ids
 
-        [*relationship_ids].compact.map do |r_id|
-          { type: @config.resources[relationship_type][:name], id: r_id }
+        if model_name.has_many_list.include?(relationship_type.to_sym)
+          [*relationship_ids].compact.map do |r_id|
+            { type: @config.resources[relationship_type][:name], id: r_id }
+          end
+        else
+          { type: @config.resources[relationship_type][:name], id: relationship_ids }
         end
       end
     end
