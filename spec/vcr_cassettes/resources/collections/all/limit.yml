@@ -1,0 +1,85 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.moltin.com/oauth/access_token
+    body:
+      encoding: UTF-8
+      string: client_id=FTtrUHsKHstAOtAhN2VjKbpvK08ZXOKZ0GAQaiIAcc&client_secret=iFUwmVrwIOWwJrSR70gUtNQ5vIKRwc2RJVyXdid4tc&grant_type=client_credentials
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Sun, 09 Apr 2017 16:37:30 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Auth-Served-By:
+      - Moltin-Auth
+      X-Moltin-Request-Id:
+      - 8b6d5c70ab6f4a04b208ea7a3f72e1245cda42ac
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {"expires":1491759450,"identifier":"client_credentials","expires_in":3600,"access_token":"b11b847114e24d2c94d7d90877f77d3bdf633bb7","token_type":"Bearer"}
+    http_version: 
+  recorded_at: Sun, 09 Apr 2017 16:37:30 GMT
+- request:
+    method: get
+    uri: https://api.moltin.com/v2/collections?page%5Blimit%5D=3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer b11b847114e24d2c94d7d90877f77d3bdf633bb7
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Sun, 09 Apr 2017 16:37:31 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - 18333e8e5d440faae35d70b033782a022569d46d
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"id":"0f528777-a9bd-4ff7-bda8-1019b2475681","type":"collection","status":"live","name":"My
+        Weird Collection","slug":"my-weird-collection","description":"Super Collection","relationships":{}},{"id":"0417aa72-78b4-42fd-bab4-dfccf1afb92c","type":"collection","status":"live","name":"My
+        Awesome Collection","slug":"my-awesome-collection","description":"Super Collection","relationships":{}},{"id":"4fa7b6dd-ae53-4f88-baa6-649198255722","type":"collection","status":"live","name":"My
+        Other Collection","slug":"my-other-collection","description":"Super Collection","relationships":{}}],"links":{"current":"https://api.moltin.com/v2/collections?page[limit]=3&page[offset]=0","first":"https://api.moltin.com/v2/collections?page[limit]=3&page[offset]=0","last":"https://api.moltin.com/v2/collections?page[limit]=3&page[offset]=3","prev":null,"next":"https://api.moltin.com/v2/collections?page[limit]=3&page[offset]=3"},"meta":{"results":{"total":3,"all":4},"page":{"limit":3,"offset":0,"current":1,"total":2}}}'
+    http_version: 
+  recorded_at: Sun, 09 Apr 2017 16:37:31 GMT
+recorded_with: VCR 3.0.3
