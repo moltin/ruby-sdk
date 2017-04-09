@@ -33,12 +33,14 @@ module Moltin
       # conn: - a Faraday connection
       #
       # Returns the HTTP response from the API
-      def call(method, uri:, data: nil, query_params: nil, token: nil, auth: true, conn: new_conn)
+      def call(method, uri:, data: nil, query_params: nil, token: nil,
+               auth: true, conn: new_conn, json: nil)
         conn.authorization :Bearer, token if auth && token
 
         options = { uri: uri, conn: conn }
         options[:body] = data if data
         options[:query_params] = query_params if query_params
+        options[:json] = json if json
         resp = send(method, options)
 
         { status: resp.status, body: JSON.parse(resp.body) }

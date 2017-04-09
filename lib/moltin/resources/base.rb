@@ -163,11 +163,12 @@ module Moltin
       # query_params: (optional) - a hash of query params
       #
       # Returns the body of the response as JSON
-      def call(method, uri, data: nil, query_params: nil)
+      def call(method, uri, data: nil, query_params: nil, json: nil)
         options = { uri: uri, auth: authentication_required? }
         options[:token] = access_token.get if authentication_required?
         options[:data] = { data: data } if data
         options[:query_params] = query_params if query_params
+        options[:json] = json if json
 
         @request.call(method, options)
       end
