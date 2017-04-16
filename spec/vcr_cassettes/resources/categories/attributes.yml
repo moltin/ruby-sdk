@@ -23,7 +23,7 @@ http_interactions:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Fri, 07 Apr 2017 07:20:32 GMT
+      - Sun, 16 Apr 2017 13:54:58 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -31,15 +31,15 @@ http_interactions:
       X-Auth-Served-By:
       - Moltin-Auth
       X-Moltin-Request-Id:
-      - a34f28a01eefcb614dfe133d2d2f72c92f6f8b3b
+      - c07df7f7bbf674992aab0bf87400c6c181ee081e
       Access-Control-Allow-Origin:
       - "*"
     body:
       encoding: ASCII-8BIT
       string: |
-        {"expires":1491553232,"identifier":"client_credentials","expires_in":3600,"access_token":"7e8e6c4b333d6975b97324cc2e7d1ee17621416c","token_type":"Bearer"}
+        {"expires":1492354498,"identifier":"client_credentials","expires_in":3600,"access_token":"b5a1aca32942a2b1acc049380158b00a5f190c50","token_type":"Bearer"}
     http_version: 
-  recorded_at: Fri, 07 Apr 2017 07:20:32 GMT
+  recorded_at: Sun, 16 Apr 2017 13:54:58 GMT
 - request:
     method: get
     uri: https://api.moltin.com/v2/categories/attributes
@@ -50,7 +50,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.11.0
       Authorization:
-      - Bearer 7e8e6c4b333d6975b97324cc2e7d1ee17621416c
+      - Bearer b5a1aca32942a2b1acc049380158b00a5f190c50
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -63,7 +63,7 @@ http_interactions:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Fri, 07 Apr 2017 07:20:33 GMT
+      - Sun, 16 Apr 2017 13:54:59 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -71,12 +71,12 @@ http_interactions:
       Via:
       - 1.1 linkerd
       X-Moltin-Request-Id:
-      - e3dbca2b13d92f9dffce2fe9c0ef67d58f2ab451
+      - 06087dc8fb3f1374090466ddf5d1fbabb27f4f94
       Access-Control-Allow-Origin:
       - "*"
     body:
       encoding: ASCII-8BIT
       string: '{"data":[{"label":"Type","value":"type","type":"enum","validation":{"regex":"^category$"},"required":true,"options":["category"]},{"label":"Id","value":"id","type":"string","required":true},{"label":"Name","value":"name","type":"string","required":true},{"label":"Slug","value":"slug","type":"string","required":false},{"label":"Status","value":"status","type":"enum","required":false,"default":"draft","options":["draft","live"]},{"label":"Description","value":"description","type":"string","required":false}],"meta":{"entity":"category","version":"2.0.0"}}'
     http_version: 
-  recorded_at: Fri, 07 Apr 2017 07:20:33 GMT
+  recorded_at: Sun, 16 Apr 2017 13:54:59 GMT
 recorded_with: VCR 3.0.3

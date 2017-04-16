@@ -23,7 +23,7 @@ http_interactions:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Fri, 07 Apr 2017 08:25:08 GMT
+      - Sun, 16 Apr 2017 13:55:35 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -31,15 +31,15 @@ http_interactions:
       X-Auth-Served-By:
       - Moltin-Auth
       X-Moltin-Request-Id:
-      - ff31b31ec325b590ca1a244150c3202986e55a8d
+      - f237a71ebfb7f9df1f9233fff86314036b0d4804
       Access-Control-Allow-Origin:
       - "*"
     body:
       encoding: ASCII-8BIT
       string: |
-        {"expires":1491557108,"identifier":"client_credentials","expires_in":3600,"access_token":"75e1cf42a66a155959fcde8ef0b89bf45f8fc661","token_type":"Bearer"}
+        {"expires":1492354535,"identifier":"client_credentials","expires_in":3600,"access_token":"eda256b7971328547f3e5e66a131b68b0fe58f00","token_type":"Bearer"}
     http_version: 
-  recorded_at: Fri, 07 Apr 2017 08:25:09 GMT
+  recorded_at: Sun, 16 Apr 2017 13:55:36 GMT
 - request:
     method: get
     uri: https://api.moltin.com/v2/categories/tree
@@ -50,7 +50,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.11.0
       Authorization:
-      - Bearer 75e1cf42a66a155959fcde8ef0b89bf45f8fc661
+      - Bearer eda256b7971328547f3e5e66a131b68b0fe58f00
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -63,7 +63,7 @@ http_interactions:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Fri, 07 Apr 2017 08:25:10 GMT
+      - Sun, 16 Apr 2017 13:55:37 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -71,7 +71,7 @@ http_interactions:
       Via:
       - 1.1 linkerd
       X-Moltin-Request-Id:
-      - 59df1daf8875021b0b3726068cbf3f255649fb25
+      - 2923984b9d5ce3391f397e440fd56578b0c0f1db
       Access-Control-Allow-Origin:
       - "*"
     body:
@@ -100,9 +100,9 @@ http_interactions:
         Photo Printers","slug":"portable-photo-printers","description":""},{"id":"8707edf0-ef48-408d-becf-3abe4f9bc47c","type":"category","status":"draft","name":"Analog-to-Digital
         (DTV) Converters","slug":"analog-to-digital-dtv-converters","description":""},{"id":"39514ee3-2e03-4844-ac0f-ae649541c31d","type":"category","status":"draft","name":"Mechanical
         & Wind-Up Alarm Clocks","slug":"mechanical-wind-up-alarm-clocks","description":""},{"id":"a2b3d7c3-e037-4a43-82ff-6c900909becf","type":"category","status":"draft","name":"Satellite
-        Television Receivers","slug":"satellite-television-receivers","description":""},{"id":"c9a94042-2427-4ec7-b009-0730740d5ce6","type":"category","status":"draft","name":"Electrical
-        Cable Ties","slug":"electrical-cable-ties","description":"","children":[{"id":"26fe6575-c482-41fd-9da0-be9291c54bfd","type":"category","status":"draft","name":"Desk
-        & Shelf Clocks","slug":"desk-shelf-clocks","description":""}]}]}'
+        Television Receivers","slug":"satellite-television-receivers","description":"","children":[{"id":"26fe6575-c482-41fd-9da0-be9291c54bfd","type":"category","status":"draft","name":"Desk
+        & Shelf Clocks","slug":"desk-shelf-clocks","description":""}]},{"id":"c9a94042-2427-4ec7-b009-0730740d5ce6","type":"category","status":"draft","name":"Electrical
+        Cable Ties","slug":"electrical-cable-ties","description":""}]}'
     http_version: 
-  recorded_at: Fri, 07 Apr 2017 08:25:10 GMT
+  recorded_at: Sun, 16 Apr 2017 13:55:37 GMT
 recorded_with: VCR 3.0.3

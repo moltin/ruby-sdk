@@ -9,7 +9,7 @@ module Moltin
 
       describe '.attributes' do
         it 'sets the attributes' do
-          expect(MyTestModel.attributes_list).to eq([:id, :name, :original_payload])
+          expect(MyTestModel.attributes_list).to eq([:id, :name, :original_payload, :relationships])
         end
       end
 

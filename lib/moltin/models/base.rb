@@ -14,6 +14,7 @@ module Moltin
         # Also pushes the original payload key in the list of attributes
         def attributes(*attrs)
           attrs.push(:original_payload)
+          attrs.push(:relationships)
           attr_accessor(*attrs)
           @attributes_list = attrs.map(&:to_sym)
         end
@@ -42,6 +43,7 @@ module Moltin
           instance_variable_set("@#{name}", attributes[name.to_sym] ||
                                             attributes[name.to_s])
         end
+        self.relationships = attributes['relationships']
         self.original_payload = attributes
       end
     end

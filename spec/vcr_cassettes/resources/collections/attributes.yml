@@ -23,7 +23,7 @@ http_interactions:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Sun, 09 Apr 2017 16:37:39 GMT
+      - Sun, 16 Apr 2017 14:29:39 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -31,15 +31,15 @@ http_interactions:
       X-Auth-Served-By:
       - Moltin-Auth
       X-Moltin-Request-Id:
-      - cee7ced4ddd8d3f23e42d5267972b57f7a42bdb0
+      - d6e418dd62af0737e453b135582b02d72df970c6
       Access-Control-Allow-Origin:
       - "*"
     body:
       encoding: ASCII-8BIT
       string: |
-        {"expires":1491759459,"identifier":"client_credentials","expires_in":3600,"access_token":"322dfd2446ced1ac016b81c5e69c342a15b49972","token_type":"Bearer"}
+        {"expires":1492356579,"identifier":"client_credentials","expires_in":3600,"access_token":"82c6f6e95b7b29661fe31a7504d9905368e24aee","token_type":"Bearer"}
     http_version: 
-  recorded_at: Sun, 09 Apr 2017 16:37:39 GMT
+  recorded_at: Sun, 16 Apr 2017 14:29:40 GMT
 - request:
     method: get
     uri: https://api.moltin.com/v2/collections/attributes
@@ -50,20 +50,20 @@ http_interactions:
       User-Agent:
       - Faraday v0.11.0
       Authorization:
-      - Bearer 322dfd2446ced1ac016b81c5e69c342a15b49972
+      - Bearer 82c6f6e95b7b29661fe31a7504d9905368e24aee
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
   response:
     status:
-      code: 500
-      message: Internal Server Error
+      code: 200
+      message: OK
     headers:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Sun, 09 Apr 2017 16:37:41 GMT
+      - Sun, 16 Apr 2017 14:29:41 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -71,10 +71,12 @@ http_interactions:
       Via:
       - 1.1 linkerd
       X-Moltin-Request-Id:
-      - 940f701dcc9bfc151b7eed984ffc84ecd63ad7ff
+      - 4796f4f171ab90c9b8dc9fe785c37dffbf8a21d5
+      Access-Control-Allow-Origin:
+      - "*"
     body:
       encoding: ASCII-8BIT
-      string: ''
+      string: '{"data":[{"label":"Type","value":"type","type":"enum","validation":{"regex":"^collection"},"required":true,"options":["collection"]},{"label":"Id","value":"id","type":"string","required":true},{"label":"Name","value":"name","type":"string","required":true},{"label":"Slug","value":"slug","type":"string","required":false},{"label":"Status","value":"status","type":"enum","required":false,"default":"draft","options":["draft","live"]},{"label":"Description","value":"description","type":"string","required":false}],"meta":{"entity":"collection","version":"2.0.0"}}'
     http_version: 
-  recorded_at: Sun, 09 Apr 2017 16:37:41 GMT
+  recorded_at: Sun, 16 Apr 2017 14:29:41 GMT
 recorded_with: VCR 3.0.3

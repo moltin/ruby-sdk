@@ -273,7 +273,7 @@ module Moltin
           if ids.respond_to?(:each)
             expect(response.data.map(&:id)).to include(*ids)
           else
-            expect(response.data.map(&:id)).to include(ids)
+            expect(response.data.id).to eq(ids)
           end
         end
 
@@ -297,8 +297,8 @@ module Moltin
                 VCR.use_cassette('resources/categories/relationships/create/parent') do
                   categories.delete_relationships(category.id, :parent, category_2.id)
                   response = categories.create_relationships(category.id, :parent, category_2.id)
-                  expect(response.data.first.id).to eq category.id
-                  check_relationships(category_2.id)
+                  response = categories.get(category.id)
+                  expect(response.data.relationships['parent']['data'][0]['id']).to eq(category_2.id)
                   clear_relationship(category_2.id, :parent)
                 end
               end

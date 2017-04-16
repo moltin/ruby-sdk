@@ -23,7 +23,7 @@ http_interactions:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Fri, 07 Apr 2017 07:20:41 GMT
+      - Sun, 16 Apr 2017 13:55:10 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -31,15 +31,15 @@ http_interactions:
       X-Auth-Served-By:
       - Moltin-Auth
       X-Moltin-Request-Id:
-      - 834a7edc614cab1f65d2eab95460b7d117910e30
+      - 92c64b54a3236e459acd0fae800ebf8d669f21b5
       Access-Control-Allow-Origin:
       - "*"
     body:
       encoding: ASCII-8BIT
       string: |
-        {"expires":1491553241,"identifier":"client_credentials","expires_in":3600,"access_token":"e25f5cd47c24381219366174f2fdf9da46d8ca8c","token_type":"Bearer"}
+        {"expires":1492354510,"identifier":"client_credentials","expires_in":3600,"access_token":"6ff11fb337a153d41d3df13414d5584bc3662c4c","token_type":"Bearer"}
     http_version: 
-  recorded_at: Fri, 07 Apr 2017 07:20:41 GMT
+  recorded_at: Sun, 16 Apr 2017 13:55:10 GMT
 - request:
     method: post
     uri: https://api.moltin.com/v2/categories
@@ -50,7 +50,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.11.0
       Authorization:
-      - Bearer e25f5cd47c24381219366174f2fdf9da46d8ca8c
+      - Bearer 6ff11fb337a153d41d3df13414d5584bc3662c4c
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -65,7 +65,7 @@ http_interactions:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Fri, 07 Apr 2017 07:20:42 GMT
+      - Sun, 16 Apr 2017 13:55:11 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -73,11 +73,11 @@ http_interactions:
       Via:
       - 1.1 linkerd
       X-Moltin-Request-Id:
-      - f64d63ef2b078d9e51e171c777ba237b777fd69c
+      - ab53d0979b8de8376ba2cf3bdddb9ed7bcabf067
     body:
       encoding: ASCII-8BIT
       string: '{"errors":[{"title":"Failed Validation","detail":"The data.name field
         is required."}]}'
     http_version: 
-  recorded_at: Fri, 07 Apr 2017 07:20:42 GMT
+  recorded_at: Sun, 16 Apr 2017 13:55:12 GMT
 recorded_with: VCR 3.0.3

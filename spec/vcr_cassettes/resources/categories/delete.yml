@@ -23,7 +23,7 @@ http_interactions:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Fri, 07 Apr 2017 07:20:52 GMT
+      - Sun, 16 Apr 2017 13:55:28 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -31,15 +31,15 @@ http_interactions:
       X-Auth-Served-By:
       - Moltin-Auth
       X-Moltin-Request-Id:
-      - 37348ff97787a8c817d2c23c76e2690440548d4b
+      - 5a07707981fa4cf9f5b94325907626188f358897
       Access-Control-Allow-Origin:
       - "*"
     body:
       encoding: ASCII-8BIT
       string: |
-        {"expires":1491553252,"identifier":"client_credentials","expires_in":3600,"access_token":"f40fc72275e830212e051627af898903ff71b58a","token_type":"Bearer"}
+        {"expires":1492354528,"identifier":"client_credentials","expires_in":3600,"access_token":"80f4fa4b5e2664edf9b34dbe78e3918496a5a233","token_type":"Bearer"}
     http_version: 
-  recorded_at: Fri, 11 Sep 1987 17:00:00 GMT
+  recorded_at: Sun, 20 Sep 1987 16:00:00 GMT
 - request:
     method: post
     uri: https://api.moltin.com/v2/categories
@@ -51,7 +51,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.11.0
       Authorization:
-      - Bearer f40fc72275e830212e051627af898903ff71b58a
+      - Bearer 80f4fa4b5e2664edf9b34dbe78e3918496a5a233
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -66,7 +66,7 @@ http_interactions:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Fri, 07 Apr 2017 07:20:53 GMT
+      - Sun, 16 Apr 2017 13:55:30 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -74,18 +74,18 @@ http_interactions:
       Via:
       - 1.1 linkerd
       X-Moltin-Request-Id:
-      - 45fbe651cf4b120f5ede07035d95e60c831e5fd0
+      - 20c4655dd927ce902bad6d2df1172e645349a394
       Access-Control-Allow-Origin:
       - "*"
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"e8b048b9-3fc5-4d47-949c-7667677df453","type":"category","status":"live","name":"My
+      string: '{"data":{"id":"ad06a569-c661-4ccd-8c7b-d507bf242816","type":"category","status":"live","name":"My
         Category","slug":"my-category-update-valid","description":"Super Category","relationships":{}}}'
     http_version: 
-  recorded_at: Fri, 11 Sep 1987 17:00:00 GMT
+  recorded_at: Sun, 20 Sep 1987 16:00:00 GMT
 - request:
     method: delete
-    uri: https://api.moltin.com/v2/categories/e8b048b9-3fc5-4d47-949c-7667677df453
+    uri: https://api.moltin.com/v2/categories/ad06a569-c661-4ccd-8c7b-d507bf242816
     body:
       encoding: US-ASCII
       string: ''
@@ -93,7 +93,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.11.0
       Authorization:
-      - Bearer f40fc72275e830212e051627af898903ff71b58a
+      - Bearer 80f4fa4b5e2664edf9b34dbe78e3918496a5a233
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -106,7 +106,7 @@ http_interactions:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Fri, 07 Apr 2017 07:20:54 GMT
+      - Sun, 16 Apr 2017 13:55:33 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -114,17 +114,17 @@ http_interactions:
       Via:
       - 1.1 linkerd
       X-Moltin-Request-Id:
-      - 9bdc208162f92a2f1d36b3997ae9ebf195fb90c4
+      - 37018302bf23fef289ecc7fbf5adfa6272c4c171
       Access-Control-Allow-Origin:
       - "*"
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"type":"category","id":"e8b048b9-3fc5-4d47-949c-7667677df453"}}'
+      string: '{"data":{"type":"category","id":"ad06a569-c661-4ccd-8c7b-d507bf242816"}}'
     http_version: 
-  recorded_at: Fri, 11 Sep 1987 17:00:00 GMT
+  recorded_at: Sun, 20 Sep 1987 16:00:00 GMT
 - request:
     method: get
-    uri: https://api.moltin.com/v2/categories/e8b048b9-3fc5-4d47-949c-7667677df453
+    uri: https://api.moltin.com/v2/categories/ad06a569-c661-4ccd-8c7b-d507bf242816
     body:
       encoding: US-ASCII
       string: ''
@@ -132,7 +132,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.11.0
       Authorization:
-      - Bearer f40fc72275e830212e051627af898903ff71b58a
+      - Bearer 80f4fa4b5e2664edf9b34dbe78e3918496a5a233
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -145,7 +145,7 @@ http_interactions:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Fri, 07 Apr 2017 07:20:55 GMT
+      - Sun, 16 Apr 2017 13:55:34 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -153,11 +153,11 @@ http_interactions:
       Via:
       - 1.1 linkerd
       X-Moltin-Request-Id:
-      - a92ae343247187006c3df81945fdbdc89328972c
+      - 7226574c5ddb5a22a1fa8cc188ef6cd49c610ac3
     body:
       encoding: ASCII-8BIT
       string: '{"errors":[{"status":404,"detail":"The requested category could not
         be found","title":"Category not found"}]}'
     http_version: 
-  recorded_at: Fri, 11 Sep 1987 17:00:00 GMT
+  recorded_at: Sun, 20 Sep 1987 16:00:00 GMT
 recorded_with: VCR 3.0.3
