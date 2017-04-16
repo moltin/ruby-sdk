@@ -1,0 +1,83 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.moltin.com/oauth/access_token
+    body:
+      encoding: UTF-8
+      string: client_id=FTtrUHsKHstAOtAhN2VjKbpvK08ZXOKZ0GAQaiIAcc&client_secret=iFUwmVrwIOWwJrSR70gUtNQ5vIKRwc2RJVyXdid4tc&grant_type=client_credentials
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Wed, 05 Apr 2017 08:53:24 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Auth-Served-By:
+      - Moltin-Auth
+      X-Moltin-Request-Id:
+      - 3d33411c58d9322e54bf0cf0e1f8b0a6de231d21
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {"expires":1491386004,"identifier":"client_credentials","expires_in":3600,"access_token":"eaf250847128301fff45994cc89f3661de840d97","token_type":"Bearer"}
+    http_version: 
+  recorded_at: Wed, 05 Apr 2017 08:53:24 GMT
+- request:
+    method: get
+    uri: https://api.moltin.com/v2/brands?page%5Boffset%5D=20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer eaf250847128301fff45994cc89f3661de840d97
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Wed, 05 Apr 2017 08:53:25 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - 147a238a20cecc6dfdc83831a4ccc4df063fb320
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"id":"c0c86571-ad2e-43f8-a2b9-6c819cf02333","type":"brand","status":"draft","name":"UGREEN","slug":"ugreen","description":"","relationships":{"products":{"data":[{"type":"product","id":"52972867-ad1e-45f5-a563-efdc5c5364b2"}]}}},{"id":"006b6a3e-2d97-43c2-b15a-0153be0567ec","type":"brand","status":"draft","name":"Logitech","slug":"logitech","description":"","relationships":{"products":{"data":[{"type":"product","id":"58043cd1-eb1b-4dc7-a6b4-863991f27d15"}]}}},{"id":"0eea2632-159d-472f-a200-e5bc433e0a0e","type":"brand","status":"draft","name":"Dell","slug":"dell","description":"","relationships":{"products":{"data":[{"type":"product","id":"599d8209-c4ab-4d7e-80f6-63dd1566aa63"}]}}},{"id":"9d8a4f11-57ec-4d82-a7e9-db515f79f0af","type":"brand","status":"draft","name":"Samsung","slug":"samsung","description":"","relationships":{"products":{"data":[{"type":"product","id":"ec0d45b4-c7d3-4738-b766-7bfed669655a"}]}}},{"id":"d93d778a-1fc9-45a0-9f3c-3f53feb9d9b6","type":"brand","status":"draft","name":"i-SUPERSIM","slug":"i-supersim","description":"","relationships":{"products":{"data":[{"type":"product","id":"c30c7e50-2b1f-4abb-9391-9db547f62e8b"}]}}},{"id":"a95557e7-242a-4099-aa64-751ea0e5980b","type":"brand","status":"draft","name":"VIZIO","slug":"vizio","description":"","relationships":{"products":{"data":[{"type":"product","id":"e52a15a9-e268-4f82-9fe1-c01571fb046a"}]}}},{"id":"9aa56406-2d24-4aa1-9057-00e4e75dcdb9","type":"brand","status":"draft","name":"Electrohome","slug":"electrohome","description":"","relationships":{"products":{"data":[{"type":"product","id":"c61455c9-f25c-4ef8-a183-8ca009591c71"}]}}},{"id":"92104ef1-fe57-4420-beb0-d8ec7274a341","type":"brand","status":"draft","name":"LG
+        Electronics","slug":"lg-electronics","description":"","relationships":{"products":{"data":[{"type":"product","id":"a2edd1d0-a89f-41bf-b608-c762a55dda62"}]}}},{"id":"6851694f-e650-4af0-a7b9-0e63e519a037","type":"brand","status":"draft","name":"YI","slug":"yi","description":"","relationships":{"products":{"data":[{"type":"product","id":"4f2382e0-9884-4474-a028-7d7659074cdf"},{"type":"product","id":"636369b0-b20e-4b6f-a264-fa87549e865f"}]}}},{"id":"f36a5edf-17e6-4821-88fd-7a65941ccca0","type":"brand","status":"draft","name":"GoPro","slug":"gopro","description":"","relationships":{"products":{"data":[{"type":"product","id":"f453ed08-f5d4-4965-b292-e7f7b2b50024"}]}}},{"id":"bcf1d4f4-3a66-4b57-ab44-89969641c677","type":"brand","status":"draft","name":"AKASO","slug":"akaso","description":"","relationships":{"products":{"data":[{"type":"product","id":"be24d79a-7bc2-4e8b-bf73-b338c75eae82"}]}}},{"id":"338f4d48-a578-4cd5-8bce-89d50b8db9a2","type":"brand","status":"draft","name":"TCL","slug":"tcl","description":"","relationships":{"products":{"data":[{"type":"product","id":"ec2749ec-8d66-4eb9-9537-1a8fbbe5e7fa"}]}}},{"id":"b206c64d-aa08-4265-aabe-7e6add7fd3d6","type":"brand","status":"draft","name":"DOSS","slug":"doss","description":"","relationships":{"products":{"data":[{"type":"product","id":"2f8cc5b6-0f1e-42d2-adf4-23767e88f92e"}]}}},{"id":"e82c06cd-4b25-40f1-9984-c751f345c0ed","type":"brand","status":"draft","name":"Google","slug":"google","description":"","relationships":{"products":{"data":[{"type":"product","id":"6dfc0dcb-c8b4-4d13-8356-27d46f4acd77"}]}}},{"id":"57f04963-30de-4e58-add5-37d1d78a58a4","type":"brand","status":"draft","name":"Polaroid","slug":"polaroid","description":"","relationships":{"products":{"data":[{"type":"product","id":"b9a75182-fe88-409f-a042-1c938ca2f9bd"}]}}},{"id":"3ee64c62-a20f-4476-ae97-f288bba61851","type":"brand","status":"draft","name":"Arris","slug":"arris","description":"","relationships":{"products":{"data":[{"type":"product","id":"e7056d59-aa54-4a39-9f9a-309d7f853db4"},{"type":"product","id":"e56eb569-604a-4538-b972-bae0cd8f35e8"}]}}},{"id":"4451efa7-02dd-4aa7-9ce1-244769bb6063","type":"brand","status":"draft","name":"NETGEAR","slug":"netgear","description":"","relationships":{"products":{"data":[{"type":"product","id":"fdbdac8e-514c-4262-bb6f-33dacf587649"},{"type":"product","id":"ed488184-b9a0-44e1-b13d-1faec2d3ad62"}]}}},{"id":"edd9b80a-f734-40c4-a83d-6313a6a534f7","type":"brand","status":"draft","name":"Apple","slug":"apple","description":"","relationships":{"products":{"data":[{"type":"product","id":"e66821dd-b4a8-44d6-93df-d81591ea8fb3"}]}}},{"id":"534be960-1fcf-4c96-9b9c-c1127dcb2631","type":"brand","status":"draft","name":"Sony","slug":"sony","description":"","relationships":{"products":{"data":[{"type":"product","id":"269e2e87-9f56-4380-bd30-15a5fd4559c7"}]}}},{"id":"68b1f083-ac52-4a7b-b980-740285cbf5ad","type":"brand","status":"draft","name":"Anker","slug":"anker","description":"","relationships":{}},{"id":"03a336d3-12e2-4280-8961-bf502affc9a4","type":"brand","status":"draft","name":"TP-Link","slug":"tp-link","description":"","relationships":{"products":{"data":[{"type":"product","id":"ea74d9cc-4940-41b3-a9f2-e7085a5f20c6"},{"type":"product","id":"ab16d884-15cd-48fd-a469-709a0c84465e"},{"type":"product","id":"fdf635a4-a74b-44ef-8f12-665bb498731f"}]}}},{"id":"743b01e5-a12b-47f8-8c39-f1abcece3736","type":"brand","status":"draft","name":"RCA","slug":"rca","description":"","relationships":{"products":{"data":[{"type":"product","id":"5be89d6c-c9a0-431a-b644-54aa4f3e2614"}]}}},{"id":"24f69f6b-2b63-422b-b9fb-71b4afc7e752","type":"brand","status":"draft","name":"HP","slug":"hp","description":"","relationships":{"products":{"data":[{"type":"product","id":"77670baa-2aa2-4fae-bb31-b8ba3c3779b3"},{"type":"product","id":"33f4fd23-b8d7-4ad5-beb6-a1190d2c7500"}]}}},{"id":"e4740936-1852-4ca5-92f6-482f18888e70","type":"brand","status":"draft","name":"charger","slug":"charger","description":"","relationships":{"products":{"data":[{"type":"product","id":"ddf158b1-e312-4eab-9ba9-ac59f3e31b13"}]}}},{"id":"352f7c7d-ea0c-49ce-8171-29a45ac084b1","type":"brand","status":"draft","name":"Sabrent","slug":"sabrent","description":"","relationships":{"products":{"data":[{"type":"product","id":"78632ea9-d55e-4ddc-b576-4f384774780b"},{"type":"product","id":"68bc501f-17dd-4e61-bd5a-d6f9d26cd087"}]}}},{"id":"77809219-ec17-466d-908a-c548d5aec25b","type":"brand","status":"draft","name":"Roku","slug":"roku","description":"","relationships":{"products":{"data":[{"type":"product","id":"e5c9b318-766a-4c15-a452-d5f541e25a41"},{"type":"product","id":"b33b80cc-746e-4a68-85b5-f415fcc5c71b"},{"type":"product","id":"771b7fe2-5fa9-442e-81e6-9e1fab9d435e"}]}}},{"id":"c11dbd0b-d466-4c4d-8366-3b75bba6c6c4","type":"brand","status":"draft","name":"Senso","slug":"senso","description":"","relationships":{}},{"id":"2da11868-fcfe-4963-8251-6907e3d42549","type":"brand","status":"draft","name":"Fujifilm","slug":"fujifilm","description":"","relationships":{"products":{"data":[{"type":"product","id":"b3f003dd-ce67-40d2-977c-2b07baac4582"},{"type":"product","id":"e9e9fce7-e938-40f7-bd82-0d498b6174fe"},{"type":"product","id":"e3657f96-ba96-45b8-8f7d-65e80c1f8aae"},{"type":"product","id":"c381f06a-ccb4-4d1d-842e-597feef0c8ef"},{"type":"product","id":"0643481e-7570-463b-8d33-561cde1d37cd"},{"type":"product","id":"3d274532-0612-403e-88f8-9565ec4c955a"},{"type":"product","id":"55eb5d9c-8c50-4b49-a656-aa3d9cf7afb6"},{"type":"product","id":"337d6a56-c057-403a-8f1b-37ac5cfc76f5"}]}}},{"id":"fd7a5cc9-3fc7-4559-99d3-f787017ce412","type":"brand","status":"draft","name":"Amazon","slug":"amazon","description":"","relationships":{"products":{"data":[{"type":"product","id":"dc315f80-1782-4cba-baab-25d8f4bf5bfb"},{"type":"product","id":"e8928a43-ba7f-4c18-8ca4-1a53774b0fc8"},{"type":"product","id":"fb1bffb0-85a5-4218-be76-03a1f4323bd0"},{"type":"product","id":"8b1b3b3a-edc6-4755-b511-49520dcfc85b"},{"type":"product","id":"cded150d-4ff9-4029-be5e-45528dc7b7b7"},{"type":"product","id":"522c32c5-3d91-4a60-b247-fa64a469e9e5"},{"type":"product","id":"87e243e4-9648-4b52-8a97-d37b76b40c98"},{"type":"product","id":"6e7bea49-708d-4406-96f0-aff291881da9"},{"type":"product","id":"f5e5ef11-a7aa-4066-a3ff-74b75775d0eb"},{"type":"product","id":"c7ac7377-3441-443f-97e0-c28e6e69d549"},{"type":"product","id":"68bc6703-23ed-46e0-91ea-06a9cae86afe"},{"type":"product","id":"cdf3d5fb-46cc-4ba3-8805-c27ea0d7226e"},{"type":"product","id":"7fb50572-7b09-46cd-a6db-1a81d436cd13"},{"type":"product","id":"80a3267e-a934-42b0-9dc1-e611d8727f42"},{"type":"product","id":"cca18623-0eca-4303-bf80-e9c483223f21"},{"type":"product","id":"232bcced-061c-4a80-9bf4-c4a95ef456a7"},{"type":"product","id":"5bf039f5-ab13-461d-b02e-8047a73e8428"},{"type":"product","id":"d62cddd2-8dca-4bf0-8cf7-766ddcf78bb9"},{"type":"product","id":"615f623a-26ba-44d2-af40-ba19a43f301b"},{"type":"product","id":"5baf983b-2a10-48f5-a9b3-e35271d384b9"},{"type":"product","id":"4d28b1fd-23d7-48a7-ae12-8b66ee27efd9"}]}}}],"links":{"current":"https://api.moltin.com/v2/brands?page[limit]=100&page[offset]=20","first":"https://api.moltin.com/v2/brands?page[limit]=100&page[offset]=0","last":null},"meta":{"results":{"total":29,"all":49},"page":{"limit":100,"offset":20,"current":1,"total":1}}}'
+    http_version: 
+  recorded_at: Wed, 05 Apr 2017 08:53:25 GMT
+recorded_with: VCR 3.0.3

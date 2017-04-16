@@ -1,0 +1,82 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.moltin.com/oauth/access_token
+    body:
+      encoding: UTF-8
+      string: client_id=FTtrUHsKHstAOtAhN2VjKbpvK08ZXOKZ0GAQaiIAcc&client_secret=iFUwmVrwIOWwJrSR70gUtNQ5vIKRwc2RJVyXdid4tc&grant_type=client_credentials
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Wed, 05 Apr 2017 08:53:30 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Auth-Served-By:
+      - Moltin-Auth
+      X-Moltin-Request-Id:
+      - b6d655805b1a2b8f417eccb4325ffea35ed44252
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {"expires":1491386010,"identifier":"client_credentials","expires_in":3600,"access_token":"3db6b568d9038b9513d2bc9576c9fc7d7854a72a","token_type":"Bearer"}
+    http_version: 
+  recorded_at: Wed, 05 Apr 2017 08:53:30 GMT
+- request:
+    method: get
+    uri: https://api.moltin.com/v2/brands/attributes
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer 3db6b568d9038b9513d2bc9576c9fc7d7854a72a
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Wed, 05 Apr 2017 08:53:31 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - 9e8c8b52523f927b01626d26a705f2351d10bffc
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"label":"Type","value":"type","type":"enum","validation":{"regex":"^brand$"},"required":true,"options":["brand"]},{"label":"Id","value":"id","type":"string","required":true},{"label":"Name","value":"name","type":"string","required":true},{"label":"Slug","value":"slug","type":"string","required":false},{"label":"Status","value":"status","type":"enum","required":false,"default":"draft","options":["draft","live"]},{"label":"Description","value":"description","type":"string","required":false}],"meta":{"entity":"brand","version":"2.0.0"}}'
+    http_version: 
+  recorded_at: Wed, 05 Apr 2017 08:53:31 GMT
+recorded_with: VCR 3.0.3

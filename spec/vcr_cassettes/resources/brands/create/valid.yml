@@ -1,0 +1,125 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.moltin.com/oauth/access_token
+    body:
+      encoding: UTF-8
+      string: client_id=FTtrUHsKHstAOtAhN2VjKbpvK08ZXOKZ0GAQaiIAcc&client_secret=iFUwmVrwIOWwJrSR70gUtNQ5vIKRwc2RJVyXdid4tc&grant_type=client_credentials
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Wed, 05 Apr 2017 08:53:36 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Auth-Served-By:
+      - Moltin-Auth
+      X-Moltin-Request-Id:
+      - 08fe1c5bfeffdca5c0437ef61bc805f4321fe288
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {"expires":1491386016,"identifier":"client_credentials","expires_in":3600,"access_token":"e6931b15c9c756e0277ca6cbe779fe05fc9a63fb","token_type":"Bearer"}
+    http_version: 
+  recorded_at: Wed, 09 Sep 1987 17:00:00 GMT
+- request:
+    method: post
+    uri: https://api.moltin.com/v2/brands
+    body:
+      encoding: UTF-8
+      string: '{"data":{"name":"My Brand","slug":"my-brand1","description":"Super
+        Brand","status":"live","type":"brand"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer e6931b15c9c756e0277ca6cbe779fe05fc9a63fb
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Wed, 05 Apr 2017 08:53:37 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - 67411b0669384ffa275066d2a428b41ace76dc38
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"id":"4ae40f0b-2ac8-4068-b0b6-d45607170e05","type":"brand","status":"live","name":"My
+        Brand","slug":"my-brand1","description":"Super Brand","relationships":{}}}'
+    http_version: 
+  recorded_at: Wed, 09 Sep 1987 17:00:00 GMT
+- request:
+    method: delete
+    uri: https://api.moltin.com/v2/brands/4ae40f0b-2ac8-4068-b0b6-d45607170e05
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer e6931b15c9c756e0277ca6cbe779fe05fc9a63fb
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Wed, 05 Apr 2017 08:53:38 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - e412e4a5393d645b10098bf5e627c2c7a1260fea
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"type":"brand","id":"4ae40f0b-2ac8-4068-b0b6-d45607170e05"}}'
+    http_version: 
+  recorded_at: Wed, 09 Sep 1987 17:00:00 GMT
+recorded_with: VCR 3.0.3

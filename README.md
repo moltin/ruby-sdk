@@ -268,9 +268,38 @@ moltin.products.update(product_id, {
 moltin.products.delete(product_id)
 ```
 
-#### Create a relationship (POST)
+#### Relationships
 
-Coming Soon.
+Relationships can be created between different entities as shown in the examples below. The last argument (the ids of the related entities) can be passed either as a single string or as an array of strings.
+
+See the [docs](https://moltin.api-docs.io/v2) to learn more about which resources have relationships.
+
+##### Create Relationships
+
+```
+# Create relationships between resources:
+moltin.products.create_relationships(product_id, 'brands', brand_id);
+
+# Or
+moltin.products.create_relationships(product_id, 'brands', [brand_id]);
+```
+
+##### Update Relationships
+
+```
+# Update the relationships (overrides all the current relationships)
+moltin.products.update_relationships(product_id, 'brands', [brand_1_id, brand_2_id]);
+```
+
+##### Delete Relationships
+
+```
+# Delete a relationship between resources:
+moltin.products.delete_relationships(product_id, 'brands', [brand_id]);
+
+# (Or an update with an empty array achieves the same result if you're so inclined):
+moltin.products.update_relationships(product_id, 'brands', []);
+```
 
 ### Files
 

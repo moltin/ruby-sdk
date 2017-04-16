@@ -18,7 +18,7 @@ module Moltin
 
         auth = request.authenticate(uri: config.auth_uri,
                                     id: config.client_id,
-                                    secret: config.client_secret)
+                                    secret: config.client_secret)[:body]
 
         storage['authentication'] = auth
         auth['access_token']

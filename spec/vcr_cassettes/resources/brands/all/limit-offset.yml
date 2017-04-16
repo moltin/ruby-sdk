@@ -1,0 +1,83 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.moltin.com/oauth/access_token
+    body:
+      encoding: UTF-8
+      string: client_id=FTtrUHsKHstAOtAhN2VjKbpvK08ZXOKZ0GAQaiIAcc&client_secret=iFUwmVrwIOWwJrSR70gUtNQ5vIKRwc2RJVyXdid4tc&grant_type=client_credentials
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Wed, 05 Apr 2017 08:53:19 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Auth-Served-By:
+      - Moltin-Auth
+      X-Moltin-Request-Id:
+      - d40223f9251ed6afec1e93096f5c13618e9da7b4
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {"expires":1491385999,"identifier":"client_credentials","expires_in":3600,"access_token":"8ff77600428907090d3ab7ede1214b9e9ac08956","token_type":"Bearer"}
+    http_version: 
+  recorded_at: Wed, 05 Apr 2017 08:53:20 GMT
+- request:
+    method: get
+    uri: https://api.moltin.com/v2/brands?page%5Blimit%5D=10&page%5Boffset%5D=10
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer 8ff77600428907090d3ab7ede1214b9e9ac08956
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Wed, 05 Apr 2017 08:53:21 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - d23f9d427fcecd018925ff33fa8379ff05b11536
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"id":"2bfdd524-4aa0-42e5-85cb-8a89abe05792","type":"brand","status":"draft","name":"Silver
+        Spur","slug":"silver-spur","description":"","relationships":{}},{"id":"0b271dac-c46e-44cb-843e-644e95d93d35","type":"brand","status":"draft","name":"Havit","slug":"havit","description":"","relationships":{}},{"id":"1e2141c4-650c-4f5a-a539-edeaae0c3cfa","type":"brand","status":"draft","name":"XBMCMart","slug":"xbmcmart","description":"","relationships":{}},{"id":"f8e32fd7-b009-4b52-bc01-91242fad2d1b","type":"brand","status":"draft","name":"UFO","slug":"ufo","description":"","relationships":{}},{"id":"776852bb-f899-4f9e-b35b-8f53742f5138","type":"brand","status":"draft","name":"Sonos","slug":"sonos","description":"","relationships":{}},{"id":"51222e7e-b0bc-4a37-a96c-cd4348e74bba","type":"brand","status":"draft","name":"Microsoft","slug":"microsoft","description":"","relationships":{}},{"id":"22b3ade8-ba00-42fe-9f0b-08e5a009fb1e","type":"brand","status":"draft","name":"Asus","slug":"asus","description":"","relationships":{"products":{"data":[{"type":"product","id":"df30f3d4-5468-4035-b178-d692b23814f7"}]}}},{"id":"feeba4fa-c7e6-4737-b979-a9ed2443ceb4","type":"brand","status":"draft","name":"Jensen","slug":"jensen","description":"","relationships":{"products":{"data":[{"type":"product","id":"cfb2fc58-dbcd-44a2-801a-a694f1ca2d36"}]}}},{"id":"d73ce04a-32a7-4b36-be2f-0d641f77a415","type":"brand","status":"draft","name":"Sades","slug":"sades","description":"","relationships":{"products":{"data":[{"type":"product","id":"ccb55acf-b039-4e55-954a-aa6555b1a340"}]}}},{"id":"b4a9cd3f-818b-4055-aaf5-c4c7bb64f748","type":"brand","status":"draft","name":"Acer","slug":"acer","description":"","relationships":{"products":{"data":[{"type":"product","id":"fcabf4fd-2bba-4db1-8591-45d7b58b86c6"},{"type":"product","id":"9279935a-ed2c-4a22-87d5-5f738c6ccc88"}]}}}],"links":{"current":"https://api.moltin.com/v2/brands?page[limit]=10&page[offset]=10","first":"https://api.moltin.com/v2/brands?page[limit]=10&page[offset]=0","last":"https://api.moltin.com/v2/brands?page[limit]=10&page[offset]=40","prev":"https://api.moltin.com/v2/brands?page[limit]=10&page[offset]=0","next":"https://api.moltin.com/v2/brands?page[limit]=10&page[offset]=20"},"meta":{"results":{"total":10,"all":49},"page":{"limit":10,"offset":10,"current":2,"total":5}}}'
+    http_version: 
+  recorded_at: Wed, 05 Apr 2017 08:53:21 GMT
+recorded_with: VCR 3.0.3

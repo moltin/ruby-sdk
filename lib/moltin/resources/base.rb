@@ -120,6 +120,18 @@ module Moltin
         response(call(:get, formatted_uri, query_params: query_params))
       end
 
+      def create_relationships(id, relationship_type, relationship_ids)
+        handle_relationship_call(:post, id, relationship_type, relationship_ids)
+      end
+
+      def update_relationships(id, relationship_type, relationship_ids = nil)
+        handle_relationship_call(:put, id, relationship_type, relationship_ids)
+      end
+
+      def delete_relationships(id, relationship_type, relationship_ids = nil)
+        handle_relationship_call(:delete, id, relationship_type, relationship_ids)
+      end
+
       private
 
       def uri
@@ -179,6 +191,27 @@ module Moltin
       # Returns true or false
       def authentication_required?
         true
+      end
+
+      def handle_relationship_call(method, id, relationship_type, relationship_ids)
+        unless model_name.relationships_list.include?(relationship_type.to_sym)
+          raise Errors::InvalidRelationshipError.new(
+            "The relationship #{relationship_type} was not defined on #{model_name}." \
+            "Available relationships: #{model_name.relationships_list.join(', ')}"
+          )
+        end
+
+        response(call(method, "#{uri}/#{id}/relationships/#{relationship_type}",
+                      data: format_relationships(relationship_type, relationship_ids)),
+                 model: @config.resources[relationship_type][:model])
+      end
+
+      def format_relationships(relationship_type, relationship_ids)
+        return nil unless relationship_ids
+
+        [*relationship_ids].compact.map do |r_id|
+          { type: @config.resources[relationship_type][:name], id: r_id }
+        end
       end
     end
   end

@@ -10,13 +10,13 @@ module Moltin
         context 'with valid credentials' do
           it 'receives the expected body' do
             VCR.use_cassette('utils/request/valid') do
-              body = request.authenticate(uri: 'oauth/access_token',
+              resp = request.authenticate(uri: 'oauth/access_token',
                                           id: ENV['FAKE_CLIENT_ID'],
                                           secret: ENV['FAKE_CLIENT_SECRET'])
 
-              expect(body['identifier']).to eq 'client_credentials'
-              expect(body['token_type']).to eq 'Bearer'
-              expect(body['access_token']).not_to be_nil
+              expect(resp[:body]['identifier']).to eq 'client_credentials'
+              expect(resp[:body]['token_type']).to eq 'Bearer'
+              expect(resp[:body]['access_token']).not_to be_nil
             end
           end
         end
@@ -39,13 +39,15 @@ module Moltin
       describe '#call' do
         context 'get' do
           it 'calls the #get method' do
-            expect(request).to receive(:get).with(uri: '/test', conn: conn)
+            expect(request).to receive(:get).with(uri: '/test', conn: conn).
+              and_return(double(:resp, status: 200, body: '{}'))
             request.call(:get, uri: '/test', conn: conn)
           end
 
           context 'with auth & token' do
             it 'calls the #get with the token parameter' do
-              expect(request).to receive(:get).with(uri: '/test', conn: conn)
+              expect(request).to receive(:get).with(uri: '/test', conn: conn).
+                and_return(double(:resp, status: 200, body: '{}'))
               request.call(:get, uri: '/test', token: '123', conn: conn)
               expect(conn.headers['Authorization']).to eq 'Bearer 123'
             end
@@ -53,7 +55,8 @@ module Moltin
 
           context 'with !auth & token' do
             it 'calls the #get without the token parameter' do
-              expect(request).to receive(:get).with(uri: '/test', conn: conn)
+              expect(request).to receive(:get).with(uri: '/test', conn: conn).
+                and_return(double(:resp, status: 200, body: '{}'))
               request.call(:get, uri: '/test', token: '123', auth: false, conn: conn)
             end
           end
@@ -61,21 +64,24 @@ module Moltin
 
         context 'post' do
           it 'calls the #post method' do
-            expect(request).to receive(:post).with(uri: '/test', body: {}, conn: conn)
+            expect(request).to receive(:post).with(uri: '/test', body: {}, conn: conn).
+              and_return(double(:resp, status: 200, body: '{}'))
             request.call(:post, uri: '/test', data: {}, conn: conn)
           end
         end
 
         context 'patch' do
           it 'calls the #patch method' do
-            expect(request).to receive(:patch).with(uri: '/test', body: {}, conn: conn)
+            expect(request).to receive(:patch).with(uri: '/test', body: {}, conn: conn).
+              and_return(double(:resp, status: 200, body: '{}'))
             request.call(:patch, uri: '/test', data: {}, conn: conn)
           end
         end
 
         context 'delete' do
           it 'calls the #delete method' do
-            expect(request).to receive(:delete).with(uri: '/test', conn: conn)
+            expect(request).to receive(:delete).with(uri: '/test', conn: conn).
+              and_return(double(:resp, status: 200, body: '{}'))
             request.call(:delete, uri: '/test', conn: conn)
           end
         end

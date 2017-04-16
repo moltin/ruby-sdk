@@ -1,0 +1,167 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.moltin.com/oauth/access_token
+    body:
+      encoding: UTF-8
+      string: client_id=FTtrUHsKHstAOtAhN2VjKbpvK08ZXOKZ0GAQaiIAcc&client_secret=iFUwmVrwIOWwJrSR70gUtNQ5vIKRwc2RJVyXdid4tc&grant_type=client_credentials
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Wed, 05 Apr 2017 08:53:41 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Auth-Served-By:
+      - Moltin-Auth
+      X-Moltin-Request-Id:
+      - 3e11d6526a87bcfe278950834b0d698d5d1b9454
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {"expires":1491386021,"identifier":"client_credentials","expires_in":3600,"access_token":"801dd43de757b1f313b20fbdaea0d17466474473","token_type":"Bearer"}
+    http_version: 
+  recorded_at: Wed, 09 Sep 1987 17:00:00 GMT
+- request:
+    method: post
+    uri: https://api.moltin.com/v2/brands
+    body:
+      encoding: UTF-8
+      string: '{"data":{"name":"My Brand","slug":"my-brand-update-valid","description":"Super
+        Brand","status":"live","type":"brand"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer 801dd43de757b1f313b20fbdaea0d17466474473
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Wed, 05 Apr 2017 08:53:42 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - 537f91317194cd57acadc041805827dab8768bf1
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"id":"1dffb84a-358c-42fc-8478-208efb6b3e4d","type":"brand","status":"live","name":"My
+        Brand","slug":"my-brand-update-valid","description":"Super Brand","relationships":{}}}'
+    http_version: 
+  recorded_at: Wed, 09 Sep 1987 17:00:00 GMT
+- request:
+    method: put
+    uri: https://api.moltin.com/v2/brands/1dffb84a-358c-42fc-8478-208efb6b3e4d
+    body:
+      encoding: UTF-8
+      string: '{"data":{"name":"My New Brand","type":"brand","id":"1dffb84a-358c-42fc-8478-208efb6b3e4d"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer 801dd43de757b1f313b20fbdaea0d17466474473
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Wed, 05 Apr 2017 08:53:44 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - 2628fa81bfb4811d4c647ba9074119380fa70cd9
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"1dffb84a-358c-42fc-8478-208efb6b3e4d","type":"brand","status":"live","name":"My
+        New Brand","slug":"my-brand-update-valid","description":"Super Brand","relationships":{}}'
+    http_version: 
+  recorded_at: Wed, 09 Sep 1987 17:00:00 GMT
+- request:
+    method: delete
+    uri: https://api.moltin.com/v2/brands/1dffb84a-358c-42fc-8478-208efb6b3e4d
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer 801dd43de757b1f313b20fbdaea0d17466474473
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Wed, 05 Apr 2017 08:53:45 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - 7f9e13a9702c889a6a3bdaf897f5e001273c9326
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"type":"brand","id":"1dffb84a-358c-42fc-8478-208efb6b3e4d"}}'
+    http_version: 
+  recorded_at: Wed, 09 Sep 1987 17:00:00 GMT
+recorded_with: VCR 3.0.3

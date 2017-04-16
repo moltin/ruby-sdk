@@ -1,9 +1,12 @@
 module Moltin
   module Utils
     class Response
-      def initialize(model, body)
+      attr_accessor :body
+
+      def initialize(model, resp)
         @model = model
-        @body = body
+        @status = resp[:status]
+        @body = resp[:body]
       end
 
       def errors
@@ -23,7 +26,7 @@ module Moltin
             @model.new(attributes)
           end
         else
-          @model.new(@body['data'])
+          @model.new(@body['data'] || @body)
         end
       end
 
