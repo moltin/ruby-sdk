@@ -296,7 +296,7 @@ module Moltin
               it 'creates the relationship', freeze_time: true do
                 VCR.use_cassette('resources/categories/relationships/create/parent') do
                   categories.delete_relationships(category.id, :parent, category_2.id)
-                  response = categories.create_relationships(category.id, :parent, category_2.id)
+                  categories.create_relationships(category.id, :parent, category_2.id)
                   response = categories.get(category.id)
                   expect(response.data.relationships['parent']['data'][0]['id']).to eq(category_2.id)
                   clear_relationship(category_2.id, :parent)
