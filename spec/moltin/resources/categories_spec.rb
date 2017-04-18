@@ -268,12 +268,13 @@ module Moltin
         let(:category_3) { categories_list[2] }
 
         def clear_relationship(ids, relationship = :categories)
-          response = categories.delete_relationships(category.id, relationship, ids)
+          categories.delete_relationships(category.id, relationship, ids)
+          response = categories.get(category.id)
 
           if ids.respond_to?(:each)
             expect(response.data.map(&:id)).to include(*ids)
           else
-            expect(response.data.id).to eq(ids)
+            expect(response.data.id).to eq(category.id)
           end
         end
 
@@ -289,8 +290,38 @@ module Moltin
 
         describe '#create_relationships' do
           context 'relationship found' do
-            context 'categories'
-            context 'children'
+            context 'children' do
+              it 'creates the relationship', freeze_time: true do
+                VCR.use_cassette('resources/categories/relationships/create/children') do
+                  categories.create_relationships(category.id, :children, category_2.id)
+                  response = categories.get(category.id)
+                  expect(response.data.relationships['children']['data'][0]['id']).to eq(category_2.id)
+                  clear_relationship(category_2.id, :children)
+                end
+              end
+
+              it 'updates the relationship', freeze_time: true do
+                VCR.use_cassette('resources/categories/relationships/update/children') do
+                  categories.create_relationships(category.id, :children, category_2.id)
+                  categories.update_relationships(category.id, :children, category_3.id)
+                  response = categories.get(category.id)
+                  expect(response.data.relationships['children']['data'].length).to eq(1)
+                  expect(response.data.relationships['children']['data'][0]['id']).to eq(category_3.id)
+                  clear_relationship(category_3.id, :children)
+                end
+              end
+
+              it 'deletes the relationship', freeze_time: true do
+                VCR.use_cassette('resources/categories/relationships/delete/children') do
+                  categories.create_relationships(category.id, :children, category_2.id)
+                  response = categories.get(category.id)
+                  expect(response.data.relationships['children']['data'].length).to eq(1)
+                  categories.delete_relationships(category.id, :children, category_2.id)
+                  response = categories.get(category.id)
+                  expect(response.data.relationships['children']).to be_nil
+                end
+              end
+            end
 
             context 'parent' do
               it 'creates the relationship', freeze_time: true do
@@ -302,6 +333,12 @@ module Moltin
                   clear_relationship(category_2.id, :parent)
                 end
               end
+
+              # TODO
+              it 'updates the relationship', freeze_time: true
+
+              # TODO
+              it 'deletes the relationship', freeze_time: true
             end
           end
 

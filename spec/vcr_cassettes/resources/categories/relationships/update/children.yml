@@ -23,7 +23,7 @@ http_interactions:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Tue, 18 Apr 2017 09:41:00 GMT
+      - Tue, 18 Apr 2017 09:40:52 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -31,13 +31,13 @@ http_interactions:
       X-Auth-Served-By:
       - Moltin-Auth
       X-Moltin-Request-Id:
-      - e1cffdb89f24f62f1af098ebd6109645e45b270a
+      - 263d7b6828b387bbf1f1fe14d8ff5056fa465c07
       Access-Control-Allow-Origin:
       - "*"
     body:
       encoding: ASCII-8BIT
       string: |
-        {"expires":1492512060,"identifier":"client_credentials","expires_in":3600,"access_token":"64097db6cafe924d1b2f39d943b9b7b0f7a05cd4","token_type":"Bearer"}
+        {"expires":1492512052,"identifier":"client_credentials","expires_in":3600,"access_token":"e08a81cd1b995517fce873a10ccd01a056c3f817","token_type":"Bearer"}
     http_version: 
   recorded_at: Tue, 22 Sep 1987 17:00:00 GMT
 - request:
@@ -50,7 +50,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.11.0
       Authorization:
-      - Bearer 64097db6cafe924d1b2f39d943b9b7b0f7a05cd4
+      - Bearer e08a81cd1b995517fce873a10ccd01a056c3f817
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -63,7 +63,7 @@ http_interactions:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Tue, 18 Apr 2017 09:41:01 GMT
+      - Tue, 18 Apr 2017 09:40:53 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -71,7 +71,7 @@ http_interactions:
       Via:
       - 1.1 linkerd
       X-Moltin-Request-Id:
-      - baabad44dc49efe704c8494c8221ac67fee79705
+      - d2b46af71b090834b5261df38675c8da94845f77
       Access-Control-Allow-Origin:
       - "*"
     body:
@@ -106,16 +106,16 @@ http_interactions:
     http_version: 
   recorded_at: Tue, 22 Sep 1987 17:00:00 GMT
 - request:
-    method: delete
-    uri: https://api.moltin.com/v2/categories/26fe6575-c482-41fd-9da0-be9291c54bfd/relationships/parent
+    method: post
+    uri: https://api.moltin.com/v2/categories/26fe6575-c482-41fd-9da0-be9291c54bfd/relationships/children
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"category","id":"c9a94042-2427-4ec7-b009-0730740d5ce6"}}'
+      string: '{"data":[{"type":"category","id":"c9a94042-2427-4ec7-b009-0730740d5ce6"}]}'
     headers:
       User-Agent:
       - Faraday v0.11.0
       Authorization:
-      - Bearer 64097db6cafe924d1b2f39d943b9b7b0f7a05cd4
+      - Bearer e08a81cd1b995517fce873a10ccd01a056c3f817
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -130,7 +130,7 @@ http_interactions:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Tue, 18 Apr 2017 09:41:02 GMT
+      - Tue, 18 Apr 2017 09:40:54 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -138,26 +138,26 @@ http_interactions:
       Via:
       - 1.1 linkerd
       X-Moltin-Request-Id:
-      - 467cdbdb7d0df983d31a3378c27480246d331ef8
+      - 1e4544f949c9fa7115e37bf63a3500acc588fe5d
       Access-Control-Allow-Origin:
       - "*"
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"c9a94042-2427-4ec7-b009-0730740d5ce6","type":"category","status":"draft","name":"Electrical
-        Cable Ties","slug":"electrical-cable-ties","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}}'
+      string: '{"id":"26fe6575-c482-41fd-9da0-be9291c54bfd","type":"category","status":"draft","name":"Desk
+        & Shelf Clocks","slug":"desk-shelf-clocks","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}}'
     http_version: 
   recorded_at: Tue, 22 Sep 1987 17:00:00 GMT
 - request:
-    method: post
-    uri: https://api.moltin.com/v2/categories/26fe6575-c482-41fd-9da0-be9291c54bfd/relationships/parent
+    method: put
+    uri: https://api.moltin.com/v2/categories/26fe6575-c482-41fd-9da0-be9291c54bfd/relationships/children
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"category","id":"c9a94042-2427-4ec7-b009-0730740d5ce6"}}'
+      string: '{"data":[{"type":"category","id":"a2b3d7c3-e037-4a43-82ff-6c900909becf"}]}'
     headers:
       User-Agent:
       - Faraday v0.11.0
       Authorization:
-      - Bearer 64097db6cafe924d1b2f39d943b9b7b0f7a05cd4
+      - Bearer e08a81cd1b995517fce873a10ccd01a056c3f817
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -172,7 +172,7 @@ http_interactions:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Tue, 18 Apr 2017 09:41:03 GMT
+      - Tue, 18 Apr 2017 09:40:55 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -180,13 +180,13 @@ http_interactions:
       Via:
       - 1.1 linkerd
       X-Moltin-Request-Id:
-      - 6faab57b2f5749ba018c0e9f8b8cb1542fcb9ce0
+      - 32929209cf86093bfb2476808ba5938f9cdb6b9e
       Access-Control-Allow-Origin:
       - "*"
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"c9a94042-2427-4ec7-b009-0730740d5ce6","type":"category","status":"draft","name":"Electrical
-        Cable Ties","slug":"electrical-cable-ties","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}}'
+      string: '{"id":"26fe6575-c482-41fd-9da0-be9291c54bfd","type":"category","status":"draft","name":"Desk
+        & Shelf Clocks","slug":"desk-shelf-clocks","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]},"children":{"data":[{"type":"category","id":"c9a94042-2427-4ec7-b009-0730740d5ce6"}]}}}'
     http_version: 
   recorded_at: Tue, 22 Sep 1987 17:00:00 GMT
 - request:
@@ -199,7 +199,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.11.0
       Authorization:
-      - Bearer 64097db6cafe924d1b2f39d943b9b7b0f7a05cd4
+      - Bearer e08a81cd1b995517fce873a10ccd01a056c3f817
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -212,7 +212,7 @@ http_interactions:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Tue, 18 Apr 2017 09:41:04 GMT
+      - Tue, 18 Apr 2017 09:40:56 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -220,26 +220,26 @@ http_interactions:
       Via:
       - 1.1 linkerd
       X-Moltin-Request-Id:
-      - 08ba8ac82346f5fcc2b242fbeecb891495575f0e
+      - a9b88972d07bd3caac4f15a09aa2c380e22b92df
       Access-Control-Allow-Origin:
       - "*"
     body:
       encoding: ASCII-8BIT
       string: '{"data":{"id":"26fe6575-c482-41fd-9da0-be9291c54bfd","type":"category","status":"draft","name":"Desk
-        & Shelf Clocks","slug":"desk-shelf-clocks","description":"","relationships":{"parent":{"data":[{"type":"category","id":"c9a94042-2427-4ec7-b009-0730740d5ce6"}]}}}}'
+        & Shelf Clocks","slug":"desk-shelf-clocks","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]},"children":{"data":[{"type":"category","id":"a2b3d7c3-e037-4a43-82ff-6c900909becf"}]}}}}'
     http_version: 
   recorded_at: Tue, 22 Sep 1987 17:00:00 GMT
 - request:
     method: delete
-    uri: https://api.moltin.com/v2/categories/26fe6575-c482-41fd-9da0-be9291c54bfd/relationships/parent
+    uri: https://api.moltin.com/v2/categories/26fe6575-c482-41fd-9da0-be9291c54bfd/relationships/children
     body:
       encoding: UTF-8
-      string: '{"data":{"type":"category","id":"c9a94042-2427-4ec7-b009-0730740d5ce6"}}'
+      string: '{"data":[{"type":"category","id":"a2b3d7c3-e037-4a43-82ff-6c900909becf"}]}'
     headers:
       User-Agent:
       - Faraday v0.11.0
       Authorization:
-      - Bearer 64097db6cafe924d1b2f39d943b9b7b0f7a05cd4
+      - Bearer e08a81cd1b995517fce873a10ccd01a056c3f817
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -254,7 +254,7 @@ http_interactions:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Tue, 18 Apr 2017 09:41:05 GMT
+      - Tue, 18 Apr 2017 09:40:58 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -262,13 +262,13 @@ http_interactions:
       Via:
       - 1.1 linkerd
       X-Moltin-Request-Id:
-      - 370ef138000fef82e088175e3da82014b2f5ac70
+      - 65e951ab1063256194619cebfc2a0d02e664f7b9
       Access-Control-Allow-Origin:
       - "*"
     body:
       encoding: ASCII-8BIT
-      string: '{"id":"c9a94042-2427-4ec7-b009-0730740d5ce6","type":"category","status":"draft","name":"Electrical
-        Cable Ties","slug":"electrical-cable-ties","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]},"children":{"data":[{"type":"category","id":"26fe6575-c482-41fd-9da0-be9291c54bfd"}]}}}'
+      string: '{"id":"26fe6575-c482-41fd-9da0-be9291c54bfd","type":"category","status":"draft","name":"Desk
+        & Shelf Clocks","slug":"desk-shelf-clocks","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]},"children":{"data":[{"type":"category","id":"a2b3d7c3-e037-4a43-82ff-6c900909becf"}]}}}'
     http_version: 
   recorded_at: Tue, 22 Sep 1987 17:00:00 GMT
 - request:
@@ -281,7 +281,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.11.0
       Authorization:
-      - Bearer 64097db6cafe924d1b2f39d943b9b7b0f7a05cd4
+      - Bearer e08a81cd1b995517fce873a10ccd01a056c3f817
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -294,7 +294,7 @@ http_interactions:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Tue, 18 Apr 2017 09:41:07 GMT
+      - Tue, 18 Apr 2017 09:40:59 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -302,7 +302,7 @@ http_interactions:
       Via:
       - 1.1 linkerd
       X-Moltin-Request-Id:
-      - 1454531a7cbf57ebd102d7ba8fc94c5901b37bca
+      - b14d0cbab2238630855d0e79dc40f0e36c3d3e13
       Access-Control-Allow-Origin:
       - "*"
     body:

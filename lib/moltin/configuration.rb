@@ -16,7 +16,8 @@ module Moltin
         products: { name: 'product', model: Moltin::Models::Brand },
         brands: { name: 'brand', model: Moltin::Models::Brand },
         categories: { name: 'category', model: Moltin::Models::Category },
-        parent: { name: 'category', model: Moltin::Models::Category }
+        parent: { name: 'category', model: Moltin::Models::Category },
+        children: { name: 'category', model: Moltin::Models::Category }
       }
     }.freeze
 
