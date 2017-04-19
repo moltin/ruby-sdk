@@ -3,7 +3,7 @@ module Moltin
     class Files < Resources::Base
       def create(data)
         data[:type] = type
-        response(call(:post, uri, data: data, json: false))
+        response(call(:post, uri, data: data, content_type: 'multipart/form-data'))
       end
 
       def update(_id, _data)
