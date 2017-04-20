@@ -170,7 +170,7 @@ module Moltin
         options[:query_params] = query_params if query_params
         options[:content_type] = content_type if content_type
 
-        @request.call(method, options)
+        request.call(method, options)
       end
 
       # Private: Instantiate a new Moltin::Utils::Request with the current config

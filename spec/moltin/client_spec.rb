@@ -31,5 +31,29 @@ module Moltin
         expect(Moltin::Client.new.products).to be_kind_of(Moltin::Resources::Products)
       end
     end
+
+    describe '#brands' do
+      it 'returns an instance of Moltin::Resources::Brands' do
+        expect(Moltin::Client.new.brands).to be_kind_of(Moltin::Resources::Brands)
+      end
+    end
+
+    describe '#categories' do
+      it 'returns an instance of Moltin::Resources::Categories' do
+        expect(Moltin::Client.new.categories).to be_kind_of(Moltin::Resources::Categories)
+      end
+    end
+
+    describe '#collections' do
+      it 'returns an instance of Moltin::Resources::Collections' do
+        expect(Moltin::Client.new.collections).to be_kind_of(Moltin::Resources::Collections)
+      end
+    end
+
+    describe '#files' do
+      it 'returns an instance of Moltin::Resources::Files' do
+        expect(Moltin::Client.new.files).to be_kind_of(Moltin::Resources::Files)
+      end
+    end
   end
 end

@@ -1,4 +1,6 @@
 require 'faraday'
+require 'json'
+require 'open-uri'
 
 require 'moltin/models/base'
 require 'moltin/models/attribute'
@@ -31,6 +33,10 @@ require 'moltin/client'
 module Moltin
   class << self
     attr_writer :configuration
+
+    def root
+      File.expand_path '../..', __FILE__
+    end
 
     # A Moltin configuration object. Must act like a hash and return values
     # for all Moltin configuration options. See Moltin::Configuration.

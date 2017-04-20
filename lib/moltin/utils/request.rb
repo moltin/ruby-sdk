@@ -78,6 +78,18 @@ module Moltin
         end
       end
 
+      def post_file(uri:, token:, file:, data:)
+        conn = Faraday.new(url: @base_url) do |f|
+          f.request :multipart
+          f.adapter :net_http
+        end
+
+        conn.authorization :Bearer, token
+
+        data[:file] = Faraday::UploadIO.new(file, 'image/jpeg')
+        conn.post(uri, data)
+      end
+
       # Public: Makes a PUT request to the Moltin API
       #
       # uri: - the URI to call

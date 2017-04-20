@@ -7,12 +7,12 @@ module Moltin
 
       before do
         ENV['MOLTIN_CLIENT_ID'] = ENV['FAKE_CLIENT_ID']
-        ENV['MOLTIN_CLIENT_SECRET'] = 'iFUwmVrwIOWwJrSR70gUtNQ5vIKRwc2RJVyXdid4tc'
+        ENV['MOLTIN_CLIENT_SECRET'] = ENV['FAKE_CLIENT_SECRET']
       end
 
       after do
         ENV.delete('MOLTIN_CLIENT_ID')
-        ENV.delete('MOLTIN_CLIENT_ID')
+        ENV.delete('MOLTIN_CLIENT_SECRET')
       end
 
       describe '#uri' do

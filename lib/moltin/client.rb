@@ -1,7 +1,11 @@
 module Moltin
   class Client
     RESOURCES = {
-      products: Moltin::Resources::Products
+      products: Moltin::Resources::Products,
+      brands: Moltin::Resources::Brands,
+      categories: Moltin::Resources::Categories,
+      collections: Moltin::Resources::Collections,
+      files: Moltin::Resources::Files
     }.freeze
 
     # The Moltin configuration.

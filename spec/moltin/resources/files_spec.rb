@@ -7,12 +7,12 @@ module Moltin
 
       before do
         ENV['MOLTIN_CLIENT_ID'] = ENV['FAKE_CLIENT_ID']
-        ENV['MOLTIN_CLIENT_SECRET'] = 'iFUwmVrwIOWwJrSR70gUtNQ5vIKRwc2RJVyXdid4tc'
+        ENV['MOLTIN_CLIENT_SECRET'] = ENV['FAKE_CLIENT_SECRET']
       end
 
       after do
         ENV.delete('MOLTIN_CLIENT_ID')
-        ENV.delete('MOLTIN_CLIENT_ID')
+        ENV.delete('MOLTIN_CLIENT_SECRET')
       end
 
       describe '#uri' do
@@ -103,6 +103,69 @@ module Moltin
 
             expect(response.data.id).to eq file.id
             expect(response.data).to be_kind_of(Moltin::Models::File)
+          end
+        end
+      end
+
+      describe '#create' do
+        context 'valid file' do
+          it 'creates a new file', freeze_time: true do
+            VCR.use_cassette('resources/files/create/valid') do
+              resource = Moltin::Resources::Files.new(config, {})
+              response = resource.create(Moltin.root + '/spec/fixtures/files/desk.jpg')
+
+              id = response.data.id
+              expect(id).not_to be_nil
+              expect(response.data).to be_kind_of(Moltin::Models::File)
+
+              response = resource.delete(response.data.id)
+              expect(response.data.id).to eq id
+            end
+          end
+        end
+
+        context 'remote file' do
+          it 'creates a new file', freeze_time: true do
+            VCR.use_cassette('resources/files/create/remote') do
+              resource = Moltin::Resources::Files.new(config, {})
+              response = resource.create('http://c93fea60bb98e121740fc38ff31162a8.s3.amazonaws.com/wp-content/uploads/2016/01/moltin_logo.png')
+
+              id = response.data.id
+              expect(id).not_to be_nil
+              expect(response.data.public).to eq true
+              expect(response.data).to be_kind_of(Moltin::Models::File)
+
+              response = resource.delete(response.data.id)
+              expect(response.data.id).to eq id
+            end
+          end
+        end
+
+        context 'with more attributes' do
+          it 'creates a new file as private', freeze_time: true do
+            VCR.use_cassette('resources/files/create/private') do
+              resource = Moltin::Resources::Files.new(config, {})
+              response = resource.create(Moltin.root + '/spec/fixtures/files/desk.jpg', public: false)
+
+              id = response.data.id
+              expect(id).not_to be_nil
+              expect(response.data.public).to eq false
+              expect(response.data).to be_kind_of(Moltin::Models::File)
+
+              response = resource.delete(response.data.id)
+              expect(response.data.id).to eq id
+            end
+          end
+        end
+
+        context 'invalid file' do
+          it 'receives the list of errors' do
+            VCR.use_cassette('resources/files/create/invalid') do
+              expect do
+                resource = Moltin::Resources::Files.new(config, {})
+                resource.create('/this/file/does/not/exist')
+              end.to raise_error(Errno::ENOENT)
+            end
           end
         end
       end
