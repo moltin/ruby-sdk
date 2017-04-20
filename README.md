@@ -94,9 +94,9 @@ moltin = Moltin::Client.new({
 })
 ```
 
-### Resources (Products, more coming soon)
+### Retrieve a list of resources: Products, Brands, Categories, Collections, Files (GET)
 
-#### Retrieve a list of resources (GET)
+The options presented in this section are available for `products`, `brands`, `categories`, `collections` and `files`. Check the [API docs](https://moltin.api-docs.io/v2/using-the-api) for the up-to-date options available for each type of resource.
 
 ```
 moltin.products.all
@@ -106,8 +106,6 @@ moltin.products.all
 #### Customizing the requests
 
 The requests to retrieve data from the API can be configured for pagination, sorting, filtering and including related resources.
-
-Check the [API docs](https://moltin.api-docs.io/v2/using-the-api) for the up-to-date options available for each type of resource.
 
 ##### Lazy Loading
 
@@ -216,23 +214,28 @@ moltin.limit(10).offset(10).sort('name').with(:brands).filter(eq: { status: 'dra
 
 #### Specific cases
 
-##### Fetching the category/brand/collection tree
+##### Fetching the categories tree
 
-Coming Soon.
+```
+moltin.categories.tree
+```
 
-#### Retrieve a single resource (GET)
+### Other interactions with resources
 
 ##### Products
 
 ```
+# Retrieve a list of products
+moltin.products.all
+```
+
+```
+# Retrieve a single product (GET)
 moltin.products.get(product_id)
 ```
 
-#### Create a resource (POST)
-
-##### Products
-
 ```
+# Create a product (POST)
 moltin.products.create({
   name: 'My Product',
   slug: 'my-product',
@@ -244,11 +247,8 @@ moltin.products.create({
 })
 ```
 
-#### Update a resource (POST)
-
-##### Products
-
 ```
+# Update a product (POST)
 moltin.products.update(product_id, {
   name: 'My Product',
   slug: 'my-product',
@@ -260,13 +260,160 @@ moltin.products.update(product_id, {
 })
 ```
 
-#### delete a resource (POST)
-
-##### Products
-
 ```
+# delete a product (POST)
 moltin.products.delete(product_id)
 ```
+
+##### Brands
+
+```
+# Retrieve a list of brands
+moltin.brands.all
+```
+
+```
+# Retrieve a single brand (GET)
+moltin.brands.get(brand_id)
+```
+
+```
+# Create a brand (POST)
+moltin.brands.create({
+  name: 'My Brand',
+  slug: 'my-brand1',
+  description: 'Super Brand',
+  status: 'live'
+})
+```
+
+```
+# Update a brand (POST)
+moltin.brands.update(brand_id, {
+  slug: 'my-brand1',
+  description: 'Super Brand',
+  status: 'live'
+})
+```
+
+```
+# delete a brand (POST)
+moltin.brands.delete(brand_id)
+```
+
+##### Categories
+
+```
+# Retrieve a list of categories
+moltin.categories.all
+```
+
+```
+# Retrieve a single category (GET)
+moltin.categories.get(category_id)
+```
+
+```
+# Create a category (POST)
+moltin.categories.create({
+  name: 'My Category',
+  slug: 'my-category1',
+  description: 'Super Category',
+  status: 'live'
+})
+```
+
+```
+# Update a category (POST)
+moltin.categories.update(category_id, {
+  slug: 'my-category1',
+  description: 'Super Category',
+  status: 'live'
+})
+```
+
+```
+# delete a category (POST)
+moltin.categories.delete(category_id)
+```
+
+```
+# Get the tree of categories
+moltin.categories.tree
+```
+
+##### Collections
+
+```
+# Retrieve a list of collections
+moltin.collections.all
+```
+
+```
+# Retrieve a single collection (GET)
+moltin.collections.get(collection_id)
+```
+
+```
+# Create a collection (POST)
+moltin.collections.create({
+  name: 'My Collection',
+  slug: 'my-collection',
+  description: 'Super Collection',
+  status: 'live'
+})
+```
+
+```
+# Update a collection (POST)
+moltin.collections.update(collection_id, {
+  slug: 'my-collection',
+  description: 'Super Collection',
+  status: 'live'
+})
+```
+
+```
+# delete a collection (POST)
+moltin.collections.delete(collection_id)
+```
+
+##### Files
+
+```
+# Retrieve a list of files
+moltin.files.all
+```
+
+```
+# Retrieve a single file (GET)
+moltin.files.get(file_id)
+```
+
+```
+# Create a file with local file (POST)
+moltin.files.create('/path/to/file', {
+  public: true
+})
+```
+
+```
+# Create a file with remote file (POST)
+# This will first download the file before
+# sending it to the Moltin API
+moltin.files.create('https://example.com/myfile', {
+  public: true
+})
+```
+
+```
+# delete a file (POST)
+moltin.files.delete(file_id)
+```
+
+##### Carts, Orders and Payments
+
+Coming Soon.
 
 #### Relationships
 
@@ -301,19 +448,7 @@ moltin.products.delete_relationships(product_id, 'brands', [brand_id]);
 moltin.products.update_relationships(product_id, 'brands', []);
 ```
 
-### Files
-
-Coming Soon.
-
-### Carts, Orders and Payments
-
-Coming Soon.
-
 ### Handling Exceptions
-
-Coming Soon.
-
-### Examples
 
 Coming Soon.
 
