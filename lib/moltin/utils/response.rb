@@ -3,10 +3,11 @@ module Moltin
     class Response
       attr_accessor :body
 
-      def initialize(model, resp)
+      def initialize(model, resp, client = nil)
         @model = model
         @status = resp[:status]
         @body = resp[:body]
+        @client = client
       end
 
       def errors
@@ -23,10 +24,10 @@ module Moltin
 
         if @body['data'].is_a?(Array)
           @body['data'].map do |attributes|
-            @model.new(attributes)
+            @model.new(attributes, @client)
           end
         else
-          @model.new(@body['data'] || @body)
+          @model.new(@body['data'] || @body, @client)
         end
       end
 
@@ -40,6 +41,15 @@ module Moltin
 
       def meta
         @body['meta'] || {}
+      end
+
+      def method_missing(method, *args)
+        super unless data.respond_to?(method)
+        data.send(method, *args)
+      end
+
+      def respond_to_missing?(method, include_private = false)
+        data.respond_to?(method) || super
       end
     end
   end

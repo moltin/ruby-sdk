@@ -5,7 +5,13 @@ module Moltin
       brands: Moltin::Resources::Brands,
       categories: Moltin::Resources::Categories,
       collections: Moltin::Resources::Collections,
-      files: Moltin::Resources::Files
+      files: Moltin::Resources::Files,
+      carts: Moltin::Resources::Carts,
+      items: Moltin::Resources::CartItems,
+      orders: Moltin::Resources::Orders,
+      order_items: Moltin::Resources::OrderItems,
+      transactions: Moltin::Resources::Transactions,
+      payments: Moltin::Resources::Payments
     }.freeze
 
     # The Moltin configuration.
@@ -22,8 +28,8 @@ module Moltin
     end
 
     RESOURCES.each do |resource, klass|
-      define_method resource do
-        klass.new(@config, @storage)
+      define_method resource do |options = {}|
+        klass.new(@config, @storage, options, self)
       end
     end
 

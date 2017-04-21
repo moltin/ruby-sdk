@@ -1,11 +1,13 @@
 module Moltin
   module Resources
     class Base
-      attr_accessor :config, :storage
+      attr_accessor :config, :storage, :options, :client
 
-      def initialize(config, storage)
+      def initialize(config, storage, options = {}, client = nil)
+        @client = client
         @config = config
         @storage = storage
+        @options = options
       end
 
       # Public: Get a criteria and call the #all method on it
@@ -86,7 +88,7 @@ module Moltin
       #
       # Returns a Moltin::Utils::Response
       def create(data)
-        data[:type] = type
+        data[:type] ||= type
         response(call(:post, uri, data: data))
       end
 
@@ -151,7 +153,7 @@ module Moltin
       #
       # Returns a Moltin::Utils::Response
       def response(resp, model: model_name)
-        Moltin::Utils::Response.new(model, resp)
+        Moltin::Utils::Response.new(model, resp, client)
       end
 
       # Private: Prepare a request payload before using a Moltin::Utils::Request

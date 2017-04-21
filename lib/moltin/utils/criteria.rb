@@ -2,7 +2,7 @@ module Moltin
   module Utils
     class Criteria
       extend Forwardable
-      def_delegators :response, :errors, :data, :links, :included, :meta
+      def_delegators :response, :first, :last, :errors, :data, :links, :included, :meta
 
       def initialize(klass, uri)
         @klass = klass
