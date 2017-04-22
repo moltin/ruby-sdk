@@ -1,0 +1,84 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.moltin.com/oauth/access_token
+    body:
+      encoding: UTF-8
+      string: client_id=FTtrUHsKHstAOtAhN2VjKbpvK08ZXOKZ0GAQaiIAcc&client_secret=iFUwmVrwIOWwJrSR70gUtNQ5vIKRwc2RJVyXdid4tc&grant_type=client_credentials
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Sat, 22 Apr 2017 02:40:17 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Auth-Served-By:
+      - Moltin-Auth
+      X-Moltin-Request-Id:
+      - 9bc08ca64285f024d5390dff1c64780e36a0ad81
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {"expires":1492832417,"identifier":"client_credentials","expires_in":3600,"access_token":"0c52a8b6cd60fbfcdbe633387adbdd5fbd655b86","token_type":"Bearer"}
+    http_version: 
+  recorded_at: Sat, 26 Sep 1987 17:00:00 GMT
+- request:
+    method: put
+    uri: https://api.moltin.com/v2/gateways/stripe
+    body:
+      encoding: UTF-8
+      string: '{"data":{"login":"test"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer 0c52a8b6cd60fbfcdbe633387adbdd5fbd655b86
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Sat, 22 Apr 2017 02:40:19 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - d38e15e98dfb0696fd47ac56e509ab0f548d0e71
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"enabled":false,"login":"test","name":"Stripe","slug":"stripe","type":"gateway"}}'
+    http_version: 
+  recorded_at: Sat, 26 Sep 1987 17:00:00 GMT
+recorded_with: VCR 3.0.3

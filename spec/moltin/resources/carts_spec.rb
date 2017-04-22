@@ -93,8 +93,8 @@ module Moltin
             cart.add(id: products[1].id).data
             cart.add(id: products[2].id).data
 
-            cart = client.carts.get('my_secret_cart').data
-            expect(cart.meta['display_price']['with_tax']['amount']).to eq(750)
+            expect(cart.items.length).to eq(3)
+            expect(client.carts.get('my_secret_cart').items.length).to eq(3)
           end
         end
       end
@@ -187,7 +187,7 @@ module Moltin
       end
 
       describe '#checkout' do
-        it 'checks out the cart and generate an order', freeze_time: true  do
+        it 'checks out the cart and generate an order', freeze_time: true do
           VCR.use_cassette('resources/carts/checkout') do
             client.carts.delete('my_secret_cart')
 

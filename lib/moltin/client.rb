@@ -11,7 +11,8 @@ module Moltin
       orders: Moltin::Resources::Orders,
       order_items: Moltin::Resources::OrderItems,
       transactions: Moltin::Resources::Transactions,
-      payments: Moltin::Resources::Payments
+      payments: Moltin::Resources::Payments,
+      gateways: Moltin::Resources::Gateways
     }.freeze
 
     # The Moltin configuration.

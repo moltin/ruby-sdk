@@ -70,7 +70,7 @@ module Moltin
             expect(response.included).to eq({})
             expect(response.meta).not_to be_nil
 
-            expect(response.data.length).to eq 14
+            expect(response.data.length).to eq 25
           end
         end
       end
@@ -98,6 +98,39 @@ module Moltin
             expect(items.length).to eq 1
           end
         end
+      end
+
+      describe '#pay' do
+        it 'pays for the order', freeze_time: true # do
+        #   VCR.use_cassette('resources/orders/pay') do
+        #     client.gateways.update('stripe', {
+        #       login: 'sk_test_gRJKVmpX8UGWBpUp25p7Gp7f'
+        #     })
+        #     create_order
+        #     order = client.orders.all.data.first
+        #     payment = order.pay({
+        #       gateway: "stripe",
+        #       method: "purchase",
+        #       first_name: "John",
+        #       last_name: "Doe",
+        #       number: "4242424242424242",
+        #       month: "08",
+        #       year: "2020",
+        #       verification_value: "123"
+        #     })
+        #     p payment
+        #   end
+        # end
+      end
+
+      describe '#transactions' do
+        it 'receives the transactions', freeze_time: true # do
+        # VCR.use_cassette('resources/orders/transactions') do
+        #   create_order
+        #   order = client.orders.all.data.first
+        #   transactions = order.transactions.data
+        # end
+        # end
       end
     end
   end

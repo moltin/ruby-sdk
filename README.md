@@ -411,9 +411,28 @@ moltin.files.create('https://example.com/myfile', {
 moltin.files.delete(file_id)
 ```
 
-##### Carts, Orders and Payments
+##### Gateways
 
-Coming Soon.
+Payment gateways can be managed through the SDK.
+
+```
+# Get all suported gateways
+moltin.gateways.all
+```
+
+```
+# Update a gateway
+moltin.gateways.update('stripe', {
+  enabled: 'true',
+  login: 'stripe_login'
+})
+```
+
+```
+# Shortcut to enable or disable a gateway
+moltin.gateways.enable('stripe')
+moltin.gateways.disable('stripe')
+```
 
 #### Relationships
 
@@ -446,6 +465,106 @@ moltin.products.delete_relationships(product_id, 'brands', [brand_id]);
 
 # (Or an update with an empty array achieves the same result if you're so inclined):
 moltin.products.update_relationships(product_id, 'brands', []);
+```
+
+### Carts, Orders and Payments
+
+#### Carts - [Docs](https://moltin.api-docs.io/v2/carts)
+
+Carts are automatically created when retrieving them. You need to pass a unique reference that will be used to get that cart later on.
+
+```
+# Get a cart (or create it if it doesn't exist)
+cart = moltin.carts.get('unique_reference')
+```
+
+```
+# Add a product
+cart.add({ id: product_id }) # Adds one of the product identified by product_id
+cart.add({ id: product_id, quantity: 3 }) # Adds 3 more - total is now 4
+```
+
+```
+# Add a custom product
+cart.add(
+  name: 'Tax',
+  sku: 'tax-calc',
+  description: 'Custom tax calculation for this order',
+  quantity: 1,
+  price: {
+   amount: 2000
+  }
+)
+```
+
+```
+# Get all the items for a cart
+moltin.carts.get('unique_reference').items
+
+# Or if you have a cart object
+cart.items
+```
+
+```
+# Update an item
+cart.update(cart_item_id, { quantity: 3 })
+```
+
+```
+# Remove an item
+cart.remove(cart_item_id)
+```
+
+A cart can be converted to an order (which can then be paid) with the `checkout` method:
+
+```
+# Create an order from a cart
+customer = {}
+billing = {}
+shipping = {}
+
+client.carts.checkout('unique_reference', customer: customer,
+                                          billing: billing,
+                                          shipping: shipping)
+
+# Or if you have a cart object
+cart = client.carts.get('unique_reference')
+cart.checkout(customer: customer, billing: billing, shipping: shipping)                                          
+```
+
+#### Orders - [Docs](https://moltin.api-docs.io/v2/orders)
+
+```
+# Get all orders
+moltin.orders.all
+
+# Get a specific order
+moltin.orders.get(id)
+
+# Get an order items
+moltin.orders.get(id).items
+
+# Get an order transactions
+moltin.orders.get(id).transactions
+```
+
+#### Payments - [Docs](https://moltin.api-docs.io/v2/paying-for-an-order)
+
+Check the documentation for the parameters that can be sent through the `pay` method. They will be sent to the API as provided (the only change is a wrapping of the given hash under the `data` key).
+
+```
+# Paying for an order
+order = moltin.orders.get(id)
+payment = order.pay({
+  gateway: 'stripe',
+  method: 'purchase',
+  first_name: 'John',
+  last_name: 'Doe',
+  number: '4242424242424242',
+  month: '08',
+  year: '2020',
+  verification_value: '123'
+})
 ```
 
 ### Handling Exceptions

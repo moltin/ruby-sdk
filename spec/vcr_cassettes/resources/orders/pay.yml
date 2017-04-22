@@ -23,7 +23,7 @@ http_interactions:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Fri, 21 Apr 2017 15:14:10 GMT
+      - Sat, 22 Apr 2017 02:57:17 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -31,15 +31,55 @@ http_interactions:
       X-Auth-Served-By:
       - Moltin-Auth
       X-Moltin-Request-Id:
-      - 448762a12ac96875a44ac8996a4aa660ecf262da
+      - 6375b0184630bbd9554e62b288c7aa3dae2c5317
       Access-Control-Allow-Origin:
       - "*"
     body:
       encoding: ASCII-8BIT
       string: |
-        {"expires":1492791250,"identifier":"client_credentials","expires_in":3600,"access_token":"e1b92d20565ce41b8efccd7f8348f190c994b6eb","token_type":"Bearer"}
+        {"expires":1492833437,"identifier":"client_credentials","expires_in":3600,"access_token":"a4610511897864549b316feeeb4849db9967366e","token_type":"Bearer"}
     http_version: 
-  recorded_at: Fri, 25 Sep 1987 17:00:00 GMT
+  recorded_at: Sat, 26 Sep 1987 17:00:00 GMT
+- request:
+    method: put
+    uri: https://api.moltin.com/v2/gateways/stripe
+    body:
+      encoding: UTF-8
+      string: '{"data":{"login":"sk_test_gRJKVmpX8UGWBpUp25p7Gp7f"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer a4610511897864549b316feeeb4849db9967366e
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 500
+      message: Internal Server Error
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Sat, 22 Apr 2017 02:57:18 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '147'
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - 8d90ddae882cfce5509895da55d63d28f67aa429
+    body:
+      encoding: ASCII-8BIT
+      string: '{"errors":[{"status":500,"title":"InternalServerError","detail":"Could
+        not retreive store currency settings","request_id":"fa8295db7f5689f8"}]}'
+    http_version: 
+  recorded_at: Sat, 26 Sep 1987 17:00:00 GMT
 - request:
     method: delete
     uri: https://api.moltin.com/v2/carts/my_secret_cart
@@ -50,7 +90,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.11.0
       Authorization:
-      - Bearer e1b92d20565ce41b8efccd7f8348f190c994b6eb
+      - Bearer a4610511897864549b316feeeb4849db9967366e
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -63,7 +103,7 @@ http_interactions:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Fri, 21 Apr 2017 15:14:11 GMT
+      - Sat, 22 Apr 2017 02:57:19 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -71,14 +111,14 @@ http_interactions:
       Via:
       - 1.1 linkerd
       X-Moltin-Request-Id:
-      - 49e61d6b4a624689bab386e397831028350279ee
+      - 1dea3957af80bfc1fe183807ea7150c0c9441488
       Access-Control-Allow-Origin:
       - "*"
     body:
       encoding: ASCII-8BIT
       string: '{"data":[{"type":"cart","id":"my_secret_cart"}]}'
     http_version: 
-  recorded_at: Fri, 25 Sep 1987 17:00:00 GMT
+  recorded_at: Sat, 26 Sep 1987 17:00:00 GMT
 - request:
     method: get
     uri: https://api.moltin.com/v2/carts/my_future_order
@@ -89,7 +129,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.11.0
       Authorization:
-      - Bearer e1b92d20565ce41b8efccd7f8348f190c994b6eb
+      - Bearer a4610511897864549b316feeeb4849db9967366e
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -102,7 +142,7 @@ http_interactions:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Fri, 21 Apr 2017 15:14:12 GMT
+      - Sat, 22 Apr 2017 02:57:21 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -110,14 +150,14 @@ http_interactions:
       Via:
       - 1.1 linkerd
       X-Moltin-Request-Id:
-      - f1c9b6c0bbfe48fe8ea2d9c706e187b5708ec521
+      - acfd5b5767bd30be6cdc1d41f6c5ab4f058d1794
       Access-Control-Allow-Origin:
       - "*"
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"my_future_order","type":"cart","links":{"self":"https://api.moltin.com/carts/my_future_order"},"meta":{"display_price":{"with_tax":{"amount":3000,"currency":"USD","formatted":"$30.00"},"without_tax":{"amount":3000,"currency":"USD","formatted":"$30.00"}},"timestamps":{"created_at":"0001-01-01T00:00:00Z","updated_at":"0001-01-01T00:00:00Z"}}}}'
+      string: '{"data":{"id":"my_future_order","type":"cart","links":{"self":"https://api.moltin.com/carts/my_future_order"},"meta":{"display_price":{"with_tax":{"amount":4250,"currency":"USD","formatted":"$42.50"},"without_tax":{"amount":4250,"currency":"USD","formatted":"$42.50"}},"timestamps":{"created_at":"0001-01-01T00:00:00Z","updated_at":"0001-01-01T00:00:00Z"}}}}'
     http_version: 
-  recorded_at: Fri, 25 Sep 1987 17:00:00 GMT
+  recorded_at: Sat, 26 Sep 1987 17:00:00 GMT
 - request:
     method: post
     uri: https://api.moltin.com/oauth/access_token
@@ -141,7 +181,7 @@ http_interactions:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Fri, 21 Apr 2017 15:14:13 GMT
+      - Sat, 22 Apr 2017 02:57:22 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -149,15 +189,15 @@ http_interactions:
       X-Auth-Served-By:
       - Moltin-Auth
       X-Moltin-Request-Id:
-      - af97cba0477a1a3f82d5b5012efb5f49b3df31c2
+      - 299b990424fc33f254503bcf31d59604d300c7db
       Access-Control-Allow-Origin:
       - "*"
     body:
       encoding: ASCII-8BIT
       string: |
-        {"expires":1492791253,"identifier":"client_credentials","expires_in":3600,"access_token":"f21604c448f79fd82e010454f5ff17613d693056","token_type":"Bearer"}
+        {"expires":1492833442,"identifier":"client_credentials","expires_in":3600,"access_token":"5372e253de0ad6bb2888cddc6a94af081c455160","token_type":"Bearer"}
     http_version: 
-  recorded_at: Fri, 25 Sep 1987 17:00:00 GMT
+  recorded_at: Sat, 26 Sep 1987 17:00:00 GMT
 - request:
     method: get
     uri: https://api.moltin.com/v2/products
@@ -168,7 +208,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.11.0
       Authorization:
-      - Bearer f21604c448f79fd82e010454f5ff17613d693056
+      - Bearer 5372e253de0ad6bb2888cddc6a94af081c455160
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -181,7 +221,7 @@ http_interactions:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Fri, 21 Apr 2017 15:14:15 GMT
+      - Sat, 22 Apr 2017 02:57:23 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -189,7 +229,7 @@ http_interactions:
       Via:
       - 1.1 linkerd
       X-Moltin-Request-Id:
-      - ccc0ea0fc156605ace82d7b6350b19550e26d270
+      - 6739a19b086d973f1acff91d35bd57cba75e1f05
       Access-Control-Allow-Origin:
       - "*"
     body:
@@ -3568,7 +3608,7 @@ http_interactions:
         dHMiOnsidG90YWwiOjc2LCJhbGwiOjc2fSwicGFnZSI6eyJsaW1pdCI6MTAw
         LCJvZmZzZXQiOjAsImN1cnJlbnQiOjEsInRvdGFsIjoxfX19
     http_version: 
-  recorded_at: Fri, 25 Sep 1987 17:00:00 GMT
+  recorded_at: Sat, 26 Sep 1987 17:00:00 GMT
 - request:
     method: post
     uri: https://api.moltin.com/v2/carts/my_future_order/items
@@ -3579,7 +3619,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.11.0
       Authorization:
-      - Bearer e1b92d20565ce41b8efccd7f8348f190c994b6eb
+      - Bearer a4610511897864549b316feeeb4849db9967366e
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -3594,7 +3634,7 @@ http_interactions:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Fri, 21 Apr 2017 15:14:18 GMT
+      - Sat, 22 Apr 2017 02:57:25 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -3602,15 +3642,15 @@ http_interactions:
       Via:
       - 1.1 linkerd
       X-Moltin-Request-Id:
-      - 0ddb0b17cc679cf24c4a666c7ddde7f99c73e93a
+      - ad0924db26c13d88a68f60652f3088ca9121fcba
       Access-Control-Allow-Origin:
       - "*"
     body:
       encoding: ASCII-8BIT
       string: '{"data":[{"id":"5e49aaa2-313a-431b-9ed4-48ec26079b88","type":"cart_item","product_id":"885b8844-e74e-4ed7-9901-f34b0033e00d","name":"My
-        Product","description":"Super Product","sku":"123","quantity":13,"unit_price":{"amount":250,"currency":"USD","includes_tax":true},"value":{"amount":3250,"currency":"USD","includes_tax":true},"links":{"product":"https://api.moltin.com/products/885b8844-e74e-4ed7-9901-f34b0033e00d"},"meta":{"display_price":{"with_tax":{"unit":{"amount":250,"currency":"USD","formatted":"$2.50"},"value":{"amount":3250,"currency":"USD","formatted":"$32.50"}},"without_tax":{"unit":{"amount":250,"currency":"USD","formatted":"$2.50"},"value":{"amount":3250,"currency":"USD","formatted":"$32.50"}}},"timestamps":{"created_at":"2017-04-21T12:02:39.142Z","updated_at":"2017-04-21T15:14:18.079978511Z"}}}],"meta":{"display_price":{"with_tax":{"amount":3250,"currency":"USD","formatted":"$32.50"},"without_tax":{"amount":3250,"currency":"USD","formatted":"$32.50"}},"timestamps":{"created_at":"0001-01-01T00:00:00Z","updated_at":"0001-01-01T00:00:00Z"}}}'
+        Product","description":"Super Product","sku":"123","quantity":18,"unit_price":{"amount":250,"currency":"USD","includes_tax":true},"value":{"amount":4500,"currency":"USD","includes_tax":true},"links":{"product":"https://api.moltin.com/products/885b8844-e74e-4ed7-9901-f34b0033e00d"},"meta":{"display_price":{"with_tax":{"unit":{"amount":250,"currency":"USD","formatted":"$2.50"},"value":{"amount":4500,"currency":"USD","formatted":"$45.00"}},"without_tax":{"unit":{"amount":250,"currency":"USD","formatted":"$2.50"},"value":{"amount":4500,"currency":"USD","formatted":"$45.00"}}},"timestamps":{"created_at":"2017-04-21T12:02:39.142Z","updated_at":"2017-04-22T02:57:25.245926602Z"}}}],"meta":{"display_price":{"with_tax":{"amount":4500,"currency":"USD","formatted":"$45.00"},"without_tax":{"amount":4500,"currency":"USD","formatted":"$45.00"}},"timestamps":{"created_at":"0001-01-01T00:00:00Z","updated_at":"0001-01-01T00:00:00Z"}}}'
     http_version: 
-  recorded_at: Fri, 25 Sep 1987 17:00:00 GMT
+  recorded_at: Sat, 26 Sep 1987 17:00:00 GMT
 - request:
     method: post
     uri: https://api.moltin.com/v2/carts/my_future_order/checkout
@@ -3625,7 +3665,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.11.0
       Authorization:
-      - Bearer e1b92d20565ce41b8efccd7f8348f190c994b6eb
+      - Bearer a4610511897864549b316feeeb4849db9967366e
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -3640,7 +3680,7 @@ http_interactions:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Fri, 21 Apr 2017 15:14:20 GMT
+      - Sat, 22 Apr 2017 02:57:26 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -3648,18 +3688,18 @@ http_interactions:
       Via:
       - 1.1 linkerd
       X-Moltin-Request-Id:
-      - fb48fcbf42c360fa6cb72f5e6e8d072c65e4ebea
+      - a996376e203e4aaa3392619220ae5bf8113da2a7
       Access-Control-Allow-Origin:
       - "*"
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"type":"order","id":"b481f456-2dc1-434f-89f9-28ebcf19dcbd","status":"incomplete","payment":"unpaid","shipping":"not_shipped","customer":{"name":"Billy","email":"billy@billy.com"},"shipping_address":{"first_name":"Otis","last_name":"Sedmak","company_name":"Sedmak
+      string: '{"data":{"type":"order","id":"da1a125b-b0bd-493c-b756-c1737630da4f","status":"incomplete","payment":"unpaid","shipping":"not_shipped","customer":{"name":"Billy","email":"billy@billy.com"},"shipping_address":{"first_name":"Otis","last_name":"Sedmak","company_name":"Sedmak
         & Co.","line_1":"1251, Rexmere Ave","line_2":"Farmingville, Suffolk","postcode":"11738","county":"New
         York","country":"US","instructions":"Leave in porch"},"billing_address":{"first_name":"Jack","last_name":"Macdowall","company_name":"Macdowalls","line_1":"1225
         Invention Avenue","line_2":"Birmingham","postcode":"B21 9AF","county":"West
-        Midlands","country":"UK"},"links":{},"meta":{"display_price":{"with_tax":{"amount":3250,"currency":"USD","formatted":"$32.50"},"without_tax":{"amount":3250,"currency":"USD","formatted":"$32.50"}},"timestamps":{"created_at":"2017-04-21T15:14:20.230649079Z","updated_at":"2017-04-21T15:14:20.230649527Z"}},"relationships":{"items":[{"data":{"type":"item","id":"7f75ff8b-6252-4fd0-b71a-8db98f5b0857"}}]}}}'
+        Midlands","country":"UK"},"links":{},"meta":{"display_price":{"with_tax":{"amount":4500,"currency":"USD","formatted":"$45.00"},"without_tax":{"amount":4500,"currency":"USD","formatted":"$45.00"}},"timestamps":{"created_at":"2017-04-22T02:57:26.418208183Z","updated_at":"2017-04-22T02:57:26.418208736Z"}},"relationships":{"items":[{"data":{"type":"item","id":"347099ad-26d2-4a08-962b-61c0f9b8c82b"}}]}}}'
     http_version: 
-  recorded_at: Fri, 25 Sep 1987 17:00:00 GMT
+  recorded_at: Sat, 26 Sep 1987 17:00:00 GMT
 - request:
     method: get
     uri: https://api.moltin.com/v2/orders
@@ -3670,7 +3710,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.11.0
       Authorization:
-      - Bearer e1b92d20565ce41b8efccd7f8348f190c994b6eb
+      - Bearer a4610511897864549b316feeeb4849db9967366e
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -3683,7 +3723,7 @@ http_interactions:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Fri, 21 Apr 2017 15:14:21 GMT
+      - Sat, 22 Apr 2017 02:57:27 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -3691,12 +3731,16 @@ http_interactions:
       Via:
       - 1.1 linkerd
       X-Moltin-Request-Id:
-      - 63d41c8b24df26a4ba4ee143849254e4036dcca8
+      - aed8bbe99ae1d402c3c36f5105253e52b1cad8fa
       Access-Control-Allow-Origin:
       - "*"
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"type":"order","id":"06313dc0-58f2-4d52-afed-c064e52ae9e3","status":"incomplete","payment":"unpaid","shipping":"not_shipped","customer":{"name":"Billy","email":"billy@billy.com"},"shipping_address":{"first_name":"Otis","last_name":"Sedmak","company_name":"Sedmak
+      string: '{"data":[{"type":"order","id":"006301c7-c77f-429a-9485-d99c310adc45","status":"incomplete","payment":"unpaid","shipping":"not_shipped","customer":{"name":"Billy","email":"billy@billy.com"},"shipping_address":{"first_name":"Otis","last_name":"Sedmak","company_name":"Sedmak
+        & Co.","line_1":"1251, Rexmere Ave","line_2":"Farmingville, Suffolk","postcode":"11738","county":"New
+        York","country":"US","instructions":"Leave in porch"},"billing_address":{"first_name":"Jack","last_name":"Macdowall","company_name":"Macdowalls","line_1":"1225
+        Invention Avenue","line_2":"Birmingham","postcode":"B21 9AF","county":"West
+        Midlands","country":"UK"},"links":{},"meta":{"display_price":{"with_tax":{"amount":250,"currency":"USD","formatted":"$2.50"},"without_tax":{"amount":250,"currency":"USD","formatted":"$2.50"}},"timestamps":{"created_at":"2017-04-21T15:24:14.707Z","updated_at":"2017-04-21T15:24:14.707Z"}},"relationships":{"items":[{"data":{"type":"item","id":"1cb4b67b-45d8-49cb-980c-53d6a6128de4"}}]}},{"type":"order","id":"06313dc0-58f2-4d52-afed-c064e52ae9e3","status":"incomplete","payment":"unpaid","shipping":"not_shipped","customer":{"name":"Billy","email":"billy@billy.com"},"shipping_address":{"first_name":"Otis","last_name":"Sedmak","company_name":"Sedmak
         & Co.","line_1":"1251, Rexmere Ave","line_2":"Farmingville, Suffolk","postcode":"11738","county":"New
         York","country":"US","instructions":"Leave in porch"},"billing_address":{"first_name":"Jack","last_name":"Macdowall","company_name":"Macdowalls","line_1":"1225
         Invention Avenue","line_2":"Birmingham","postcode":"B21 9AF","county":"West
@@ -3712,7 +3756,11 @@ http_interactions:
         & Co.","line_1":"1251, Rexmere Ave","line_2":"Farmingville, Suffolk","postcode":"11738","county":"New
         York","country":"US","instructions":"Leave in porch"},"billing_address":{"first_name":"Jack","last_name":"Macdowall","company_name":"Macdowalls","line_1":"1225
         Invention Avenue","line_2":"Birmingham","postcode":"B21 9AF","county":"West
-        Midlands","country":"UK"},"links":{},"meta":{"display_price":{"with_tax":{"amount":250,"currency":"USD","formatted":"$2.50"},"without_tax":{"amount":250,"currency":"USD","formatted":"$2.50"}},"timestamps":{"created_at":"2017-04-21T14:13:50.73Z","updated_at":"2017-04-21T14:13:50.73Z"}},"relationships":{"items":[{"data":{"type":"item","id":"5b820b67-c149-4d19-be09-fda165c5b91b"}}]}},{"type":"order","id":"25368386-f14b-4184-b7e1-801402af87a0","status":"incomplete","payment":"unpaid","shipping":"not_shipped","customer":{"name":"Billy","email":"billy@billy.com"},"shipping_address":{"first_name":"Otis","last_name":"Sedmak","company_name":"Sedmak
+        Midlands","country":"UK"},"links":{},"meta":{"display_price":{"with_tax":{"amount":250,"currency":"USD","formatted":"$2.50"},"without_tax":{"amount":250,"currency":"USD","formatted":"$2.50"}},"timestamps":{"created_at":"2017-04-21T14:13:50.73Z","updated_at":"2017-04-21T14:13:50.73Z"}},"relationships":{"items":[{"data":{"type":"item","id":"5b820b67-c149-4d19-be09-fda165c5b91b"}}]}},{"type":"order","id":"1384ea9b-5edd-4251-8d1e-f123c72a8908","status":"incomplete","payment":"unpaid","shipping":"not_shipped","customer":{"name":"Billy","email":"billy@billy.com"},"shipping_address":{"first_name":"Otis","last_name":"Sedmak","company_name":"Sedmak
+        & Co.","line_1":"1251, Rexmere Ave","line_2":"Farmingville, Suffolk","postcode":"11738","county":"New
+        York","country":"US","instructions":"Leave in porch"},"billing_address":{"first_name":"Jack","last_name":"Macdowall","company_name":"Macdowalls","line_1":"1225
+        Invention Avenue","line_2":"Birmingham","postcode":"B21 9AF","county":"West
+        Midlands","country":"UK"},"links":{},"meta":{"display_price":{"with_tax":{"amount":3500,"currency":"USD","formatted":"$35.00"},"without_tax":{"amount":3500,"currency":"USD","formatted":"$35.00"}},"timestamps":{"created_at":"2017-04-22T02:45:07.34Z","updated_at":"2017-04-22T02:45:07.34Z"}},"relationships":{"items":[{"data":{"type":"item","id":"a518b354-6360-492b-be60-f55aa6f4414c"}}]}},{"type":"order","id":"25368386-f14b-4184-b7e1-801402af87a0","status":"incomplete","payment":"unpaid","shipping":"not_shipped","customer":{"name":"Billy","email":"billy@billy.com"},"shipping_address":{"first_name":"Otis","last_name":"Sedmak","company_name":"Sedmak
         & Co.","line_1":"1251, Rexmere Ave","line_2":"Farmingville, Suffolk","postcode":"11738","county":"New
         York","country":"US","instructions":"Leave in porch"},"billing_address":{"first_name":"Jack","last_name":"Macdowall","company_name":"Macdowalls","line_1":"1225
         Invention Avenue","line_2":"Birmingham","postcode":"B21 9AF","county":"West
@@ -3744,7 +3792,11 @@ http_interactions:
         & Co.","line_1":"1251, Rexmere Ave","line_2":"Farmingville, Suffolk","postcode":"11738","county":"New
         York","country":"US","instructions":"Leave in porch"},"billing_address":{"first_name":"Jack","last_name":"Macdowall","company_name":"Macdowalls","line_1":"1225
         Invention Avenue","line_2":"Birmingham","postcode":"B21 9AF","county":"West
-        Midlands","country":"UK"},"links":{},"meta":{"display_price":{"with_tax":{"amount":1500,"currency":"USD","formatted":"$15.00"},"without_tax":{"amount":1500,"currency":"USD","formatted":"$15.00"}},"timestamps":{"created_at":"2017-04-21T11:36:41.902Z","updated_at":"2017-04-21T11:36:41.902Z"}},"relationships":{"items":[{"data":{"type":"item","id":"0e5ad851-741f-45ed-b13e-c0d95e3253c2"}}]}},{"type":"order","id":"60f798b3-7f7a-40ab-8fef-79b0b3a642fa","status":"incomplete","payment":"unpaid","shipping":"not_shipped","customer":{"name":"Billy","email":"billy@billy.com"},"shipping_address":{"first_name":"Otis","last_name":"Sedmak","company_name":"Sedmak
+        Midlands","country":"UK"},"links":{},"meta":{"display_price":{"with_tax":{"amount":1500,"currency":"USD","formatted":"$15.00"},"without_tax":{"amount":1500,"currency":"USD","formatted":"$15.00"}},"timestamps":{"created_at":"2017-04-21T11:36:41.902Z","updated_at":"2017-04-21T11:36:41.902Z"}},"relationships":{"items":[{"data":{"type":"item","id":"0e5ad851-741f-45ed-b13e-c0d95e3253c2"}}]}},{"type":"order","id":"4c6f28af-78d5-482f-86f1-9f17b659e67b","status":"incomplete","payment":"unpaid","shipping":"not_shipped","customer":{"name":"Billy","email":"billy@billy.com"},"shipping_address":{"first_name":"Otis","last_name":"Sedmak","company_name":"Sedmak
+        & Co.","line_1":"1251, Rexmere Ave","line_2":"Farmingville, Suffolk","postcode":"11738","county":"New
+        York","country":"US","instructions":"Leave in porch"},"billing_address":{"first_name":"Jack","last_name":"Macdowall","company_name":"Macdowalls","line_1":"1225
+        Invention Avenue","line_2":"Birmingham","postcode":"B21 9AF","county":"West
+        Midlands","country":"UK"},"links":{},"meta":{"display_price":{"with_tax":{"amount":3750,"currency":"USD","formatted":"$37.50"},"without_tax":{"amount":3750,"currency":"USD","formatted":"$37.50"}},"timestamps":{"created_at":"2017-04-22T02:50:33.684Z","updated_at":"2017-04-22T02:50:33.684Z"}},"relationships":{"items":[{"data":{"type":"item","id":"36f24d20-b3e4-4ce2-b960-f75c3aa3ee0d"}}]}},{"type":"order","id":"60f798b3-7f7a-40ab-8fef-79b0b3a642fa","status":"incomplete","payment":"unpaid","shipping":"not_shipped","customer":{"name":"Billy","email":"billy@billy.com"},"shipping_address":{"first_name":"Otis","last_name":"Sedmak","company_name":"Sedmak
         & Co.","line_1":"1251, Rexmere Ave","line_2":"Farmingville, Suffolk","postcode":"11738","county":"New
         York","country":"US","instructions":"Leave in porch"},"billing_address":{"first_name":"Jack","last_name":"Macdowall","company_name":"Macdowalls","line_1":"1225
         Invention Avenue","line_2":"Birmingham","postcode":"B21 9AF","county":"West
@@ -3764,11 +3816,23 @@ http_interactions:
         & Co.","line_1":"1251, Rexmere Ave","line_2":"Farmingville, Suffolk","postcode":"11738","county":"New
         York","country":"US","instructions":"Leave in porch"},"billing_address":{"first_name":"Jack","last_name":"Macdowall","company_name":"Macdowalls","line_1":"1225
         Invention Avenue","line_2":"Birmingham","postcode":"B21 9AF","county":"West
-        Midlands","country":"UK"},"links":{},"meta":{"display_price":{"with_tax":{"amount":3250,"currency":"USD","formatted":"$32.50"},"without_tax":{"amount":3250,"currency":"USD","formatted":"$32.50"}},"timestamps":{"created_at":"2017-04-21T15:14:20.23Z","updated_at":"2017-04-21T15:14:20.23Z"}},"relationships":{"items":[{"data":{"type":"item","id":"7f75ff8b-6252-4fd0-b71a-8db98f5b0857"}}]}},{"type":"order","id":"d91e8cd8-6098-4e09-b5ae-d87b43a7fdb2","status":"incomplete","payment":"unpaid","shipping":"not_shipped","customer":{"name":"Billy","email":"billy@billy.com"},"shipping_address":{"first_name":"Otis","last_name":"Sedmak","company_name":"Sedmak
+        Midlands","country":"UK"},"links":{},"meta":{"display_price":{"with_tax":{"amount":3250,"currency":"USD","formatted":"$32.50"},"without_tax":{"amount":3250,"currency":"USD","formatted":"$32.50"}},"timestamps":{"created_at":"2017-04-21T15:14:20.23Z","updated_at":"2017-04-21T15:14:20.23Z"}},"relationships":{"items":[{"data":{"type":"item","id":"7f75ff8b-6252-4fd0-b71a-8db98f5b0857"}}]}},{"type":"order","id":"bd7762be-1672-43b7-baa1-8f10a28a98a0","status":"incomplete","payment":"unpaid","shipping":"not_shipped","customer":{"name":"Billy","email":"billy@billy.com"},"shipping_address":{"first_name":"Otis","last_name":"Sedmak","company_name":"Sedmak
         & Co.","line_1":"1251, Rexmere Ave","line_2":"Farmingville, Suffolk","postcode":"11738","county":"New
         York","country":"US","instructions":"Leave in porch"},"billing_address":{"first_name":"Jack","last_name":"Macdowall","company_name":"Macdowalls","line_1":"1225
         Invention Avenue","line_2":"Birmingham","postcode":"B21 9AF","county":"West
-        Midlands","country":"UK"},"links":{},"meta":{"display_price":{"with_tax":{"amount":10000,"currency":"USD","formatted":"$100.00"},"without_tax":{"amount":10000,"currency":"USD","formatted":"$100.00"}},"timestamps":{"created_at":"2017-04-21T14:07:07.907Z","updated_at":"2017-04-21T14:07:07.907Z"}},"relationships":{"items":[{"data":{"type":"item","id":"54d68637-4ff9-4ef9-b273-7c09247f6316"}},{"data":{"type":"item","id":"74017c5f-c43b-4576-9748-722f37046c71"}},{"data":{"type":"item","id":"c8bae50e-1234-43f5-971b-bd32daaadf7d"}},{"data":{"type":"item","id":"ce1d2a5b-d16e-4ffd-8c3f-c7f2775f9bb9"}}]}},{"type":"order","id":"e06ed26f-2ac4-4dfa-928f-b2bc26354186","status":"incomplete","payment":"unpaid","shipping":"not_shipped","customer":{"name":"Billy","email":"billy@billy.com"},"shipping_address":{"first_name":"Otis","last_name":"Sedmak","company_name":"Sedmak
+        Midlands","country":"UK"},"links":{},"meta":{"display_price":{"with_tax":{"amount":4000,"currency":"USD","formatted":"$40.00"},"without_tax":{"amount":4000,"currency":"USD","formatted":"$40.00"}},"timestamps":{"created_at":"2017-04-22T02:50:47.308Z","updated_at":"2017-04-22T02:50:47.308Z"}},"relationships":{"items":[{"data":{"type":"item","id":"9150f5e6-b107-4f14-8553-342deeb1d7e9"}}]}},{"type":"order","id":"c3d496ab-67cf-40ae-a3cc-b6260571c861","status":"incomplete","payment":"unpaid","shipping":"not_shipped","customer":{"name":"Billy","email":"billy@billy.com"},"shipping_address":{"first_name":"Otis","last_name":"Sedmak","company_name":"Sedmak
+        & Co.","line_1":"1251, Rexmere Ave","line_2":"Farmingville, Suffolk","postcode":"11738","county":"New
+        York","country":"US","instructions":"Leave in porch"},"billing_address":{"first_name":"Jack","last_name":"Macdowall","company_name":"Macdowalls","line_1":"1225
+        Invention Avenue","line_2":"Birmingham","postcode":"B21 9AF","county":"West
+        Midlands","country":"UK"},"links":{},"meta":{"display_price":{"with_tax":{"amount":4250,"currency":"USD","formatted":"$42.50"},"without_tax":{"amount":4250,"currency":"USD","formatted":"$42.50"}},"timestamps":{"created_at":"2017-04-22T02:53:46.924Z","updated_at":"2017-04-22T02:53:46.924Z"}},"relationships":{"items":[{"data":{"type":"item","id":"c028c973-f071-422c-853b-2598b19b8b51"}}]}},{"type":"order","id":"d91e8cd8-6098-4e09-b5ae-d87b43a7fdb2","status":"incomplete","payment":"unpaid","shipping":"not_shipped","customer":{"name":"Billy","email":"billy@billy.com"},"shipping_address":{"first_name":"Otis","last_name":"Sedmak","company_name":"Sedmak
+        & Co.","line_1":"1251, Rexmere Ave","line_2":"Farmingville, Suffolk","postcode":"11738","county":"New
+        York","country":"US","instructions":"Leave in porch"},"billing_address":{"first_name":"Jack","last_name":"Macdowall","company_name":"Macdowalls","line_1":"1225
+        Invention Avenue","line_2":"Birmingham","postcode":"B21 9AF","county":"West
+        Midlands","country":"UK"},"links":{},"meta":{"display_price":{"with_tax":{"amount":10000,"currency":"USD","formatted":"$100.00"},"without_tax":{"amount":10000,"currency":"USD","formatted":"$100.00"}},"timestamps":{"created_at":"2017-04-21T14:07:07.907Z","updated_at":"2017-04-21T14:07:07.907Z"}},"relationships":{"items":[{"data":{"type":"item","id":"54d68637-4ff9-4ef9-b273-7c09247f6316"}},{"data":{"type":"item","id":"74017c5f-c43b-4576-9748-722f37046c71"}},{"data":{"type":"item","id":"c8bae50e-1234-43f5-971b-bd32daaadf7d"}},{"data":{"type":"item","id":"ce1d2a5b-d16e-4ffd-8c3f-c7f2775f9bb9"}}]}},{"type":"order","id":"da1a125b-b0bd-493c-b756-c1737630da4f","status":"incomplete","payment":"unpaid","shipping":"not_shipped","customer":{"name":"Billy","email":"billy@billy.com"},"shipping_address":{"first_name":"Otis","last_name":"Sedmak","company_name":"Sedmak
+        & Co.","line_1":"1251, Rexmere Ave","line_2":"Farmingville, Suffolk","postcode":"11738","county":"New
+        York","country":"US","instructions":"Leave in porch"},"billing_address":{"first_name":"Jack","last_name":"Macdowall","company_name":"Macdowalls","line_1":"1225
+        Invention Avenue","line_2":"Birmingham","postcode":"B21 9AF","county":"West
+        Midlands","country":"UK"},"links":{},"meta":{"display_price":{"with_tax":{"amount":4500,"currency":"USD","formatted":"$45.00"},"without_tax":{"amount":4500,"currency":"USD","formatted":"$45.00"}},"timestamps":{"created_at":"2017-04-22T02:57:26.418Z","updated_at":"2017-04-22T02:57:26.418Z"}},"relationships":{"items":[{"data":{"type":"item","id":"347099ad-26d2-4a08-962b-61c0f9b8c82b"}}]}},{"type":"order","id":"e06ed26f-2ac4-4dfa-928f-b2bc26354186","status":"incomplete","payment":"unpaid","shipping":"not_shipped","customer":{"name":"Billy","email":"billy@billy.com"},"shipping_address":{"first_name":"Otis","last_name":"Sedmak","company_name":"Sedmak
         & Co.","line_1":"1251, Rexmere Ave","line_2":"Farmingville, Suffolk","postcode":"11738","county":"New
         York","country":"US","instructions":"Leave in porch"},"billing_address":{"first_name":"Jack","last_name":"Macdowall","company_name":"Macdowalls","line_1":"1225
         Invention Avenue","line_2":"Birmingham","postcode":"B21 9AF","county":"West
@@ -3786,10 +3850,10 @@ http_interactions:
         Invention Avenue","line_2":"Birmingham","postcode":"B21 9AF","county":"West
         Midlands","country":"UK"},"links":{},"meta":{"display_price":{"with_tax":{"amount":1250,"currency":"USD","formatted":"$12.50"},"without_tax":{"amount":1250,"currency":"USD","formatted":"$12.50"}},"timestamps":{"created_at":"2017-04-21T11:35:54.097Z","updated_at":"2017-04-21T11:35:54.097Z"}},"relationships":{"items":[{"data":{"type":"item","id":"7e43bebf-b76a-4e5b-8ab4-86af44d55368"}}]}}]}'
     http_version: 
-  recorded_at: Fri, 25 Sep 1987 17:00:00 GMT
+  recorded_at: Sat, 26 Sep 1987 17:00:00 GMT
 - request:
     method: post
-    uri: https://api.moltin.com/v2/orders/06313dc0-58f2-4d52-afed-c064e52ae9e3/payments
+    uri: https://api.moltin.com/v2/orders/006301c7-c77f-429a-9485-d99c310adc45/payments
     body:
       encoding: UTF-8
       string: '{"data":{"gateway":"stripe","method":"purchase","first_name":"John","last_name":"Doe","number":"4242424242424242","month":"08","year":"2020","verification_value":"123","type":"payment"}}'
@@ -3797,7 +3861,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.11.0
       Authorization:
-      - Bearer e1b92d20565ce41b8efccd7f8348f190c994b6eb
+      - Bearer a4610511897864549b316feeeb4849db9967366e
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -3812,7 +3876,7 @@ http_interactions:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Fri, 21 Apr 2017 15:14:23 GMT
+      - Sat, 22 Apr 2017 02:57:29 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -3820,11 +3884,11 @@ http_interactions:
       Via:
       - 1.1 linkerd
       X-Moltin-Request-Id:
-      - 56b3801c785e320f024952b85af3e3c546424d07
+      - 1263a23eb271b8d9c68c5d0fd6bc7cdc47221892
     body:
       encoding: ASCII-8BIT
       string: '"{\"errors\":[{\"title\":\"Payment gateway error\",\"detail\":\"Invalid
         API Key provided: \"}]}"'
     http_version: 
-  recorded_at: Fri, 25 Sep 1987 17:00:00 GMT
+  recorded_at: Sat, 26 Sep 1987 17:00:00 GMT
 recorded_with: VCR 3.0.3

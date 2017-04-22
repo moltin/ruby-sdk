@@ -23,7 +23,7 @@ http_interactions:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Fri, 21 Apr 2017 14:17:41 GMT
+      - Sat, 22 Apr 2017 03:16:12 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -31,15 +31,15 @@ http_interactions:
       X-Auth-Served-By:
       - Moltin-Auth
       X-Moltin-Request-Id:
-      - 59c0fdee6eaf80a828ef3c2a5f934ab3628a776e
+      - f74c2890305a744621acf3d7c417d239bfeb85c4
       Access-Control-Allow-Origin:
       - "*"
     body:
       encoding: ASCII-8BIT
       string: |
-        {"expires":1492787861,"identifier":"client_credentials","expires_in":3600,"access_token":"62651e58ba9a7da81ad93c2ec3ac16673b399eb5","token_type":"Bearer"}
+        {"expires":1492834572,"identifier":"client_credentials","expires_in":3600,"access_token":"7c10c277028ac8e2307daa0db337c04d6eb0b249","token_type":"Bearer"}
     http_version: 
-  recorded_at: Fri, 25 Sep 1987 17:00:00 GMT
+  recorded_at: Sat, 26 Sep 1987 17:00:00 GMT
 - request:
     method: delete
     uri: https://api.moltin.com/v2/carts/my_secret_cart
@@ -50,7 +50,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.11.0
       Authorization:
-      - Bearer 62651e58ba9a7da81ad93c2ec3ac16673b399eb5
+      - Bearer 7c10c277028ac8e2307daa0db337c04d6eb0b249
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -63,7 +63,7 @@ http_interactions:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Fri, 21 Apr 2017 14:17:42 GMT
+      - Sat, 22 Apr 2017 03:16:13 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -71,14 +71,14 @@ http_interactions:
       Via:
       - 1.1 linkerd
       X-Moltin-Request-Id:
-      - fed912ea72f0e78010f6c35c0f9900bff3bf3318
+      - 9568eb9c8dc9ee6c0abcaf4ede4068af5cbc2471
       Access-Control-Allow-Origin:
       - "*"
     body:
       encoding: ASCII-8BIT
       string: '{"data":[{"type":"cart","id":"my_secret_cart"}]}'
     http_version: 
-  recorded_at: Fri, 25 Sep 1987 17:00:00 GMT
+  recorded_at: Sat, 26 Sep 1987 17:00:00 GMT
 - request:
     method: get
     uri: https://api.moltin.com/v2/carts/my_secret_cart
@@ -89,7 +89,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.11.0
       Authorization:
-      - Bearer 62651e58ba9a7da81ad93c2ec3ac16673b399eb5
+      - Bearer 7c10c277028ac8e2307daa0db337c04d6eb0b249
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -102,7 +102,7 @@ http_interactions:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Fri, 21 Apr 2017 14:17:43 GMT
+      - Sat, 22 Apr 2017 03:16:14 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -110,14 +110,14 @@ http_interactions:
       Via:
       - 1.1 linkerd
       X-Moltin-Request-Id:
-      - d1bc7df11fea4d949a50625b62018576b4faa447
+      - 79779d0769bf39825a3a1841adb29e601349d708
       Access-Control-Allow-Origin:
       - "*"
     body:
       encoding: ASCII-8BIT
       string: '{"data":{"id":"my_secret_cart","type":"cart","links":{"self":"https://api.moltin.com/carts/my_secret_cart"},"meta":{"display_price":{"with_tax":{"amount":0,"currency":"","formatted":"0"},"without_tax":{"amount":0,"currency":"","formatted":"0"}},"timestamps":{"created_at":"0001-01-01T00:00:00Z","updated_at":"0001-01-01T00:00:00Z"}}}}'
     http_version: 
-  recorded_at: Fri, 25 Sep 1987 17:00:00 GMT
+  recorded_at: Sat, 26 Sep 1987 17:00:00 GMT
 - request:
     method: post
     uri: https://api.moltin.com/oauth/access_token
@@ -141,7 +141,7 @@ http_interactions:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Fri, 21 Apr 2017 14:17:44 GMT
+      - Sat, 22 Apr 2017 03:16:15 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -149,15 +149,15 @@ http_interactions:
       X-Auth-Served-By:
       - Moltin-Auth
       X-Moltin-Request-Id:
-      - 7882321b0ab15da06b43bd802f387552fadaa03c
+      - c4451426030d6beb125c9cc93c1c5cdcd376095b
       Access-Control-Allow-Origin:
       - "*"
     body:
       encoding: ASCII-8BIT
       string: |
-        {"expires":1492787864,"identifier":"client_credentials","expires_in":3600,"access_token":"d345a0c530eb839d304bf7a5dfdbe10e1e99b5a0","token_type":"Bearer"}
+        {"expires":1492834575,"identifier":"client_credentials","expires_in":3600,"access_token":"3dc65bbeb4c39b251b8ee4d95590d698a04cece6","token_type":"Bearer"}
     http_version: 
-  recorded_at: Fri, 25 Sep 1987 17:00:00 GMT
+  recorded_at: Sat, 26 Sep 1987 17:00:00 GMT
 - request:
     method: get
     uri: https://api.moltin.com/v2/products
@@ -168,7 +168,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.11.0
       Authorization:
-      - Bearer d345a0c530eb839d304bf7a5dfdbe10e1e99b5a0
+      - Bearer 3dc65bbeb4c39b251b8ee4d95590d698a04cece6
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -181,7 +181,7 @@ http_interactions:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Fri, 21 Apr 2017 14:17:45 GMT
+      - Sat, 22 Apr 2017 03:16:17 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -189,7 +189,7 @@ http_interactions:
       Via:
       - 1.1 linkerd
       X-Moltin-Request-Id:
-      - abe987baf0165d2784c63e8b7c93be6f6dd7d417
+      - 2aebe3ca04199c6d25b3989596e46afd647a88da
       Access-Control-Allow-Origin:
       - "*"
     body:
@@ -3568,18 +3568,18 @@ http_interactions:
         dHMiOnsidG90YWwiOjc2LCJhbGwiOjc2fSwicGFnZSI6eyJsaW1pdCI6MTAw
         LCJvZmZzZXQiOjAsImN1cnJlbnQiOjEsInRvdGFsIjoxfX19
     http_version: 
-  recorded_at: Fri, 25 Sep 1987 17:00:00 GMT
+  recorded_at: Sat, 26 Sep 1987 17:00:00 GMT
 - request:
     method: post
     uri: https://api.moltin.com/v2/carts/my_secret_cart/items
     body:
       encoding: UTF-8
-      string: '{"data":{"id":"885b8844-e74e-4ed7-9901-f34b0033e00d","quantity":1,"type":"cart_item"}}'
+      string: '{"data":{"id":"885b8844-e74e-4ed7-9901-f34b0033e00d","type":"cart_item","quantity":1}}'
     headers:
       User-Agent:
       - Faraday v0.11.0
       Authorization:
-      - Bearer 62651e58ba9a7da81ad93c2ec3ac16673b399eb5
+      - Bearer 7c10c277028ac8e2307daa0db337c04d6eb0b249
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -3594,7 +3594,7 @@ http_interactions:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Fri, 21 Apr 2017 14:17:47 GMT
+      - Sat, 22 Apr 2017 03:16:19 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -3602,26 +3602,26 @@ http_interactions:
       Via:
       - 1.1 linkerd
       X-Moltin-Request-Id:
-      - 54bfcd8f40f00899f04c84d1f86bc09bf5592a4b
+      - 9bd08ac2bc3d919c3dba96005f04a4313182db2c
       Access-Control-Allow-Origin:
       - "*"
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"id":"b65ab414-1172-4529-a547-dee926457819","type":"cart_item","product_id":"885b8844-e74e-4ed7-9901-f34b0033e00d","name":"My
-        Product","description":"Super Product","sku":"123","quantity":1,"unit_price":{"amount":250,"currency":"USD","includes_tax":true},"value":{"amount":250,"currency":"USD","includes_tax":true},"links":{"product":"https://api.moltin.com/products/885b8844-e74e-4ed7-9901-f34b0033e00d"},"meta":{"display_price":{"with_tax":{"unit":{"amount":250,"currency":"USD","formatted":"250"},"value":{"amount":250,"currency":"USD","formatted":"2.50"}},"without_tax":{"unit":{"amount":250,"currency":"USD","formatted":"250"},"value":{"amount":250,"currency":"USD","formatted":"2.50"}}},"timestamps":{"created_at":"2017-04-21T14:17:47.678404374Z","updated_at":"2017-04-21T14:17:47.678404374Z"}}}],"meta":{"display_price":{"with_tax":{"amount":250,"currency":"USD","formatted":"2.50"},"without_tax":{"amount":250,"currency":"USD","formatted":"2.50"}},"timestamps":{"created_at":"0001-01-01T00:00:00Z","updated_at":"0001-01-01T00:00:00Z"}}}'
+      string: '{"data":[{"id":"b724ada1-1a17-45e4-a837-9ad9352b0b01","type":"cart_item","product_id":"885b8844-e74e-4ed7-9901-f34b0033e00d","name":"My
+        Product","description":"Super Product","sku":"123","quantity":1,"unit_price":{"amount":250,"currency":"USD","includes_tax":true},"value":{"amount":250,"currency":"USD","includes_tax":true},"links":{"product":"https://api.moltin.com/products/885b8844-e74e-4ed7-9901-f34b0033e00d"},"meta":{"display_price":{"with_tax":{"unit":{"amount":250,"currency":"USD","formatted":"250"},"value":{"amount":250,"currency":"USD","formatted":"2.50"}},"without_tax":{"unit":{"amount":250,"currency":"USD","formatted":"250"},"value":{"amount":250,"currency":"USD","formatted":"2.50"}}},"timestamps":{"created_at":"2017-04-22T03:16:19.253121579Z","updated_at":"2017-04-22T03:16:19.253121579Z"}}}],"meta":{"display_price":{"with_tax":{"amount":250,"currency":"USD","formatted":"2.50"},"without_tax":{"amount":250,"currency":"USD","formatted":"2.50"}},"timestamps":{"created_at":"0001-01-01T00:00:00Z","updated_at":"0001-01-01T00:00:00Z"}}}'
     http_version: 
-  recorded_at: Fri, 25 Sep 1987 17:00:00 GMT
+  recorded_at: Sat, 26 Sep 1987 17:00:00 GMT
 - request:
     method: post
     uri: https://api.moltin.com/v2/carts/my_secret_cart/items
     body:
       encoding: UTF-8
-      string: '{"data":{"id":"c5486cf1-b0e9-4ee7-af2e-dac9f0859952","quantity":1,"type":"cart_item"}}'
+      string: '{"data":{"id":"c5486cf1-b0e9-4ee7-af2e-dac9f0859952","type":"cart_item","quantity":1}}'
     headers:
       User-Agent:
       - Faraday v0.11.0
       Authorization:
-      - Bearer 62651e58ba9a7da81ad93c2ec3ac16673b399eb5
+      - Bearer 7c10c277028ac8e2307daa0db337c04d6eb0b249
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -3636,7 +3636,7 @@ http_interactions:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Fri, 21 Apr 2017 14:17:49 GMT
+      - Sat, 22 Apr 2017 03:16:20 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -3644,27 +3644,27 @@ http_interactions:
       Via:
       - 1.1 linkerd
       X-Moltin-Request-Id:
-      - 95e5f5576feadf26fd73fa7cc89262becccecbf0
+      - ff41cb360e21c165d43c0d8674488d98290b4b3b
       Access-Control-Allow-Origin:
       - "*"
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"id":"b65ab414-1172-4529-a547-dee926457819","type":"cart_item","product_id":"885b8844-e74e-4ed7-9901-f34b0033e00d","name":"My
-        Product","description":"Super Product","sku":"123","quantity":1,"unit_price":{"amount":250,"currency":"USD","includes_tax":true},"value":{"amount":250,"currency":"USD","includes_tax":true},"links":{"product":"https://api.moltin.com/products/885b8844-e74e-4ed7-9901-f34b0033e00d"},"meta":{"display_price":{"with_tax":{"unit":{"amount":250,"currency":"USD","formatted":"$2.50"},"value":{"amount":250,"currency":"USD","formatted":"$2.50"}},"without_tax":{"unit":{"amount":250,"currency":"USD","formatted":"$2.50"},"value":{"amount":250,"currency":"USD","formatted":"$2.50"}}},"timestamps":{"created_at":"2017-04-21T14:17:47.678Z","updated_at":"2017-04-21T14:17:47.678Z"}}},{"id":"ca18358b-737e-4e0e-8f77-06f494978e28","type":"cart_item","product_id":"c5486cf1-b0e9-4ee7-af2e-dac9f0859952","name":"My
-        Product","description":"Super Product","sku":"123","quantity":1,"unit_price":{"amount":250,"currency":"USD","includes_tax":true},"value":{"amount":250,"currency":"USD","includes_tax":true},"links":{"product":"https://api.moltin.com/products/c5486cf1-b0e9-4ee7-af2e-dac9f0859952"},"meta":{"display_price":{"with_tax":{"unit":{"amount":250,"currency":"USD","formatted":"250"},"value":{"amount":250,"currency":"USD","formatted":"2.50"}},"without_tax":{"unit":{"amount":250,"currency":"USD","formatted":"250"},"value":{"amount":250,"currency":"USD","formatted":"2.50"}}},"timestamps":{"created_at":"2017-04-21T14:17:49.80627726Z","updated_at":"2017-04-21T14:17:49.80627726Z"}}}],"meta":{"display_price":{"with_tax":{"amount":500,"currency":"USD","formatted":"$5.00"},"without_tax":{"amount":500,"currency":"USD","formatted":"$5.00"}},"timestamps":{"created_at":"0001-01-01T00:00:00Z","updated_at":"0001-01-01T00:00:00Z"}}}'
+      string: '{"data":[{"id":"b724ada1-1a17-45e4-a837-9ad9352b0b01","type":"cart_item","product_id":"885b8844-e74e-4ed7-9901-f34b0033e00d","name":"My
+        Product","description":"Super Product","sku":"123","quantity":1,"unit_price":{"amount":250,"currency":"USD","includes_tax":true},"value":{"amount":250,"currency":"USD","includes_tax":true},"links":{"product":"https://api.moltin.com/products/885b8844-e74e-4ed7-9901-f34b0033e00d"},"meta":{"display_price":{"with_tax":{"unit":{"amount":250,"currency":"USD","formatted":"$2.50"},"value":{"amount":250,"currency":"USD","formatted":"$2.50"}},"without_tax":{"unit":{"amount":250,"currency":"USD","formatted":"$2.50"},"value":{"amount":250,"currency":"USD","formatted":"$2.50"}}},"timestamps":{"created_at":"2017-04-22T03:16:19.253Z","updated_at":"2017-04-22T03:16:19.253Z"}}},{"id":"7410707e-8ed4-4284-9cf3-4325cdf7a09b","type":"cart_item","product_id":"c5486cf1-b0e9-4ee7-af2e-dac9f0859952","name":"My
+        Product","description":"Super Product","sku":"123","quantity":1,"unit_price":{"amount":250,"currency":"USD","includes_tax":true},"value":{"amount":250,"currency":"USD","includes_tax":true},"links":{"product":"https://api.moltin.com/products/c5486cf1-b0e9-4ee7-af2e-dac9f0859952"},"meta":{"display_price":{"with_tax":{"unit":{"amount":250,"currency":"USD","formatted":"250"},"value":{"amount":250,"currency":"USD","formatted":"2.50"}},"without_tax":{"unit":{"amount":250,"currency":"USD","formatted":"250"},"value":{"amount":250,"currency":"USD","formatted":"2.50"}}},"timestamps":{"created_at":"2017-04-22T03:16:20.499588558Z","updated_at":"2017-04-22T03:16:20.499588558Z"}}}],"meta":{"display_price":{"with_tax":{"amount":500,"currency":"USD","formatted":"$5.00"},"without_tax":{"amount":500,"currency":"USD","formatted":"$5.00"}},"timestamps":{"created_at":"0001-01-01T00:00:00Z","updated_at":"0001-01-01T00:00:00Z"}}}'
     http_version: 
-  recorded_at: Fri, 25 Sep 1987 17:00:00 GMT
+  recorded_at: Sat, 26 Sep 1987 17:00:00 GMT
 - request:
     method: post
     uri: https://api.moltin.com/v2/carts/my_secret_cart/items
     body:
       encoding: UTF-8
-      string: '{"data":{"id":"43581948-0c71-4033-881a-1126d36d13c4","quantity":1,"type":"cart_item"}}'
+      string: '{"data":{"id":"43581948-0c71-4033-881a-1126d36d13c4","type":"cart_item","quantity":1}}'
     headers:
       User-Agent:
       - Faraday v0.11.0
       Authorization:
-      - Bearer 62651e58ba9a7da81ad93c2ec3ac16673b399eb5
+      - Bearer 7c10c277028ac8e2307daa0db337c04d6eb0b249
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -3679,7 +3679,7 @@ http_interactions:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Fri, 21 Apr 2017 14:17:51 GMT
+      - Sat, 22 Apr 2017 03:16:21 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -3687,20 +3687,20 @@ http_interactions:
       Via:
       - 1.1 linkerd
       X-Moltin-Request-Id:
-      - 519af7d53a617472b2d2c4b1a2622c1f4b5d4670
+      - 1ae4ec6debcbedd9f7ed3a76a97b0c744cf30d34
       Access-Control-Allow-Origin:
       - "*"
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"id":"b65ab414-1172-4529-a547-dee926457819","type":"cart_item","product_id":"885b8844-e74e-4ed7-9901-f34b0033e00d","name":"My
-        Product","description":"Super Product","sku":"123","quantity":1,"unit_price":{"amount":250,"currency":"USD","includes_tax":true},"value":{"amount":250,"currency":"USD","includes_tax":true},"links":{"product":"https://api.moltin.com/products/885b8844-e74e-4ed7-9901-f34b0033e00d"},"meta":{"display_price":{"with_tax":{"unit":{"amount":250,"currency":"USD","formatted":"$2.50"},"value":{"amount":250,"currency":"USD","formatted":"$2.50"}},"without_tax":{"unit":{"amount":250,"currency":"USD","formatted":"$2.50"},"value":{"amount":250,"currency":"USD","formatted":"$2.50"}}},"timestamps":{"created_at":"2017-04-21T14:17:47.678Z","updated_at":"2017-04-21T14:17:47.678Z"}}},{"id":"ca18358b-737e-4e0e-8f77-06f494978e28","type":"cart_item","product_id":"c5486cf1-b0e9-4ee7-af2e-dac9f0859952","name":"My
-        Product","description":"Super Product","sku":"123","quantity":1,"unit_price":{"amount":250,"currency":"USD","includes_tax":true},"value":{"amount":250,"currency":"USD","includes_tax":true},"links":{"product":"https://api.moltin.com/products/c5486cf1-b0e9-4ee7-af2e-dac9f0859952"},"meta":{"display_price":{"with_tax":{"unit":{"amount":250,"currency":"USD","formatted":"$2.50"},"value":{"amount":250,"currency":"USD","formatted":"$2.50"}},"without_tax":{"unit":{"amount":250,"currency":"USD","formatted":"$2.50"},"value":{"amount":250,"currency":"USD","formatted":"$2.50"}}},"timestamps":{"created_at":"2017-04-21T14:17:49.806Z","updated_at":"2017-04-21T14:17:49.806Z"}}},{"id":"6b0541f1-ada2-4219-bfe2-b22dd5c7c3cd","type":"cart_item","product_id":"43581948-0c71-4033-881a-1126d36d13c4","name":"My
-        Product","description":"Super Product","sku":"123","quantity":1,"unit_price":{"amount":250,"currency":"USD","includes_tax":true},"value":{"amount":250,"currency":"USD","includes_tax":true},"links":{"product":"https://api.moltin.com/products/43581948-0c71-4033-881a-1126d36d13c4"},"meta":{"display_price":{"with_tax":{"unit":{"amount":250,"currency":"USD","formatted":"250"},"value":{"amount":250,"currency":"USD","formatted":"2.50"}},"without_tax":{"unit":{"amount":250,"currency":"USD","formatted":"250"},"value":{"amount":250,"currency":"USD","formatted":"2.50"}}},"timestamps":{"created_at":"2017-04-21T14:17:51.05305279Z","updated_at":"2017-04-21T14:17:51.05305279Z"}}}],"meta":{"display_price":{"with_tax":{"amount":750,"currency":"USD","formatted":"$7.50"},"without_tax":{"amount":750,"currency":"USD","formatted":"$7.50"}},"timestamps":{"created_at":"0001-01-01T00:00:00Z","updated_at":"0001-01-01T00:00:00Z"}}}'
+      string: '{"data":[{"id":"b724ada1-1a17-45e4-a837-9ad9352b0b01","type":"cart_item","product_id":"885b8844-e74e-4ed7-9901-f34b0033e00d","name":"My
+        Product","description":"Super Product","sku":"123","quantity":1,"unit_price":{"amount":250,"currency":"USD","includes_tax":true},"value":{"amount":250,"currency":"USD","includes_tax":true},"links":{"product":"https://api.moltin.com/products/885b8844-e74e-4ed7-9901-f34b0033e00d"},"meta":{"display_price":{"with_tax":{"unit":{"amount":250,"currency":"USD","formatted":"$2.50"},"value":{"amount":250,"currency":"USD","formatted":"$2.50"}},"without_tax":{"unit":{"amount":250,"currency":"USD","formatted":"$2.50"},"value":{"amount":250,"currency":"USD","formatted":"$2.50"}}},"timestamps":{"created_at":"2017-04-22T03:16:19.253Z","updated_at":"2017-04-22T03:16:19.253Z"}}},{"id":"7410707e-8ed4-4284-9cf3-4325cdf7a09b","type":"cart_item","product_id":"c5486cf1-b0e9-4ee7-af2e-dac9f0859952","name":"My
+        Product","description":"Super Product","sku":"123","quantity":1,"unit_price":{"amount":250,"currency":"USD","includes_tax":true},"value":{"amount":250,"currency":"USD","includes_tax":true},"links":{"product":"https://api.moltin.com/products/c5486cf1-b0e9-4ee7-af2e-dac9f0859952"},"meta":{"display_price":{"with_tax":{"unit":{"amount":250,"currency":"USD","formatted":"$2.50"},"value":{"amount":250,"currency":"USD","formatted":"$2.50"}},"without_tax":{"unit":{"amount":250,"currency":"USD","formatted":"$2.50"},"value":{"amount":250,"currency":"USD","formatted":"$2.50"}}},"timestamps":{"created_at":"2017-04-22T03:16:20.499Z","updated_at":"2017-04-22T03:16:20.499Z"}}},{"id":"27c1d8eb-bdb8-435d-bfb7-3f389a650cb0","type":"cart_item","product_id":"43581948-0c71-4033-881a-1126d36d13c4","name":"My
+        Product","description":"Super Product","sku":"123","quantity":1,"unit_price":{"amount":250,"currency":"USD","includes_tax":true},"value":{"amount":250,"currency":"USD","includes_tax":true},"links":{"product":"https://api.moltin.com/products/43581948-0c71-4033-881a-1126d36d13c4"},"meta":{"display_price":{"with_tax":{"unit":{"amount":250,"currency":"USD","formatted":"250"},"value":{"amount":250,"currency":"USD","formatted":"2.50"}},"without_tax":{"unit":{"amount":250,"currency":"USD","formatted":"250"},"value":{"amount":250,"currency":"USD","formatted":"2.50"}}},"timestamps":{"created_at":"2017-04-22T03:16:21.872479656Z","updated_at":"2017-04-22T03:16:21.872479656Z"}}}],"meta":{"display_price":{"with_tax":{"amount":750,"currency":"USD","formatted":"$7.50"},"without_tax":{"amount":750,"currency":"USD","formatted":"$7.50"}},"timestamps":{"created_at":"0001-01-01T00:00:00Z","updated_at":"0001-01-01T00:00:00Z"}}}'
     http_version: 
-  recorded_at: Fri, 25 Sep 1987 17:00:00 GMT
+  recorded_at: Sat, 26 Sep 1987 17:00:00 GMT
 - request:
     method: get
-    uri: https://api.moltin.com/v2/carts/my_secret_cart
+    uri: https://api.moltin.com/v2/carts/my_secret_cart/items
     body:
       encoding: US-ASCII
       string: ''
@@ -3708,7 +3708,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.11.0
       Authorization:
-      - Bearer 62651e58ba9a7da81ad93c2ec3ac16673b399eb5
+      - Bearer 7c10c277028ac8e2307daa0db337c04d6eb0b249
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -3721,7 +3721,7 @@ http_interactions:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Fri, 21 Apr 2017 14:17:52 GMT
+      - Sat, 22 Apr 2017 03:16:23 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -3729,12 +3729,96 @@ http_interactions:
       Via:
       - 1.1 linkerd
       X-Moltin-Request-Id:
-      - d2729b4dc9258320875996ec8926acad9492c102
+      - aad8a134797b8d76e73f51567934725fc6aae20c
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"id":"b724ada1-1a17-45e4-a837-9ad9352b0b01","type":"cart_item","product_id":"885b8844-e74e-4ed7-9901-f34b0033e00d","name":"My
+        Product","description":"Super Product","sku":"123","quantity":1,"unit_price":{"amount":250,"currency":"USD","includes_tax":true},"value":{"amount":250,"currency":"USD","includes_tax":true},"links":{"product":"https://api.moltin.com/products/885b8844-e74e-4ed7-9901-f34b0033e00d"},"meta":{"display_price":{"with_tax":{"unit":{"amount":250,"currency":"USD","formatted":"$2.50"},"value":{"amount":250,"currency":"USD","formatted":"$2.50"}},"without_tax":{"unit":{"amount":250,"currency":"USD","formatted":"$2.50"},"value":{"amount":250,"currency":"USD","formatted":"$2.50"}}},"timestamps":{"created_at":"2017-04-22T03:16:19.253Z","updated_at":"2017-04-22T03:16:19.253Z"}}},{"id":"7410707e-8ed4-4284-9cf3-4325cdf7a09b","type":"cart_item","product_id":"c5486cf1-b0e9-4ee7-af2e-dac9f0859952","name":"My
+        Product","description":"Super Product","sku":"123","quantity":1,"unit_price":{"amount":250,"currency":"USD","includes_tax":true},"value":{"amount":250,"currency":"USD","includes_tax":true},"links":{"product":"https://api.moltin.com/products/c5486cf1-b0e9-4ee7-af2e-dac9f0859952"},"meta":{"display_price":{"with_tax":{"unit":{"amount":250,"currency":"USD","formatted":"$2.50"},"value":{"amount":250,"currency":"USD","formatted":"$2.50"}},"without_tax":{"unit":{"amount":250,"currency":"USD","formatted":"$2.50"},"value":{"amount":250,"currency":"USD","formatted":"$2.50"}}},"timestamps":{"created_at":"2017-04-22T03:16:20.499Z","updated_at":"2017-04-22T03:16:20.499Z"}}},{"id":"27c1d8eb-bdb8-435d-bfb7-3f389a650cb0","type":"cart_item","product_id":"43581948-0c71-4033-881a-1126d36d13c4","name":"My
+        Product","description":"Super Product","sku":"123","quantity":1,"unit_price":{"amount":250,"currency":"USD","includes_tax":true},"value":{"amount":250,"currency":"USD","includes_tax":true},"links":{"product":"https://api.moltin.com/products/43581948-0c71-4033-881a-1126d36d13c4"},"meta":{"display_price":{"with_tax":{"unit":{"amount":250,"currency":"USD","formatted":"$2.50"},"value":{"amount":250,"currency":"USD","formatted":"$2.50"}},"without_tax":{"unit":{"amount":250,"currency":"USD","formatted":"$2.50"},"value":{"amount":250,"currency":"USD","formatted":"$2.50"}}},"timestamps":{"created_at":"2017-04-22T03:16:21.872Z","updated_at":"2017-04-22T03:16:21.872Z"}}}],"meta":{"display_price":{"with_tax":{"amount":750,"currency":"USD","formatted":"$7.50"},"without_tax":{"amount":750,"currency":"USD","formatted":"$7.50"}},"timestamps":{"created_at":"0001-01-01T00:00:00Z","updated_at":"0001-01-01T00:00:00Z"}}}'
+    http_version: 
+  recorded_at: Sat, 26 Sep 1987 17:00:00 GMT
+- request:
+    method: get
+    uri: https://api.moltin.com/v2/carts/my_secret_cart
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer 7c10c277028ac8e2307daa0db337c04d6eb0b249
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Sat, 22 Apr 2017 03:16:24 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - a31a6a85813091e4d49242b7936d65b5290949ca
       Access-Control-Allow-Origin:
       - "*"
     body:
       encoding: ASCII-8BIT
       string: '{"data":{"id":"my_secret_cart","type":"cart","links":{"self":"https://api.moltin.com/carts/my_secret_cart"},"meta":{"display_price":{"with_tax":{"amount":750,"currency":"USD","formatted":"$7.50"},"without_tax":{"amount":750,"currency":"USD","formatted":"$7.50"}},"timestamps":{"created_at":"0001-01-01T00:00:00Z","updated_at":"0001-01-01T00:00:00Z"}}}}'
     http_version: 
-  recorded_at: Fri, 25 Sep 1987 17:00:00 GMT
+  recorded_at: Sat, 26 Sep 1987 17:00:00 GMT
+- request:
+    method: get
+    uri: https://api.moltin.com/v2/carts/my_secret_cart/items
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer 7c10c277028ac8e2307daa0db337c04d6eb0b249
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Sat, 22 Apr 2017 03:16:25 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - e980c79e750a2706e6fec74a0b51592338babd87
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"id":"b724ada1-1a17-45e4-a837-9ad9352b0b01","type":"cart_item","product_id":"885b8844-e74e-4ed7-9901-f34b0033e00d","name":"My
+        Product","description":"Super Product","sku":"123","quantity":1,"unit_price":{"amount":250,"currency":"USD","includes_tax":true},"value":{"amount":250,"currency":"USD","includes_tax":true},"links":{"product":"https://api.moltin.com/products/885b8844-e74e-4ed7-9901-f34b0033e00d"},"meta":{"display_price":{"with_tax":{"unit":{"amount":250,"currency":"USD","formatted":"$2.50"},"value":{"amount":250,"currency":"USD","formatted":"$2.50"}},"without_tax":{"unit":{"amount":250,"currency":"USD","formatted":"$2.50"},"value":{"amount":250,"currency":"USD","formatted":"$2.50"}}},"timestamps":{"created_at":"2017-04-22T03:16:19.253Z","updated_at":"2017-04-22T03:16:19.253Z"}}},{"id":"7410707e-8ed4-4284-9cf3-4325cdf7a09b","type":"cart_item","product_id":"c5486cf1-b0e9-4ee7-af2e-dac9f0859952","name":"My
+        Product","description":"Super Product","sku":"123","quantity":1,"unit_price":{"amount":250,"currency":"USD","includes_tax":true},"value":{"amount":250,"currency":"USD","includes_tax":true},"links":{"product":"https://api.moltin.com/products/c5486cf1-b0e9-4ee7-af2e-dac9f0859952"},"meta":{"display_price":{"with_tax":{"unit":{"amount":250,"currency":"USD","formatted":"$2.50"},"value":{"amount":250,"currency":"USD","formatted":"$2.50"}},"without_tax":{"unit":{"amount":250,"currency":"USD","formatted":"$2.50"},"value":{"amount":250,"currency":"USD","formatted":"$2.50"}}},"timestamps":{"created_at":"2017-04-22T03:16:20.499Z","updated_at":"2017-04-22T03:16:20.499Z"}}},{"id":"27c1d8eb-bdb8-435d-bfb7-3f389a650cb0","type":"cart_item","product_id":"43581948-0c71-4033-881a-1126d36d13c4","name":"My
+        Product","description":"Super Product","sku":"123","quantity":1,"unit_price":{"amount":250,"currency":"USD","includes_tax":true},"value":{"amount":250,"currency":"USD","includes_tax":true},"links":{"product":"https://api.moltin.com/products/43581948-0c71-4033-881a-1126d36d13c4"},"meta":{"display_price":{"with_tax":{"unit":{"amount":250,"currency":"USD","formatted":"$2.50"},"value":{"amount":250,"currency":"USD","formatted":"$2.50"}},"without_tax":{"unit":{"amount":250,"currency":"USD","formatted":"$2.50"},"value":{"amount":250,"currency":"USD","formatted":"$2.50"}}},"timestamps":{"created_at":"2017-04-22T03:16:21.872Z","updated_at":"2017-04-22T03:16:21.872Z"}}}],"meta":{"display_price":{"with_tax":{"amount":750,"currency":"USD","formatted":"$7.50"},"without_tax":{"amount":750,"currency":"USD","formatted":"$7.50"}},"timestamps":{"created_at":"0001-01-01T00:00:00Z","updated_at":"0001-01-01T00:00:00Z"}}}'
+    http_version: 
+  recorded_at: Sat, 26 Sep 1987 17:00:00 GMT
 recorded_with: VCR 3.0.3

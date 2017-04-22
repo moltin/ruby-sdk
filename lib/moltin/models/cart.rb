@@ -20,6 +20,12 @@ module Moltin
       def remove(cart_item_id)
         client.items(cart_id: id).delete(cart_item_id)
       end
+
+      def checkout(customer:, billing_address:, shipping_address:)
+        client.carts.checkout(id, customer: customer,
+                                  billing_address: billing_address,
+                                  shipping_address: shipping_address)
+      end
     end
   end
 end

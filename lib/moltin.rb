@@ -15,6 +15,7 @@ require 'moltin/models/order_item'
 require 'moltin/models/order'
 require 'moltin/models/transaction'
 require 'moltin/models/payment'
+require 'moltin/models/gateway'
 
 require 'moltin/version'
 require 'moltin/configuration'
@@ -39,6 +40,7 @@ require 'moltin/resources/order_items'
 require 'moltin/resources/orders'
 require 'moltin/resources/transactions'
 require 'moltin/resources/payments'
+require 'moltin/resources/gateways'
 
 require 'moltin/client'
 
