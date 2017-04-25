@@ -9,14 +9,14 @@ module Moltin
       let(:client) { Moltin::Client.new }
 
       def create_order
-        client.carts.delete('my_secret_cart')
+        client.carts.delete('my_new_order')
 
-        cart = client.carts.get('my_future_order').data
+        cart = client.carts.get('my_new_order').data
         cart.add(id: product.id).data
         client.carts.checkout(cart.id, customer: {
-                                name: 'Billy',
-                                email: 'billy@billy.com'
-                              },
+                                         name: 'Billy',
+                                         email: 'billy@billy.com'
+                                       },
                                        billing_address: {
                                          first_name: 'Jack',
                                          last_name: 'Macdowall',
@@ -58,7 +58,7 @@ module Moltin
       end
 
       describe '#all' do
-        it 'receives the list of orders' do
+        it 'receives the list of orders', freeze_time: true do
           VCR.use_cassette('resources/orders/all') do
             create_order
             resource = Moltin::Resources::Orders.new(config, {})
@@ -101,26 +101,29 @@ module Moltin
       end
 
       describe '#pay' do
-        it 'pays for the order', freeze_time: true # do
-        #   VCR.use_cassette('resources/orders/pay') do
-        #     client.gateways.update('stripe', {
-        #       login: 'sk_test_gRJKVmpX8UGWBpUp25p7Gp7f'
-        #     })
-        #     create_order
-        #     order = client.orders.all.data.first
-        #     payment = order.pay({
-        #       gateway: "stripe",
-        #       method: "purchase",
-        #       first_name: "John",
-        #       last_name: "Doe",
-        #       number: "4242424242424242",
-        #       month: "08",
-        #       year: "2020",
-        #       verification_value: "123"
-        #     })
-        #     p payment
-        #   end
-        # end
+        it 'pays for the order', freeze_time: true do
+          VCR.use_cassette('resources/orders/pay') do
+            client.gateways.update('stripe', {
+              enabled: true,
+              login: 'sk_test_gRJKVmpX8UGWBpUp25p7Gp7f'
+            })
+            order = create_order
+            #order = client.orders.all.data.last
+            payment = order.pay({
+              gateway: "stripe",
+              method: "purchase",
+              first_name: "John",
+              last_name: "Doe",
+              number: "4242424242424242",
+              month: "08",
+              year: "2020",
+              verification_value: "123"
+            })
+            order = client.orders.get(order.id)
+            expect(order.status).to eq 'complete'
+            expect(order.payment).to eq 'paid'
+          end
+        end
       end
 
       describe '#transactions' do
