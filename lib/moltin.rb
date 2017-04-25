@@ -17,6 +17,9 @@ require 'moltin/models/transaction'
 require 'moltin/models/payment'
 require 'moltin/models/gateway'
 require 'moltin/models/integration'
+require 'moltin/models/variation'
+require 'moltin/models/variation_option'
+require 'moltin/models/product_modifier'
 
 require 'moltin/version'
 require 'moltin/configuration'
@@ -43,6 +46,10 @@ require 'moltin/resources/transactions'
 require 'moltin/resources/payments'
 require 'moltin/resources/gateways'
 require 'moltin/resources/integrations'
+require 'moltin/resources/variations'
+require 'moltin/resources/variation_options'
+require 'moltin/resources/product_modifiers'
+
 
 require 'moltin/client'
 

@@ -13,7 +13,10 @@ module Moltin
       transactions: Moltin::Resources::Transactions,
       payments: Moltin::Resources::Payments,
       gateways: Moltin::Resources::Gateways,
-      integrations: Moltin::Resources::Integrations
+      integrations: Moltin::Resources::Integrations,
+      variations: Moltin::Resources::Variations,
+      variation_options: Moltin::Resources::VariationOptions,
+      product_modifiers: Moltin::Resources::ProductModifiers,
     }.freeze
 
     # The Moltin configuration.

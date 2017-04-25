@@ -23,7 +23,7 @@ http_interactions:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Tue, 25 Apr 2017 16:28:04 GMT
+      - Tue, 25 Apr 2017 16:19:20 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -31,18 +31,60 @@ http_interactions:
       X-Auth-Served-By:
       - Moltin-Auth
       X-Moltin-Request-Id:
-      - 4d7a8da5f2df742de878db857a21989ac1d4903d
+      - 39866f7083f975fe12e6f85bf37fcfdfe5b8980b
       Access-Control-Allow-Origin:
       - "*"
     body:
       encoding: ASCII-8BIT
       string: |
-        {"expires":1493141284,"identifier":"client_credentials","expires_in":3600,"access_token":"61fb642264154ff2f5ca479400308ef81a1978a2","token_type":"Bearer"}
+        {"expires":1493140760,"identifier":"client_credentials","expires_in":3600,"access_token":"3350db206feab6fcb8a7572da7851dac460febc8","token_type":"Bearer"}
     http_version: 
   recorded_at: Tue, 29 Sep 1987 17:00:00 GMT
 - request:
-    method: get
-    uri: https://api.moltin.com/v2/integrations
+    method: post
+    uri: https://api.moltin.com/v2/variations
+    body:
+      encoding: UTF-8
+      string: '{"data":{"name":"My Variation","type":"product-variation"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer 3350db206feab6fcb8a7572da7851dac460febc8
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Tue, 25 Apr 2017 16:19:21 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - 02543571c522b1b66d20d6f507a535100b0ef43c
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"type":"product-variation","id":"bca29c46-ee7d-4283-92e8-c392b64dc146","name":"My
+        Variation","options":[]}}'
+    http_version: 
+  recorded_at: Tue, 29 Sep 1987 17:00:00 GMT
+- request:
+    method: delete
+    uri: https://api.moltin.com/v2/variations/bca29c46-ee7d-4283-92e8-c392b64dc146
     body:
       encoding: US-ASCII
       string: ''
@@ -50,7 +92,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.11.0
       Authorization:
-      - Bearer 61fb642264154ff2f5ca479400308ef81a1978a2
+      - Bearer 3350db206feab6fcb8a7572da7851dac460febc8
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -63,7 +105,7 @@ http_interactions:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Tue, 25 Apr 2017 16:28:05 GMT
+      - Tue, 25 Apr 2017 16:19:22 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -71,53 +113,12 @@ http_interactions:
       Via:
       - 1.1 linkerd
       X-Moltin-Request-Id:
-      - 46bc8b7b2478c48669742d906e7f5e92e6c98e48
+      - b02bcbb64a683edc48d1b231652ebc0d15dc8075
       Access-Control-Allow-Origin:
       - "*"
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"id":"2217dfa1-5473-4527-99c4-4c67aa7e1289","type":"integration","integration_type":"webhook","name":"My
-        Integration","description":null,"enabled":true,"configuration":{"url":"http://example.com"},"observes":["file.created"],"links":{"self":"https://api.moltin.com/v2/integrations/2217dfa1-5473-4527-99c4-4c67aa7e1289"},"meta":{"timestamps":{"created_at":"2017-04-25T15:22:03.968Z","updated_at":"2017-04-25T15:22:03.968Z"}}},{"id":"928b2e88-308a-4646-9e62-034bd40c4fe5","type":"integration","integration_type":"webhook","name":"My
-        Integration","description":null,"enabled":true,"configuration":{"url":"http://example.com"},"observes":["file.created"],"links":{"self":"https://api.moltin.com/v2/integrations/928b2e88-308a-4646-9e62-034bd40c4fe5"},"meta":{"timestamps":{"created_at":"2017-04-25T15:23:10.685Z","updated_at":"2017-04-25T15:23:10.685Z"}}}]}'
-    http_version: 
-  recorded_at: Tue, 29 Sep 1987 17:00:00 GMT
-- request:
-    method: get
-    uri: https://api.moltin.com/v2/integrations/2217dfa1-5473-4527-99c4-4c67aa7e1289/jobs
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v0.11.0
-      Authorization:
-      - Bearer 61fb642264154ff2f5ca479400308ef81a1978a2
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Server:
-      - openresty/1.9.7.4
-      Date:
-      - Tue, 25 Apr 2017 16:28:06 GMT
-      Content-Type:
-      - application/json; charset=utf-8
-      Transfer-Encoding:
-      - chunked
-      Via:
-      - 1.1 linkerd
-      X-Moltin-Request-Id:
-      - 72912f3f4495e5a22dd22444a0c328ae7a1e96eb
-      Access-Control-Allow-Origin:
-      - "*"
-    body:
-      encoding: ASCII-8BIT
-      string: '{"data":[]}'
+      string: '{"data":{"type":"product-variation","id":"bca29c46-ee7d-4283-92e8-c392b64dc146"}}'
     http_version: 
   recorded_at: Tue, 29 Sep 1987 17:00:00 GMT
 recorded_with: VCR 3.0.3
