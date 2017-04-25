@@ -8,9 +8,6 @@ require 'vcr'
 require 'timecop'
 require 'moltin'
 
-ENV['FAKE_CLIENT_ID'] = 'FTtrUHsKHstAOtAhN2VjKbpvK08ZXOKZ0GAQaiIAcc'
-ENV['FAKE_CLIENT_SECRET'] = 'iFUwmVrwIOWwJrSR70gUtNQ5vIKRwc2RJVyXdid4tc'
-
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
   config.example_status_persistence_file_path = '.rspec_status'
@@ -23,6 +20,16 @@ RSpec.configure do |config|
     Timecop.freeze(Date.today - 30 * 12 * 3 * 10) do
       example.run
     end
+  end
+
+  config.around(:each) do |example|
+    ENV['MOLTIN_CLIENT_ID'] = 'FTtrUHsKHstAOtAhN2VjKbpvK08ZXOKZ0GAQaiIAcc'
+    ENV['MOLTIN_CLIENT_SECRET'] = 'iFUwmVrwIOWwJrSR70gUtNQ5vIKRwc2RJVyXdid4tc'
+
+    example.run
+
+    ENV.delete('MOLTIN_CLIENT_ID')
+    ENV.delete('MOLTIN_CLIENT_SECRET')
   end
 end
 

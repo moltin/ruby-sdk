@@ -23,7 +23,7 @@ http_interactions:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Tue, 25 Apr 2017 15:23:09 GMT
+      - Tue, 25 Apr 2017 15:08:01 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -31,13 +31,13 @@ http_interactions:
       X-Auth-Served-By:
       - Moltin-Auth
       X-Moltin-Request-Id:
-      - b660d2c28416a3eca647650eaef36ed9f5a46eed
+      - acd13eb90869c697758891db3b85c1942ba68751
       Access-Control-Allow-Origin:
       - "*"
     body:
       encoding: ASCII-8BIT
       string: |
-        {"expires":1493137389,"identifier":"client_credentials","expires_in":3600,"access_token":"259e97996408e533a785a21538521fe042997b7a","token_type":"Bearer"}
+        {"expires":1493136481,"identifier":"client_credentials","expires_in":3600,"access_token":"a7030bdee68a87d0ee0cc8077674c09dd7bf1069","token_type":"Bearer"}
     http_version: 
   recorded_at: Tue, 29 Sep 1987 17:00:00 GMT
 - request:
@@ -50,7 +50,7 @@ http_interactions:
       User-Agent:
       - Faraday v0.11.0
       Authorization:
-      - Bearer 259e97996408e533a785a21538521fe042997b7a
+      - Bearer a7030bdee68a87d0ee0cc8077674c09dd7bf1069
       Content-Type:
       - application/json
       Accept-Encoding:
@@ -65,7 +65,7 @@ http_interactions:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Tue, 25 Apr 2017 15:23:10 GMT
+      - Tue, 25 Apr 2017 15:08:02 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -73,41 +73,39 @@ http_interactions:
       Via:
       - 1.1 linkerd
       X-Moltin-Request-Id:
-      - 21d707e69e9484569f51a558c6f2cced66711150
+      - fa489d6da83f00ea3f34fd739041963d5b58ab5d
       Access-Control-Allow-Origin:
       - "*"
     body:
       encoding: ASCII-8BIT
-      string: '{"data":{"id":"928b2e88-308a-4646-9e62-034bd40c4fe5","type":"integration","integration_type":"webhook","name":"My
-        Integration","enabled":true,"configuration":{"url":"http://example.com"},"observes":["file.created"],"links":{"self":"https://api.moltin.com/v2/integrations/928b2e88-308a-4646-9e62-034bd40c4fe5"},"meta":{"timestamps":{"created_at":"2017-04-25T15:23:10.685Z","updated_at":"2017-04-25T15:23:10.685Z"}}}}'
+      string: '{"data":{"id":"082684dd-02ad-4ca8-a4f9-a91f799af735","type":"integration","integration_type":"webhook","name":"My
+        Integration","enabled":true,"configuration":{"url":"http://example.com"},"observes":["file.created"],"links":{"self":"https://api.moltin.com/v2/integrations/082684dd-02ad-4ca8-a4f9-a91f799af735"},"meta":{"timestamps":{"created_at":"2017-04-25T15:08:02.946Z","updated_at":"2017-04-25T15:08:02.946Z"}}}}'
     http_version: 
   recorded_at: Tue, 29 Sep 1987 17:00:00 GMT
 - request:
-    method: put
-    uri: https://api.moltin.com/v2/integrations/928b2e88-308a-4646-9e62-034bd40c4fe5
+    method: delete
+    uri: https://api.moltin.com/v2/integrations/082684dd-02ad-4ca8-a4f9-a91f799af735
     body:
-      encoding: UTF-8
-      string: '{"data":{"integration_type":null,"type":"integration","id":"928b2e88-308a-4646-9e62-034bd40c4fe5"}}'
+      encoding: US-ASCII
+      string: ''
     headers:
       User-Agent:
       - Faraday v0.11.0
       Authorization:
-      - Bearer 259e97996408e533a785a21538521fe042997b7a
-      Content-Type:
-      - application/json
+      - Bearer a7030bdee68a87d0ee0cc8077674c09dd7bf1069
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
       - "*/*"
   response:
     status:
-      code: 400
-      message: Bad Request
+      code: 200
+      message: OK
     headers:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Tue, 25 Apr 2017 15:23:11 GMT
+      - Tue, 25 Apr 2017 15:08:04 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -115,10 +113,12 @@ http_interactions:
       Via:
       - 1.1 linkerd
       X-Moltin-Request-Id:
-      - 0c387d81d3063bd9bfed7f0dd6d04b905fa655fe
+      - a2585d757d3702f23a1a5fea94ebb097bc0b6590
+      Access-Control-Allow-Origin:
+      - "*"
     body:
       encoding: ASCII-8BIT
-      string: '{"errors":[{"title":"Missing required property: name"}]}'
+      string: '{"data":{"type":"integration","id":"082684dd-02ad-4ca8-a4f9-a91f799af735"}}'
     http_version: 
   recorded_at: Tue, 29 Sep 1987 17:00:00 GMT
 recorded_with: VCR 3.0.3

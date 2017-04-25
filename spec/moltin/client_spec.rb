@@ -17,8 +17,8 @@ module Moltin
       context 'without the options argument' do
         it 'loads the default configuration' do
           config = Moltin::Client.new.config
-          expect(config.client_id).to eq(nil)
-          expect(config.client_secret).to eq(nil)
+          expect(config.client_id).not_to eq nil
+          expect(config.client_secret).not_to eq nil
           expect(config.version).to eq('v2')
           expect(config.base_url).to eq('https://api.moltin.com')
           expect(config.auth_uri).to eq('oauth/access_token')

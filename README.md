@@ -416,7 +416,7 @@ moltin.files.delete(file_id)
 Payment gateways can be managed through the SDK.
 
 ```
-# Get all suported gateways
+# Get all supported gateways
 moltin.gateways.all
 ```
 
@@ -432,6 +432,48 @@ moltin.gateways.update('stripe', {
 # Shortcut to enable or disable a gateway
 moltin.gateways.enable('stripe')
 moltin.gateways.disable('stripe')
+```
+
+##### Integrations
+
+```
+# Get all integrations
+moltin.integrations.all
+```
+
+```
+# Get the integration attributes
+moltin.integrations.attributes
+```
+
+```
+# Get a specific integration
+moltin.integrations.get(integration_id)
+```
+
+```
+# Create an integration
+moltin.integrations.create({
+  name: 'My Integration',
+  enabled: true,
+  integration_type: 'webhook',
+  observes: ['file.created'],
+  configuration: {
+    url: 'http://example.com'
+  }
+})
+```
+
+```
+# Update an integration
+moltin.integrations.update(integration_id, {
+  name: 'My New Integration Name',
+})
+```
+
+```
+# Delete an integration
+moltin.integrations.delete(integration_id)
 ```
 
 #### Relationships

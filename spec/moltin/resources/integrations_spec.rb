@@ -6,16 +6,6 @@ module Moltin
       let(:config) { Configuration.new }
       let(:client) { Moltin::Client.new }
 
-      before do
-        ENV['MOLTIN_CLIENT_ID'] = ENV['FAKE_CLIENT_ID']
-        ENV['MOLTIN_CLIENT_SECRET'] = ENV['FAKE_CLIENT_SECRET']
-      end
-
-      after do
-        ENV.delete('MOLTIN_CLIENT_ID')
-        ENV.delete('MOLTIN_CLIENT_SECRET')
-      end
-
       describe '#uri' do
         it 'returns the expected uri' do
           integration = Moltin::Resources::Integrations.new(config, {})
@@ -24,7 +14,7 @@ module Moltin
       end
 
       describe '#all' do
-        it 'receives the list of integrations' do
+        it 'receives the list of integrations', freeze_time: true do
           VCR.use_cassette('resources/integrations/all') do
             resource = Moltin::Resources::Integrations.new(config, {})
             response = resource.all
@@ -41,7 +31,7 @@ module Moltin
       end
 
       describe '#attributes' do
-        it 'receives the list of attributes' do
+        it 'receives the list of attributes', freeze_time: true do
           VCR.use_cassette('resources/integrations/attributes') do
             resource = Moltin::Resources::Integrations.new(config, {})
             response = resource.attributes
@@ -70,20 +60,19 @@ module Moltin
         context 'valid integration' do
           it 'creates a new integration', freeze_time: true do
             VCR.use_cassette('resources/integrations/create/valid') do
-              resource = Moltin::Resources::Integrations.new(config, {})
-              response = resource.create(name: 'My Integration',
-                                         enabled: true,
-                                         integration_type: 'webhook',
-                                         observes: ['file.created'],
-                                         configuration: {
-                                           url: 'http://example.com'
-                                         })
+              response = client.integrations.create(name: 'My Integration',
+                                                    enabled: true,
+                                                    integration_type: 'webhook',
+                                                    observes: ['file.created'],
+                                                    configuration: {
+                                                      url: 'http://example.com'
+                                                    })
 
               id = response.data.id
               expect(id).not_to be_nil
               expect(response.data).to be_kind_of(Moltin::Models::Integration)
 
-              response = resource.delete(response.data.id)
+              response = client.integrations.delete(response.data.id)
               expect(response.data.id).to eq id
             end
           end
@@ -119,7 +108,7 @@ module Moltin
                                          observes: ['file.created'],
                                          configuration: {
                                            url: 'http://example.com'
-                                        })
+                                         })
 
               id = response.data.id
               response = resource.update(id, name: 'My New Integration',
@@ -127,36 +116,12 @@ module Moltin
                                              observes: ['file.created'],
                                              configuration: {
                                                url: 'http://example.com'
-                                            })
+                                             })
 
               expect(response.data.name).to eq 'My New Integration'
               expect(response.data).to be_kind_of(Moltin::Models::Integration)
 
               response = resource.delete(response.data.id)
-              expect(response.data.id).to eq id
-            end
-          end
-        end
-
-        context 'invalid integration' do
-          it 'receives the list of errors', freeze_time: true do
-            VCR.use_cassette('resources/integrations/update/invalid') do
-              resource = Moltin::Resources::Integrations.new(config, {})
-              response = resource.create(name: 'My Integration',
-                                         enabled: true,
-                                         integration_type: 'webhook',
-                                         observes: ['file.created'],
-                                         configuration: {
-                                           url: 'http://example.com'
-                                        })
-              id = response.data.id
-              response = resource.update(id, observes: nil)
-
-              expect(response.errors).to eq(
-                [{"title":"Missing required property: observes"}]
-              )
-
-              response = resource.delete(id)
               expect(response.data.id).to eq id
             end
           end
@@ -190,7 +155,7 @@ module Moltin
           VCR.use_cassette('resources/integrations/logs') do
             resource = Moltin::Resources::Integrations.new(config, {})
             response = resource.logs
-            expect(response.status).to eq 200
+            expect(response.response_status).to eq 200
           end
         end
       end
@@ -200,7 +165,7 @@ module Moltin
           VCR.use_cassette('resources/integrations/logs_for') do
             integration = client.integrations.all.first
             response = integration.logs
-            expect(response.status).to eq 200
+            expect(response.response_status).to eq 200
           end
         end
       end
@@ -210,7 +175,7 @@ module Moltin
           VCR.use_cassette('resources/integrations/jobs') do
             integration = client.integrations.all.first
             response = integration.jobs
-            expect(response.status).to eq 200
+            expect(response.response_status).to eq 200
           end
         end
       end

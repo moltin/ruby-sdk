@@ -6,16 +6,6 @@ module Moltin
       let(:config) { Configuration.new }
       let(:client) { Moltin::Client.new }
 
-      before do
-        ENV['MOLTIN_CLIENT_ID'] = ENV['FAKE_CLIENT_ID']
-        ENV['MOLTIN_CLIENT_SECRET'] = ENV['FAKE_CLIENT_SECRET']
-      end
-
-      after do
-        ENV.delete('MOLTIN_CLIENT_ID')
-        ENV.delete('MOLTIN_CLIENT_SECRET')
-      end
-
       describe '#uri' do
         it 'returns the expected uri' do
           gateway = Moltin::Resources::Gateways.new(config, {})

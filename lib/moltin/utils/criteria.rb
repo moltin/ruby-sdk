@@ -89,6 +89,15 @@ module Moltin
         @response ||= @klass.load_collection(@uri, formatted_criteria)
       end
 
+      def method_missing(method, *args, &block)
+        super unless response.respond_to?(method)
+        response.send(method, *args, &block)
+      end
+
+      def respond_to_missing?(method, include_private = false)
+        response.respond_to?(method) || super
+      end
+
       private
 
       # Private: Turn the criteria into query parameters

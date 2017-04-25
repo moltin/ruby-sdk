@@ -1,11 +1,11 @@
 module Moltin
   module Utils
     class Response
-      attr_accessor :body, :status
+      attr_accessor :body, :response_status
 
       def initialize(model, resp, client = nil)
         @model = model
-        @status = resp[:status]
+        @response_status = resp[:status]
         @body = resp[:body]
         @client = client
       end
@@ -43,9 +43,9 @@ module Moltin
         @body['meta'] || {}
       end
 
-      def method_missing(method, *args)
+      def method_missing(method, *args, &block)
         super unless data.respond_to?(method)
-        data.send(method, *args)
+        data.send(method, *args, &block)
       end
 
       def respond_to_missing?(method, include_private = false)
