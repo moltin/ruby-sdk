@@ -14,9 +14,9 @@ module Moltin
         cart = client.carts.get('my_new_order').data
         cart.add(id: product.id).data
         client.carts.checkout(cart.id, customer: {
-                                         name: 'Billy',
-                                         email: 'billy@billy.com'
-                                       },
+                                name: 'Billy',
+                                email: 'billy@billy.com'
+                              },
                                        billing_address: {
                                          first_name: 'Jack',
                                          last_name: 'Macdowall',
@@ -70,7 +70,7 @@ module Moltin
             expect(response.included).to eq({})
             expect(response.meta).not_to be_nil
 
-            expect(response.data.length).to eq 25
+            expect(response.data.length).to eq 46
           end
         end
       end
@@ -103,22 +103,17 @@ module Moltin
       describe '#pay' do
         it 'pays for the order', freeze_time: true do
           VCR.use_cassette('resources/orders/pay') do
-            client.gateways.update('stripe', {
-              enabled: true,
-              login: 'sk_test_gRJKVmpX8UGWBpUp25p7Gp7f'
-            })
+            client.gateways.update('stripe', enabled: true,
+                                             login: 'sk_test_gRJKVmpX8UGWBpUp25p7Gp7f')
             order = create_order
-            #order = client.orders.all.data.last
-            payment = order.pay({
-              gateway: "stripe",
-              method: "purchase",
-              first_name: "John",
-              last_name: "Doe",
-              number: "4242424242424242",
-              month: "08",
-              year: "2020",
-              verification_value: "123"
-            })
+            order.pay(gateway: 'stripe',
+                      method: 'purchase',
+                      first_name: 'John',
+                      last_name: 'Doe',
+                      number: '4242424242424242',
+                      month: '08',
+                      year: '2020',
+                      verification_value: '123')
             order = client.orders.get(order.id)
             expect(order.status).to eq 'complete'
             expect(order.payment).to eq 'paid'
@@ -127,13 +122,13 @@ module Moltin
       end
 
       describe '#transactions' do
-        it 'receives the transactions', freeze_time: true # do
-        # VCR.use_cassette('resources/orders/transactions') do
-        #   create_order
-        #   order = client.orders.all.data.first
-        #   transactions = order.transactions.data
-        # end
-        # end
+        it 'receives the transactions', freeze_time: true do
+          VCR.use_cassette('resources/orders/transactions') do
+            order = client.orders.all.data.first
+            transactions = order.transactions.data
+            expect(transactions.first).to be_kind_of(Moltin::Models::Transaction)
+          end
+        end
       end
     end
   end
