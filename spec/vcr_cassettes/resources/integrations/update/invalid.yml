@@ -1,0 +1,124 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.moltin.com/oauth/access_token
+    body:
+      encoding: UTF-8
+      string: client_id=FTtrUHsKHstAOtAhN2VjKbpvK08ZXOKZ0GAQaiIAcc&client_secret=iFUwmVrwIOWwJrSR70gUtNQ5vIKRwc2RJVyXdid4tc&grant_type=client_credentials
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Tue, 25 Apr 2017 14:55:50 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Auth-Served-By:
+      - Moltin-Auth
+      X-Moltin-Request-Id:
+      - 49b7522c199756c23460e787e00352002fcd5344
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {"expires":1493135750,"identifier":"client_credentials","expires_in":3600,"access_token":"a88119130059bf2efee53f3d473d812f47d47d04","token_type":"Bearer"}
+    http_version: 
+  recorded_at: Tue, 29 Sep 1987 17:00:00 GMT
+- request:
+    method: post
+    uri: https://api.moltin.com/v2/integrations
+    body:
+      encoding: UTF-8
+      string: '{"data":{"name":"My Integration","enabled":true,"integration_type":"webhook","observes":["file.created"],"configuration":{"url":"http://example.com"},"type":"integration"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer a88119130059bf2efee53f3d473d812f47d47d04
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Tue, 25 Apr 2017 14:55:51 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - d675ce077f691613baec18ef75c506c8d58e15f5
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"id":"170cf19f-7720-41f2-b984-54a314bbc461","type":"integration","integration_type":"webhook","name":"My
+        Integration","enabled":true,"configuration":{"url":"http://example.com"},"observes":["file.created"],"links":{"self":"https://api.moltin.com/v2/integrations/170cf19f-7720-41f2-b984-54a314bbc461"},"meta":{"timestamps":{"created_at":"2017-04-25T14:55:51.683Z","updated_at":"2017-04-25T14:55:51.683Z"}}}}'
+    http_version: 
+  recorded_at: Tue, 29 Sep 1987 17:00:00 GMT
+- request:
+    method: put
+    uri: https://api.moltin.com/v2/integrations/170cf19f-7720-41f2-b984-54a314bbc461
+    body:
+      encoding: UTF-8
+      string: '{"data":{"observes":null,"type":"integration","id":"170cf19f-7720-41f2-b984-54a314bbc461"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer a88119130059bf2efee53f3d473d812f47d47d04
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Tue, 25 Apr 2017 14:55:53 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - 3dfda1bd23fe4c2fbaef6ac321824db426079070
+    body:
+      encoding: ASCII-8BIT
+      string: '{"errors":[{"title":"Missing required property: integration_type"}]}'
+    http_version: 
+  recorded_at: Tue, 29 Sep 1987 17:00:00 GMT
+recorded_with: VCR 3.0.3

@@ -108,57 +108,60 @@ module Moltin
         end
       end
 
-      # describe '#update' do
-      #   context 'valid integration' do
-      #     it 'updates a new integration', freeze_time: true do
-      #       VCR.use_cassette('resources/integrations/update/valid') do
-      #         resource = Moltin::Resources::Integrations.new(config, {})
-      #         response = resource.create(name: 'My Integration',
-      #                                    enabled: true,
-      #                                    integration_type: 'webhook',
-      #                                    observes: ['file.created'],
-      #                                    configuration: {
-      #                                      url: 'http://example.com'
-      #                                   })
-      #
-      #         id = response.data.id
-      #         response = resource.update(id, name: 'My New Integration',
-      #                                        integration_type: 'webhook')
-      #
-      #         expect(response.data.name).to eq 'My New Integration'
-      #         expect(response.data).to be_kind_of(Moltin::Models::Integration)
-      #
-      #         response = resource.delete(response.data.id)
-      #         expect(response.data.id).to eq id
-      #       end
-      #     end
-      #   end
-      #
-      #   context 'invalid integration' do
-      #     it 'receives the list of errors', freeze_time: true do
-      #       VCR.use_cassette('resources/integrations/update/invalid') do
-      #         resource = Moltin::Resources::Integrations.new(config, {})
-      #         response = resource.create(name: 'My Integration',
-      #                                    enabled: true,
-      #                                    integration_type: 'webhook',
-      #                                    observes: ['file.created'],
-      #                                    configuration: {
-      #                                      url: 'http://example.com'
-      #                                   })
-      #         p response
-      #         id = response.data.id
-      #         response = resource.update(id, observes: nil)
-      #
-      #         expect(response.errors).to eq(
-      #           [{"title":"Missing required property: observes"}]
-      #         )
-      #
-      #         response = resource.delete(id)
-      #         expect(response.data.id).to eq id
-      #       end
-      #     end
-      #   end
-      # end
+      describe '#update' do
+        context 'valid integration' do
+          it 'updates a new integration', freeze_time: true do
+            VCR.use_cassette('resources/integrations/update/valid') do
+              resource = Moltin::Resources::Integrations.new(config, {})
+              response = resource.create(name: 'My Integration',
+                                         enabled: true,
+                                         integration_type: 'webhook',
+                                         observes: ['file.created'],
+                                         configuration: {
+                                           url: 'http://example.com'
+                                        })
+
+              id = response.data.id
+              response = resource.update(id, name: 'My New Integration',
+                                             integration_type: 'webhook',
+                                             observes: ['file.created'],
+                                             configuration: {
+                                               url: 'http://example.com'
+                                            })
+
+              expect(response.data.name).to eq 'My New Integration'
+              expect(response.data).to be_kind_of(Moltin::Models::Integration)
+
+              response = resource.delete(response.data.id)
+              expect(response.data.id).to eq id
+            end
+          end
+        end
+
+        context 'invalid integration' do
+          it 'receives the list of errors', freeze_time: true do
+            VCR.use_cassette('resources/integrations/update/invalid') do
+              resource = Moltin::Resources::Integrations.new(config, {})
+              response = resource.create(name: 'My Integration',
+                                         enabled: true,
+                                         integration_type: 'webhook',
+                                         observes: ['file.created'],
+                                         configuration: {
+                                           url: 'http://example.com'
+                                        })
+              id = response.data.id
+              response = resource.update(id, observes: nil)
+
+              expect(response.errors).to eq(
+                [{"title":"Missing required property: observes"}]
+              )
+
+              response = resource.delete(id)
+              expect(response.data.id).to eq id
+            end
+          end
+        end
+      end
 
       describe '#delete' do
         it 'deletes the integration', freeze_time: true do
