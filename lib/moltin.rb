@@ -20,6 +20,7 @@ require 'moltin/models/integration'
 require 'moltin/models/variation'
 require 'moltin/models/variation_option'
 require 'moltin/models/product_modifier'
+require 'moltin/models/currency'
 
 require 'moltin/version'
 require 'moltin/configuration'
@@ -49,7 +50,7 @@ require 'moltin/resources/integrations'
 require 'moltin/resources/variations'
 require 'moltin/resources/variation_options'
 require 'moltin/resources/product_modifiers'
-
+require 'moltin/resources/currencies'
 
 require 'moltin/client'
 

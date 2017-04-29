@@ -1,0 +1,198 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.moltin.com/oauth/access_token
+    body:
+      encoding: UTF-8
+      string: client_id=FTtrUHsKHstAOtAhN2VjKbpvK08ZXOKZ0GAQaiIAcc&client_secret=iFUwmVrwIOWwJrSR70gUtNQ5vIKRwc2RJVyXdid4tc&grant_type=client_credentials
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      X-Moltin-Language:
+      - en
+      X-Moltin-Currency:
+      - USD
+      X-Moltin-Locale:
+      - en_gb
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Sat, 29 Apr 2017 17:03:08 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Auth-Served-By:
+      - Moltin-Auth
+      X-Moltin-Request-Id:
+      - f88a1b2e5fe26c294cbc2111e664a86e76021aa0
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {"expires":1493488988,"identifier":"client_credentials","expires_in":3600,"access_token":"0e1c9877808a1d25f48281c3cc3f976e7bf8e424","token_type":"Bearer"}
+    http_version: 
+  recorded_at: Sun, 04 Oct 1987 17:00:00 GMT
+- request:
+    method: post
+    uri: https://api.moltin.com/v2/currencies
+    body:
+      encoding: UTF-8
+      string: '{"data":{"code":"ABC","exchange_rate":1,"format":"£{price}","decimal_point":".","thousand_separator":",","decimal_places":0,"default":false,"enabled":true,"type":"currency"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer 0e1c9877808a1d25f48281c3cc3f976e7bf8e424
+      X-Moltin-Language:
+      - en
+      X-Moltin-Currency:
+      - USD
+      X-Moltin-Locale:
+      - en_gb
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Sat, 29 Apr 2017 17:03:10 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - 2ad2d7d48b7bf6391389b1955f472a42da8c2a90
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJkYXRhIjp7ImlkIjoiMTgxNTE5OGUtZWRmZS00NWU5LWFmYTMtZTc0MmJk
+        NWFjOWZiIiwidHlwZSI6ImN1cnJlbmN5IiwiY29kZSI6IkFCQyIsImV4Y2hh
+        bmdlX3JhdGUiOjEsImZvcm1hdCI6IsKje3ByaWNlfSIsImRlY2ltYWxfcG9p
+        bnQiOiIuIiwidGhvdXNhbmRfc2VwYXJhdG9yIjoiLCIsImRlY2ltYWxfcGxh
+        Y2VzIjowLCJkZWZhdWx0IjpmYWxzZSwiZW5hYmxlZCI6dHJ1ZSwibGlua3Mi
+        Onsic2VsZiI6Imh0dHBzOi8vYXBpLm1vbHRpbi5jb20vdjIvY3VycmVuY2ll
+        cyUhKEVYVFJBIHN0cmluZz1jdXJyZW5jaWVzLzE4MTUxOThlLWVkZmUtNDVl
+        OS1hZmEzLWU3NDJiZDVhYzlmYikifSwibWV0YSI6eyJ0aW1lc3RhbXBzIjp7
+        ImNyZWF0ZWRfYXQiOiIyMDE3LTA0LTI5VDE3OjAzOjEwLjA2NTYwNTU5OFoi
+        LCJ1cGRhdGVkX2F0IjoiMjAxNy0wNC0yOVQxNzowMzoxMC4wNjU2MDYwMTNa
+        In19fX0=
+    http_version: 
+  recorded_at: Sun, 04 Oct 1987 17:00:00 GMT
+- request:
+    method: put
+    uri: https://api.moltin.com/v2/currencies/1815198e-edfe-45e9-afa3-e742bd5ac9fb
+    body:
+      encoding: UTF-8
+      string: '{"data":{"exchange_rate":null,"type":"currency","id":"1815198e-edfe-45e9-afa3-e742bd5ac9fb"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer 0e1c9877808a1d25f48281c3cc3f976e7bf8e424
+      X-Moltin-Language:
+      - en
+      X-Moltin-Currency:
+      - USD
+      X-Moltin-Locale:
+      - en_gb
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Sat, 29 Apr 2017 17:03:11 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - 1c6fc00964c59b4abf3e2721be787619445fc0a7
+    body:
+      encoding: ASCII-8BIT
+      string: '{"errors":[{"source":"data.exchange_rate","title":"invalid_type","detail":"Invalid
+        type. Expected: number, given: null"}]}'
+    http_version: 
+  recorded_at: Sun, 04 Oct 1987 17:00:00 GMT
+- request:
+    method: delete
+    uri: https://api.moltin.com/v2/currencies/1815198e-edfe-45e9-afa3-e742bd5ac9fb
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer 0e1c9877808a1d25f48281c3cc3f976e7bf8e424
+      X-Moltin-Language:
+      - en
+      X-Moltin-Currency:
+      - USD
+      X-Moltin-Locale:
+      - en_gb
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Sat, 29 Apr 2017 17:03:12 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - a1ce956c61d757d525b2e184d7029bc07614ddad
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"type":"currency","id":"1815198e-edfe-45e9-afa3-e742bd5ac9fb"}}'
+    http_version: 
+  recorded_at: Sun, 04 Oct 1987 17:00:00 GMT
+recorded_with: VCR 3.0.3

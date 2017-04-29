@@ -48,7 +48,10 @@ module Moltin
 
         expect(Configuration.new.to_hash).to eq(client_id: nil,
                                                 client_secret: nil,
-                                                base_url: 'https://api.moltin.com')
+                                                base_url: 'https://api.moltin.com',
+                                                currency_code: 'USD',
+                                                language: 'en',
+                                                locale: 'en_gb')
       end
     end
 
