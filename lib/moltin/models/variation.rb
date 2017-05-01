@@ -5,6 +5,7 @@ module Moltin
 
       def options
         original_payload['options'].map do |opt|
+          opt[:variation_id] = id
           VariationOption.new(opt, @client)
         end
       end

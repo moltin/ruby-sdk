@@ -4,6 +4,7 @@ module Moltin
   module Resources
     describe Products do
       let(:config) { Configuration.new }
+      let(:client) { Moltin::Client.new }
 
       describe '#uri' do
         it 'returns the expected uri' do
@@ -283,6 +284,15 @@ module Moltin
                                             'detail' => 'The requested product could not be found',
                                             'title' => 'Product not found'
                                           }])
+          end
+        end
+      end
+
+      describe '#build' do
+        it 'builds the product variations', freeze_time: true do
+          VCR.use_cassette('resources/products/build') do
+            product = client.products.all.first
+            client.products.build(product.id)
           end
         end
       end

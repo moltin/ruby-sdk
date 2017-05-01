@@ -225,7 +225,7 @@ moltin.categories.tree
 ##### Products
 
 ```
-# Retrieve a list of products
+# Retrieve the list of products
 moltin.products.all
 ```
 
@@ -248,7 +248,7 @@ moltin.products.create({
 ```
 
 ```
-# Update a product (POST)
+# Update a product (PUT)
 moltin.products.update(product_id, {
   name: 'My Product',
   slug: 'my-product',
@@ -261,14 +261,132 @@ moltin.products.update(product_id, {
 ```
 
 ```
-# delete a product (POST)
+# delete a product (DELETE)
 moltin.products.delete(product_id)
+```
+
+```
+# Build a product variations (POST)
+moltin.products.build(product_id)
+
+# Or if you have a Moltin::Models::Product instance
+product.build
+```
+
+##### Product Variations, Options and Modifiers
+
+```
+# Retrieve the list of variations
+moltin.variations.all
+```
+
+```
+# Retrieve a single variation (GET)
+moltin.variations.get(variations_id)
+```
+
+```
+# Create a variation (POST)
+moltin.variations.create({
+  name: 'inc'
+})
+```
+
+```
+# Update a variation (PUT)
+moltin.variations.update(variation_id, {
+  name: 'officia fugiat non ad elit'
+})
+```
+
+```
+# delete a variation (DELETE)
+moltin.variations.delete(variation_id)
+```
+
+##### Product Variation Options
+
+```
+# First, retrieve a variation
+variation = moltin.variations.all.first
+
+# Or build one
+variation = Moltin::Models::Variation.new({ id: variation_id }, moltin)
+```
+
+```
+# Get the options of a variation
+variation.options
+```
+
+```
+# Create a Product Variation Option (POST)
+variation.variation_options.create({
+  name: 'irure est',
+  description: 'ut nulla ame'  
+})
+```
+
+```
+# Update a Product Variation Option (PUT)
+variation.variation_options.update(option_id, {
+  description: 'ut nulla ame!'  
+})
+```
+
+```
+# delete a Product Variation Option (DELETE)
+variation.variation_options.delete(option_id)
+```
+
+##### Product Modifiers
+
+```
+# First, retrieve a variation option
+option = moltin.variations.all.first.options.first
+
+# Or build one
+option = Moltin::Models::VariationOption.new({
+  variation_id: variation_id,
+  id: option_id
+}, moltin)
+```
+
+```
+# Get the modifiers of a variation option
+option.modifiers
+```
+
+```
+# Create a Product Variation Option Modifier (POST)
+option.product_modifiers.create({
+  modifier_type: 'sku_builder',
+  value: {
+    seek: 'in incididunt cupidatat dolor est',
+    set: 'velit ad ut'
+  }
+})
+```
+
+```
+# Update a Product Variation Option Modifier (PUT)
+option.product_modifiers.update(modifier_id, {
+  value: {
+    seek: 'in incididunt cupidatat dolor est!',
+    set: 'velit ad ut!'
+  }
+})
+```
+
+```
+# delete a Product Variation Option Modifier (DELETE)
+option.product_modifiers.delete(modifier_id)
 ```
 
 ##### Brands
 
 ```
-# Retrieve a list of brands
+# Retrieve the list of brands
 moltin.brands.all
 ```
 
@@ -288,7 +406,7 @@ moltin.brands.create({
 ```
 
 ```
-# Update a brand (POST)
+# Update a brand (PUT)
 moltin.brands.update(brand_id, {
   slug: 'my-brand1',
   description: 'Super Brand',
@@ -297,14 +415,14 @@ moltin.brands.update(brand_id, {
 ```
 
 ```
-# delete a brand (POST)
+# delete a brand (DELETE)
 moltin.brands.delete(brand_id)
 ```
 
 ##### Categories
 
 ```
-# Retrieve a list of categories
+# Retrieve the list of categories
 moltin.categories.all
 ```
 
@@ -345,7 +463,7 @@ moltin.categories.tree
 ##### Collections
 
 ```
-# Retrieve a list of collections
+# Retrieve the list of collections
 moltin.collections.all
 ```
 
@@ -381,7 +499,7 @@ moltin.collections.delete(collection_id)
 ##### Files
 
 ```
-# Retrieve a list of files
+# Retrieve the list of files
 moltin.files.all
 ```
 

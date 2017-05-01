@@ -9,6 +9,11 @@ module Moltin
       has_many :categories
       has_many :collections
       has_many :files
+      has_many :variations
+
+      def build
+        client.products.build(id)
+      end
     end
   end
 end
