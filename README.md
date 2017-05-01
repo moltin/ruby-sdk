@@ -594,6 +594,25 @@ moltin.integrations.update(integration_id, {
 moltin.integrations.delete(integration_id)
 ```
 
+##### Settings
+
+```
+# Get the settings attributes
+moltin.settings.attributes
+```
+
+```
+# Get the settings
+moltin.settings.all
+```
+
+```
+# Update the settings
+moltin.settings.update({
+  page_length: 10
+})
+```
+
 #### Relationships
 
 Relationships can be created between different entities as shown in the examples below. The last argument (the ids of the related entities) can be passed either as a single string or as an array of strings.
