@@ -18,7 +18,10 @@ module Moltin
       variation_options: Moltin::Resources::VariationOptions,
       product_modifiers: Moltin::Resources::ProductModifiers,
       currencies: Moltin::Resources::Currencies,
-      settings: Moltin::Resources::Settings
+      settings: Moltin::Resources::Settings,
+      flows: Moltin::Resources::Flows,
+      fields: Moltin::Resources::Fields,
+      entries: Moltin::Resources::Entries
     }.freeze
 
     # The Moltin configuration.

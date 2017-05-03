@@ -148,8 +148,7 @@ module Moltin
 
             expect(response.data.map(&:label)).to eq(
               ['Type', 'Id', 'Name', 'Slug', 'Sku', 'Manage Stock',
-               'Description', 'Price', 'Status', 'Commodity Type',
-               'Dimensions', 'Weight']
+               'Stock', 'Description', 'Price', 'Status', 'Commodity Type', 'Dimensions', 'Weight']
             )
             expect(response.data.first).to be_kind_of(Moltin::Models::Attribute)
           end
@@ -165,6 +164,7 @@ module Moltin
 
             expect(response.data.id).to eq product.id
             expect(response.data).to be_kind_of(Moltin::Models::Product)
+            expect(response.data.flow_fields.reference).to eq nil
           end
         end
       end
