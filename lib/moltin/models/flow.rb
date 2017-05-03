@@ -7,6 +7,10 @@ module Moltin
       def fields
         client.fields(flow_slug: slug).all
       end
+
+      def entries
+        client.entries(flow_slug: slug)
+      end
     end
   end
 end
