@@ -15,7 +15,7 @@ module Moltin
       end
 
       describe '#all' do
-        it 'receives the list of fields' do
+        it 'receives the list of fields', freeze_time: true do
           VCR.use_cassette('resources/fields/all') do
             response = flow.fields
 
@@ -31,7 +31,7 @@ module Moltin
       end
 
       describe '#attributes' do
-        it 'receives the list of attributes' do
+        it 'receives the list of attributes', freeze_time: true do
           VCR.use_cassette('resources/fields/attributes') do
             response = client.fields.attributes
 
