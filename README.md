@@ -898,7 +898,7 @@ Aside from errors that may occur due to the call, there may be other exceptions 
 begin
   moltin.products.all
 rescue => e
-  // Handle e
+  # Handle e
 end
 ```
 
