@@ -179,9 +179,20 @@ module Moltin
       #
       # Returns a memoized instance of Moltin::Utils::Request
       def request
-        @request ||= Moltin::Utils::Request.new(config.base_url, currency_code: config.currency_code,
+        @request ||= Moltin::Utils::Request.new(config.base_url, currency_code: currency,
                                                                  language: config.language,
                                                                  locale: config.locale)
+      end
+
+      def currency
+        if client && client.currency_code
+          currency = client.currency_code
+          client.currency_code = nil
+        else
+          currency = config.currency_code
+        end
+
+        currency
       end
 
       # Private: Instantiate a new Moltin::Utils::AccessToken with the current config
