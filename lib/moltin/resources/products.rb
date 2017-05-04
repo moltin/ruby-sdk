@@ -1,6 +1,10 @@
 module Moltin
   module Resources
     class Products < Resources::Base
+      def build(id)
+        response(call(:post, "#{uri}/#{id}/build", data: {}))
+      end
+
       private
 
       # Private: Gives the type of the current Resources class.

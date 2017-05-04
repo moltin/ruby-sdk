@@ -20,16 +20,6 @@ module Moltin
       end
 
       describe '#get' do
-        before do
-          ENV['MOLTIN_CLIENT_ID'] = ENV['FAKE_CLIENT_ID']
-          ENV['MOLTIN_CLIENT_SECRET'] = ENV['FAKE_CLIENT_SECRET']
-        end
-
-        after do
-          ENV.delete('MOLTIN_CLIENT_ID')
-          ENV.delete('MOLTIN_CLIENT_ID')
-        end
-
         context 'with auth info in storage' do
           context 'with valid token' do
             let(:storage) do

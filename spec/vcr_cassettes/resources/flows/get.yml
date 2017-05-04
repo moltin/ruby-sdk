@@ -1,0 +1,141 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.moltin.com/oauth/access_token
+    body:
+      encoding: UTF-8
+      string: client_id=FTtrUHsKHstAOtAhN2VjKbpvK08ZXOKZ0GAQaiIAcc&client_secret=iFUwmVrwIOWwJrSR70gUtNQ5vIKRwc2RJVyXdid4tc&grant_type=client_credentials
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      X-Moltin-Language:
+      - en
+      X-Moltin-Currency:
+      - USD
+      X-Moltin-Locale:
+      - en_gb
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Tue, 02 May 2017 14:57:53 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Auth-Served-By:
+      - Moltin-Auth
+      X-Moltin-Request-Id:
+      - 4f5d7500d8f8c12e95390fce1cc97a7e166ad486
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {"expires":1493740673,"identifier":"client_credentials","expires_in":3600,"access_token":"e7d3b6ba74f8783e2acb7d810411f3038df2b659","token_type":"Bearer"}
+    http_version: 
+  recorded_at: Tue, 06 Oct 1987 17:00:00 GMT
+- request:
+    method: get
+    uri: https://api.moltin.com/v2/flows
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer e7d3b6ba74f8783e2acb7d810411f3038df2b659
+      X-Moltin-Language:
+      - en
+      X-Moltin-Currency:
+      - USD
+      X-Moltin-Locale:
+      - en_gb
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Tue, 02 May 2017 14:57:54 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - 0e2fff0103c739960acefb77d83bfcabfba22efe
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"id":"f14015ce-436a-427f-bfed-e2244105301a","type":"flow","name":"reference","slug":"products","description":"Just
+        a nice reference.","enabled":false,"links":{"self":"https://api.moltin.com/flows/f14015ce-436a-427f-bfed-e2244105301a"},"relationships":{},"meta":{"timestamps":{"created_at":"2017-05-02T10:50:45.622Z","updated_at":"2017-05-02T10:50:45.622Z"}}}]}'
+    http_version: 
+  recorded_at: Tue, 06 Oct 1987 17:00:00 GMT
+- request:
+    method: get
+    uri: https://api.moltin.com/v2/flows/f14015ce-436a-427f-bfed-e2244105301a
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer e7d3b6ba74f8783e2acb7d810411f3038df2b659
+      X-Moltin-Language:
+      - en
+      X-Moltin-Currency:
+      - USD
+      X-Moltin-Locale:
+      - en_gb
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Tue, 02 May 2017 14:57:55 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - 821233c7b1b7c8cf1724781e85b8ec92b477b59d
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"id":"f14015ce-436a-427f-bfed-e2244105301a","type":"flow","name":"reference","slug":"products","description":"Just
+        a nice reference.","enabled":false,"links":{"self":"https://api.moltin.com/flows/f14015ce-436a-427f-bfed-e2244105301a"},"relationships":{},"meta":{"timestamps":{"created_at":"2017-05-02T10:50:45.622Z","updated_at":"2017-05-02T10:50:45.622Z"}}}}'
+    http_version: 
+  recorded_at: Tue, 06 Oct 1987 17:00:00 GMT
+recorded_with: VCR 3.0.3

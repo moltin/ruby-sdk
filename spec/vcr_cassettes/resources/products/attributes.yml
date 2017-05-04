@@ -9,6 +9,12 @@ http_interactions:
     headers:
       User-Agent:
       - Faraday v0.11.0
+      X-Moltin-Language:
+      - en
+      X-Moltin-Currency:
+      - USD
+      X-Moltin-Locale:
+      - en_gb
       Content-Type:
       - application/x-www-form-urlencoded
       Accept-Encoding:
@@ -23,7 +29,7 @@ http_interactions:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Sat, 11 Mar 2017 08:59:41 GMT
+      - Wed, 03 May 2017 17:01:16 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -31,15 +37,15 @@ http_interactions:
       X-Auth-Served-By:
       - Moltin-Auth
       X-Moltin-Request-Id:
-      - 96e40ec0eedfadc8e468b14d921b0b52700c0222
+      - bbd32a3c14356be8fe196e64b32e049f2f87c7b0
       Access-Control-Allow-Origin:
       - "*"
     body:
       encoding: ASCII-8BIT
       string: |
-        {"expires":1489226381,"identifier":"client_credentials","expires_in":3600,"access_token":"8747ed56d0e87faf21402f5670beca7076fdcacc","token_type":"Bearer"}
+        {"expires":1493834476,"identifier":"client_credentials","expires_in":3600,"access_token":"84bfe465e230d3bb570c9ab6308081a683640cfc","token_type":"Bearer"}
     http_version: 
-  recorded_at: Sat, 11 Mar 2017 08:59:41 GMT
+  recorded_at: Wed, 03 May 2017 17:01:16 GMT
 - request:
     method: get
     uri: https://api.moltin.com/v2/products/attributes
@@ -50,7 +56,13 @@ http_interactions:
       User-Agent:
       - Faraday v0.11.0
       Authorization:
-      - Bearer 8747ed56d0e87faf21402f5670beca7076fdcacc
+      - Bearer 84bfe465e230d3bb570c9ab6308081a683640cfc
+      X-Moltin-Language:
+      - en
+      X-Moltin-Currency:
+      - USD
+      X-Moltin-Locale:
+      - en_gb
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -63,7 +75,7 @@ http_interactions:
       Server:
       - openresty/1.9.7.4
       Date:
-      - Sat, 11 Mar 2017 08:59:42 GMT
+      - Wed, 03 May 2017 17:01:17 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -71,15 +83,15 @@ http_interactions:
       Via:
       - 1.1 linkerd
       X-Moltin-Request-Id:
-      - e4d76daad07bd552c3c8751e8caa507c78dcef71
+      - 6cc4cd6a5b65d5e3da98b8dbe074b9e18bba3762
       Access-Control-Allow-Origin:
       - "*"
     body:
       encoding: ASCII-8BIT
       string: '{"data":[{"label":"Type","value":"type","type":"enum","validation":{"regex":"^product$"},"required":true,"default":"product","options":["product"]},{"label":"Id","value":"id","type":"string","required":true},{"label":"Name","value":"name","type":"string","required":true},{"label":"Slug","value":"slug","type":"string","required":true},{"label":"Sku","value":"sku","type":"string","required":true},{"label":"Manage
-        Stock","value":"manage_stock","type":"boolean","required":true},{"label":"Description","value":"description","type":"string","required":true},{"label":"Price","value":"price","type":"array","required":false,"items":[{"label":"Amount","value":"amount","type":"integer","required":true},{"label":"Currency","value":"currency","type":"string","required":true},{"label":"Includes
+        Stock","value":"manage_stock","type":"boolean","required":true},{"label":"Stock","value":"stock","type":"integer","required":false},{"label":"Description","value":"description","type":"string","required":true},{"label":"Price","value":"price","type":"array","required":false,"items":[{"label":"Amount","value":"amount","type":"integer","required":true},{"label":"Currency","value":"currency","type":"string","required":true},{"label":"Includes
         Tax","value":"includes_tax","type":"boolean","required":true}]},{"label":"Status","value":"status","type":"enum","required":true,"default":"draft","options":["draft","live"]},{"label":"Commodity
         Type","value":"commodity_type","type":"enum","required":true,"default":"physical","options":["physical","digital"]},{"label":"Dimensions","value":"dimensions","type":"array","required":false,"items":[{"label":"Unit","value":"unit","type":"string","required":true},{"label":"Value","value":"value","type":"number","required":true},{"label":"Measurement","value":"measurement","type":"enum","required":true,"options":["length","width","height"]}]},{"label":"Weight","value":"weight","type":"object","required":false,"object":[{"label":"Unit","value":"unit","type":"enum","required":true,"options":["g","kg","lb","oz"]},{"label":"Value","value":"value","type":"number","required":true}]}],"meta":{"entity":"product","version":"2.0.0"}}'
     http_version: 
-  recorded_at: Sat, 11 Mar 2017 08:59:42 GMT
+  recorded_at: Wed, 03 May 2017 17:01:17 GMT
 recorded_with: VCR 3.0.3

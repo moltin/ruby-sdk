@@ -4,16 +4,7 @@ module Moltin
   module Resources
     describe Products do
       let(:config) { Configuration.new }
-
-      before do
-        ENV['MOLTIN_CLIENT_ID'] = ENV['FAKE_CLIENT_ID']
-        ENV['MOLTIN_CLIENT_SECRET'] = ENV['FAKE_CLIENT_SECRET']
-      end
-
-      after do
-        ENV.delete('MOLTIN_CLIENT_ID')
-        ENV.delete('MOLTIN_CLIENT_SECRET')
-      end
+      let(:client) { Moltin::Client.new }
 
       describe '#uri' do
         it 'returns the expected uri' do
@@ -157,8 +148,7 @@ module Moltin
 
             expect(response.data.map(&:label)).to eq(
               ['Type', 'Id', 'Name', 'Slug', 'Sku', 'Manage Stock',
-               'Description', 'Price', 'Status', 'Commodity Type',
-               'Dimensions', 'Weight']
+               'Stock', 'Description', 'Price', 'Status', 'Commodity Type', 'Dimensions', 'Weight']
             )
             expect(response.data.first).to be_kind_of(Moltin::Models::Attribute)
           end
@@ -174,6 +164,7 @@ module Moltin
 
             expect(response.data.id).to eq product.id
             expect(response.data).to be_kind_of(Moltin::Models::Product)
+            expect(response.data.flow_fields.reference).to eq nil
           end
         end
       end
@@ -293,6 +284,15 @@ module Moltin
                                             'detail' => 'The requested product could not be found',
                                             'title' => 'Product not found'
                                           }])
+          end
+        end
+      end
+
+      describe '#build' do
+        it 'builds the product variations', freeze_time: true do
+          VCR.use_cassette('resources/products/build') do
+            product = client.products.all.first
+            client.products.build(product.id)
           end
         end
       end

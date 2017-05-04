@@ -1,11 +1,13 @@
 module Moltin
   module Resources
     class Base
-      attr_accessor :config, :storage
+      attr_accessor :config, :storage, :options, :client
 
-      def initialize(config, storage)
+      def initialize(config, storage, options = {}, client = nil)
+        @client = client
         @config = config
         @storage = storage
+        @options = options
       end
 
       # Public: Get a criteria and call the #all method on it
@@ -86,7 +88,7 @@ module Moltin
       #
       # Returns a Moltin::Utils::Response
       def create(data)
-        data[:type] = type
+        data[:type] ||= type
         response(call(:post, uri, data: data))
       end
 
@@ -151,7 +153,7 @@ module Moltin
       #
       # Returns a Moltin::Utils::Response
       def response(resp, model: model_name)
-        Moltin::Utils::Response.new(model, resp)
+        Moltin::Utils::Response.new(model, resp, client)
       end
 
       # Private: Prepare a request payload before using a Moltin::Utils::Request
@@ -177,7 +179,20 @@ module Moltin
       #
       # Returns a memoized instance of Moltin::Utils::Request
       def request
-        @request ||= Moltin::Utils::Request.new(config.base_url)
+        @request ||= Moltin::Utils::Request.new(config.base_url, currency_code: currency,
+                                                                 language: config.language,
+                                                                 locale: config.locale)
+      end
+
+      def currency
+        if client && client.currency_code
+          currency = client.currency_code
+          client.currency_code = nil
+        else
+          currency = config.currency_code
+        end
+
+        currency
       end
 
       # Private: Instantiate a new Moltin::Utils::AccessToken with the current config

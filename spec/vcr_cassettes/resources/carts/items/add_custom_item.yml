@@ -1,0 +1,164 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.moltin.com/oauth/access_token
+    body:
+      encoding: UTF-8
+      string: client_id=FTtrUHsKHstAOtAhN2VjKbpvK08ZXOKZ0GAQaiIAcc&client_secret=iFUwmVrwIOWwJrSR70gUtNQ5vIKRwc2RJVyXdid4tc&grant_type=client_credentials
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Fri, 21 Apr 2017 14:24:50 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Auth-Served-By:
+      - Moltin-Auth
+      X-Moltin-Request-Id:
+      - 47baebae0a1d1097bafbe40639fe71b6fbfa8a0a
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {"expires":1492788290,"identifier":"client_credentials","expires_in":3600,"access_token":"7dca25a9b509d9ab31918ef787e02c9fa14618b9","token_type":"Bearer"}
+    http_version: 
+  recorded_at: Fri, 25 Sep 1987 17:00:00 GMT
+- request:
+    method: delete
+    uri: https://api.moltin.com/v2/carts/my_secret_cart
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer 7dca25a9b509d9ab31918ef787e02c9fa14618b9
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Fri, 21 Apr 2017 14:24:51 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - 279d097066adee407e518ea6d76b3485e258115a
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"type":"cart","id":"my_secret_cart"}]}'
+    http_version: 
+  recorded_at: Fri, 25 Sep 1987 17:00:00 GMT
+- request:
+    method: get
+    uri: https://api.moltin.com/v2/carts/my_secret_cart
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer 7dca25a9b509d9ab31918ef787e02c9fa14618b9
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Fri, 21 Apr 2017 14:24:53 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - dd64fc53135db78e8f132df5abeda6830b33a3a4
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"id":"my_secret_cart","type":"cart","links":{"self":"https://api.moltin.com/carts/my_secret_cart"},"meta":{"display_price":{"with_tax":{"amount":0,"currency":"","formatted":"0"},"without_tax":{"amount":0,"currency":"","formatted":"0"}},"timestamps":{"created_at":"0001-01-01T00:00:00Z","updated_at":"0001-01-01T00:00:00Z"}}}}'
+    http_version: 
+  recorded_at: Fri, 25 Sep 1987 17:00:00 GMT
+- request:
+    method: post
+    uri: https://api.moltin.com/v2/carts/my_secret_cart/items
+    body:
+      encoding: UTF-8
+      string: '{"data":{"name":"Tax","sku":"tax-calc","description":"Custom tax calculation
+        for this order","quantity":1,"price":{"amount":2000},"type":"custom_item"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer 7dca25a9b509d9ab31918ef787e02c9fa14618b9
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Fri, 21 Apr 2017 14:24:54 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - 9bf87fddbd2d225f6a24b14a767982dc62ce7a21
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"id":"c90236d6-f01d-4482-9e41-fd1fd7ba2d0e","type":"custom_item","name":"Tax","description":"Custom
+        tax calculation for this order","sku":"tax-calc","quantity":1,"unit_price":{"amount":2000,"currency":"USD","includes_tax":true},"value":{"amount":2000,"currency":"USD","includes_tax":true},"links":{},"meta":{"display_price":{"with_tax":{"unit":{"amount":2000,"currency":"USD","formatted":"$20.00"},"value":{"amount":2000,"currency":"USD","formatted":"$20.00"}},"without_tax":{"unit":{"amount":2000,"currency":"USD","formatted":"$20.00"},"value":{"amount":2000,"currency":"USD","formatted":"$20.00"}}},"timestamps":{"created_at":"2017-04-21T14:24:54.23564059Z","updated_at":"2017-04-21T14:24:54.23564059Z"}}}],"meta":{"display_price":{"with_tax":{"amount":2000,"currency":"USD","formatted":"$20.00"},"without_tax":{"amount":2000,"currency":"USD","formatted":"$20.00"}},"timestamps":{"created_at":"0001-01-01T00:00:00Z","updated_at":"0001-01-01T00:00:00Z"}}}'
+    http_version: 
+  recorded_at: Fri, 25 Sep 1987 17:00:00 GMT
+recorded_with: VCR 3.0.3

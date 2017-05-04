@@ -15,6 +15,8 @@ module Moltin
         def attributes(*attrs)
           attrs.push(:original_payload)
           attrs.push(:relationships)
+          attrs.push(:flow_fields)
+
           attr_accessor(*attrs)
           @attributes_list = attrs.map(&:to_sym)
         end
@@ -32,19 +34,26 @@ module Moltin
         end
       end
 
+      attr_accessor :client
       # Public: initialize the model and set the values for each attribute
       # based on the content of the passed attributes hash
       #
       # attributes - a hash containing keys present in the class 'attributes'
       # and the values to associate with it.
       #
-      def initialize(attributes = {})
+      def initialize(attributes = {}, client = nil)
         self.class.attributes_list.each do |name|
           instance_variable_set("@#{name}", attributes[name.to_sym] ||
                                             attributes[name.to_s])
         end
+
         self.relationships = attributes['relationships']
         self.original_payload = attributes
+        @client = client
+
+        self.flow_fields = OpenStruct.new(attributes.dup.delete_if do |k, _v|
+          self.class.attributes_list.include?(k.to_sym)
+        end)
       end
     end
   end
