@@ -1,8 +1,11 @@
 module Moltin
   module Utils
     class Request
-      def initialize(base_url)
+      def initialize(base_url, currency_code: nil, language: nil, locale: nil)
         @base_url = base_url
+        @currency_code = currency_code
+        @language = language
+        @locale = locale
       end
 
       # Public: Call the Moltin API passing the credentials to retrieve a valid
@@ -15,7 +18,7 @@ module Moltin
                       grant_type: 'client_credentials',
                       client_id: id,
                       client_secret: secret
-                    }, json: false)
+                    }, content_type: 'application/x-www-form-urlencoded')
         body = JSON.parse(resp.body)
         raise Errors::AuthenticationError unless body['access_token']
 
@@ -33,12 +36,14 @@ module Moltin
       # conn: - a Faraday connection
       #
       # Returns the HTTP response from the API
-      def call(method, uri:, data: nil, query_params: nil, token: nil, auth: true, conn: new_conn)
+      def call(method, uri:, data: nil, query_params: nil, token: nil,
+               auth: true, conn: new_conn, content_type: nil)
         conn.authorization :Bearer, token if auth && token
 
         options = { uri: uri, conn: conn }
         options[:body] = data if data
         options[:query_params] = query_params if query_params
+        options[:content_type] = content_type if content_type
         resp = send(method, options)
 
         { status: resp.status, body: JSON.parse(resp.body) }
@@ -53,6 +58,7 @@ module Moltin
       # Returns the body of the response as JSON
       def get(uri:, query_params: nil, conn: new_conn)
         conn.get do |req|
+          set_headers(req)
           req.url uri
           req.params = query_params if query_params
         end
@@ -66,12 +72,27 @@ module Moltin
       # json: - If the request should be sent as application/json
       #
       # Returns the body of the response as JSON
-      def post(uri:, body:, conn: new_conn, json: true)
+      def post(uri:, body:, conn: new_conn, content_type: nil)
+        content_type ||= 'application/json'
+
         conn.post do |req|
+          set_headers(req)
           req.url uri
-          req.headers['Content-Type'] = 'application/json' if json
-          req.body = json ? body.to_json : body
+          req.headers['Content-Type'] = content_type
+          req.body = content_type == 'application/json' ? body.to_json : body
         end
+      end
+
+      def post_file(uri:, token:, file:, data:)
+        conn = Faraday.new(url: @base_url) do |f|
+          f.request :multipart
+          f.adapter :net_http
+        end
+
+        conn.authorization :Bearer, token
+
+        data[:file] = Faraday::UploadIO.new(file, 'image/jpeg')
+        conn.post(uri, data)
       end
 
       # Public: Makes a PUT request to the Moltin API
@@ -82,11 +103,14 @@ module Moltin
       # json: - If the request should be sent as application/json
       #
       # Returns the body of the response as JSON
-      def put(uri:, body:, conn: new_conn, json: true)
+      def put(uri:, body:, conn: new_conn, content_type: nil)
+        content_type ||= 'application/json'
+
         conn.put do |req|
+          set_headers(req)
           req.url uri
-          req.headers['Content-Type'] = 'application/json' if json
-          req.body = json ? body.to_json : body
+          req.headers['Content-Type'] = content_type
+          req.body = content_type == 'application/json' ? body.to_json : body
         end
       end
 
@@ -96,19 +120,31 @@ module Moltin
       # conn: - a Faraday connection
       #
       # Returns the body of the response as JSON
-      def delete(uri:, body: nil, conn: new_conn, json: true)
+      def delete(uri:, body: nil, conn: new_conn, content_type: nil)
+        content_type ||= 'application/json'
+
         if body
           conn.delete do |req|
+            set_headers(req)
             req.url uri
-            req.headers['Content-Type'] = 'application/json' if json
-            req.body = json ? body.to_json : body
+            req.headers['Content-Type'] = content_type
+            req.body = content_type == 'application/json' ? body.to_json : body
           end
         else
-          conn.delete(uri)
+          conn.delete do |req|
+            set_headers(req)
+            req.url uri
+          end
         end
       end
 
       private
+
+      def set_headers(req)
+        req.headers['X-MOLTIN-LANGUAGE'] = @language if @language
+        req.headers['X-MOLTIN-CURRENCY'] = @currency_code if @currency_code
+        req.headers['X-MOLTIN-LOCALE'] = @locale if @locale
+      end
 
       # Private: Instantiate a new Faraday connection
       #

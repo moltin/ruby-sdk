@@ -1,0 +1,91 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.moltin.com/oauth/access_token
+    body:
+      encoding: UTF-8
+      string: client_id=FTtrUHsKHstAOtAhN2VjKbpvK08ZXOKZ0GAQaiIAcc&client_secret=iFUwmVrwIOWwJrSR70gUtNQ5vIKRwc2RJVyXdid4tc&grant_type=client_credentials
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Sun, 16 Apr 2017 13:54:38 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Auth-Served-By:
+      - Moltin-Auth
+      X-Moltin-Request-Id:
+      - 4515074052123b223608f1d6102b3508641b4f8f
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {"expires":1492354478,"identifier":"client_credentials","expires_in":3600,"access_token":"087b1066bf2826f3c73b082ef78489c6450749f8","token_type":"Bearer"}
+    http_version: 
+  recorded_at: Sun, 16 Apr 2017 13:54:39 GMT
+- request:
+    method: get
+    uri: https://api.moltin.com/v2/categories?page%5Blimit%5D=10
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer 087b1066bf2826f3c73b082ef78489c6450749f8
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Sun, 16 Apr 2017 13:54:41 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - 69df5f9d3a40303d75389347d6af266730651f38
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"id":"26fe6575-c482-41fd-9da0-be9291c54bfd","type":"category","status":"draft","name":"Desk
+        & Shelf Clocks","slug":"desk-shelf-clocks","description":"","relationships":{"parent":{"data":[{"type":"category","id":"a2b3d7c3-e037-4a43-82ff-6c900909becf"}]}}},{"id":"c9a94042-2427-4ec7-b009-0730740d5ce6","type":"category","status":"draft","name":"Electrical
+        Cable Ties","slug":"electrical-cable-ties","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}},{"id":"a2b3d7c3-e037-4a43-82ff-6c900909becf","type":"category","status":"draft","name":"Satellite
+        Television Receivers","slug":"satellite-television-receivers","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]},"children":{"data":[{"type":"category","id":"26fe6575-c482-41fd-9da0-be9291c54bfd"}]}}},{"id":"39514ee3-2e03-4844-ac0f-ae649541c31d","type":"category","status":"draft","name":"Mechanical
+        & Wind-Up Alarm Clocks","slug":"mechanical-wind-up-alarm-clocks","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}},{"id":"8707edf0-ef48-408d-becf-3abe4f9bc47c","type":"category","status":"draft","name":"Analog-to-Digital
+        (DTV) Converters","slug":"analog-to-digital-dtv-converters","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}},{"id":"5b9187d6-f2ac-4a62-a68b-0bf6092a037a","type":"category","status":"draft","name":"Portable
+        Photo Printers","slug":"portable-photo-printers","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}},{"id":"00c5c346-feca-40a6-8893-1f8acbd7b4a0","type":"category","status":"draft","name":"Lab
+        Dropping Bottles","slug":"lab-dropping-bottles","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}},{"id":"28f31242-ca74-4d8a-8ebe-eb873b2603c7","type":"category","status":"draft","name":"Laptop
+        Cooling Pads & External Fans","slug":"laptop-cooling-pads-external-fans","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}},{"id":"99480126-6dc3-48f1-981d-8266039ae879","type":"category","status":"draft","name":"Boomboxes","slug":"boomboxes","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}},{"id":"ae900a17-5aaa-4129-a39d-06195e253ba7","type":"category","status":"draft","name":"Cell
+        Phone VR Headsets","slug":"cell-phone-vr-headsets","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}}],"links":{"current":"https://api.moltin.com/v2/categories?page[limit]=10&page[offset]=0","first":"https://api.moltin.com/v2/categories?page[limit]=10&page[offset]=0","last":"https://api.moltin.com/v2/categories?page[limit]=10&page[offset]=20","prev":null,"next":"https://api.moltin.com/v2/categories?page[limit]=10&page[offset]=10"},"meta":{"results":{"total":10,"all":28},"page":{"limit":10,"offset":0,"current":1,"total":3}}}'
+    http_version: 
+  recorded_at: Sun, 16 Apr 2017 13:54:41 GMT
+recorded_with: VCR 3.0.3

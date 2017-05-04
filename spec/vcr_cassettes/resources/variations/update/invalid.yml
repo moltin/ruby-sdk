@@ -1,0 +1,127 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.moltin.com/oauth/access_token
+    body:
+      encoding: UTF-8
+      string: client_id=FTtrUHsKHstAOtAhN2VjKbpvK08ZXOKZ0GAQaiIAcc&client_secret=iFUwmVrwIOWwJrSR70gUtNQ5vIKRwc2RJVyXdid4tc&grant_type=client_credentials
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Tue, 25 Apr 2017 16:24:14 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Auth-Served-By:
+      - Moltin-Auth
+      X-Moltin-Request-Id:
+      - 5afdc32db687875e3542636256c05139d8ec61c0
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {"expires":1493141054,"identifier":"client_credentials","expires_in":3600,"access_token":"60cddcdc7dfb3d2c99dd4fe87219d57e00860a16","token_type":"Bearer"}
+    http_version: 
+  recorded_at: Tue, 29 Sep 1987 17:00:00 GMT
+- request:
+    method: post
+    uri: https://api.moltin.com/v2/variations
+    body:
+      encoding: UTF-8
+      string: '{"data":{"name":"My Variation","type":"product-variation"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer 60cddcdc7dfb3d2c99dd4fe87219d57e00860a16
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Tue, 25 Apr 2017 16:24:17 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - 3489a0af258f3b6a91b400fa32060b1176c8fc38
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"type":"product-variation","id":"d1a62d4f-fb16-4610-8200-87e0a8a86d78","name":"My
+        Variation","options":[]}}'
+    http_version: 
+  recorded_at: Tue, 29 Sep 1987 17:00:00 GMT
+- request:
+    method: put
+    uri: https://api.moltin.com/v2/variations/d1a62d4f-fb16-4610-8200-87e0a8a86d78
+    body:
+      encoding: UTF-8
+      string: '{"data":{"name":null,"type":"product-variation","id":"d1a62d4f-fb16-4610-8200-87e0a8a86d78"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer 60cddcdc7dfb3d2c99dd4fe87219d57e00860a16
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Tue, 25 Apr 2017 16:24:18 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - 49d85129d04712da717b3d25652ed48c49cf175f
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"type":"product-variation","id":"d1a62d4f-fb16-4610-8200-87e0a8a86d78","name":"My
+        Variation","options":[]}}'
+    http_version: 
+  recorded_at: Tue, 29 Sep 1987 17:00:00 GMT
+recorded_with: VCR 3.0.3

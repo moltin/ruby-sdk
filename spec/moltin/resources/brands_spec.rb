@@ -5,16 +5,6 @@ module Moltin
     describe Brands do
       let(:config) { Configuration.new }
 
-      before do
-        ENV['MOLTIN_CLIENT_ID'] = ENV['FAKE_CLIENT_ID']
-        ENV['MOLTIN_CLIENT_SECRET'] = 'iFUwmVrwIOWwJrSR70gUtNQ5vIKRwc2RJVyXdid4tc'
-      end
-
-      after do
-        ENV.delete('MOLTIN_CLIENT_ID')
-        ENV.delete('MOLTIN_CLIENT_ID')
-      end
-
       describe '#uri' do
         it 'returns the expected uri' do
           brand = Moltin::Resources::Brands.new(config, {})

@@ -1,11 +1,13 @@
 module Moltin
   module Resources
     class Base
-      attr_accessor :config, :storage
+      attr_accessor :config, :storage, :options, :client
 
-      def initialize(config, storage)
+      def initialize(config, storage, options = {}, client = nil)
+        @client = client
         @config = config
         @storage = storage
+        @options = options
       end
 
       # Public: Get a criteria and call the #all method on it
@@ -86,7 +88,7 @@ module Moltin
       #
       # Returns a Moltin::Utils::Response
       def create(data)
-        data[:type] = type
+        data[:type] ||= type
         response(call(:post, uri, data: data))
       end
 
@@ -151,7 +153,7 @@ module Moltin
       #
       # Returns a Moltin::Utils::Response
       def response(resp, model: model_name)
-        Moltin::Utils::Response.new(model, resp)
+        Moltin::Utils::Response.new(model, resp, client)
       end
 
       # Private: Prepare a request payload before using a Moltin::Utils::Request
@@ -163,20 +165,34 @@ module Moltin
       # query_params: (optional) - a hash of query params
       #
       # Returns the body of the response as JSON
-      def call(method, uri, data: nil, query_params: nil)
+      def call(method, uri, data: nil, query_params: nil, content_type: nil)
         options = { uri: uri, auth: authentication_required? }
         options[:token] = access_token.get if authentication_required?
         options[:data] = { data: data } if data
         options[:query_params] = query_params if query_params
+        options[:content_type] = content_type if content_type
 
-        @request.call(method, options)
+        request.call(method, options)
       end
 
       # Private: Instantiate a new Moltin::Utils::Request with the current config
       #
       # Returns a memoized instance of Moltin::Utils::Request
       def request
-        @request ||= Moltin::Utils::Request.new(config.base_url)
+        @request ||= Moltin::Utils::Request.new(config.base_url, currency_code: currency,
+                                                                 language: config.language,
+                                                                 locale: config.locale)
+      end
+
+      def currency
+        if client && client.currency_code
+          currency = client.currency_code
+          client.currency_code = nil
+        else
+          currency = config.currency_code
+        end
+
+        currency
       end
 
       # Private: Instantiate a new Moltin::Utils::AccessToken with the current config
@@ -194,10 +210,10 @@ module Moltin
       end
 
       def handle_relationship_call(method, id, relationship_type, relationship_ids)
-        unless model_name.relationships_list.include?(relationship_type.to_sym)
+        unless [model_name.has_many_list, model_name.belongs_list].flatten.compact.include?(relationship_type.to_sym)
           raise Errors::InvalidRelationshipError.new(
             "The relationship #{relationship_type} was not defined on #{model_name}." \
-            "Available relationships: #{model_name.relationships_list.join(', ')}"
+            "Available relationships: #{[model_name.has_many_list, model_name.belongs_list].flatten.compact.join(', ')}"
           )
         end
 
@@ -209,8 +225,12 @@ module Moltin
       def format_relationships(relationship_type, relationship_ids)
         return nil unless relationship_ids
 
-        [*relationship_ids].compact.map do |r_id|
-          { type: @config.resources[relationship_type][:name], id: r_id }
+        if model_name.has_many_list.include?(relationship_type.to_sym)
+          [*relationship_ids].compact.map do |r_id|
+            { type: @config.resources[relationship_type][:name], id: r_id }
+          end
+        else
+          { type: @config.resources[relationship_type][:name], id: relationship_ids }
         end
       end
     end

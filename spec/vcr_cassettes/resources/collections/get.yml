@@ -1,0 +1,126 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.moltin.com/oauth/access_token
+    body:
+      encoding: UTF-8
+      string: client_id=FTtrUHsKHstAOtAhN2VjKbpvK08ZXOKZ0GAQaiIAcc&client_secret=iFUwmVrwIOWwJrSR70gUtNQ5vIKRwc2RJVyXdid4tc&grant_type=client_credentials
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Sun, 09 Apr 2017 16:37:42 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Auth-Served-By:
+      - Moltin-Auth
+      X-Moltin-Request-Id:
+      - 1728ffa333a8a7a29e1e71280972bdeeda6652a6
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {"expires":1491759462,"identifier":"client_credentials","expires_in":3600,"access_token":"4fe42734e415b6515b25ab9a49ebae7de7dd1b13","token_type":"Bearer"}
+    http_version: 
+  recorded_at: Sun, 13 Sep 1987 17:00:00 GMT
+- request:
+    method: get
+    uri: https://api.moltin.com/v2/collections
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer 4fe42734e415b6515b25ab9a49ebae7de7dd1b13
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Sun, 09 Apr 2017 16:37:43 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - 29576682d792939696fbe72f76a0918600d16169
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"id":"0f528777-a9bd-4ff7-bda8-1019b2475681","type":"collection","status":"live","name":"My
+        Weird Collection","slug":"my-weird-collection","description":"Super Collection","relationships":{}},{"id":"0417aa72-78b4-42fd-bab4-dfccf1afb92c","type":"collection","status":"live","name":"My
+        Awesome Collection","slug":"my-awesome-collection","description":"Super Collection","relationships":{}},{"id":"4fa7b6dd-ae53-4f88-baa6-649198255722","type":"collection","status":"live","name":"My
+        Other Collection","slug":"my-other-collection","description":"Super Collection","relationships":{}},{"id":"c962dd85-b2df-40b8-8478-d054f16609e3","type":"collection","status":"live","name":"My
+        Collection","slug":"my-collection","description":"Super Collection","relationships":{}}],"links":{"current":"https://api.moltin.com/v2/collections?page[limit]=100&page[offset]=0","first":"https://api.moltin.com/v2/collections?page[limit]=100&page[offset]=0","last":null},"meta":{"results":{"total":4,"all":4},"page":{"limit":100,"offset":0,"current":1,"total":1}}}'
+    http_version: 
+  recorded_at: Sun, 13 Sep 1987 17:00:00 GMT
+- request:
+    method: get
+    uri: https://api.moltin.com/v2/collections/0f528777-a9bd-4ff7-bda8-1019b2475681
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer 4fe42734e415b6515b25ab9a49ebae7de7dd1b13
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Sun, 09 Apr 2017 16:37:44 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - b6808d7de8c7e0cd0e9148ff2f0a238ec3e665b7
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"id":"0f528777-a9bd-4ff7-bda8-1019b2475681","type":"collection","status":"live","name":"My
+        Weird Collection","slug":"my-weird-collection","description":"Super Collection","relationships":{}}}'
+    http_version: 
+  recorded_at: Sun, 13 Sep 1987 17:00:00 GMT
+recorded_with: VCR 3.0.3

@@ -1,0 +1,125 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.moltin.com/oauth/access_token
+    body:
+      encoding: UTF-8
+      string: client_id=FTtrUHsKHstAOtAhN2VjKbpvK08ZXOKZ0GAQaiIAcc&client_secret=iFUwmVrwIOWwJrSR70gUtNQ5vIKRwc2RJVyXdid4tc&grant_type=client_credentials
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Sat, 22 Apr 2017 02:37:12 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Auth-Served-By:
+      - Moltin-Auth
+      X-Moltin-Request-Id:
+      - b08d493a0fbc11f8a9fecdb8dea7b89f527dfa14
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {"expires":1492832232,"identifier":"client_credentials","expires_in":3600,"access_token":"48eab7e9c1bd34b28873bd51d9782e3a09e12a31","token_type":"Bearer"}
+    http_version: 
+  recorded_at: Sat, 26 Sep 1987 17:00:00 GMT
+- request:
+    method: put
+    uri: https://api.moltin.com/v2/gateways/stripe
+    body:
+      encoding: UTF-8
+      string: '{"data":{"enabled":true}}'
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer 48eab7e9c1bd34b28873bd51d9782e3a09e12a31
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Sat, 22 Apr 2017 02:37:15 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - f24f5ef340c32cb93e40d377e1051d53556d90fe
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"enabled":true,"login":"","name":"Stripe","slug":"stripe","type":"gateway"}}'
+    http_version: 
+  recorded_at: Sat, 26 Sep 1987 17:00:00 GMT
+- request:
+    method: put
+    uri: https://api.moltin.com/v2/gateways/stripe
+    body:
+      encoding: UTF-8
+      string: '{"data":{"enabled":false}}'
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer 48eab7e9c1bd34b28873bd51d9782e3a09e12a31
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Sat, 22 Apr 2017 02:37:19 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - 1adb192b2c3e0d77c74b6a3f08b919b673e5fe30
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"enabled":false,"login":"","name":"Stripe","slug":"stripe","type":"gateway"}}'
+    http_version: 
+  recorded_at: Sat, 26 Sep 1987 17:00:00 GMT
+recorded_with: VCR 3.0.3

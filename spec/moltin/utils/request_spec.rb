@@ -11,8 +11,8 @@ module Moltin
           it 'receives the expected body' do
             VCR.use_cassette('utils/request/valid') do
               resp = request.authenticate(uri: 'oauth/access_token',
-                                          id: ENV['FAKE_CLIENT_ID'],
-                                          secret: ENV['FAKE_CLIENT_SECRET'])
+                                          id: ENV['MOLTIN_CLIENT_ID'],
+                                          secret: ENV['MOLTIN_CLIENT_SECRET'])
 
               expect(resp[:body]['identifier']).to eq 'client_credentials'
               expect(resp[:body]['token_type']).to eq 'Bearer'

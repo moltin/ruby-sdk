@@ -2,7 +2,8 @@ module Moltin
   module Utils
     class Criteria
       extend Forwardable
-      def_delegators :response, :errors, :data, :links, :included, :meta
+      def_delegators :response, :first, :last, :errors, :data, :links, :included,
+                     :meta, :length
 
       def initialize(klass, uri)
         @klass = klass
@@ -86,6 +87,15 @@ module Moltin
       # Returns a Moltin::Utils::Response instance
       def response
         @response ||= @klass.load_collection(@uri, formatted_criteria)
+      end
+
+      def method_missing(method, *args, &block)
+        super unless response.respond_to?(method)
+        response.send(method, *args, &block)
+      end
+
+      def respond_to_missing?(method, include_private = false)
+        response.respond_to?(method) || super
       end
 
       private

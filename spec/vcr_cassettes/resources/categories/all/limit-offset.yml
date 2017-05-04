@@ -1,0 +1,92 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.moltin.com/oauth/access_token
+    body:
+      encoding: UTF-8
+      string: client_id=FTtrUHsKHstAOtAhN2VjKbpvK08ZXOKZ0GAQaiIAcc&client_secret=iFUwmVrwIOWwJrSR70gUtNQ5vIKRwc2RJVyXdid4tc&grant_type=client_credentials
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Sun, 16 Apr 2017 13:54:35 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Auth-Served-By:
+      - Moltin-Auth
+      X-Moltin-Request-Id:
+      - 01949123175c4619f00e2ed7c5f5d9b8269e7c4f
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {"expires":1492354475,"identifier":"client_credentials","expires_in":3600,"access_token":"b5cc35e1b3c5c52799a96fd59234a847c0a9b987","token_type":"Bearer"}
+    http_version: 
+  recorded_at: Sun, 16 Apr 2017 13:54:36 GMT
+- request:
+    method: get
+    uri: https://api.moltin.com/v2/categories?page%5Blimit%5D=10&page%5Boffset%5D=10
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer b5cc35e1b3c5c52799a96fd59234a847c0a9b987
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Sun, 16 Apr 2017 13:54:37 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - 246ad230268997b7496c5fdd1d76cb4b9d114a3c
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"id":"af79fa6e-64ed-4013-b3be-91beaabe7dbb","type":"category","status":"draft","name":"Home
+        Audio Sound Bars","slug":"home-audio-sound-bars","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}},{"id":"9e4b7803-b43c-4e87-9680-0fd2ead45490","type":"category","status":"draft","name":"Dome
+        Surveillance Cameras","slug":"dome-surveillance-cameras","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}},{"id":"e9e9b790-a1e1-4a44-a148-d34d9d8c59ac","type":"category","status":"draft","name":"Surveillance
+        & Security Cameras","slug":"surveillance-security-cameras","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}},{"id":"b4fa72b0-c38d-4a0f-ac63-8a7b01ac8c96","type":"category","status":"draft","name":"Sports
+        & Action Video Cameras","slug":"sports-action-video-cameras","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}},{"id":"22fead17-0993-4ea0-bd95-f2993ea4ae11","type":"category","status":"draft","name":"Underwater
+        Photography Cameras","slug":"underwater-photography-cameras","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}},{"id":"c0e280e8-be35-493e-9f8c-02251bb4763e","type":"category","status":"draft","name":"LED
+        & LCD TVs","slug":"led-lcd-tvs","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}},{"id":"bebd0298-b958-40c7-96d3-a2fb4bb8677d","type":"category","status":"draft","name":"Outdoor
+        Speakers","slug":"outdoor-speakers","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}},{"id":"257103fb-1ef4-47af-99a6-33b661ffb1e0","type":"category","status":"draft","name":"Laptop
+        Chargers & Adapters","slug":"laptop-chargers-adapters","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}},{"id":"f318ae97-5acb-4b07-9ef6-a16a52ff4def","type":"category","status":"draft","name":"Traditional
+        Laptop Computers","slug":"traditional-laptop-computers","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}},{"id":"2b1af908-89f8-4bd9-95f2-84439f70441a","type":"category","status":"draft","name":"Blu-Ray
+        Disc Players","slug":"blu-ray-disc-players","description":"","relationships":{"parent":{"data":[{"type":"category","id":null}]}}}],"links":{"current":"https://api.moltin.com/v2/categories?page[limit]=10&page[offset]=10","first":"https://api.moltin.com/v2/categories?page[limit]=10&page[offset]=0","last":"https://api.moltin.com/v2/categories?page[limit]=10&page[offset]=20","prev":"https://api.moltin.com/v2/categories?page[limit]=10&page[offset]=0","next":"https://api.moltin.com/v2/categories?page[limit]=10&page[offset]=20"},"meta":{"results":{"total":10,"all":28},"page":{"limit":10,"offset":10,"current":2,"total":3}}}'
+    http_version: 
+  recorded_at: Sun, 16 Apr 2017 13:54:37 GMT
+recorded_with: VCR 3.0.3

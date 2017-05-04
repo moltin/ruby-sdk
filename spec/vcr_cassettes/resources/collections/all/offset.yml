@@ -1,0 +1,83 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.moltin.com/oauth/access_token
+    body:
+      encoding: UTF-8
+      string: client_id=FTtrUHsKHstAOtAhN2VjKbpvK08ZXOKZ0GAQaiIAcc&client_secret=iFUwmVrwIOWwJrSR70gUtNQ5vIKRwc2RJVyXdid4tc&grant_type=client_credentials
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Sun, 09 Apr 2017 16:37:32 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Auth-Served-By:
+      - Moltin-Auth
+      X-Moltin-Request-Id:
+      - 352c205e6cfbf1324fbb9b4a915baebf5ef04535
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {"expires":1491759452,"identifier":"client_credentials","expires_in":3600,"access_token":"bc8bd0b29fe81765a491c347ce21505fd3ca1908","token_type":"Bearer"}
+    http_version: 
+  recorded_at: Sun, 09 Apr 2017 16:37:32 GMT
+- request:
+    method: get
+    uri: https://api.moltin.com/v2/collections?page%5Boffset%5D=3
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer bc8bd0b29fe81765a491c347ce21505fd3ca1908
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Sun, 09 Apr 2017 16:37:33 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - 82860897d4ae7ee2f8db1658a04300c9a160ba79
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"id":"c962dd85-b2df-40b8-8478-d054f16609e3","type":"collection","status":"live","name":"My
+        Collection","slug":"my-collection","description":"Super Collection","relationships":{}}],"links":{"current":"https://api.moltin.com/v2/collections?page[limit]=100&page[offset]=3","first":"https://api.moltin.com/v2/collections?page[limit]=100&page[offset]=0","last":null},"meta":{"results":{"total":1,"all":4},"page":{"limit":100,"offset":3,"current":1,"total":1}}}'
+    http_version: 
+  recorded_at: Sun, 09 Apr 2017 16:37:33 GMT
+recorded_with: VCR 3.0.3

@@ -11,9 +11,6 @@ module Moltin
           config = Configuration.new
           expect(config.client_id).to eq('id')
           expect(config.client_secret).to eq('secret')
-
-          ENV.delete('MOLTIN_CLIENT_ID')
-          ENV.delete('MOLTIN_CLIENT_SECRET')
         end
       end
 
@@ -26,6 +23,9 @@ module Moltin
 
     describe '#initialize' do
       it 'sets all the values to their defaults' do
+        ENV.delete('MOLTIN_CLIENT_ID')
+        ENV.delete('MOLTIN_CLIENT_SECRET')
+
         config = Configuration.new
         expect(config.client_id).to eq(nil)
         expect(config.client_secret).to eq(nil)
@@ -43,9 +43,15 @@ module Moltin
 
     describe '#to_hash' do
       it 'returns the configuration as a hash' do
+        ENV.delete('MOLTIN_CLIENT_ID')
+        ENV.delete('MOLTIN_CLIENT_SECRET')
+
         expect(Configuration.new.to_hash).to eq(client_id: nil,
                                                 client_secret: nil,
-                                                base_url: 'https://api.moltin.com')
+                                                base_url: 'https://api.moltin.com',
+                                                currency_code: 'USD',
+                                                language: 'en',
+                                                locale: 'en_gb')
       end
     end
 

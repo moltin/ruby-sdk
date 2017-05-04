@@ -6,7 +6,12 @@ module Moltin
       client_secret: -> { ENV['MOLTIN_CLIENT_SECRET'] },
 
       # API Endpoints Configuration
-      base_url: 'https://api.moltin.com'
+      base_url: 'https://api.moltin.com',
+
+      # Headers
+      currency_code: 'USD',
+      language: 'en',
+      locale: 'en_gb'
     }.freeze
 
     MOLTIN_OPTIONS = {
@@ -14,7 +19,10 @@ module Moltin
       auth_uri: 'oauth/access_token',
       resources: {
         products: { name: 'product', model: Moltin::Models::Brand },
-        brands: { name: 'brand', model: Moltin::Models::Brand }
+        brands: { name: 'brand', model: Moltin::Models::Brand },
+        categories: { name: 'category', model: Moltin::Models::Category },
+        parent: { name: 'category', model: Moltin::Models::Category },
+        children: { name: 'category', model: Moltin::Models::Category }
       }
     }.freeze
 

@@ -1,0 +1,161 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.moltin.com/oauth/access_token
+    body:
+      encoding: UTF-8
+      string: client_id=FTtrUHsKHstAOtAhN2VjKbpvK08ZXOKZ0GAQaiIAcc&client_secret=iFUwmVrwIOWwJrSR70gUtNQ5vIKRwc2RJVyXdid4tc&grant_type=client_credentials
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Fri, 21 Apr 2017 14:17:30 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Auth-Served-By:
+      - Moltin-Auth
+      X-Moltin-Request-Id:
+      - 828e0ee41f98e92bd91360df342c1564519c6ef8
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {"expires":1492787850,"identifier":"client_credentials","expires_in":3600,"access_token":"cd5b5f8709bd29ff33dc25be84a3472d71c4848b","token_type":"Bearer"}
+    http_version: 
+  recorded_at: Fri, 25 Sep 1987 17:00:00 GMT
+- request:
+    method: delete
+    uri: https://api.moltin.com/v2/carts/my_secret_cart
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer cd5b5f8709bd29ff33dc25be84a3472d71c4848b
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Fri, 21 Apr 2017 14:17:31 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - d1332f8518f75c374ebc9bc4002ee9e66431492f
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"type":"cart","id":"my_secret_cart"}]}'
+    http_version: 
+  recorded_at: Fri, 25 Sep 1987 17:00:00 GMT
+- request:
+    method: post
+    uri: https://api.moltin.com/oauth/access_token
+    body:
+      encoding: UTF-8
+      string: client_id=FTtrUHsKHstAOtAhN2VjKbpvK08ZXOKZ0GAQaiIAcc&client_secret=iFUwmVrwIOWwJrSR70gUtNQ5vIKRwc2RJVyXdid4tc&grant_type=client_credentials
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Fri, 21 Apr 2017 14:17:32 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Auth-Served-By:
+      - Moltin-Auth
+      X-Moltin-Request-Id:
+      - 2a15f93ad005f873f6cf24d95e15cfa3fac8cfec
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {"expires":1492787852,"identifier":"client_credentials","expires_in":3600,"access_token":"27845487850d9b213da4d6960b6dd49b00cc35a0","token_type":"Bearer"}
+    http_version: 
+  recorded_at: Fri, 25 Sep 1987 17:00:00 GMT
+- request:
+    method: get
+    uri: https://api.moltin.com/v2/carts/my_secret_cart
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer 27845487850d9b213da4d6960b6dd49b00cc35a0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Fri, 21 Apr 2017 14:17:33 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - af98b3c73f5fcde2cf8ab9af2707ec817f5ae940
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"id":"my_secret_cart","type":"cart","links":{"self":"https://api.moltin.com/carts/my_secret_cart"},"meta":{"display_price":{"with_tax":{"amount":0,"currency":"","formatted":"0"},"without_tax":{"amount":0,"currency":"","formatted":"0"}},"timestamps":{"created_at":"0001-01-01T00:00:00Z","updated_at":"0001-01-01T00:00:00Z"}}}}'
+    http_version: 
+  recorded_at: Fri, 25 Sep 1987 17:00:00 GMT
+recorded_with: VCR 3.0.3

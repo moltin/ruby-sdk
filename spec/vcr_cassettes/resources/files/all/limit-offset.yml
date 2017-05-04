@@ -1,0 +1,82 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.moltin.com/oauth/access_token
+    body:
+      encoding: UTF-8
+      string: client_id=FTtrUHsKHstAOtAhN2VjKbpvK08ZXOKZ0GAQaiIAcc&client_secret=iFUwmVrwIOWwJrSR70gUtNQ5vIKRwc2RJVyXdid4tc&grant_type=client_credentials
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Wed, 19 Apr 2017 07:51:46 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Auth-Served-By:
+      - Moltin-Auth
+      X-Moltin-Request-Id:
+      - ddf7a2520d4f84077ab2185d7783761852ffee7b
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {"expires":1492591906,"identifier":"client_credentials","expires_in":3600,"access_token":"4d3956c3437682e91c1647c53ffe329cc318b578","token_type":"Bearer"}
+    http_version: 
+  recorded_at: Wed, 19 Apr 2017 07:51:46 GMT
+- request:
+    method: get
+    uri: https://api.moltin.com/v2/files?page%5Blimit%5D=10&page%5Boffset%5D=10
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer 4d3956c3437682e91c1647c53ffe329cc318b578
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Wed, 19 Apr 2017 07:51:47 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - d00d826fe0efed66acba7c505552139129906add
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"type":"file","id":"adbfb108-1514-4ba4-9d19-be8862589f75","link":{"href":"https://s3-eu-west-1.amazonaws.com/files.moltin/e461222e-7780-45d3-8a41-81b45ee6b7c6/adbfb108-1514-4ba4-9d19-be8862589f75"},"file_name":"upload_e84afc97e2fdaf5fddf036de2feddee9","mime_type":"","file_size":0,"public":true,"meta":{"dimensions":{},"timestamps":{"created_at":"2017-03-10T10:36:40.832Z"}},"links":{"current":"https://api.moltin.com/v2/files/adbfb108-1514-4ba4-9d19-be8862589f75"}},{"type":"file","id":"aa01f2e3-c131-41e2-8138-d85aaa18714f","link":{"href":"https://s3-eu-west-1.amazonaws.com/files.moltin/e461222e-7780-45d3-8a41-81b45ee6b7c6/aa01f2e3-c131-41e2-8138-d85aaa18714f"},"file_name":"upload_c36404df0db6e2c661aaddccf8e94e3c","mime_type":"","file_size":0,"public":true,"meta":{"dimensions":{},"timestamps":{"created_at":"2017-03-10T10:36:37.558Z"}},"links":{"current":"https://api.moltin.com/v2/files/aa01f2e3-c131-41e2-8138-d85aaa18714f"}},{"type":"file","id":"4b46430c-1ef2-4e37-9570-341ccedfc120","link":{"href":"https://s3-eu-west-1.amazonaws.com/files.moltin/e461222e-7780-45d3-8a41-81b45ee6b7c6/4b46430c-1ef2-4e37-9570-341ccedfc120"},"file_name":"upload_f63724d0e511f692abea996df7a0f1bf","mime_type":"","file_size":0,"public":true,"meta":{"dimensions":{},"timestamps":{"created_at":"2017-03-10T10:36:33.187Z"}},"links":{"current":"https://api.moltin.com/v2/files/4b46430c-1ef2-4e37-9570-341ccedfc120"}},{"type":"file","id":"0ebe5370-4e75-46bf-aa84-ea6ffda1e56c","link":{"href":"https://s3-eu-west-1.amazonaws.com/files.moltin/e461222e-7780-45d3-8a41-81b45ee6b7c6/0ebe5370-4e75-46bf-aa84-ea6ffda1e56c"},"file_name":"upload_7bbcb3e223949738ba17feb2c6c27b4c","mime_type":"","file_size":0,"public":true,"meta":{"dimensions":{},"timestamps":{"created_at":"2017-03-10T10:36:28.171Z"}},"links":{"current":"https://api.moltin.com/v2/files/0ebe5370-4e75-46bf-aa84-ea6ffda1e56c"}},{"type":"file","id":"4fc7e168-dc14-4a3f-95ea-9cd9350790c2","link":{"href":"https://s3-eu-west-1.amazonaws.com/files.moltin/e461222e-7780-45d3-8a41-81b45ee6b7c6/4fc7e168-dc14-4a3f-95ea-9cd9350790c2"},"file_name":"upload_da982b03418b69351e7e27e6071ace68","mime_type":"","file_size":0,"public":true,"meta":{"dimensions":{},"timestamps":{"created_at":"2017-03-10T10:36:25.012Z"}},"links":{"current":"https://api.moltin.com/v2/files/4fc7e168-dc14-4a3f-95ea-9cd9350790c2"}},{"type":"file","id":"89d41a8c-9a79-4111-80e6-6e6e53940270","link":{"href":"https://s3-eu-west-1.amazonaws.com/files.moltin/e461222e-7780-45d3-8a41-81b45ee6b7c6/89d41a8c-9a79-4111-80e6-6e6e53940270"},"file_name":"upload_5a170ff570b50343febbbb1231e2a20f","mime_type":"","file_size":0,"public":true,"meta":{"dimensions":{},"timestamps":{"created_at":"2017-03-10T10:36:21.676Z"}},"links":{"current":"https://api.moltin.com/v2/files/89d41a8c-9a79-4111-80e6-6e6e53940270"}},{"type":"file","id":"e0b8cfef-badc-4f33-8015-824a5e8e7216","link":{"href":"https://s3-eu-west-1.amazonaws.com/files.moltin/e461222e-7780-45d3-8a41-81b45ee6b7c6/e0b8cfef-badc-4f33-8015-824a5e8e7216"},"file_name":"upload_4fcf61af3aa2a7b4b65551770b0a2387","mime_type":"","file_size":0,"public":true,"meta":{"dimensions":{},"timestamps":{"created_at":"2017-03-10T10:36:17.721Z"}},"links":{"current":"https://api.moltin.com/v2/files/e0b8cfef-badc-4f33-8015-824a5e8e7216"}},{"type":"file","id":"bea30a1e-680e-4213-acd2-371c61ff4980","link":{"href":"https://s3-eu-west-1.amazonaws.com/files.moltin/e461222e-7780-45d3-8a41-81b45ee6b7c6/bea30a1e-680e-4213-acd2-371c61ff4980"},"file_name":"upload_4d23397f90c8cc981a2f037951b92272","mime_type":"","file_size":0,"public":true,"meta":{"dimensions":{},"timestamps":{"created_at":"2017-03-10T10:36:08.885Z"}},"links":{"current":"https://api.moltin.com/v2/files/bea30a1e-680e-4213-acd2-371c61ff4980"}},{"type":"file","id":"d1322747-e20b-4843-9d22-1caeaa2f2bab","link":{"href":"https://s3-eu-west-1.amazonaws.com/files.moltin/e461222e-7780-45d3-8a41-81b45ee6b7c6/d1322747-e20b-4843-9d22-1caeaa2f2bab"},"file_name":"upload_9b299cd3f8d49d8a555bd3b83c23e077","mime_type":"","file_size":0,"public":true,"meta":{"dimensions":{},"timestamps":{"created_at":"2017-03-10T10:36:05.053Z"}},"links":{"current":"https://api.moltin.com/v2/files/d1322747-e20b-4843-9d22-1caeaa2f2bab"}},{"type":"file","id":"28c32621-fe66-459a-beb7-e69575f5c922","link":{"href":"https://s3-eu-west-1.amazonaws.com/files.moltin/e461222e-7780-45d3-8a41-81b45ee6b7c6/28c32621-fe66-459a-beb7-e69575f5c922"},"file_name":"upload_6030b906f08735c8399c501f0b7091b2","mime_type":"","file_size":0,"public":true,"meta":{"dimensions":{},"timestamps":{"created_at":"2017-03-10T10:35:58.951Z"}},"links":{"current":"https://api.moltin.com/v2/files/28c32621-fe66-459a-beb7-e69575f5c922"}}],"links":{"current":"https://api.moltin.com/v2/files?page[offset]=10&page[limit]=10&filter=","first":"https://api.moltin.com/v2/files?page[offset]=0&page[limit]=10&filter=","last":"https://api.moltin.com/v2/files?page[offset]=820&page[limit]=10&filter=","prev":"https://api.moltin.com/v2/files?page[offset]=0&page[limit]=10&filter=","next":"https://api.moltin.com/v2/files?page[offset]=20&page[limit]=10&filter="},"meta":{"results":{"total":823},"page":{"limit":10,"offset":10,"current":2,"total":83}}}'
+    http_version: 
+  recorded_at: Wed, 19 Apr 2017 07:51:47 GMT
+recorded_with: VCR 3.0.3
