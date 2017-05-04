@@ -759,7 +759,7 @@ payment = order.pay({
 })
 ```
 
-#### Flows, Fields & Entries - [Docs](https://moltin.api-docs.io/v2/flows)
+### Flows, Fields & Entries - [Docs](https://moltin.api-docs.io/v2/flows)
 
 As described in the documentation, flows allow you to add custom fields to the Moltin entities (products, carts, etc.). Once you've added new fields to resources, these will become available on the models through the `#flow_fields` method.
 
@@ -770,7 +770,7 @@ product = moltin.products.get(product_id)
 product.flow_fields.reference
 ```
 
-###### Flows
+#### Flows
 
 ```
 # Retrieve the list of flows
@@ -809,7 +809,7 @@ moltin.flows.delete(flow_id)
 moltin.flows.attributes
 ```
 
-###### Fields
+#### Fields
 
 ```
 # Get a field (GET)
@@ -857,7 +857,7 @@ moltin.fields.delete(field_id)
 moltin.fields.attributes
 ```
 
-###### Entries
+#### Entries
 
 ```
 # Get all fields for an entry (GET)
