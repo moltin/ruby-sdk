@@ -41,6 +41,9 @@ You can also set them yourself when your application is initialized (this can ea
 Moltin.configure do |config|
   config.client_id = 'YOUR_CLIENT_ID'
   config.client_secret = 'YOUR_CLIENT_SECRET'
+  config.currency_code = 'USD' # Default value
+  config.language = 'en'       # Default value
+  config.locale = 'en_gb'      # Default value
 end
 ```
 
@@ -51,7 +54,10 @@ If you need to connect to multiple stores or would prefer to define the configur
 ```
 Moltin::Client.new({
   client_id: 'YOUR_CLIENT_ID',
-  client_secret: 'YOUR_CLIENT_SECRET'
+  client_secret: 'YOUR_CLIENT_SECRET',
+  currency_code: 'USD',
+  language: 'en',
+  locale: 'en_gb'
 })
 ```
 
@@ -64,6 +70,9 @@ Moltin.configure do |config|
   config.client_id = 'YOUR_CLIENT_ID'
   config.client_secret = 'YOUR_CLIENT_SECRET'
   config.base_url  = 'https://api.yourdomain.com'
+  config.currency_code = 'USD'
+  config.language = 'en'
+  config.locale = 'en_gb'
 end
 ```
 
@@ -71,17 +80,21 @@ end
 Moltin::Client.new({
   client_id: 'YOUR_CLIENT_ID',
   client_secret: 'YOUR_CLIENT_SECRET',
-  base_url:  'https://api.yourdomain.com'
+  base_url:  'https://api.yourdomain.com',
+  currency_code: 'USD',
+  language: 'en',
+  locale: 'en_gb'
 })
 ```
 
-### Language
-
-Coming Soon.
-
 ### Currency
 
-Coming Soon.
+For calls that support the `X-MOLTIN-CURRENCY` header, you can specifiy it on the client (else the value defined in the configuration will be used):
+
+```
+moltin.currency('USD').products.all
+moltin.currency('GBP').products.all
+```
 
 ## Usage
 
@@ -225,7 +238,7 @@ moltin.categories.tree
 ##### Products
 
 ```
-# Retrieve a list of products
+# Retrieve the list of products
 moltin.products.all
 ```
 
@@ -248,7 +261,7 @@ moltin.products.create({
 ```
 
 ```
-# Update a product (POST)
+# Update a product (PUT)
 moltin.products.update(product_id, {
   name: 'My Product',
   slug: 'my-product',
@@ -261,14 +274,132 @@ moltin.products.update(product_id, {
 ```
 
 ```
-# delete a product (POST)
+# delete a product (DELETE)
 moltin.products.delete(product_id)
+```
+
+```
+# Build a product variations (POST)
+moltin.products.build(product_id)
+
+# Or if you have a Moltin::Models::Product instance
+product.build
+```
+
+##### Product Variations, Options and Modifiers
+
+```
+# Retrieve the list of variations
+moltin.variations.all
+```
+
+```
+# Retrieve a single variation (GET)
+moltin.variations.get(variations_id)
+```
+
+```
+# Create a variation (POST)
+moltin.variations.create({
+  name: 'inc'
+})
+```
+
+```
+# Update a variation (PUT)
+moltin.variations.update(variation_id, {
+  name: 'officia fugiat non ad elit'
+})
+```
+
+```
+# delete a variation (DELETE)
+moltin.variations.delete(variation_id)
+```
+
+##### Product Variation Options
+
+```
+# First, retrieve a variation
+variation = moltin.variations.all.first
+
+# Or build one
+variation = Moltin::Models::Variation.new({ id: variation_id }, moltin)
+```
+
+```
+# Get the options of a variation
+variation.options
+```
+
+```
+# Create a Product Variation Option (POST)
+variation.variation_options.create({
+  name: 'irure est',
+  description: 'ut nulla ame'  
+})
+```
+
+```
+# Update a Product Variation Option (PUT)
+variation.variation_options.update(option_id, {
+  description: 'ut nulla ame!'  
+})
+```
+
+```
+# delete a Product Variation Option (DELETE)
+variation.variation_options.delete(option_id)
+```
+
+##### Product Modifiers
+
+```
+# First, retrieve a variation option
+option = moltin.variations.all.first.options.first
+
+# Or build one
+option = Moltin::Models::VariationOption.new({
+  variation_id: variation_id,
+  id: option_id
+}, moltin)
+```
+
+```
+# Get the modifiers of a variation option
+option.modifiers
+```
+
+```
+# Create a Product Variation Option Modifier (POST)
+option.product_modifiers.create({
+  modifier_type: 'sku_builder',
+  value: {
+    seek: 'in incididunt cupidatat dolor est',
+    set: 'velit ad ut'
+  }
+})
+```
+
+```
+# Update a Product Variation Option Modifier (PUT)
+option.product_modifiers.update(modifier_id, {
+  value: {
+    seek: 'in incididunt cupidatat dolor est!',
+    set: 'velit ad ut!'
+  }
+})
+```
+
+```
+# delete a Product Variation Option Modifier (DELETE)
+option.product_modifiers.delete(modifier_id)
 ```
 
 ##### Brands
 
 ```
-# Retrieve a list of brands
+# Retrieve the list of brands
 moltin.brands.all
 ```
 
@@ -288,7 +419,7 @@ moltin.brands.create({
 ```
 
 ```
-# Update a brand (POST)
+# Update a brand (PUT)
 moltin.brands.update(brand_id, {
   slug: 'my-brand1',
   description: 'Super Brand',
@@ -297,14 +428,14 @@ moltin.brands.update(brand_id, {
 ```
 
 ```
-# delete a brand (POST)
+# delete a brand (DELETE)
 moltin.brands.delete(brand_id)
 ```
 
 ##### Categories
 
 ```
-# Retrieve a list of categories
+# Retrieve the list of categories
 moltin.categories.all
 ```
 
@@ -345,7 +476,7 @@ moltin.categories.tree
 ##### Collections
 
 ```
-# Retrieve a list of collections
+# Retrieve the list of collections
 moltin.collections.all
 ```
 
@@ -381,7 +512,7 @@ moltin.collections.delete(collection_id)
 ##### Files
 
 ```
-# Retrieve a list of files
+# Retrieve the list of files
 moltin.files.all
 ```
 
@@ -474,6 +605,25 @@ moltin.integrations.update(integration_id, {
 ```
 # Delete an integration
 moltin.integrations.delete(integration_id)
+```
+
+##### Settings
+
+```
+# Get the settings attributes
+moltin.settings.attributes
+```
+
+```
+# Get the settings
+moltin.settings.all
+```
+
+```
+# Update the settings
+moltin.settings.update({
+  page_length: 10
+})
 ```
 
 #### Relationships
@@ -609,9 +759,150 @@ payment = order.pay({
 })
 ```
 
+### Flows, Fields & Entries - [Docs](https://moltin.api-docs.io/v2/flows)
+
+As described in the documentation, flows allow you to add custom fields to the Moltin entities (products, carts, etc.). Once you've added new fields to resources, these will become available on the models through the `#flow_fields` method.
+
+Let's say we've added the field 'reference' to products to access the reference value on a product, we have to do the following:
+
+```
+product = moltin.products.get(product_id)
+product.flow_fields.reference
+```
+
+#### Flows
+
+```
+# Retrieve the list of flows
+moltin.flows.all
+```
+
+```
+# Retrieve a single flow (GET)
+moltin.flows.get(flow_id)
+```
+
+```
+# Create a flow (POST)
+moltin.flows.create({
+  name: 'reference',
+  slug: 'products',
+  description: 'Just a nice reference.',
+  enabled: false
+})
+```
+
+```
+# Update a flow (PUT)
+moltin.flows.update(flow_id, {
+  enabled: true
+})
+```
+
+```
+# delete a flow (POST)
+moltin.flows.delete(flow_id)
+```
+
+```
+# Get a flow attributes
+moltin.flows.attributes
+```
+
+#### Fields
+
+```
+# Get a field (GET)
+moltin.fields.get(field_id)
+```
+
+```
+# Get all fields for a flow (GET)
+flow = moltin.flows.get(flow_id)
+flow.fields.all
+```
+
+```
+# Create a field (POST)
+flow = moltin.flows.get(flow_id)
+moltin.fields.create(field_type: 'string',
+                     slug: 'content',
+                     name: 'content',
+                     description: 'Just some content',
+                     required: false,
+                     unique: true,
+                     default: '',
+                     relationships: {
+                       flow: {
+                         data: {
+                           type: 'flow',
+                           id: flow.id
+                         }
+                       }
+                     })
+```
+
+```
+# Update a field (PUT)
+moltin.fields.update(field_id, description: 'Some description')
+```
+
+```
+# Delete a field (DELETE)
+moltin.fields.delete(field_id)
+```
+
+```
+# Get a field attributes
+moltin.fields.attributes
+```
+
+#### Entries
+
+```
+# Get all fields for an entry (GET)
+flow = moltin.flows.get(flow_id)
+flow.entries.all
+```
+
+```
+# Get an entry (GET)
+flow = moltin.flows.get(flow_id)
+flow.entries.get(entry_id)
+```
+
+```
+# Create an entry (POST)
+flow = moltin.flows.get(flow_id)
+flow.entries.create(reference: 'Some value.')
+```
+
+```
+# Update an entry (PUT)
+flow = moltin.flows.get(flow_id)
+entry = flow.entries.get(entry_id)
+flow.entries.update(entry.id, reference: 'Something else.')
+```
+
+```
+# Delete an entry (DELETE)
+flow = moltin.flows.get(flow_id)
+flow.entries.delete(entry_id)
+```
+
 ### Handling Exceptions
 
-Coming Soon.
+Aside from errors that may occur due to the call, there may be other exceptions thrown. To handle them, simply wrap your call in a `begin` `rescue` block:
+
+```
+begin
+  moltin.products.all
+rescue => e
+  # Handle e
+end
+```
+
+Internally, there are several custom errors which may be raised - see the `lib/moltin/errors` directory for more information.
 
 ### Example Application
 
@@ -623,10 +914,27 @@ After checking out the repo, run `bin/setup` to install dependencies. Then, run 
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
+### Running the tests
+
+```
+rspec
+```
+
+### Checking style
+
+```
+rubocop
+```
+
+### Building the gem
+
+```
+gem build moltin.gemspec
+```
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/moltin. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
 
 ## License
 

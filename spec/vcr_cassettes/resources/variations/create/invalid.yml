@@ -1,0 +1,83 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.moltin.com/oauth/access_token
+    body:
+      encoding: UTF-8
+      string: client_id=FTtrUHsKHstAOtAhN2VjKbpvK08ZXOKZ0GAQaiIAcc&client_secret=iFUwmVrwIOWwJrSR70gUtNQ5vIKRwc2RJVyXdid4tc&grant_type=client_credentials
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Tue, 25 Apr 2017 16:19:23 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Auth-Served-By:
+      - Moltin-Auth
+      X-Moltin-Request-Id:
+      - 4a8fdadaf30d2a4e586b4537d030b3696e372666
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {"expires":1493140763,"identifier":"client_credentials","expires_in":3600,"access_token":"63e151eb951977497dbed6f523e1a14d606e4020","token_type":"Bearer"}
+    http_version: 
+  recorded_at: Tue, 25 Apr 2017 16:19:24 GMT
+- request:
+    method: post
+    uri: https://api.moltin.com/v2/variations
+    body:
+      encoding: UTF-8
+      string: '{"data":{"slug":"my-variation1","type":"product-variation"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer 63e151eb951977497dbed6f523e1a14d606e4020
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 422
+      message: Unprocessable Entity
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Tue, 25 Apr 2017 16:19:25 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - 40d5eccceb9bd45743a4877d426af1144087e0ab
+    body:
+      encoding: ASCII-8BIT
+      string: '{"errors":[{"title":"Failed Validation","detail":"The data.name field
+        is required."}]}'
+    http_version: 
+  recorded_at: Tue, 25 Apr 2017 16:19:25 GMT
+recorded_with: VCR 3.0.3

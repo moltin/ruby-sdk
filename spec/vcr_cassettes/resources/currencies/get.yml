@@ -1,0 +1,209 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.moltin.com/oauth/access_token
+    body:
+      encoding: UTF-8
+      string: client_id=FTtrUHsKHstAOtAhN2VjKbpvK08ZXOKZ0GAQaiIAcc&client_secret=iFUwmVrwIOWwJrSR70gUtNQ5vIKRwc2RJVyXdid4tc&grant_type=client_credentials
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      X-Moltin-Language:
+      - en
+      X-Moltin-Currency:
+      - USD
+      X-Moltin-Locale:
+      - en_gb
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Sat, 29 Apr 2017 17:02:52 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Auth-Served-By:
+      - Moltin-Auth
+      X-Moltin-Request-Id:
+      - 7f455c9a59983813f0e528aa4e633d1a629bf72d
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {"expires":1493488972,"identifier":"client_credentials","expires_in":3600,"access_token":"5239faeb2f640559413a412dc23d88a915a1be30","token_type":"Bearer"}
+    http_version: 
+  recorded_at: Sun, 04 Oct 1987 17:00:00 GMT
+- request:
+    method: get
+    uri: https://api.moltin.com/v2/currencies
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer 5239faeb2f640559413a412dc23d88a915a1be30
+      X-Moltin-Language:
+      - en
+      X-Moltin-Currency:
+      - USD
+      X-Moltin-Locale:
+      - en_gb
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Sat, 29 Apr 2017 17:02:54 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - c3bc11691c8a9fe6c6fd69eedaf28a9bfd3f85b4
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJkYXRhIjpbeyJpZCI6IjFkNzU2NGMzLTNkYWMtNDA0OS04ZTkxLWE5NWRl
+        ZmYwZGQzOSIsInR5cGUiOiJjdXJyZW5jeSIsImNvZGUiOiJuZXdfY3VycmVu
+        Y3kiLCJleGNoYW5nZV9yYXRlIjoxLCJmb3JtYXQiOiLCo3twcmljZX0iLCJk
+        ZWNpbWFsX3BvaW50IjoiLiIsInRob3VzYW5kX3NlcGFyYXRvciI6IiwiLCJk
+        ZWNpbWFsX3BsYWNlcyI6MCwiZGVmYXVsdCI6ZmFsc2UsImVuYWJsZWQiOnRy
+        dWUsImxpbmtzIjp7InNlbGYiOiJodHRwczovL2FwaS5tb2x0aW4uY29tL3Yy
+        L2N1cnJlbmNpZXMlIShFWFRSQSBzdHJpbmc9Y3VycmVuY2llcy8xZDc1NjRj
+        My0zZGFjLTQwNDktOGU5MS1hOTVkZWZmMGRkMzkpIn0sIm1ldGEiOnsidGlt
+        ZXN0YW1wcyI6eyJjcmVhdGVkX2F0IjoiMjAxNy0wNC0yOVQxNjo1NTowMC45
+        MjlaIiwidXBkYXRlZF9hdCI6IjIwMTctMDQtMjlUMTY6NTU6MDAuOTI5WiJ9
+        fX0seyJpZCI6IjIxM2M0ZDI1LTZiNjMtNDY2OS1hNGY1LThiZTRjYjM5M2Zh
+        ZiIsInR5cGUiOiJjdXJyZW5jeSIsImNvZGUiOiJmYWtlX2N1cnJlbmN5Iiwi
+        ZXhjaGFuZ2VfcmF0ZSI6MSwiZm9ybWF0IjoiwqN7cHJpY2V9IiwiZGVjaW1h
+        bF9wb2ludCI6Ii4iLCJ0aG91c2FuZF9zZXBhcmF0b3IiOiIsIiwiZGVjaW1h
+        bF9wbGFjZXMiOjAsImRlZmF1bHQiOnRydWUsImVuYWJsZWQiOnRydWUsImxp
+        bmtzIjp7InNlbGYiOiJodHRwczovL2FwaS5tb2x0aW4uY29tL3YyL2N1cnJl
+        bmNpZXMlIShFWFRSQSBzdHJpbmc9Y3VycmVuY2llcy8yMTNjNGQyNS02YjYz
+        LTQ2NjktYTRmNS04YmU0Y2IzOTNmYWYpIn0sIm1ldGEiOnsidGltZXN0YW1w
+        cyI6eyJjcmVhdGVkX2F0IjoiMjAxNy0wNC0yOVQxNjo1OToyNy40MjFaIiwi
+        dXBkYXRlZF9hdCI6IjIwMTctMDQtMjlUMTY6NTk6MjcuNDIxWiJ9fX0seyJp
+        ZCI6Ijc4NTA1OTcwLTQ5MjAtNGFhMi1hYWJkLTY0MWFjNDlmZGFjZCIsInR5
+        cGUiOiJjdXJyZW5jeSIsImNvZGUiOiJVU0QiLCJleGNoYW5nZV9yYXRlIjox
+        LCJmb3JtYXQiOiIke3ByaWNlfSIsImRlY2ltYWxfcG9pbnQiOiIuIiwidGhv
+        dXNhbmRfc2VwYXJhdG9yIjoiLCIsImRlY2ltYWxfcGxhY2VzIjoyLCJkZWZh
+        dWx0IjpmYWxzZSwiZW5hYmxlZCI6dHJ1ZSwibGlua3MiOnsic2VsZiI6Imh0
+        dHBzOi8vYXBpLm1vbHRpbi5jb20vdjIvY3VycmVuY2llcyUhKEVYVFJBIHN0
+        cmluZz1jdXJyZW5jaWVzLzc4NTA1OTcwLTQ5MjAtNGFhMi1hYWJkLTY0MWFj
+        NDlmZGFjZCkifSwibWV0YSI6eyJ0aW1lc3RhbXBzIjp7ImNyZWF0ZWRfYXQi
+        OiIyMDE3LTAzLTEwVDA5OjM3OjM0LjEzMVoiLCJ1cGRhdGVkX2F0IjoiMjAx
+        Ny0wMy0xMFQwOTozNzozNC4xMzFaIn19fSx7ImlkIjoiOTlmZjc4ZjQtNGQw
+        Yy00ZGQzLWJjYTUtMWM3ZjQ1MDYxZjJjIiwidHlwZSI6ImN1cnJlbmN5Iiwi
+        Y29kZSI6Im15X2N1cnJlbmN5IiwiZXhjaGFuZ2VfcmF0ZSI6MSwiZm9ybWF0
+        IjoiJHtwcmljZX0iLCJkZWNpbWFsX3BvaW50IjoiLiIsInRob3VzYW5kX3Nl
+        cGFyYXRvciI6IiwiLCJkZWNpbWFsX3BsYWNlcyI6MCwiZGVmYXVsdCI6ZmFs
+        c2UsImVuYWJsZWQiOnRydWUsImxpbmtzIjp7InNlbGYiOiJodHRwczovL2Fw
+        aS5tb2x0aW4uY29tL3YyL2N1cnJlbmNpZXMlIShFWFRSQSBzdHJpbmc9Y3Vy
+        cmVuY2llcy85OWZmNzhmNC00ZDBjLTRkZDMtYmNhNS0xYzdmNDUwNjFmMmMp
+        In0sIm1ldGEiOnsidGltZXN0YW1wcyI6eyJjcmVhdGVkX2F0IjoiMjAxNy0w
+        NC0yOVQxNjo0OTo1NS4wMjFaIiwidXBkYXRlZF9hdCI6IjIwMTctMDQtMjlU
+        MTY6NDk6NTUuMDIxWiJ9fX0seyJpZCI6ImYwYTlkZWU2LTg0OGYtNDE2Ni04
+        YzFjLTZhNzUxN2I2ZWNhYSIsInR5cGUiOiJjdXJyZW5jeSIsImNvZGUiOiJU
+        ZXN0IiwiZXhjaGFuZ2VfcmF0ZSI6MSwiZm9ybWF0IjoiJHtwcmljZX0iLCJk
+        ZWNpbWFsX3BvaW50IjoiLiIsInRob3VzYW5kX3NlcGFyYXRvciI6IiwiLCJk
+        ZWNpbWFsX3BsYWNlcyI6MCwiZGVmYXVsdCI6ZmFsc2UsImVuYWJsZWQiOnRy
+        dWUsImxpbmtzIjp7InNlbGYiOiJodHRwczovL2FwaS5tb2x0aW4uY29tL3Yy
+        L2N1cnJlbmNpZXMlIShFWFRSQSBzdHJpbmc9Y3VycmVuY2llcy9mMGE5ZGVl
+        Ni04NDhmLTQxNjYtOGMxYy02YTc1MTdiNmVjYWEpIn0sIm1ldGEiOnsidGlt
+        ZXN0YW1wcyI6eyJjcmVhdGVkX2F0IjoiMjAxNy0wNC0yOVQxNjo0Nzo1Ny40
+        MzRaIiwidXBkYXRlZF9hdCI6IjIwMTctMDQtMjlUMTY6NDc6NTcuNDM0WiJ9
+        fX0seyJpZCI6ImYzMTY0ZGIyLTRjODktNGYwNy05MmIxLTcyNDM3NjQzYzc5
+        MyIsInR5cGUiOiJjdXJyZW5jeSIsImNvZGUiOiJHQlAiLCJleGNoYW5nZV9y
+        YXRlIjoxLCJmb3JtYXQiOiLCo3twcmljZX0iLCJkZWNpbWFsX3BvaW50Ijoi
+        LiIsInRob3VzYW5kX3NlcGFyYXRvciI6IiwiLCJkZWNpbWFsX3BsYWNlcyI6
+        MCwiZGVmYXVsdCI6ZmFsc2UsImVuYWJsZWQiOnRydWUsImxpbmtzIjp7InNl
+        bGYiOiJodHRwczovL2FwaS5tb2x0aW4uY29tL3YyL2N1cnJlbmNpZXMlIShF
+        WFRSQSBzdHJpbmc9Y3VycmVuY2llcy9mMzE2NGRiMi00Yzg5LTRmMDctOTJi
+        MS03MjQzNzY0M2M3OTMpIn0sIm1ldGEiOnsidGltZXN0YW1wcyI6eyJjcmVh
+        dGVkX2F0IjoiMjAxNy0wNC0yNlQxNjozOToxNS4wMzdaIiwidXBkYXRlZF9h
+        dCI6IjIwMTctMDQtMjZUMTY6Mzk6MTUuMDM3WiJ9fX1dfQ==
+    http_version: 
+  recorded_at: Sun, 04 Oct 1987 17:00:00 GMT
+- request:
+    method: get
+    uri: https://api.moltin.com/v2/currencies/1d7564c3-3dac-4049-8e91-a95deff0dd39
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer 5239faeb2f640559413a412dc23d88a915a1be30
+      X-Moltin-Language:
+      - en
+      X-Moltin-Currency:
+      - USD
+      X-Moltin-Locale:
+      - en_gb
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Sat, 29 Apr 2017 17:02:55 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - b94f0c6e45d844ed060a0d8fe523ca5a48e9b3a4
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJkYXRhIjp7ImlkIjoiMWQ3NTY0YzMtM2RhYy00MDQ5LThlOTEtYTk1ZGVm
+        ZjBkZDM5IiwidHlwZSI6ImN1cnJlbmN5IiwiY29kZSI6Im5ld19jdXJyZW5j
+        eSIsImV4Y2hhbmdlX3JhdGUiOjEsImZvcm1hdCI6IsKje3ByaWNlfSIsImRl
+        Y2ltYWxfcG9pbnQiOiIuIiwidGhvdXNhbmRfc2VwYXJhdG9yIjoiLCIsImRl
+        Y2ltYWxfcGxhY2VzIjowLCJkZWZhdWx0IjpmYWxzZSwiZW5hYmxlZCI6dHJ1
+        ZSwibGlua3MiOnsic2VsZiI6Imh0dHBzOi8vYXBpLm1vbHRpbi5jb20vdjIv
+        Y3VycmVuY2llcyUhKEVYVFJBIHN0cmluZz1jdXJyZW5jaWVzLzFkNzU2NGMz
+        LTNkYWMtNDA0OS04ZTkxLWE5NWRlZmYwZGQzOSkifSwibWV0YSI6eyJ0aW1l
+        c3RhbXBzIjp7ImNyZWF0ZWRfYXQiOiIyMDE3LTA0LTI5VDE2OjU1OjAwLjky
+        OVoiLCJ1cGRhdGVkX2F0IjoiMjAxNy0wNC0yOVQxNjo1NTowMC45MjlaIn19
+        fX0=
+    http_version: 
+  recorded_at: Sun, 04 Oct 1987 17:00:00 GMT
+recorded_with: VCR 3.0.3

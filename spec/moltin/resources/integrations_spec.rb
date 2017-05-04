@@ -151,7 +151,7 @@ module Moltin
       end
 
       describe '#logs' do
-        it 'receives the list of logs' do
+        it 'receives the list of logs', freeze_time: true do
           VCR.use_cassette('resources/integrations/logs') do
             resource = Moltin::Resources::Integrations.new(config, {})
             response = resource.logs
@@ -161,7 +161,7 @@ module Moltin
       end
 
       describe '#logs_for' do
-        it 'receives the list of logs_for' do
+        it 'receives the list of logs_for', freeze_time: true do
           VCR.use_cassette('resources/integrations/logs_for') do
             integration = client.integrations.all.first
             response = integration.logs
@@ -171,7 +171,7 @@ module Moltin
       end
 
       describe '#jobs_for' do
-        it 'receives the list of jobs' do
+        it 'receives the list of jobs', freeze_time: true do
           VCR.use_cassette('resources/integrations/jobs') do
             integration = client.integrations.all.first
             response = integration.jobs

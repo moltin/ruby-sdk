@@ -15,6 +15,8 @@ module Moltin
         def attributes(*attrs)
           attrs.push(:original_payload)
           attrs.push(:relationships)
+          attrs.push(:flow_fields)
+
           attr_accessor(*attrs)
           @attributes_list = attrs.map(&:to_sym)
         end
@@ -44,9 +46,14 @@ module Moltin
           instance_variable_set("@#{name}", attributes[name.to_sym] ||
                                             attributes[name.to_s])
         end
+
         self.relationships = attributes['relationships']
         self.original_payload = attributes
         @client = client
+
+        self.flow_fields = OpenStruct.new(attributes.dup.delete_if do |k, _v|
+          self.class.attributes_list.include?(k.to_sym)
+        end)
       end
     end
   end
