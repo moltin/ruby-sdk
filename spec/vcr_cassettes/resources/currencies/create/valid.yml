@@ -1,0 +1,142 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.moltin.com/oauth/access_token
+    body:
+      encoding: UTF-8
+      string: client_id=FTtrUHsKHstAOtAhN2VjKbpvK08ZXOKZ0GAQaiIAcc&client_secret=iFUwmVrwIOWwJrSR70gUtNQ5vIKRwc2RJVyXdid4tc&grant_type=client_credentials
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      X-Moltin-Language:
+      - en
+      X-Moltin-Currency:
+      - USD
+      X-Moltin-Locale:
+      - en_gb
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Sat, 29 Apr 2017 17:02:57 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Auth-Served-By:
+      - Moltin-Auth
+      X-Moltin-Request-Id:
+      - a073d682635482dc50fdf08d6fb31f76d273f5f5
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {"expires":1493488977,"identifier":"client_credentials","expires_in":3600,"access_token":"0e876ed79c6a3d9f4132e342681c5ea431680e83","token_type":"Bearer"}
+    http_version: 
+  recorded_at: Sun, 04 Oct 1987 17:00:00 GMT
+- request:
+    method: post
+    uri: https://api.moltin.com/v2/currencies
+    body:
+      encoding: UTF-8
+      string: '{"data":{"code":"ABC","exchange_rate":1,"format":"${price}","decimal_point":".","thousand_separator":",","decimal_places":0,"default":false,"enabled":true,"type":"currency"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer 0e876ed79c6a3d9f4132e342681c5ea431680e83
+      X-Moltin-Language:
+      - en
+      X-Moltin-Currency:
+      - USD
+      X-Moltin-Locale:
+      - en_gb
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Sat, 29 Apr 2017 17:02:58 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - abf9cb1ff89265b53dd73c1081113278ad68c495
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"id":"8deccc6f-31b3-4343-a758-c645b1ff7dfb","type":"currency","code":"ABC","exchange_rate":1,"format":"${price}","decimal_point":".","thousand_separator":",","decimal_places":0,"default":false,"enabled":true,"links":{"self":"https://api.moltin.com/v2/currencies%!(EXTRA
+        string=currencies/8deccc6f-31b3-4343-a758-c645b1ff7dfb)"},"meta":{"timestamps":{"created_at":"2017-04-29T17:02:58.48341375Z","updated_at":"2017-04-29T17:02:58.483414203Z"}}}}'
+    http_version: 
+  recorded_at: Sun, 04 Oct 1987 17:00:00 GMT
+- request:
+    method: delete
+    uri: https://api.moltin.com/v2/currencies/8deccc6f-31b3-4343-a758-c645b1ff7dfb
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer 0e876ed79c6a3d9f4132e342681c5ea431680e83
+      X-Moltin-Language:
+      - en
+      X-Moltin-Currency:
+      - USD
+      X-Moltin-Locale:
+      - en_gb
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Sat, 29 Apr 2017 17:02:59 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - b4296c23bb82eee32e2ce5aebb768212aa18bc6a
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"type":"currency","id":"8deccc6f-31b3-4343-a758-c645b1ff7dfb"}}'
+    http_version: 
+  recorded_at: Sun, 04 Oct 1987 17:00:00 GMT
+recorded_with: VCR 3.0.3

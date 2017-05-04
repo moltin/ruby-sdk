@@ -1,0 +1,214 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.moltin.com/oauth/access_token
+    body:
+      encoding: UTF-8
+      string: client_id=FTtrUHsKHstAOtAhN2VjKbpvK08ZXOKZ0GAQaiIAcc&client_secret=iFUwmVrwIOWwJrSR70gUtNQ5vIKRwc2RJVyXdid4tc&grant_type=client_credentials
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      X-Moltin-Language:
+      - en
+      X-Moltin-Currency:
+      - USD
+      X-Moltin-Locale:
+      - en_gb
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Mon, 01 May 2017 11:23:04 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      X-Auth-Served-By:
+      - Moltin-Auth
+      X-Moltin-Request-Id:
+      - 07d0d83df11a80df637bf972d93c2b72af818c56
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {"expires":1493641384,"identifier":"client_credentials","expires_in":3600,"access_token":"1c2a9825012671b6907cc7da8feaf70354850f6f","token_type":"Bearer"}
+    http_version: 
+  recorded_at: Mon, 05 Oct 1987 17:00:00 GMT
+- request:
+    method: get
+    uri: https://api.moltin.com/v2/variations
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer 1c2a9825012671b6907cc7da8feaf70354850f6f
+      X-Moltin-Language:
+      - en
+      X-Moltin-Currency:
+      - USD
+      X-Moltin-Locale:
+      - en_gb
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Mon, 01 May 2017 11:23:05 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - 10828d6bda2985615a30074324c89bd11d128ef2
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"type":"product-variation","id":"d1a62d4f-fb16-4610-8200-87e0a8a86d78","name":"My
+        Variation","options":[{"id":"99677c20-8945-4dbb-a950-6332e6334a64","name":"My
+        VariationOption","description":"Cool description","modifiers":[{"id":"d3e486dc-e17a-4d3b-abb0-d3696781edd8","type":"sku_builder","value":{"seek":"in
+        incididunt cupidatat dolor est!","set":"velit ad ut!"}}]},{"id":"b509454e-2310-4e6b-a0fa-b4baace3f63c","name":"My
+        VariationOption","description":"Cool description","modifiers":[]},{"id":"3fdc70d3-b7ab-41b2-94ec-6b0f05031bfd","name":"My
+        VariationOption","description":"Cool description","modifiers":[]},{"id":"e2bd0e86-a313-4146-9c53-a3295c44fda6","name":"My
+        VariationOption","description":"Cool description","modifiers":[]},{"id":"984ef043-38c2-45ba-a6ff-52b2e1d1b505","name":"My
+        VariationOption","description":"Cool description","modifiers":[]},{"id":"f8bb3ae0-5e59-42be-bf92-cc0b7cd86876","name":"My
+        VariationOption","description":"Cool description","modifiers":[]},{"id":"4c05f740-d2f2-4ff5-ac21-9d0f55e68831","name":"My
+        VariationOption","description":"Cool description","modifiers":[]},{"id":"94fb1cfa-82e8-42de-aae7-8e079dd58198","name":"My
+        VariationOption","description":"Cool description","modifiers":[]},{"id":"2733e37a-1d55-46d4-9675-2873fc227257","name":"My
+        VariationOption","description":"Cool description","modifiers":[]},{"id":"1c40ec13-1064-481a-bb43-085c0ab46544","name":"My
+        VariationOption","description":"Cool description","modifiers":[]},{"id":"04d809b0-7f2c-4f3c-a553-1305728fee1a","name":"My
+        VariationOption","description":"Cool description","modifiers":[]}]},{"type":"product-variation","id":"bb231ceb-0eaa-46f3-8bae-2a5f1f8f95c8","name":"My
+        Variation","options":[]},{"type":"product-variation","id":"0a0fbbda-b7d5-4d02-b65f-8f8c5f11a4c5","name":"","options":[]}],"links":{"current":"https://api.moltin.com/v2/variations?page[limit]=100&page[offset]=0","first":"https://api.moltin.com/v2/variations?page[limit]=100&page[offset]=0","last":null}}'
+    http_version: 
+  recorded_at: Mon, 05 Oct 1987 17:00:00 GMT
+- request:
+    method: post
+    uri: https://api.moltin.com/v2/variations/d1a62d4f-fb16-4610-8200-87e0a8a86d78/variation-options/99677c20-8945-4dbb-a950-6332e6334a64/product-modifiers
+    body:
+      encoding: UTF-8
+      string: '{"data":{"modifier_type":"sku_builder","value":{"seek":"in incididunt
+        cupidatat dolor est","set":"velit ad ut"},"type":"product-modifier"}}'
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer 1c2a9825012671b6907cc7da8feaf70354850f6f
+      X-Moltin-Language:
+      - en
+      X-Moltin-Currency:
+      - USD
+      X-Moltin-Locale:
+      - en_gb
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Mon, 01 May 2017 11:23:06 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - 88e8aab0567e4ea3a0f0fa1cb75ba8b59b474ae7
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"type":"product-variation","id":"d1a62d4f-fb16-4610-8200-87e0a8a86d78","name":"My
+        Variation","options":[{"id":"99677c20-8945-4dbb-a950-6332e6334a64","name":"My
+        VariationOption","description":"Cool description","modifiers":[{"id":"d3e486dc-e17a-4d3b-abb0-d3696781edd8","type":"sku_builder","value":{"seek":"in
+        incididunt cupidatat dolor est!","set":"velit ad ut!"}}]},{"id":"b509454e-2310-4e6b-a0fa-b4baace3f63c","name":"My
+        VariationOption","description":"Cool description","modifiers":[]},{"id":"3fdc70d3-b7ab-41b2-94ec-6b0f05031bfd","name":"My
+        VariationOption","description":"Cool description","modifiers":[]},{"id":"e2bd0e86-a313-4146-9c53-a3295c44fda6","name":"My
+        VariationOption","description":"Cool description","modifiers":[]},{"id":"984ef043-38c2-45ba-a6ff-52b2e1d1b505","name":"My
+        VariationOption","description":"Cool description","modifiers":[]},{"id":"f8bb3ae0-5e59-42be-bf92-cc0b7cd86876","name":"My
+        VariationOption","description":"Cool description","modifiers":[]},{"id":"4c05f740-d2f2-4ff5-ac21-9d0f55e68831","name":"My
+        VariationOption","description":"Cool description","modifiers":[]},{"id":"94fb1cfa-82e8-42de-aae7-8e079dd58198","name":"My
+        VariationOption","description":"Cool description","modifiers":[]},{"id":"2733e37a-1d55-46d4-9675-2873fc227257","name":"My
+        VariationOption","description":"Cool description","modifiers":[]},{"id":"1c40ec13-1064-481a-bb43-085c0ab46544","name":"My
+        VariationOption","description":"Cool description","modifiers":[]},{"id":"04d809b0-7f2c-4f3c-a553-1305728fee1a","name":"My
+        VariationOption","description":"Cool description","modifiers":[]}]}}'
+    http_version: 
+  recorded_at: Mon, 05 Oct 1987 17:00:00 GMT
+- request:
+    method: delete
+    uri: https://api.moltin.com/v2/variations/d1a62d4f-fb16-4610-8200-87e0a8a86d78/variation-options/99677c20-8945-4dbb-a950-6332e6334a64/product-modifiers/d3e486dc-e17a-4d3b-abb0-d3696781edd8
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.11.0
+      Authorization:
+      - Bearer 1c2a9825012671b6907cc7da8feaf70354850f6f
+      X-Moltin-Language:
+      - en
+      X-Moltin-Currency:
+      - USD
+      X-Moltin-Locale:
+      - en_gb
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - openresty/1.9.7.4
+      Date:
+      - Mon, 01 May 2017 11:23:07 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 linkerd
+      X-Moltin-Request-Id:
+      - eda69edbec6ab183c11ffd2b75b1206758d818bc
+      Access-Control-Allow-Origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"type":"product-modifier","id":"d1a62d4f-fb16-4610-8200-87e0a8a86d78"}}'
+    http_version: 
+  recorded_at: Mon, 05 Oct 1987 17:00:00 GMT
+recorded_with: VCR 3.0.3

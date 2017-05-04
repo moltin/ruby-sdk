@@ -6,7 +6,12 @@ module Moltin
       client_secret: -> { ENV['MOLTIN_CLIENT_SECRET'] },
 
       # API Endpoints Configuration
-      base_url: 'https://api.moltin.com'
+      base_url: 'https://api.moltin.com',
+
+      # Headers
+      currency_code: 'USD',
+      language: 'en',
+      locale: 'en_gb'
     }.freeze
 
     MOLTIN_OPTIONS = {

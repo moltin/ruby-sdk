@@ -40,16 +40,6 @@ module Moltin
                                        }).data
       end
 
-      before do
-        ENV['MOLTIN_CLIENT_ID'] = ENV['FAKE_CLIENT_ID']
-        ENV['MOLTIN_CLIENT_SECRET'] = ENV['FAKE_CLIENT_SECRET']
-      end
-
-      after do
-        ENV.delete('MOLTIN_CLIENT_ID')
-        ENV.delete('MOLTIN_CLIENT_SECRET')
-      end
-
       describe '#uri' do
         it 'returns the expected uri' do
           order = Moltin::Resources::Orders.new(config, {})
@@ -70,7 +60,7 @@ module Moltin
             expect(response.included).to eq({})
             expect(response.meta).not_to be_nil
 
-            expect(response.data.length).to eq 46
+            expect(response.data.length).to eq 49
           end
         end
       end

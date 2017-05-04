@@ -1,8 +1,11 @@
 module Moltin
   module Utils
     class Request
-      def initialize(base_url)
+      def initialize(base_url, currency_code: nil, language: nil, locale: nil)
         @base_url = base_url
+        @currency_code = currency_code
+        @language = language
+        @locale = locale
       end
 
       # Public: Call the Moltin API passing the credentials to retrieve a valid
@@ -55,6 +58,7 @@ module Moltin
       # Returns the body of the response as JSON
       def get(uri:, query_params: nil, conn: new_conn)
         conn.get do |req|
+          set_headers(req)
           req.url uri
           req.params = query_params if query_params
         end
@@ -72,6 +76,7 @@ module Moltin
         content_type ||= 'application/json'
 
         conn.post do |req|
+          set_headers(req)
           req.url uri
           req.headers['Content-Type'] = content_type
           req.body = content_type == 'application/json' ? body.to_json : body
@@ -102,6 +107,7 @@ module Moltin
         content_type ||= 'application/json'
 
         conn.put do |req|
+          set_headers(req)
           req.url uri
           req.headers['Content-Type'] = content_type
           req.body = content_type == 'application/json' ? body.to_json : body
@@ -119,16 +125,26 @@ module Moltin
 
         if body
           conn.delete do |req|
+            set_headers(req)
             req.url uri
             req.headers['Content-Type'] = content_type
             req.body = content_type == 'application/json' ? body.to_json : body
           end
         else
-          conn.delete(uri)
+          conn.delete do |req|
+            set_headers(req)
+            req.url uri
+          end
         end
       end
 
       private
+
+      def set_headers(req)
+        req.headers['X-MOLTIN-LANGUAGE'] = @language if @language
+        req.headers['X-MOLTIN-CURRENCY'] = @currency_code if @currency_code
+        req.headers['X-MOLTIN-LOCALE'] = @locale if @locale
+      end
 
       # Private: Instantiate a new Faraday connection
       #
