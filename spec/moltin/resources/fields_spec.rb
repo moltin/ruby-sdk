@@ -17,7 +17,7 @@ module Moltin
       describe '#all' do
         it 'receives the list of fields', freeze_time: true do
           VCR.use_cassette('resources/fields/all') do
-            response = flow.fields
+            response = flow.fields.all
 
             expect(response.data).not_to be_nil
             expect(response.data.first).to be_kind_of(Moltin::Models::Field)
@@ -46,7 +46,7 @@ module Moltin
       describe '#get' do
         it 'receives the given field', freeze_time: true do
           VCR.use_cassette('resources/fields/get') do
-            field = flow.fields.first
+            field = flow.fields.all.first
             response = client.fields.get(field.id)
 
             expect(response.data.id).to eq field.id
@@ -87,7 +87,7 @@ module Moltin
       describe '#update' do
         it 'updates a new field', freeze_time: true do
           VCR.use_cassette('resources/fields/update') do
-            field = flow.fields.first
+            field = flow.fields.all.first
             response = client.fields.update(field.id, description: 'Something else.')
 
             expect(response.data.description).to eq 'Something else.'

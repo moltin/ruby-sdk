@@ -15,7 +15,7 @@ module Moltin
       end
 
       describe '#all' do
-        it 'receives the list of entries' do
+        it 'receives the list of entries', freeze_time: true do
           VCR.use_cassette('resources/entries/all') do
             response = flow.entries.all
 
@@ -25,7 +25,7 @@ module Moltin
             expect(response.included).to eq({})
             expect(response.meta).not_to be_nil
 
-            expect(response.data.length).to eq 1
+            expect(response.data.length).to eq 2
           end
         end
       end

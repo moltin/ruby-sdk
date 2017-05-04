@@ -55,5 +55,12 @@ module Moltin
         expect(Moltin::Client.new.files).to be_kind_of(Moltin::Resources::Files)
       end
     end
+
+    describe '#currency' do
+      it 'sets the currency as instance variable' do
+        client = Moltin::Client.new.currency('THB')
+        expect(client.currency_code).to eq 'THB'
+      end
+    end
   end
 end

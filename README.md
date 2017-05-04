@@ -41,6 +41,9 @@ You can also set them yourself when your application is initialized (this can ea
 Moltin.configure do |config|
   config.client_id = 'YOUR_CLIENT_ID'
   config.client_secret = 'YOUR_CLIENT_SECRET'
+  config.currency_code = 'USD' # Default value
+  config.language = 'en'       # Default value
+  config.locale = 'en_gb'      # Default value
 end
 ```
 
@@ -51,7 +54,10 @@ If you need to connect to multiple stores or would prefer to define the configur
 ```
 Moltin::Client.new({
   client_id: 'YOUR_CLIENT_ID',
-  client_secret: 'YOUR_CLIENT_SECRET'
+  client_secret: 'YOUR_CLIENT_SECRET',
+  currency_code: 'USD',
+  language: 'en',
+  locale: 'en_gb'
 })
 ```
 
@@ -64,6 +70,9 @@ Moltin.configure do |config|
   config.client_id = 'YOUR_CLIENT_ID'
   config.client_secret = 'YOUR_CLIENT_SECRET'
   config.base_url  = 'https://api.yourdomain.com'
+  config.currency_code = 'USD'
+  config.language = 'en'
+  config.locale = 'en_gb'
 end
 ```
 
@@ -71,17 +80,21 @@ end
 Moltin::Client.new({
   client_id: 'YOUR_CLIENT_ID',
   client_secret: 'YOUR_CLIENT_SECRET',
-  base_url:  'https://api.yourdomain.com'
+  base_url:  'https://api.yourdomain.com',
+  currency_code: 'USD',
+  language: 'en',
+  locale: 'en_gb'
 })
 ```
 
-### Language
-
-Coming Soon.
-
 ### Currency
 
-Coming Soon.
+For calls that support the `X-MOLTIN-CURRENCY` header, you can specifiy it on the client (else the value defined in the configuration will be used):
+
+```
+moltin.currency('USD').products.all
+moltin.currency('GBP').products.all
+```
 
 ## Usage
 
@@ -746,9 +759,150 @@ payment = order.pay({
 })
 ```
 
+#### Flows, Fields & Entries - [Docs](https://moltin.api-docs.io/v2/flows)
+
+As described in the documentation, flows allow you to add custom fields to the Moltin entities (products, carts, etc.). Once you've added new fields to resources, these will become available on the models through the `#flow_fields` method.
+
+Let's say we've added the field 'reference' to products to access the reference value on a product, we have to do the following:
+
+```
+product = moltin.products.get(product_id)
+product.flow_fields.reference
+```
+
+###### Flows
+
+```
+# Retrieve the list of flows
+moltin.flows.all
+```
+
+```
+# Retrieve a single flow (GET)
+moltin.flows.get(flow_id)
+```
+
+```
+# Create a flow (POST)
+moltin.flows.create({
+  name: 'reference',
+  slug: 'products',
+  description: 'Just a nice reference.',
+  enabled: false
+})
+```
+
+```
+# Update a flow (PUT)
+moltin.flows.update(flow_id, {
+  enabled: true
+})
+```
+
+```
+# delete a flow (POST)
+moltin.flows.delete(flow_id)
+```
+
+```
+# Get a flow attributes
+moltin.flows.attributes
+```
+
+###### Fields
+
+```
+# Get a field (GET)
+moltin.fields.get(field_id)
+```
+
+```
+# Get all fields for a flow (GET)
+flow = moltin.flows.get(flow_id)
+flow.fields.all
+```
+
+```
+# Create a field (POST)
+flow = moltin.flows.get(flow_id)
+moltin.fields.create(field_type: 'string',
+                     slug: 'content',
+                     name: 'content',
+                     description: 'Just some content',
+                     required: false,
+                     unique: true,
+                     default: '',
+                     relationships: {
+                       flow: {
+                         data: {
+                           type: 'flow',
+                           id: flow.id
+                         }
+                       }
+                     })
+```
+
+```
+# Update a field (PUT)
+moltin.fields.update(field_id, description: 'Some description')
+```
+
+```
+# Delete a field (DELETE)
+moltin.fields.delete(field_id)
+```
+
+```
+# Get a field attributes
+moltin.fields.attributes
+```
+
+###### Entries
+
+```
+# Get all fields for an entry (GET)
+flow = moltin.flows.get(flow_id)
+flow.entries.all
+```
+
+```
+# Get an entry (GET)
+flow = moltin.flows.get(flow_id)
+flow.entries.get(entry_id)
+```
+
+```
+# Create an entry (POST)
+flow = moltin.flows.get(flow_id)
+flow.entries.create(reference: 'Some value.')
+```
+
+```
+# Update an entry (PUT)
+flow = moltin.flows.get(flow_id)
+entry = flow.entries.get(entry_id)
+flow.entries.update(entry.id, reference: 'Something else.')
+```
+
+```
+# Delete an entry (DELETE)
+flow = moltin.flows.get(flow_id)
+flow.entries.delete(entry_id)
+```
+
 ### Handling Exceptions
 
-Coming Soon.
+Aside from errors that may occur due to the call, there may be other exceptions thrown. To handle them, simply wrap your call in a `begin` `rescue` block:
+
+```
+begin
+  moltin.products.all
+rescue => e
+  // Handle e
+end
+```
+
+Internally, there are several custom errors which may be raised - see the `lib/moltin/errors` directory for more information.
 
 ### Example Application
 
@@ -760,10 +914,27 @@ After checking out the repo, run `bin/setup` to install dependencies. Then, run 
 
 To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
+### Running the tests
+
+```
+rspec
+```
+
+### Checking style
+
+```
+rubocop
+```
+
+### Building the gem
+
+```
+gem build moltin.gemspec
+```
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/moltin. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
 
 ## License
 

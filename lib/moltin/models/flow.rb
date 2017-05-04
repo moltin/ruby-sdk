@@ -5,7 +5,7 @@ module Moltin
                  :meta, :relationships
 
       def fields
-        client.fields(flow_slug: slug).all
+        client.fields(flow_slug: slug)
       end
 
       def entries
