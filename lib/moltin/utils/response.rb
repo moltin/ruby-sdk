@@ -31,15 +31,15 @@ module Moltin
         end
       end
 
-      def links
+      def included
+        @included ||= Moltin::Models::Included.new(@body['included'] || {})
+      end
+
+      def response_links
         @body['links'] || {}
       end
 
-      def included
-        @body['included'] || {}
-      end
-
-      def meta
+      def response_meta
         @body['meta'] || {}
       end
 
@@ -50,6 +50,12 @@ module Moltin
 
       def respond_to_missing?(method, include_private = false)
         data.respond_to?(method) || super
+      end
+
+      def inspect
+        "#<#{self.class.name}:#{object_id} @reponse_status=#{@response_status}, @model=#{@model}, " \
+        "errors=#{errors}, data=#{data}, included=#{included}, response_links=#{response_links}, " \
+        "response_meta=#{response_meta}>"
       end
     end
   end

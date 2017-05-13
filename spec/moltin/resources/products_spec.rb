@@ -21,9 +21,9 @@ module Moltin
 
             expect(response.data).not_to be_nil
             expect(response.data.first).to be_kind_of(Moltin::Models::Product)
-            expect(response.links).not_to be_nil
-            expect(response.included).to eq({})
-            expect(response.meta).not_to be_nil
+            expect(response.response_links).not_to be_nil
+            expect(response.included).to be_kind_of Moltin::Models::Included
+            expect(response.response_meta).not_to be_nil
 
             expect(response.data.length).to eq 76
           end
@@ -34,8 +34,8 @@ module Moltin
             it 'limits the number of results and set the offset' do
               VCR.use_cassette('resources/products/all/limit-offset') do
                 resource = Moltin::Resources::Products.new(config, {})
-                response = resource.limit(10).offset(10)
-                expect(response.links['current']).to eq(
+                response = resource.all.limit(10).offset(10)
+                expect(response.response_links['current']).to eq(
                   'https://api.moltin.com/v2/products?page[limit]=10&page[offset]=10'
                 )
                 expect(response.data.length).to eq 10
@@ -47,8 +47,8 @@ module Moltin
             it 'limits the number of results returned by the API' do
               VCR.use_cassette('resources/products/all/limit') do
                 resource = Moltin::Resources::Products.new(config, {})
-                response = resource.limit(10)
-                expect(response.links['current']).to eq(
+                response = resource.all.limit(10)
+                expect(response.response_links['current']).to eq(
                   'https://api.moltin.com/v2/products?page[limit]=10&page[offset]=0'
                 )
                 expect(response.data.length).to eq 10
@@ -60,8 +60,8 @@ module Moltin
             it 'offsets the returned results' do
               VCR.use_cassette('resources/products/all/offset') do
                 resource = Moltin::Resources::Products.new(config, {})
-                response = resource.offset(60)
-                expect(response.links['current']).to eq(
+                response = resource.all.offset(60)
+                expect(response.response_links['current']).to eq(
                   'https://api.moltin.com/v2/products?page[limit]=100&page[offset]=60'
                 )
                 expect(response.data.length).to eq 17
@@ -75,8 +75,8 @@ module Moltin
             it 'sorts the results based on the passed attribute in ascending sort' do
               VCR.use_cassette('resources/products/all/sort/asc') do
                 resource = Moltin::Resources::Products.new(config, {})
-                response = resource.sort('name')
-                expect(response.links['current']).to eq(
+                response = resource.all.sort('name')
+                expect(response.response_links['current']).to eq(
                   'https://api.moltin.com/v2/products?page[limit]=100&page[offset]=0&sort=name'
                 )
               end
@@ -87,8 +87,8 @@ module Moltin
             it 'sorts the results based on the passed attribute in descending sort' do
               VCR.use_cassette('resources/products/all/sort/desc') do
                 resource = Moltin::Resources::Products.new(config, {})
-                response = resource.sort('-name')
-                expect(response.links['current']).to eq(
+                response = resource.all.sort('-name')
+                expect(response.response_links['current']).to eq(
                   'https://api.moltin.com/v2/products?page[limit]=100&page[offset]=0&sort=-name'
                 )
               end
@@ -101,8 +101,8 @@ module Moltin
             it 'filters by name' do
               VCR.use_cassette('resources/products/all/filters/name_has_2017') do
                 resource = Moltin::Resources::Products.new(config, {})
-                response = resource.filter(has: { name: '2017' })
-                expect(response.links['current']).to eq(
+                response = resource.all.filter(has: { name: '2017' })
+                expect(response.response_links['current']).to eq(
                   'https://api.moltin.com/v2/products?page[limit]=100&page[offset]=0&filter=has(name,2017)'
                 )
                 response.data.each do |result|
@@ -116,11 +116,10 @@ module Moltin
             it 'filters by name, stock and slug' do
               VCR.use_cassette('resources/products/all/filters/composed') do
                 resource = Moltin::Resources::Products.new(config, {})
-                response = resource.filter(has: { name: '2017' }, out: { slug: %w(abc def) })
-                expect(response.links['current']).to eq(
+                response = resource.all.filter(has: { name: '2017' }, out: { slug: %w(abc def) })
+                expect(response.response_links['current']).to eq(
                   'https://api.moltin.com/v2/products?page[limit]=100&page[offset]=0&filter=has(name,2017):out(slug,(abc,def))'
                 )
-                expect(response.included.keys).not_to eq(%w(brands categories))
               end
             end
           end
@@ -130,11 +129,11 @@ module Moltin
           it 'includes the specified resources' do
             VCR.use_cassette('resources/products/all/includes') do
               resource = Moltin::Resources::Products.new(config, {})
-              response = resource.with(:brands, :categories)
-              expect(response.links['current']).to eq(
+              response = resource.all.with(:brands, :categories)
+              expect(response.response_links['current']).to eq(
                 'https://api.moltin.com/v2/products?page[limit]=100&page[offset]=0&include=brands,categories'
               )
-              expect(response.included.keys).to eq(%w(brands categories))
+              expect(response.included.original_payload.keys).to eq(%w(brands categories))
             end
           end
         end

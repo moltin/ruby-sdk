@@ -9,7 +9,7 @@ module Moltin
 
       describe '#uri' do
         it 'returns the expected uri' do
-          variation = Moltin::Resources::VariationOptions.new(config, {}, variation_id: 1)
+          variation = Moltin::Resources::VariationOptions.new(config, variation_id: 1)
           expect(variation.send(:uri)).to eq 'v2/variations/1/variation-options'
         end
       end

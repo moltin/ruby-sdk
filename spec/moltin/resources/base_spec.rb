@@ -8,7 +8,8 @@ module Moltin
       describe '#initialize' do
         it 'sets config and storage' do
           storage = { test: '123' }
-          resource = described_class.new(config, storage)
+          config.storage = storage
+          resource = described_class.new(config)
 
           expect(resource.config).to eq config
           expect(resource.storage).to eq storage

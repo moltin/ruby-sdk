@@ -35,12 +35,11 @@ module Moltin
     #
     def initialize(options = nil)
       @config = load_config(options)
-      @storage = {}
     end
 
     RESOURCES.each do |resource, klass|
       define_method resource do |options = {}|
-        klass.new(@config, @storage, options, self)
+        klass.new(@config, options, self)
       end
     end
 

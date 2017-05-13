@@ -44,8 +44,33 @@ Moltin.configure do |config|
   config.currency_code = 'USD' # Default value
   config.language = 'en'       # Default value
   config.locale = 'en_gb'      # Default value
+  config.storage = {}          # Default value
 end
 ```
+
+#### Storage
+
+__The `storage` is used to store the access token retrieved from the API on the authentication call until it expires. If you're using Rails and have defined the configuration in an initializer, the simplest is to use the session as storage. The following method can be defined in the `ApplicationController` and will use the configuration defined in the initializer.__
+
+Remove the `storage` option from your initializer and move it into the client like this:
+
+```
+Moltin.configure do |config|
+  config.client_id = 'YOUR_CLIENT_ID'
+  config.client_secret = 'YOUR_CLIENT_SECRET'
+  config.currency_code = 'USD' # Default value
+  config.language = 'en'       # Default value
+  config.locale = 'en_gb'      # Default value
+end
+```
+
+```
+def moltin
+  @moltin ||= Moltin::Client.new({ storage: session })
+end
+```
+
+You can then use the `moltin` client in any controller.
 
 ### Per Client Configuration
 
@@ -57,7 +82,8 @@ Moltin::Client.new({
   client_secret: 'YOUR_CLIENT_SECRET',
   currency_code: 'USD',
   language: 'en',
-  locale: 'en_gb'
+  locale: 'en_gb',
+  storage: {}
 })
 ```
 
@@ -122,21 +148,22 @@ The requests to retrieve data from the API can be configured for pagination, sor
 
 ##### Lazy Loading
 
-To allow method chaining, the results are lazy-loaded. Therefore, the request won't happen until you call one of the method triggering the execution like:
+To allow method chaining, the results are lazy-loaded. Therefore, the request won't happen until you call one of the method triggering the execution like, or any method defined on the response `data` object (either `each` for lists of results or a model method for single resource responses, like `id`).
 
  - `errors`
  - `data`
- - `links`
+ - `response_links`
  - `included`
- - `meta`
+ - `response_meta`
 
 As in:
 
 ```
-response = moltin.products.limit(10).offset(10) # or simply moltin.products.all
+response = moltin.products.all.limit(10).offset(10) # or simply moltin.products.all
 
-response.links
+response.response_links
 response.data
+response.each { |p| ... }
 ```
 
 If you wish to force the retrieval of resources without using these methods and access the `Moltin::Utils::Response` instance, call `.response`.
@@ -150,13 +177,13 @@ moltin.products.all.response
 Limit the number of resources returned:
 
 ```
-moltin.products.limit(10)
+moltin.products.all.limit(10)
 ```
 
 Offset the results (page 2):
 
 ```
-moltin.products.offset(10)
+moltin.products.all.offset(10)
 ```
 
 ##### Sorting
@@ -164,13 +191,13 @@ moltin.products.offset(10)
 Order by `name`:
 
 ```
-moltin.products.sort('name')
+moltin.products.all.sort('name')
 ```
 
 Reversed:
 
 ```
-moltin.products.sort('-name')
+moltin.products.all.sort('-name')
 ```
 
 ##### Filtering
@@ -200,9 +227,9 @@ moltin.products.filter({
 or
 
 ```
-moltin.products.filter(eq: { status: 'draft' }).
-                filter(eq: { commodity_type: 'digital' }).
-                filter(gt: { stock: 20 })
+moltin.products.all.filter(eq: { status: 'draft' }).
+                    filter(eq: { commodity_type: 'digital' }).
+                    filter(gt: { stock: 20 })
 ```
 
 The hash passed to the `#filter` method should contain all of the conditions required to be met by the API. Multiple filters of the same type can be used (as demonstrated above with `eq`).
@@ -214,7 +241,7 @@ The hash passed to the `#filter` method should contain all of the conditions req
 To include other data in your request (such as `brands` when getting `products`) call the `with` method on the resource:
 
 ```
-moltin.products.with(:brands)
+moltin.products.all.with(:brands)
 ```
 
 ##### Chaining Methods
@@ -222,7 +249,7 @@ moltin.products.with(:brands)
 All the methods presented above can be chained:
 
 ```
-moltin.limit(10).offset(10).sort('name').with(:brands).filter(eq: { status: 'draft' })
+moltin.all.limit(10).offset(10).sort('name').with(:brands).filter(eq: { status: 'draft' })
 ```
 
 #### Specific cases
@@ -716,8 +743,8 @@ billing = {}
 shipping = {}
 
 client.carts.checkout('unique_reference', customer: customer,
-                                          billing: billing,
-                                          shipping: shipping)
+                                          billing_address: billing,
+                                          shipping_address: shipping)
 
 # Or if you have a cart object
 cart = client.carts.get('unique_reference')

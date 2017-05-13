@@ -25,12 +25,15 @@ require 'moltin/models/setting'
 require 'moltin/models/flow'
 require 'moltin/models/field'
 require 'moltin/models/entry'
+require 'moltin/models/included'
 
 require 'moltin/version'
 require 'moltin/configuration'
 
 require 'moltin/errors/authentication_error'
 require 'moltin/errors/invalid_relationship_error'
+require 'moltin/errors/undefined_criteria'
+require 'moltin/errors/unsupported_action_error'
 
 require 'moltin/utils/request'
 require 'moltin/utils/response'

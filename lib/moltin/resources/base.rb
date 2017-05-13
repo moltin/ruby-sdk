@@ -1,12 +1,12 @@
 module Moltin
   module Resources
     class Base
-      attr_accessor :config, :storage, :options, :client
+      attr_accessor :config, :storage, :options, :client, :criteria
 
-      def initialize(config, storage, options = {}, client = nil)
+      def initialize(config, options = {}, client = nil)
         @client = client
         @config = config
-        @storage = storage
+        @storage = @config.storage
         @options = options
       end
 
@@ -14,6 +14,7 @@ module Moltin
       #
       # Returns a Moltin::Utils::Criteria
       def all
+        criteria = Moltin::Utils::Criteria.new(self, uri)
         criteria.all
       end
 
@@ -23,6 +24,7 @@ module Moltin
       #
       # Returns a Moltin::Utils::Criteria
       def limit(args)
+        check_criteria
         criteria.limit(args)
       end
 
@@ -32,6 +34,7 @@ module Moltin
       #
       # Returns a Moltin::Utils::Criteria
       def offset(args)
+        check_criteria
         criteria.offset(args)
       end
 
@@ -41,6 +44,7 @@ module Moltin
       #
       # Returns a Moltin::Utils::Criteria
       def sort(args)
+        check_criteria
         criteria.sort(args)
       end
 
@@ -51,6 +55,7 @@ module Moltin
       #
       # Returns a Moltin::Utils::Criteria
       def filter(args)
+        check_criteria
         criteria.filter(args)
       end
 
@@ -61,6 +66,7 @@ module Moltin
       #
       # Returns a Moltin::Utils::Criteria
       def with(*args)
+        check_criteria
         criteria.with(args)
       end
 
@@ -78,7 +84,8 @@ module Moltin
       #
       # Returns a Moltin::Utils::Response
       def get(id)
-        response(call(:get, "#{uri}/#{id}"))
+        criteria = Moltin::Utils::Criteria.new(self, "#{uri}/#{id}")
+        criteria.get
       end
 
       # Public: Create a new entity in the Moltin store using the given data
@@ -140,9 +147,12 @@ module Moltin
         raise 'Abstract Method.'
       end
 
-      # Private: Instantiate and memoize a criteria
-      def criteria
-        @critera ||= Moltin::Utils::Criteria.new(self, uri)
+      def check_criteria
+        unless criteria
+          raise Errors::UndefinedCriteria.new(
+            "Call 'all' or 'get' before calling limit, offset, sort, filter or with."
+          )
+        end
       end
 
       # Private: Instantiate a Moltin::Utils::Response based on the response
@@ -233,6 +243,8 @@ module Moltin
           { type: @config.resources[relationship_type][:name], id: relationship_ids }
         end
       end
+
+      def inspect; end
     end
   end
 end

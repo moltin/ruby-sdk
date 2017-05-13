@@ -9,7 +9,7 @@ module Moltin
 
       describe '#uri' do
         it 'returns the expected uri' do
-          entry = Moltin::Resources::Entries.new(config, {}, flow_slug: 'test')
+          entry = Moltin::Resources::Entries.new(config, flow_slug: 'test')
           expect(entry.send(:uri)).to eq 'v2/flows/test/entries'
         end
       end
@@ -21,9 +21,9 @@ module Moltin
 
             expect(response.data).not_to be_nil
             expect(response.data.first).to be_kind_of(Moltin::Models::Entry)
-            expect(response.links).not_to be_nil
-            expect(response.included).to eq({})
-            expect(response.meta).not_to be_nil
+            expect(response.response_links).not_to be_nil
+            expect(response.included).to be_kind_of Moltin::Models::Included
+            expect(response.response_meta).not_to be_nil
 
             expect(response.data.length).to eq 2
           end

@@ -20,9 +20,9 @@ module Moltin
 
             expect(response.data).not_to be_nil
             expect(response.data.first).to be_kind_of(Moltin::Models::Currency)
-            expect(response.links).not_to be_nil
-            expect(response.included).to eq({})
-            expect(response.meta).not_to be_nil
+            expect(response.response_links).not_to be_nil
+            expect(response.included).to be_kind_of Moltin::Models::Included
+            expect(response.response_meta).not_to be_nil
 
             expect(response.data.length).to eq 6
           end

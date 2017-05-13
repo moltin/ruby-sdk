@@ -20,9 +20,9 @@ module Moltin
 
             expect(response.data).not_to be_nil
             expect(response.data.first).to be_kind_of(Moltin::Models::Collection)
-            expect(response.links).not_to be_nil
-            expect(response.included).to eq({})
-            expect(response.meta).not_to be_nil
+            expect(response.response_links).not_to be_nil
+            expect(response.included).to be_kind_of Moltin::Models::Included
+            expect(response.response_meta).not_to be_nil
 
             expect(response.data.length).to eq 4
           end
@@ -33,8 +33,8 @@ module Moltin
             it 'limits the number of results and set the offset' do
               VCR.use_cassette('resources/collections/all/limit-offset') do
                 resource = Moltin::Resources::Collections.new(config, {})
-                response = resource.limit(2).offset(2)
-                expect(response.links['current']).to eq(
+                response = resource.all.limit(2).offset(2)
+                expect(response.response_links['current']).to eq(
                   'https://api.moltin.com/v2/collections?page[limit]=2&page[offset]=2'
                 )
                 expect(response.data.length).to eq 2
@@ -46,8 +46,8 @@ module Moltin
             it 'limits the number of results returned by the API' do
               VCR.use_cassette('resources/collections/all/limit') do
                 resource = Moltin::Resources::Collections.new(config, {})
-                response = resource.limit(3)
-                expect(response.links['current']).to eq(
+                response = resource.all.limit(3)
+                expect(response.response_links['current']).to eq(
                   'https://api.moltin.com/v2/collections?page[limit]=3&page[offset]=0'
                 )
                 expect(response.data.length).to eq 3
@@ -59,8 +59,8 @@ module Moltin
             it 'offsets the returned results' do
               VCR.use_cassette('resources/collections/all/offset') do
                 resource = Moltin::Resources::Collections.new(config, {})
-                response = resource.offset(3)
-                expect(response.links['current']).to eq(
+                response = resource.all.offset(3)
+                expect(response.response_links['current']).to eq(
                   'https://api.moltin.com/v2/collections?page[limit]=100&page[offset]=3'
                 )
                 expect(response.data.length).to eq 1
@@ -74,8 +74,8 @@ module Moltin
             it 'sorts the results based on the passed attribute in ascending sort' do
               VCR.use_cassette('resources/collections/all/sort/asc') do
                 resource = Moltin::Resources::Collections.new(config, {})
-                response = resource.sort('name')
-                expect(response.links['current']).to eq(
+                response = resource.all.sort('name')
+                expect(response.response_links['current']).to eq(
                   'https://api.moltin.com/v2/collections?page[limit]=100&page[offset]=0&sort=name'
                 )
               end
@@ -86,8 +86,8 @@ module Moltin
             it 'sorts the results based on the passed attribute in descending sort' do
               VCR.use_cassette('resources/collections/all/sort/desc') do
                 resource = Moltin::Resources::Collections.new(config, {})
-                response = resource.sort('-name')
-                expect(response.links['current']).to eq(
+                response = resource.all.sort('-name')
+                expect(response.response_links['current']).to eq(
                   'https://api.moltin.com/v2/collections?page[limit]=100&page[offset]=0&sort=-name'
                 )
               end

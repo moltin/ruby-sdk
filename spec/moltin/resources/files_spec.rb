@@ -20,9 +20,9 @@ module Moltin
 
             expect(response.data).not_to be_nil
             expect(response.data.first).to be_kind_of(Moltin::Models::File)
-            expect(response.links).not_to be_nil
-            expect(response.included).to eq({})
-            expect(response.meta).not_to be_nil
+            expect(response.response_links).not_to be_nil
+            expect(response.included).to be_kind_of Moltin::Models::Included
+            expect(response.response_meta).not_to be_nil
 
             expect(response.data.length).to eq 100
           end
@@ -33,8 +33,8 @@ module Moltin
             it 'limits the number of results and set the offset' do
               VCR.use_cassette('resources/files/all/limit-offset') do
                 resource = Moltin::Resources::Files.new(config, {})
-                response = resource.limit(10).offset(10)
-                expect(response.links['current']).to eq(
+                response = resource.all.limit(10).offset(10)
+                expect(response.response_links['current']).to eq(
                   'https://api.moltin.com/v2/files?page[offset]=10&page[limit]=10&filter='
                 )
                 expect(response.data.length).to eq 10
@@ -46,8 +46,8 @@ module Moltin
             it 'limits the number of results returned by the API' do
               VCR.use_cassette('resources/files/all/limit') do
                 resource = Moltin::Resources::Files.new(config, {})
-                response = resource.limit(10)
-                expect(response.links['current']).to eq(
+                response = resource.all.limit(10)
+                expect(response.response_links['current']).to eq(
                   'https://api.moltin.com/v2/files?page[offset]=0&page[limit]=10&filter='
                 )
                 expect(response.data.length).to eq 10
@@ -59,8 +59,8 @@ module Moltin
             it 'offsets the returned results' do
               VCR.use_cassette('resources/files/all/offset') do
                 resource = Moltin::Resources::Files.new(config, {})
-                response = resource.offset(100)
-                expect(response.links['current']).to eq(
+                response = resource.all.offset(100)
+                expect(response.response_links['current']).to eq(
                   'https://api.moltin.com/v2/files?page[offset]=100&page[limit]=100&filter='
                 )
                 expect(response.data.length).to eq 100

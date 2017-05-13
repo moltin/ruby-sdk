@@ -51,7 +51,8 @@ module Moltin
                                                 base_url: 'https://api.moltin.com',
                                                 currency_code: 'USD',
                                                 language: 'en',
-                                                locale: 'en_gb')
+                                                locale: 'en_gb',
+                                                storage: {})
       end
     end
 

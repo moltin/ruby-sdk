@@ -10,7 +10,7 @@ module Moltin
 
       describe '#uri' do
         it 'returns the expected uri' do
-          modifier = Moltin::Resources::ProductModifiers.new(config, {}, variation_id: 1, option_id: 1)
+          modifier = Moltin::Resources::ProductModifiers.new(config, variation_id: 1, option_id: 1)
           expect(modifier.send(:uri)).to eq 'v2/variations/1/variation-options/1/product-modifiers'
         end
       end

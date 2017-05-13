@@ -11,16 +11,58 @@ module Moltin
       # Headers
       currency_code: 'USD',
       language: 'en',
-      locale: 'en_gb'
+      locale: 'en_gb',
+
+      storage: {}
     }.freeze
 
     MOLTIN_OPTIONS = {
       version: 'v2',
       auth_uri: 'oauth/access_token',
       resources: {
-        products: { name: 'product', model: Moltin::Models::Brand },
         brands: { name: 'brand', model: Moltin::Models::Brand },
+        cart_items: { name: 'cart_item', model: Moltin::Models::CartItem },
+        carts: { name: 'cart', model: Moltin::Models::Cart },
         categories: { name: 'category', model: Moltin::Models::Category },
+        collections: { name: 'collection', model: Moltin::Models::Collection },
+        currencies: { name: 'currencies', model: Moltin::Models::Currency },
+        entries: { name: 'entry', model: Moltin::Models::Entry },
+        fields: { name: 'field', model: Moltin::Models::Field },
+        files: { name: 'file', model: Moltin::Models::File },
+        flows: { name: 'flow', model: Moltin::Models::Flow },
+        gateways: { name: 'gateway', model: Moltin::Models::Gateway },
+        integrations: { name: 'integration', model: Moltin::Models::Integration },
+        order_items: { name: 'order_item', model: Moltin::Models::OrderItem },
+        orders: { name: 'order', model: Moltin::Models::Order },
+        payments: { name: 'payment', model: Moltin::Models::Payment },
+        product_modifiers: { name: 'product_modifier', model: Moltin::Models::ProductModifier },
+        products: { name: 'product', model: Moltin::Models::Brand },
+        settings: { name: 'setting', model: Moltin::Models::Setting },
+        transactions: { name: 'transaction', model: Moltin::Models::Transaction },
+        variation_options: { name: 'variation_option', model: Moltin::Models::VariationOption },
+        variations: { name: 'variation', model: Moltin::Models::Variation },
+
+        brand: { name: 'brand', model: Moltin::Models::Brand },
+        cart_item: { name: 'cart_item', model: Moltin::Models::CartItem },
+        cart: { name: 'cart', model: Moltin::Models::Cart },
+        category: { name: 'category', model: Moltin::Models::Category },
+        collection: { name: 'collection', model: Moltin::Models::Collection },
+        currencie: { name: 'currencies', model: Moltin::Models::Currency },
+        entry: { name: 'entry', model: Moltin::Models::Entry },
+        field: { name: 'field', model: Moltin::Models::Field },
+        file: { name: 'file', model: Moltin::Models::File },
+        flow: { name: 'flow', model: Moltin::Models::Flow },
+        gateway: { name: 'gateway', model: Moltin::Models::Gateway },
+        integration: { name: 'integration', model: Moltin::Models::Integration },
+        order_item: { name: 'order_item', model: Moltin::Models::OrderItem },
+        order: { name: 'order', model: Moltin::Models::Order },
+        payment: { name: 'payment', model: Moltin::Models::Payment },
+        product_modifier: { name: 'product_modifier', model: Moltin::Models::ProductModifier },
+        product: { name: 'product', model: Moltin::Models::Brand },
+        setting: { name: 'setting', model: Moltin::Models::Setting },
+        transaction: { name: 'transaction', model: Moltin::Models::Transaction },
+        variation_option: { name: 'variation_option', model: Moltin::Models::VariationOption },
+        variation: { name: 'variation', model: Moltin::Models::Variation },
         parent: { name: 'category', model: Moltin::Models::Category },
         children: { name: 'category', model: Moltin::Models::Category }
       }

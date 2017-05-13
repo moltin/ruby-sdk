@@ -17,6 +17,10 @@ module Moltin
         self
       end
 
+      def get
+        self
+      end
+
       # Public: Set the limit parameter
       #
       # args - the number of records wanted (Example: 10)
