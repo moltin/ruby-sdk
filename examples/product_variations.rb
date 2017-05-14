@@ -106,9 +106,12 @@ begin
   end
 
   ap '---------------------------'
+  ap 'Building...'
+  ap moltin.products.get(base.id).build
+
+  ap '---------------------------'
   ap 'Final product...'
-  product = moltin.products.get(base.id).build.data
-  ap product
+  ap moltin.products.get(base.id).data
 
   ap 'Variations...'
   ap moltin.variations.all.data
