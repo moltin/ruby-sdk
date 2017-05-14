@@ -51,7 +51,7 @@ module Moltin
 
         begin
           { status: resp.status, body: JSON.parse(resp.body) }
-        rescue JSON::ParserError => e
+        rescue JSON::ParserError
           @logger.error "The response body could not be parsed as JSON: #{resp.status} - #{resp.body}" if @logger
           { status: resp.status, body: {} }
         end

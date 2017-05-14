@@ -35,13 +35,13 @@ begin
 
   ap '---------------------------'
   ap 'Cleaning up...'
-  moltin.integrations.all.each do |integration|
-    moltin.integrations.delete(integration.id)
+  moltin.integrations.all.each do |i|
+    moltin.integrations.delete(i.id)
   end
 rescue => e
   ap 'Something went wrong.'
   ap e
-  moltin.integrations.all.each do |integration|
-    moltin.integrations.delete(integration.id)
+  moltin.integrations.all.each do |i|
+    moltin.integrations.delete(i.id)
   end
 end

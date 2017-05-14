@@ -36,7 +36,9 @@ begin
   ]
 
   currency_data.each do |currency|
-    if cur = currencies.detect { |c| c.code == currency[:code] }
+    cur = currencies.detect { |c| c.code == currency[:code] }
+
+    if cur
       currency_list << cur
     else
       response = moltin.currencies.create(currency)
@@ -75,13 +77,13 @@ begin
 
   ap '---------------------------'
   ap 'Request product in ABC currency...'
-  productABC = moltin.currency('ABC').products.get(product.id).data
-  ap productABC
+  product_abc = moltin.currency('ABC').products.get(product.id).data
+  ap product_abc
 
   ap '---------------------------'
   ap 'Request product in DEF currency...'
-  productDEF = moltin.currency('DEF').products.get(product.id).data
-  ap productDEF
+  product_def = moltin.currency('DEF').products.get(product.id).data
+  ap product_def
 
   ap '---------------------------'
   ap 'Cleaning up...'
