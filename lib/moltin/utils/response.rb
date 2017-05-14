@@ -55,7 +55,7 @@ module Moltin
       def inspect
         "#<#{self.class.name}:#{object_id} @reponse_status=#{@response_status}, @model=#{@model}, " \
         "errors=#{errors}, data=#{data}, included=#{included}, response_links=#{response_links}, " \
-        "response_meta=#{response_meta}>"
+        "response_meta=#{response_meta}, body=#{body}>"
       end
     end
   end

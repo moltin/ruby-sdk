@@ -47,8 +47,10 @@ module Moltin
 
         self.relationships = attributes['relationships']
         ((self.class.has_many_list || []) + (self.class.belongs_list || [])).each do |name|
-          next unless relationships && relationships[name.to_s]
-          instance_variable_set("@#{name}", relationships[name.to_s]['data'].map do |rel|
+          value = (relationships && relationships[name.to_s]) || attributes[name.to_s]
+          next unless value
+
+          instance_variable_set("@#{name}", (value.is_a?(Hash) ? value['data'] : value).map do |rel|
             Moltin::Configuration::MOLTIN_OPTIONS[:resources][rel['type'].to_sym][:model].new(rel, client)
           end)
         end

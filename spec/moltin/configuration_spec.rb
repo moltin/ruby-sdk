@@ -52,7 +52,8 @@ module Moltin
                                                 currency_code: 'USD',
                                                 language: 'en',
                                                 locale: 'en_gb',
-                                                storage: {})
+                                                storage: {},
+                                                logger: nil)
       end
     end
 

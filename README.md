@@ -11,7 +11,7 @@ This Ruby SDK provides simple access to all the features offered by Moltin.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'moltin'
+gem 'moltin-v2'
 ```
 
 And then execute:
@@ -71,6 +71,31 @@ end
 ```
 
 You can then use the `moltin` client in any controller.
+
+#### Logging
+
+It's possible to enable logging of the requests sent to the Moltin API by passing a logger (responding to the `debug` method) to the configuration:
+
+```
+def moltin
+  @moltin ||= Moltin::Client.new({
+    storage: session,
+    logger: Rails.logger
+  })
+end
+```
+
+Here's an example of what will appear in the logs:
+
+```
+*************************************
+Moltin API Call: GET v2/products
+-------------------------------------
+Query Params
+{"sort"=>"name", "filter"=>"eq(status,live):has(name,Master)", "page[limit]"=>12, "page[offset]"=>0, "include"=>"files"}
+-------------------------------------
+*************************************
+```
 
 ### Per Client Configuration
 
@@ -933,7 +958,9 @@ Internally, there are several custom errors which may be raised - see the `lib/m
 
 ### Example Application
 
-Coming Soon.
+A simple sample application using this SDK can be found [here](https://github.com/T-Dnzt/Moltin-Sample-App).
+
+Examples can be found in [this folder](https://github.com/moltin/ruby-sdk/tree/v2/examples).
 
 ## Development
 

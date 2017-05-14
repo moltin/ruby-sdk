@@ -1,11 +1,12 @@
 module Moltin
   module Utils
     class Request
-      def initialize(base_url, currency_code: nil, language: nil, locale: nil)
+      def initialize(base_url, currency_code: nil, language: nil, locale: nil, logger: nil)
         @base_url = base_url
         @currency_code = currency_code
         @language = language
         @locale = locale
+        @logger = logger
       end
 
       # Public: Call the Moltin API passing the credentials to retrieve a valid
@@ -44,9 +45,16 @@ module Moltin
         options[:body] = data if data
         options[:query_params] = query_params if query_params
         options[:content_type] = content_type if content_type
+
+        log_request(method, uri, options)
         resp = send(method, options)
 
-        { status: resp.status, body: JSON.parse(resp.body) }
+        begin
+          { status: resp.status, body: JSON.parse(resp.body) }
+        rescue JSON::ParserError => e
+          @logger.error "The response body could not be parsed as JSON: #{resp.status} - #{resp.body}" if @logger
+          { status: resp.status, body: {} }
+        end
       end
 
       # Public: Makes a GET request to the Moltin API
@@ -139,6 +147,40 @@ module Moltin
       end
 
       private
+
+      def log_request(method, uri, options)
+        if @logger
+          @logger.info '*************************************'
+          @logger.info "Moltin API Call: #{method.upcase} #{uri}"
+          @logger.info '-------------------------------------'
+
+          @logger.info 'Headers'
+          @logger.info "X-MOLTIN-LANGUAGE=#{@language}" if @language
+          @logger.info "X-MOLTIN-CURRENCY=#{@currency_code}" if @currency_code
+          @logger.info "X-MOLTIN-LOCALE=#{@locale}" if @locale
+          @logger.info '-------------------------------------'
+
+          if options[:query_params]
+            @logger.info 'Query Params'
+            @logger.info options[:query_params]
+            @logger.info '-------------------------------------'
+          end
+
+          if options[:body]
+            @logger.info 'Body'
+            @logger.info options[:body]
+            @logger.info '-------------------------------------'
+          end
+
+          if options[:content_type]
+            @logger.info 'Content-Type'
+            @logger.info options[:content_type]
+            @logger.info '-------------------------------------'
+          end
+
+          @logger.info '*************************************'
+        end
+      end
 
       def set_headers(req)
         req.headers['X-MOLTIN-LANGUAGE'] = @language if @language

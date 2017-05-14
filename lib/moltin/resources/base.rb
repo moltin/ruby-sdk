@@ -6,7 +6,7 @@ module Moltin
       def initialize(config, options = {}, client = nil)
         @client = client
         @config = config
-        @storage = @config.storage
+        @storage = @config.storage || {}
         @options = options
       end
 
@@ -191,7 +191,8 @@ module Moltin
       def request
         @request ||= Moltin::Utils::Request.new(config.base_url, currency_code: currency,
                                                                  language: config.language,
-                                                                 locale: config.locale)
+                                                                 locale: config.locale,
+                                                                 logger: config.logger)
       end
 
       def currency
@@ -229,7 +230,7 @@ module Moltin
 
         response(call(method, "#{uri}/#{id}/relationships/#{relationship_type}",
                       data: format_relationships(relationship_type, relationship_ids)),
-                 model: @config.resources[relationship_type][:model])
+                 model: @config.resources[relationship_type.to_sym][:model])
       end
 
       def format_relationships(relationship_type, relationship_ids)
@@ -237,10 +238,10 @@ module Moltin
 
         if model_name.has_many_list.include?(relationship_type.to_sym)
           [*relationship_ids].compact.map do |r_id|
-            { type: @config.resources[relationship_type][:name], id: r_id }
+            { type: @config.resources[relationship_type.to_sym][:name], id: r_id }
           end
         else
-          { type: @config.resources[relationship_type][:name], id: relationship_ids }
+          { type: @config.resources[relationship_type.to_sym][:name], id: relationship_ids }
         end
       end
 

@@ -13,7 +13,8 @@ module Moltin
       language: 'en',
       locale: 'en_gb',
 
-      storage: {}
+      storage: {},
+      logger: nil
     }.freeze
 
     MOLTIN_OPTIONS = {

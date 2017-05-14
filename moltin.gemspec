@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'moltin/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'moltin'
+  spec.name          = 'moltin-v2'
   spec.version       = Moltin::VERSION
   spec.authors       = ['T-Dnzt']
   spec.email         = ['thi.denizet@gmail.com']
@@ -47,4 +47,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'simplecov', '~> 0.13.0'
   spec.add_development_dependency 'pry-byebug', '~> 3.4.2'
   spec.add_development_dependency 'timecop', '~> 0.8.0'
+  spec.add_development_dependency 'awesome_print', '~> 1.7.0'
 end
