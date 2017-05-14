@@ -51,7 +51,7 @@ module Moltin
           next unless value
 
           instance_variable_set("@#{name}", (value.is_a?(Hash) ? value['data'] : value).map do |rel|
-            Moltin::Configuration::MOLTIN_OPTIONS[:resources][rel['type'].to_sym][:model].new(rel, client)
+            Moltin::Configuration::MOLTIN_OPTIONS[:resources][rel['type'].tr('-', '_').to_sym][:model].new(rel, client)
           end)
         end
 

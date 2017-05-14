@@ -22,7 +22,7 @@ module Moltin
       auth_uri: 'oauth/access_token',
       resources: {
         brands: { name: 'brand', model: Moltin::Models::Brand },
-        cart_items: { name: 'cart_item', model: Moltin::Models::CartItem },
+        cart_items: { name: 'cart-item', model: Moltin::Models::CartItem },
         carts: { name: 'cart', model: Moltin::Models::Cart },
         categories: { name: 'category', model: Moltin::Models::Category },
         collections: { name: 'collection', model: Moltin::Models::Collection },
@@ -42,9 +42,10 @@ module Moltin
         transactions: { name: 'transaction', model: Moltin::Models::Transaction },
         variation_options: { name: 'variation-option', model: Moltin::Models::VariationOption },
         variations: { name: 'product-variation', model: Moltin::Models::Variation },
+        product_variations: { name: 'product-variation', model: Moltin::Models::Variation },
 
         brand: { name: 'brand', model: Moltin::Models::Brand },
-        cart_item: { name: 'cart_item', model: Moltin::Models::CartItem },
+        cart_item: { name: 'cart-item', model: Moltin::Models::CartItem },
         cart: { name: 'cart', model: Moltin::Models::Cart },
         category: { name: 'category', model: Moltin::Models::Category },
         collection: { name: 'collection', model: Moltin::Models::Collection },
@@ -64,6 +65,7 @@ module Moltin
         transaction: { name: 'transaction', model: Moltin::Models::Transaction },
         variation_option: { name: 'variation-option', model: Moltin::Models::VariationOption },
         variation: { name: 'product-variation', model: Moltin::Models::Variation },
+        product_variation: { name: 'product-variation', model: Moltin::Models::Variation },
         parent: { name: 'category', model: Moltin::Models::Category },
         children: { name: 'category', model: Moltin::Models::Category }
       }

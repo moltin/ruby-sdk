@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'moltin/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'moltin-v2'
+  spec.name          = 'moltin'
   spec.version       = Moltin::VERSION
   spec.authors       = ['T-Dnzt']
   spec.email         = ['thi.denizet@gmail.com']

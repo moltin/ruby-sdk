@@ -238,7 +238,7 @@ module Moltin
 
         if model_name.has_many_list.include?(relationship_type.to_sym)
           [*relationship_ids].compact.map do |r_id|
-            { type: @config.resources[relationship_type.to_sym][:name], id: r_id }
+            { type: @config.resources[relationship_type.to_s.tr('-', '_').to_sym][:name], id: r_id }
           end
         else
           { type: @config.resources[relationship_type.to_sym][:name], id: relationship_ids }
