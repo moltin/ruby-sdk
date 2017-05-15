@@ -11,7 +11,7 @@ This Ruby SDK provides simple access to all the features offered by Moltin.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'moltin-v2'
+gem 'moltin'
 ```
 
 And then execute:
