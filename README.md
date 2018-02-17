@@ -20,32 +20,23 @@ And then execute:
 
     $ bundle install
 
-
-
 ## Usage
-
-### Configuration
-
-```
-Moltin::Config.api_version = 'v1'
-Moltin::Config.api_host = 'api.molt.in'
-```
-
 
 ### Authentication
 
 We will automatically detect `ENV['MOLTIN_CLIENT_ID']` and `ENV['MOLTIN_CLIENT_SECRET']` variables, or you can pass them through manually.
 
 ```
-Moltin::Api::Client.authenticate('client_credentials', client_id: 'XXXXX', client_secret: 'XXXXX')
+Moltin::Api::Client.authenticate
 ```
+
 
 ### CRUD Resources
 
 The majority of our API calls can be mapped to Model-esque instance and don't need any low-level API calls.
 
 ```
-// Create a product
+// Create a product DOESN'T WORK
 product = Moltin::Resource::Product.create title: 'Example Product'
 
 // Get a product

@@ -33,7 +33,7 @@ describe Moltin::Api::Response do
       context code.to_s do
         it do
           response = Moltin::Api::Response.new rest_client_response
-          expect(response).to receive_message_chain(:code, :to_s).and_return code.to_s
+          expect(response).to receive_message_chain(:code).and_return code
           expect(response.success?).to eq success
         end
       end
@@ -61,6 +61,7 @@ describe Moltin::Api::Response do
     it do
       response = Moltin::Api::Response.new rest_client_response
       expect(response).to receive(:as_hash).and_return 'result' => 'some result data'
+      expect(response).to receive(:code).and_return 200
       expect(response.result).to eq 'some result data'
     end
   end
