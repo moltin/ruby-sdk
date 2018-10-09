@@ -1,7 +1,6 @@
 module Moltin
   module Api
     class Response
-
       attr_reader :response
 
       def initialize(response)
@@ -21,12 +20,14 @@ module Moltin
       end
 
       def result
+        return unless success?
         as_hash['result']
       end
 
       def success?
-        code.to_s.match(/(2|3)[0-9]{2}/) ? true : false
+        [200, 201, 302].include?(code)
       end
+
     end
   end
 end

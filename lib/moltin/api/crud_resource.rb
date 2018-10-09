@@ -5,14 +5,13 @@ require 'moltin/resource_collection'
 module Moltin
   module Api
     class CrudResource
-
       def self.all
         search({})
       end
 
       def self.find(id)
         response = Moltin::Api::Request.get("#{resource_namespace}/#{id}")
-        self.new response.result
+        new(response.result) if response.success?
       end
 
       def self.find_by(options)
@@ -22,12 +21,12 @@ module Moltin
 
       def self.search(options)
         query_string = options.map { |k, v| "#{k}=#{v}" }.join('&')
-        results = Request.get("#{resource_namespace}/search#{query_string ? "?#{query_string}" : ''}").result
+        results = Request.get("#{resource_namespace}/#{query_string ? "?#{query_string}" : ''}").result
         Moltin::ResourceCollection.new name, results
       end
 
       def self.attributes(*attrs)
-        return @attributes if attrs.count === 0
+        return @attributes if attrs.count.zero?
         @attributes ||= []
         attrs.each do |attr|
           @attributes.push(attr)
@@ -35,8 +34,18 @@ module Moltin
       end
 
       def self.create(data)
-        result = Request.post(resource_namespace, data).result
-        self.new(result)
+        response = Request.post(resource_namespace, data)
+        new(response.result) if response.success?
+      end
+
+      def self.update(id, data)
+        response = Request.put(resource_namespace + "/#{id}", data)
+        new(response.result) if response.success?
+      end
+
+      def self.destroy(id)
+        response = Request.delete(resource_namespace + "/#{id}")
+        new(response.result) if response.success?
       end
 
       attr_reader :data
@@ -51,14 +60,9 @@ module Moltin
         end
       end
 
-      def save
-      end
+      def save; end
 
-      def assign_attributes
-      end
-
-      def delete
-      end
+      def assign_attributes; end
 
       def method_missing(method, *args, &block)
         if method.to_s.index('=')
@@ -81,7 +85,11 @@ module Moltin
       def to_s
         _data = {}
         @data.keys.each do |attribute|
-          _data[attribute] = send(attribute)
+          if respond_to?(attribute)
+            _data[attribute] = send(attribute)
+          else
+            _data[attribute] = @data[attribute].to_s
+          end
         end
         _data
       end
@@ -93,7 +101,7 @@ module Moltin
       private
 
       def self.resource_name
-        name.to_s.downcase.gsub("moltin::resource::", "")
+        name.to_s.downcase.gsub('moltin::resource::', '')
       end
 
       def self.resource_namespace
@@ -107,9 +115,7 @@ module Moltin
       def get_attribute(key)
         key = key.to_s
         return nil unless @data[key]
-        if @data[key].is_a? Hash
-          return @data[key]['value']
-        end
+        return @data[key]['value'] if @data[key].is_a? Hash
         @data[key]
       end
     end

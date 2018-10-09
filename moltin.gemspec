@@ -6,8 +6,8 @@ require 'moltin/version'
 Gem::Specification.new do |spec|
   spec.name          = "moltin"
   spec.version       = Moltin::VERSION
-  spec.authors       = ["Marc Qualie"]
-  spec.email         = ["marc@marcqualie.com"]
+  spec.authors       = ["Marc Qualie", "Jean Bertrand"]
+  spec.email         = ["marc@marcqualie.com", "jean@mobilityz.io"]
 
   spec.summary       = "Moltin eCommerce SDK"
   spec.description   = "Interact with and fully manage your Moltin store from within your ruby application"
